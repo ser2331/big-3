@@ -1,0 +1,48 @@
+@import "src/components/assests/styles/index";
+
+.AuthContainer {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    .auth-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 0 120px;
+        align-content: center;
+        justify-content: center;
+        flex: 1 1;
+
+        .auth-title {
+            @include authTitle;
+            margin-bottom: 32px;
+        }
+
+        .not-member {
+            width: 100%;
+            text-align: center;
+            margin-top: 24px;
+
+            @include links;
+
+            span {
+                color: var(--ui-grey);
+            }
+
+            a {
+                color: var(--ui-red);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__image-wrapper {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        flex: 3 0;
+        background: #F5FBFF;
+        padding: 0 24px;
+    }
+}

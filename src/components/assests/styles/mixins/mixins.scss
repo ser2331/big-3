@@ -1,0 +1,41 @@
+@import "../variables/variables";
+@import "../fonts/fonts";
+
+$mobile: 375px;
+$large: 1440px;
+
+@mixin media($size) {
+    @media (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin authTitle {
+    font: 400 36px/49px 'Avenir 300', sans-serif;
+}
+
+@mixin inputLabel {
+    @include media($mobile) {
+        font: 500 17px/24px 'Avenir 500', sans-serif;
+    }
+    @include media($large) {
+        font: 500 14px/24px 'Avenir 500', sans-serif;
+    }
+}
+
+@mixin links {
+    @include media($mobile) {
+        font: 500 15px/24px 'Avenir 500', sans-serif;
+    }
+    @include media($large) {
+        font: 500 14px/24px 'Avenir 500', sans-serif;
+    }
+}
+
+@mixin submitButton {
+    font: 500 15px/24px 'Avenir 500', sans-serif;
+}
+
+@mixin errorMessage {
+    font: 500 12px 'Avenir 500', sans-serif;
+}

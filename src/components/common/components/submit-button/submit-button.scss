@@ -1,0 +1,24 @@
+@import "src/components/assests/styles/index";
+
+.SubmitButton {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--ui-red);
+  border: none;
+  color: var(--ui-white);
+
+  @include submitButton;
+
+  &:hover {
+    background: var(--ui-light-red);
+  }
+
+  &:active {
+    background: var(--ui-dark-red);
+  }
+  &:disabled {
+    background: var(--ui-lightest-grey1);
+  }
+}
