@@ -8,8 +8,8 @@ const AuthContainer:FC = () => {
     return(
         <div className="AuthContainer">
 
-            {/*<Auth />*/}
-            <Registration />
+            <Auth />
+            {/*<Registration />*/}
 
             <div className="AuthContainer__image-wrapper">
                 <img className="auth-image" alt="auth-image" src={authImage}/>

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, {FC, useEffect, useState} from "react";
 import Field from "../../../../../common/components/field";
 import SubmitButton from "../../../../../common/components/submit-button";
 import {ButtonTypes} from "../../../../../common/components/submit-button/submit-button";
@@ -12,11 +12,19 @@ const Auth: FC = () => {
     const initialValues = { login: "", password: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
         const { name, value } = e.currentTarget;
         setFormValues({ ...formValues, [name]: value });
     };
+
+    useEffect(() => {
+        console.log(formErrors);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            console.log(formValues);
+        }
+    }, [formErrors]);
 
     const validate = (values: ValidateProps) => {
         const errors: ValidateProps = {};
@@ -36,9 +44,7 @@ const Auth: FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        if (Object.keys(formErrors).length == 0) {
-            console.log("formValues");
-        }
+        setIsSubmit(true);
     };
 
     const { login, password }: {login?: string, password?: string} = formErrors;

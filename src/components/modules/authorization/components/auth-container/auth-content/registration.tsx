@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import Field from "../../../../../common/components/field";
 import {FieldTypes} from "../../../../../common/components/field/field";
 import SubmitButton from "../../../../../common/components/submit-button";
@@ -15,12 +15,19 @@ const Registration = () => {
     const initialValues = { name: "", login: "", password: "", confirmPassword: "" };
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
         const { name, value } = e.currentTarget;
         setFormValues({ ...formValues, [name]: value });
     };
 
+    useEffect(() => {
+        console.log(formErrors);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            console.log(formValues);
+        }
+    }, [formErrors]);
 
     const validate = (values: ValidateProps) => {
         const errors: ValidateProps = {};
@@ -48,9 +55,7 @@ const Registration = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        if (Object.keys(formErrors).length == 0) {
-            console.log("formValues");
-        }
+        setIsSubmit(true);
     };
 
     const { name, login, password, confirmPassword }: {name?: string, login?: string, password?: string, confirmPassword?: string} = formErrors;
