@@ -1,7 +1,7 @@
 import React, {FC} from "react";
+import classNames from "classnames";
 
 import "./field.scss";
-import classNames from "classnames";
 
 export enum FieldTypes {
     number = "number",

@@ -1,0 +1,22 @@
+@import "../../assests/styles/index";
+
+.LoginPage {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    &__image-wrapper {
+        @include media($mobile) {
+            display: none;
+        }
+        @include media($tablet) {
+            width: 59%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            background: #F5FBFF;
+            padding: 0 24px;
+        }
+    }
+}

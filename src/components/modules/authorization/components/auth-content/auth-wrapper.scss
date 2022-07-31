@@ -1,0 +1,42 @@
+@import "src/components/assests/styles/index";
+
+.Auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+
+  @include media($mobile) {
+    width: 100%;
+    padding: 0 24px;
+  }
+  @include media($tablet) {
+    width: 41%;
+    padding: 0 34px;
+  }
+  @include media($large) {
+    padding: 0 120px;
+  }
+
+  .auth-title {
+    @include authTitle;
+    margin-bottom: 32px;
+  }
+
+  .not-member {
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+
+    @include links;
+
+    span {
+      color: var(--ui-grey);
+    }
+
+    a {
+      color: var(--ui-red);
+      text-decoration: underline;
+    }
+  }
+}

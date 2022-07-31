@@ -2,6 +2,7 @@
 @import "../fonts/fonts";
 
 $mobile: 375px;
+$tablet: 768px;
 $large: 1440px;
 
 @mixin media($size) {
@@ -38,4 +39,22 @@ $large: 1440px;
 
 @mixin errorMessage {
     font: 500 12px 'Avenir 500', sans-serif;
+}
+
+@mixin cardTitle {
+    @include media($mobile) {
+        font: 500 15px/24px 'Avenir 500', sans-serif;
+    }
+    @include media($large) {
+        font: 500 18px/25px 'Avenir 500', sans-serif;
+    }
+}
+
+@mixin cardYear {
+    @include media($mobile) {
+        font: 400 13px/18px 'Avenir 400', sans-serif;
+    }
+    @include media($large) {
+        font: 400 14px/24px 'Avenir 400', sans-serif;
+    }
 }

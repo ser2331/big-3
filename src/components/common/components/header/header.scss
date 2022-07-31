@@ -1,0 +1,44 @@
+@import "../../../assests/styles/index";
+
+.Header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background: var(--ui-white);
+  box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
+
+  @include media($mobile) {
+    justify-content: center;
+    padding: 14px 0;
+  }
+  @include media($tablet) {
+    justify-content: space-between;
+    padding: 0 51px;
+  }
+
+  &__logo {
+    @include media($mobile) {
+      width: 137px;
+      height: 34px;
+    }
+    @include media($tablet) {
+      width: 191px;
+      height: 48px;
+    }
+  }
+
+  &__user-info-wrapper {
+    @include media($mobile) {
+      display: none;
+    }
+    @include media($tablet) {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-name {
+      margin-right: 20px;
+    }
+  }
+}
