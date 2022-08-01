@@ -7,10 +7,10 @@ import "./teams-page.scss";
 
 const TeamsPage = () => {
     return (
-        <div className="ContentPage">
+        <div className="TeamsPage">
             <Header />
 
-            <div className="ContentPage__content">
+            <div className="TeamsPage__content">
                 <Navigation />
                 <TeamsContainer />
             </div>

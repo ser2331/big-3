@@ -3,7 +3,7 @@
  * 1 | @import "src/components/assests/styles/index";
  *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  *   '
- *   players-container.scss 1:9  root stylesheet */
+ *   teams-container.scss 1:9  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",

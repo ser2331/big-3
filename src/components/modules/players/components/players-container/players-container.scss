@@ -14,6 +14,15 @@
     display: flex;
     margin-bottom: 32px;
 
+    @include media($mobile) {
+      flex-direction: column;
+      justify-content: center;
+    }
+    @include media($tablet) {
+      flex-direction: row;
+      justify-content: left;
+    }
+
     .playersSearch {
       margin-right: 24px;
     }
@@ -21,41 +30,57 @@
 
   .ant-row {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    @include media($mobile) {
+      justify-content: center;
+    }
+    @include media($tablet) {
+      justify-content: left;
+    }
   }
 
-  &__item-wrapper {
-
+  &__items {
+    margin-bottom: 32px;
+    min-height: 784px;
   }
 }
 
-.Pagination {
-  display: flex;
-  margin-top: 32px !important;
+.Multi-selector {
+  &__value-container--has-value {
+    flex-wrap: nowrap !important;
+  }
 
-  .page-item {
+  &__control {
+    height: 40px !important;
     @include links;
 
-    .page-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      color: var(--ui-grey);
-      cursor: pointer;
-      -webkit-user-select: none;
+    @include media($mobile) {
+      width: auto;
+    }
+    @include media($tablet) {
+      width: 364px !important;
     }
   }
 
-  .page-item.active {
-    .page-link {
-      background: var(--ui-red);
-      color: var(--ui-white);
-    }
+  &__control--is-focused {
+    border-color: #D9D9D9 !important;
+    box-shadow: 0 0 5px #D9D9D9 !important;
+    outline: none !important;
   }
 
+  &__multi-value {
+    display: flex !important;
+    align-items: center !important;
+    color: var(--ui-white) !important;
+    height: 24px !important;
+    background-color: var(--ui-red) !important;
+    width: max-content !important;
+    border-radius: 4px !important;
+
+    &__label {
+      color: var(--ui-white) !important;
+    }
+  }
 }

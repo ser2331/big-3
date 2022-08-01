@@ -5,4 +5,11 @@ export default class Types {
     ];
 
     static routingMap = Types.routing.reduce((acc, item) => acc.set(item.key, { ...item }), new Map());
+
+    static optionsItemsPerPage = [
+        {value: 2, label: "2"},
+        {value: 4, label: "4"},
+        {value: 6, label: "6"},
+        {value: 8, label: "8"},
+    ];
 }

@@ -5,6 +5,8 @@ interface TeamsState {
     teams: ITeams[];
     isLoading: boolean;
     error: string;
+    itemsPerPage: number;
+    searchTeam: string;
 }
 
 const initialState: TeamsState = {
@@ -30,21 +32,23 @@ const initialState: TeamsState = {
         { name: "Ducov Sergey#22", foundationYear: 0, id: 657, division: "srserserser", conference: "", imageUrl: "sdfvsdfsdf" },
         { name: "Ducov Sergey#22", foundationYear: 0, id: 567, division: "srserserser", conference: "", imageUrl: "sdfvsdfsdf" },
         { name: "Ducov Sergey#22", foundationYear: 0, id: 6566, division: "srserserser", conference: "", imageUrl: "sdfvsdfsdf" },
-        { name: "Ducov Sergey#22", foundationYear: 0, id: 57770, division: "srserserser", conference: "", imageUrl: "sdfvsdfsdf" },
-        { name: "Ducov Sergey#22", foundationYear: 0, id: 75670, division: "srserserser", conference: "", imageUrl: "sdfvsdfsdf" },
-        { name: "Ducov Sergey#22", foundationYear: 0, id: 5675676, division: "srserserser", conference: "", imageUrl: "sdfvsdfsdf" },
     ],
     isLoading: false,
-    error: ""
+    error: "",
+    itemsPerPage: 6,
+    searchTeam: ""
 };
 
 export const teamsSlice = createSlice({
     name: "teams",
     initialState,
     reducers: {
-        // getPlayers(state, action: PayloadAction<Array<string>>) {
-        //     state.players.push(action.payload);
-        // }
+        setNumberItemsPerPage(state, action: PayloadAction<number>) {
+            state.itemsPerPage = action.payload;
+        },
+        setSearchTeam(state, action: PayloadAction<string>) {
+            state.searchTeam = action.payload;
+        }
     }
 
 });

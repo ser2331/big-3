@@ -1,6 +1,10 @@
 @import "../../../assests/styles/index";
 
 .Navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   @include media($mobile) {
     display: none;
   }
@@ -14,29 +18,39 @@
     box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
   }
 
-  .link-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 36px;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--ui-light-grey);
-
-    .link-image {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 4px;
+  .links-wrapper {
+    .link-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 36px;
       cursor: pointer;
+      text-decoration: none;
+      color: var(--ui-light-grey);
+
+      .link-image {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 4px;
+        cursor: pointer;
+      }
+
+      .link-name {
+        @include errorMessage;
+        cursor: pointer;
+      }
     }
 
-    .link-name {
-      @include errorMessage;
-      cursor: pointer;
+    .active {
+      color: var(--ui-red)
     }
   }
 
-  .active {
-    color: var(--ui-red)
+  .sign-out-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--ui-lightest-red);
+    cursor: pointer;
   }
 }

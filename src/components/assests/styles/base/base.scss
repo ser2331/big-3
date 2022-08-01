@@ -5,3 +5,31 @@ body {
     font-weight: 500;
     min-height: 100%;
 }
+
+.Pagination {
+    display: flex;
+
+    .page-item {
+        @include links;
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            color: var(--ui-grey);
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+    }
+
+    .page-item.active {
+        .page-link {
+            background: var(--ui-red);
+            color: var(--ui-white);
+        }
+    }
+
+}

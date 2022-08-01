@@ -9,47 +9,52 @@
   @include media($tablet) {
     padding: 32px 80px;
   }
+
   .teamSearch {
     margin-bottom: 32px;
   }
 
   .ant-row {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     flex-wrap: wrap;
   }
 
-  &__item-wrapper {
 
+
+  &__items {
+    margin-bottom: 32px;
+    min-height: 784px;
+
+    &__item-wrapper {
+    }
+  }
+
+  &__footer-wrapper {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
-.Pagination {
-  display: flex;
-  margin-top: 32px !important;
-
-  .page-item {
+.SelectorItemsPerPage {
+  &__control {
+    width: 88px !important;
+    height: 40px !important;
     @include links;
-
-    .page-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      color: var(--ui-grey);
-      cursor: pointer;
-      -webkit-user-select: none;
-    }
   }
 
-  .page-item.active {
-    .page-link {
-      background: var(--ui-red);
-      color: var(--ui-white);
-    }
+  &__control--is-focused {
+    border-color: #D9D9D9 !important;
+    box-shadow: 0 0 5px #D9D9D9 !important;
+    outline: none !important;
   }
 
+  &__control--menu-is-open {
+    width: 88px !important;
+
+    &__label {
+      color: var(--ui-white) !important;
+    }
+  }
 }
