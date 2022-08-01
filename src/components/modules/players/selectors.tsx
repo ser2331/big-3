@@ -3,6 +3,7 @@ import { createSelector } from "reselect";
 const players = (state: any) => state.playersReducer.players;
 const selectedPlayers = (state: any) => state.playersReducer.selectedPlayers;
 const searchPlayerName = (state: any) => state.playersReducer.searchPlayerName;
+const playerId = (state: any) => state.playersReducer.playerId;
 
 
 export const getFilteredItems = createSelector(
@@ -20,6 +21,21 @@ export const getFilteredItems = createSelector(
             result = result.filter((item: any) => {
                 return item.name.toLowerCase()
                     .indexOf(searchedPlayer.toLowerCase()) > -1;
+            });
+        }
+
+        return result;
+    },
+);
+
+export const getSelectedPlayer= createSelector(
+    [players, playerId],
+    (groupsArray, player) => {
+        let result = {};
+
+        if (player) {
+            result = groupsArray.find((item: any) => {
+                return item.id === player;
             });
         }
 

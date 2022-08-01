@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { useSelector } from "react-redux";
 import { Col, Row } from "antd";
@@ -18,11 +19,13 @@ const { optionsItemsPerPage } = Types;
 
 const TeamsContainer:FC = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
     const animatedComponents = makeAnimated();
     const filteredItems = useSelector(getFilteredItems);
 
     const { itemsPerPage, searchTeam } = useAppSelector(state => state.teamsReducer);
-    const { setNumberItemsPerPage, setSearchTeam } = teamsSlice.actions;
+    const { setNumberItemsPerPage, setSearchTeam, setTeamId } = teamsSlice.actions;
 
     const [currentItems, setCurrentItems] = useState<Array<ITeams>>([]);
     const [pageCount, setPageCount] = useState(0);
@@ -53,6 +56,11 @@ const TeamsContainer:FC = () => {
         }
     }, [searchTeam]);
 
+    const setItemId = (id: number) => {
+        dispatch(setTeamId(id));
+        navigate(`team:${id}`);
+    };
+
     return (
         <div className="TeamsContainer">
             <SearchField value={searchTeam} onChange={(val) => dispatch(setSearchTeam(val))} className="teamSearch" />
@@ -61,7 +69,7 @@ const TeamsContainer:FC = () => {
                 <Row gutter={[24, 24]}>
                     {currentItems?.map((item: {year?: string, name?: string, image?: string, id?: number}) => (
                         <Col span={6} className="TeamsContainer__item-wrapper" key={item.id}>
-                            <Item year={item.year} name={item.name} image={item.image}/>
+                            <Item year={item.year} name={item.name} image={item.image} id={item.id} setItemId={setItemId}/>
                         </Col>
                     ))}
                 </Row>

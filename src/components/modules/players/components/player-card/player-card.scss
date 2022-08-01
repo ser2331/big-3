@@ -1,0 +1,107 @@
+@import "src/components/assests/styles/index";
+
+.PlayerCard {
+  width: 100%;
+  padding: 32px 80px;
+
+  &__wrapper {
+    width: 100%;
+    background: var(--ui-white);
+    border: 0.5px solid var(--ui-light-grey);
+    border-radius: 10px;
+    margin-bottom: 24px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      border-radius: 10px 10px 0 0;
+
+      .navigate-wrapper {
+        color: var(--ui-red);
+
+        .home-link {
+          text-decoration: none;
+          color: var(--ui-red);
+          cursor: pointer;
+        }
+      }
+
+      .control {
+        display: flex;
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .control img:nth-child(1) {
+        margin-right: 12px;
+      }
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      //padding: 65px 0;
+      background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
+      border-radius: 0 0 10px 10px;
+
+      .image-wrapper {
+        //flex: 1 1;
+
+        .player-photo {
+          width: 531px;
+          height: 531px;
+        }
+      }
+
+      .player-description {
+        flex: 2 1;
+        color: var(--ui-white);
+        padding: 0 24px;
+
+        .title {
+          @include cardTitle2;
+          margin-bottom: 40px;
+
+          .player-number {
+            color: var(--ui-red);
+          }
+        }
+
+        .description-wrapper div {
+          margin-bottom: 24px;
+        }
+
+        .description-wrapper div:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.Description-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  .description-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 230px;
+
+    .label {
+      @include cardLabel;
+      margin-bottom: 8px;
+    }
+
+    .value {
+      @include cardValue;
+    }
+  }
+}

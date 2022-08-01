@@ -16,6 +16,8 @@ const Navigation = () => {
 
     const location = useLocation();
 
+    console.log(location);
+
     const isPlayersPage = location.pathname === routingMap.get("players").value;
     const isTeamsPage = location.pathname === routingMap.get("teams").value;
 

@@ -70,6 +70,10 @@
     outline: none !important;
   }
 
+  &__value-container--has-value div:nth-child(1) {
+    width: max-content !important;
+  }
+
   &__multi-value {
     display: flex !important;
     align-items: center !important;

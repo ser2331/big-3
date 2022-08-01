@@ -1,0 +1,129 @@
+@import "src/components/assests/styles/index";
+
+.TeamCard {
+  width: 100%;
+  padding: 32px 80px;
+
+  &__wrapper {
+    width: 100%;
+    background: var(--ui-white);
+    border: 0.5px solid var(--ui-light-grey);
+    border-radius: 10px;
+    margin-bottom: 24px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      border-radius: 10px 10px 0 0;
+      .navigate-wrapper {
+        color: var(--ui-red);
+
+        .home-link {
+          text-decoration: none;
+          color: var(--ui-red);
+          cursor: pointer;
+        }
+      }
+
+      .control {
+        display: flex;
+
+        img {
+          cursor: pointer;
+        }
+      }
+      .control img:nth-child(1) {
+        margin-right: 12px;
+      }
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 65px 147px;
+      background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
+      border-radius: 0 0 10px 10px;
+
+      .image-wrapper {
+        flex: 1 1;
+      }
+      .team-description {
+        flex: 2 1;
+        color: var(--ui-white);
+
+        .title {
+          @include cardTitle2;
+          margin-bottom: 40px;
+        }
+
+        .description-wrapper {
+          display: flex;
+
+          .left-col {
+            margin-right: 84px;
+          }
+
+          .left-col div:nth-child(1) {
+            margin-bottom: 54px;
+          }
+
+          .right-col {
+
+          }
+
+          .description-info {
+            display: flex;
+            flex-direction: column;
+            .label {
+              margin-bottom: 8px;
+              @include cardLabel;
+            }
+            .value {
+              @include cardValue;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__team-players {
+    width: 100%;
+
+    .Table {
+      width: 100%;
+      background: var(--ui-white);
+      border-spacing: 0;
+      border: 0.5px solid  var(--ui-light-grey);
+      border-radius: 0 0 10px 10px;
+
+      &__title {
+        padding: 14px 32px;
+        text-align: left;
+        background: var(--ui-white);
+        border-radius: 10px 10px 0 0;
+        border: 0.5px solid  var(--ui-light-grey);
+        color: var(--ui-grey);
+
+        @include cardTitle;
+      }
+
+      td, th {
+        text-align: left;
+        border-bottom: 0.5px solid  var(--ui-light-grey);
+        padding: 8px 32px;
+        color: var(--ui-grey);
+        @include links;
+      }
+
+      &__header {
+        .player {
+          width: 60%;
+        }
+      }
+    }
+  }
+}

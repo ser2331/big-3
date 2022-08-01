@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useState} from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Col, Row } from "antd";
 import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
@@ -15,9 +16,10 @@ import "./players-container.scss";
 
 const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const { players, selectedPlayers, itemsPerPage, searchPlayerName } = useAppSelector(state => state.playersReducer);
-    const { setSelectedPlayers, setSearchPlayerName } = playersSlice.actions;
+    const { setSelectedPlayers, setSearchPlayerName, setPlayerId } = playersSlice.actions;
     const filteredItems = useSelector(getFilteredItems);
     const animatedComponents = makeAnimated();
 
@@ -41,10 +43,15 @@ const PlayersContainer:FC = () => {
     };
 
     useEffect(() => {
-        if (searchPlayerName) {
+        if (searchPlayerName || selectedPlayers.length > 0) {
             handlePageClick({selected: 0});
         }
-    }, [searchPlayerName]);
+    }, [searchPlayerName, selectedPlayers]);
+
+    const setItemId = (id: number) => {
+        dispatch(setPlayerId(id));
+        navigate(`player:${id}`);
+    };
 
     return (
         <div className="PlayersContainer">
@@ -67,7 +74,7 @@ const PlayersContainer:FC = () => {
                 <Row gutter={[24, 24]}>
                     {currentItems?.map((item: {birthday?: string, name?: string, avatarUrl?: string, id?: number}) => (
                         <Col span={6} className="TeamsContainer__item-wrapper" key={item.id}>
-                            <Item year={item.birthday} name={item.name} image={item.avatarUrl}/>
+                            <Item year={item.birthday} name={item.name} image={item.avatarUrl} id={item.id} setItemId={setItemId}/>
                         </Col>
                     ))}
                 </Row>
@@ -94,7 +101,7 @@ const PlayersContainer:FC = () => {
                 renderOnZeroPageCount={undefined}
             />
         </div>   
-    ); 
+    );
 };
 
 export default PlayersContainer;

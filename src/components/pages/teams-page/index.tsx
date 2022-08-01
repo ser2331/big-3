@@ -1,3 +1,3 @@
-import TeamsPage from "./teams-page";
+import TeamsPage from  "./teams-page";
 
 export default TeamsPage;
