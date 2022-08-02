@@ -6,6 +6,8 @@
     height: 100vh;
 
     &__image-wrapper {
+        position: relative;
+
         @include media($mobile) {
             display: none;
         }
@@ -17,6 +19,17 @@
             align-items: center;
             background: #F5FBFF;
             padding: 0 24px;
+        }
+
+        .error-message {
+            position: absolute;
+            top: 36px;
+            right: 36px;
+            height: 40px;
+            background: var(--ui-lightest-red);
+            color: var(--ui-white);
+            padding: 8px 16px;
+            border-radius: 4px;
         }
     }
 }

@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import { useAppDispatch } from "../../../../core/redux/redux";
+import { authorizationSlice } from "../../AuthorizationSlice";
 import { registrationSchema } from "../../helpers/yup-schems";
 import Field from "../../../../common/components/field";
+import { tokenAPI } from "../../../../api/apiService";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import CustomCheckbox from "../../../../common/components/custom-checkbox";
+import { IGetToken } from "../../interfaces/authorization-interfaces";
 
 import "./auth-wrapper.scss";
 
 const Registration = () => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const [getToken, {data, isError}] = tokenAPI.useGetSignUpTokenMutation();
+    const { setUserData } = authorizationSlice.actions;
+
     const [accept, setAccept] = useState(false);
     const [errorAccept, setErrorAccept] = useState("");
 
@@ -19,15 +28,26 @@ const Registration = () => {
     const {register, handleSubmit, formState: { errors }} = useForm(formOptions);
 
     useEffect(() => {
-        if (!accept) {
+        if (!accept && !errors) {
             setErrorAccept("You must be accept the agreement.");
         } else setErrorAccept("");
-    }, [accept]);
+    }, [accept, errors]);
+
+    useEffect(() => {
+        if (data && !isError) {
+            dispatch(setUserData(data));
+            navigate("/");
+        }
+    }, [data, isError]);
+
+    const submit = async (introducedData: IGetToken) => {
+        await getToken(introducedData);
+    };
 
     return(
         <div className="Registration Auth-wrapper">
             <h1 className="auth-title">Sign Up</h1>
-            <form onSubmit={handleSubmit((data) => {alert(JSON.stringify(data));})}>
+            <form onSubmit={handleSubmit((introducedData: any) => submit(introducedData))}>
 
                 <Field
                     label="Name"
