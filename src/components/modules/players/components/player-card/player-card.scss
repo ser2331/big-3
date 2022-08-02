@@ -45,13 +45,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      //padding: 65px 0;
       background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
       border-radius: 0 0 10px 10px;
 
       .image-wrapper {
-        //flex: 1 1;
-
         .player-photo {
           width: 531px;
           height: 531px;
@@ -68,7 +65,7 @@
           margin-bottom: 40px;
 
           .player-number {
-            color: var(--ui-red);
+            color: var(--ui-lightest-red);
           }
         }
 

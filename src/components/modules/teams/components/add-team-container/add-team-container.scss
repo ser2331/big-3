@@ -1,0 +1,68 @@
+.AddTeamContainer {
+  width: 100%;
+  padding: 32px 80px;
+
+  &__content-wrapper {
+    width: 100%;
+    background: var(--ui-white);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      border-radius: 10px 10px 0 0;
+      .navigate-wrapper {
+        color: var(--ui-red);
+
+        .home-link {
+          text-decoration: none;
+          color: var(--ui-red);
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__content {
+      display: flex;
+      padding: 48px 73px;
+
+      .image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 336px;
+        height: 261px;
+        opacity: 0.5;
+        border-radius: 10px;
+        background: var(--ui-light-grey);
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .form-wrapper {
+        padding: 0 136px;
+
+        .form {
+          width: 366px;
+
+          .form-control {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .reset-btn {
+              background: var(--ui-white);
+              border: 1px solid var(--ui-light-grey);
+              margin-right: 12px;
+              color: var(--ui-light-grey);
+            }
+          }
+        }
+      }
+    }
+  }
+}

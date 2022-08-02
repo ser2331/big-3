@@ -10,27 +10,25 @@ export enum FieldTypes {
 }
 
 interface FieldProps {
-    error?: string,
+    error?: any | undefined,
     label?: string,
-    name?: string,
     type?: FieldTypes,
-    value: string,
-    onChange(e: React.FormEvent<HTMLInputElement>): void,
+    register: any,
+    registerName: string,
+    property?: object,
 }
 
-const Field:FC<FieldProps> = ({label, name, type, value, onChange, error}) => {
+const Field:FC<FieldProps> = ({label, register, type, registerName, error, property}) => {
     return (
         <div className="Field">
             <label className="label">{label}</label>
             <input
                 className={classNames("input", {error})}
-                name={name}
+                {...register(`${registerName}`, {...property})}
                 type={type}
-                onChange={onChange}
-                value={value}
             />
             <div className="error-massage">
-                {error ? error : "" }
+                {error ? error.message : "" }
             </div>
         </div>
     );

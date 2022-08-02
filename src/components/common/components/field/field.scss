@@ -5,6 +5,7 @@
     .label {
         @include inputLabel;
         margin-bottom: 8px;
+        color: var(--ui-grey);
     }
 
     .input{

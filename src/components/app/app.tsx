@@ -7,6 +7,8 @@ import TeamsPage from "../pages/teams-page";
 import PlayersPage from "../pages/players-page";
 import TeamCardPage from "../pages/team-card-page";
 import PlayerCardPage from "../pages/player-card-page";
+import AddTeamPage from "../pages/add-team-page";
+import AddPlayerPage from "../pages/add-player-page";
 
 import "./app.css";
 
@@ -19,9 +21,11 @@ const App: FC = () => {
 
                 <Route path="/teams" element={<TeamsPage />} />
                 <Route path="/teams/team:id" element={<TeamCardPage />} />
+                <Route path="/teams/addTeam" element={<AddTeamPage />} />
 
                 <Route path="/players" element={<PlayersPage />} />
                 <Route path="/players/player:id" element={<PlayerCardPage />} />
+                <Route path="/players/addPlayer" element={<AddPlayerPage />} />
             </Routes>
         </div>
     );

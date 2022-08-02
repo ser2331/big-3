@@ -23,8 +23,18 @@
       justify-content: left;
     }
 
-    .playersSearch {
-      margin-right: 24px;
+    .left-fields {
+      display: flex;
+      flex: 1 1;
+      .playersSearch {
+        margin-right: 24px;
+      }
+    }
+
+    .right-fields {
+      .add-item {
+        width: 104px;
+      }
     }
   }
 

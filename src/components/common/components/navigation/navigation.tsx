@@ -16,10 +16,8 @@ const Navigation = () => {
 
     const location = useLocation();
 
-    console.log(location);
-
-    const isPlayersPage = location.pathname === routingMap.get("players").value;
-    const isTeamsPage = location.pathname === routingMap.get("teams").value;
+    const isPlayersPage = location.pathname.includes(routingMap.get("players").value);
+    const isTeamsPage = location.pathname.includes(routingMap.get("teams").value);
 
     return (
         <div className="Navigation">

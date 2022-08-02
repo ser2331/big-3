@@ -11,9 +11,12 @@ import { ITeams } from "../../interfaces/ITeams";
 import Types from "../../../../types";
 import SearchField from "../../../../common/components/search-field";
 import Item from "../../../../common/components/item";
+import CustomButton from "../../../../common/components/custom-button";
+import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import { getFilteredItems } from "../../selectors";
 
 import "./teams-container.scss";
+
 
 const { optionsItemsPerPage } = Types;
 
@@ -63,7 +66,17 @@ const TeamsContainer:FC = () => {
 
     return (
         <div className="TeamsContainer">
-            <SearchField value={searchTeam} onChange={(val) => dispatch(setSearchTeam(val))} className="teamSearch" />
+            <div className="fields-wrapper">
+                <SearchField value={searchTeam} onChange={(val) => dispatch(setSearchTeam(val))} className="teamSearch" />
+
+                <CustomButton
+                    type={ButtonTypes.button}
+                    className="add-item"
+                    onClick={() => navigate("addTeam")}
+                >
+                    Add +
+                </CustomButton>
+            </div>
 
             <div className="TeamsContainer__items">
                 <Row gutter={[24, 24]}>

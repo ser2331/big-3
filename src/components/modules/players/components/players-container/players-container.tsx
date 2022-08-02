@@ -13,6 +13,8 @@ import Item from "../../../../common/components/item";
 import { getFilteredItems } from "../../selectors";
 
 import "./players-container.scss";
+import CustomButton from "../../../../common/components/custom-button";
+import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
 
 const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
@@ -57,17 +59,29 @@ const PlayersContainer:FC = () => {
         <div className="PlayersContainer">
 
             <div className="fields-wrapper">
-                <SearchField value={searchPlayerName} onChange={(val) => dispatch(setSearchPlayerName(val))} classNameWrapper="playersSearch" />
-                <Select
-                    className="selector"
-                    classNamePrefix="Multi-selector"
-                    closeMenuOnSelect={false}
-                    components={animatedComponents}
-                    isMulti
-                    options={options}
-                    value={selectedPlayers}
-                    onChange={(e: any) => dispatch(setSelectedPlayers(e))}
-                />
+                <div className="left-fields">
+                    <SearchField value={searchPlayerName} onChange={(val) => dispatch(setSearchPlayerName(val))} classNameWrapper="playersSearch" />
+                    <Select
+                        className="selector"
+                        classNamePrefix="Multi-selector"
+                        closeMenuOnSelect={false}
+                        components={animatedComponents}
+                        isMulti
+                        options={options}
+                        value={selectedPlayers}
+                        onChange={(e: any) => dispatch(setSelectedPlayers(e))}
+                    />
+                </div>
+
+                <div className="right-fields">
+                    <CustomButton
+                        type={ButtonTypes.button}
+                        className="add-item"
+                        onClick={() => navigate("addPlayer")}
+                    >
+                        Add +
+                    </CustomButton>
+                </div>
             </div>
 
             <div className="PlayersContainer__items">

@@ -1,81 +1,41 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import { loginSchema } from "../../helpers/yup-schems";
 import Field from "../../../../common/components/field";
-import SubmitButton from "../../../../common/components/submit-button";
-import {ButtonTypes} from "../../../../common/components/submit-button/submit-button";
-import {FieldTypes} from "../../../../common/components/field/field";
+import CustomButton from "../../../../common/components/custom-button";
+import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
 
 import "./auth-wrapper.scss";
 
+
 const Login: FC = () => {
-    interface ValidateProps {
-        login?: string,
-        password?: string,
-    }
-    const initialValues = { login: "", password: "" };
-    const [formValues, setFormValues] = useState(initialValues);
-    const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-
-    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const { name, value } = e.currentTarget;
-        setFormValues({ ...formValues, [name]: value });
-    };
-
-    useEffect(() => {
-        console.log(formErrors);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
-        }
-    }, [formErrors]);
-
-    const validate = (values: ValidateProps) => {
-        const errors: ValidateProps = {};
-        if (!values.login) {
-            errors.login = "Username is required!";
-        }
-        if (!values.password) {
-            errors.password = "Password is required";
-        } else if (values.password.length < 4) {
-            errors.password = "Password must be more than 4 characters";
-        } else if (values.password.length > 10) {
-            errors.password = "Password cannot exceed more than 10 characters";
-        }
-        return errors;
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setFormErrors(validate(formValues));
-        setIsSubmit(true);
-    };
-
-    const { login, password }: {login?: string, password?: string} = formErrors;
+    const formOptions = { resolver: yupResolver(loginSchema) };
+    const {register, handleSubmit, formState: { errors }} = useForm(formOptions);
 
     return (
         <div className="Login Auth-wrapper">
             <h1 className="auth-title">Sign In</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit((data) => {alert(JSON.stringify(data));})}>
                 <Field
-                    label="Login"
-                    name="login"
-                    value={formValues.login}
-                    onChange={handleChange}
-                    error={login}
+                    label="Name"
+                    register={register}
+                    registerName="login"
+                    error={errors.login}
                 />
+
                 <Field
-                    label="Password"
-                    name="password"
-                    type={FieldTypes.password}
-                    value={formValues.password}
-                    onChange={handleChange}
-                    error={password}
+                    label="Name"
+                    register={register}
+                    registerName="password"
+                    error={errors.password}
                 />
-                <SubmitButton
+
+                <CustomButton
                     type={ButtonTypes.submit}>
                     Sign In
-                </SubmitButton>
+                </CustomButton>
             </form>
 
             <div className="not-member">

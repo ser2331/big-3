@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import classNames from "classnames";
 
-import "./submit-button.scss";
+import "./custom-button.scss";
 
 export enum ButtonTypes {
     button = "button",
@@ -9,7 +9,7 @@ export enum ButtonTypes {
     reset = "reset"
 }
 
-interface SubmitButtonProps {
+interface CustomButtonProps {
     disabled?: boolean,
     children: string,
     className?: string,
@@ -17,7 +17,7 @@ interface SubmitButtonProps {
     onClick?: () => void
 }
 
-const SubmitButton:FC<SubmitButtonProps> = ({onClick, children, className, type, disabled}) => (
+const CustomButton:FC<CustomButtonProps> = ({onClick, children, className, type, disabled}) => (
     <button
         className={classNames("SubmitButton", className)}
         onClick={onClick}
@@ -28,4 +28,4 @@ const SubmitButton:FC<SubmitButtonProps> = ({onClick, children, className, type,
     </button>
 );
 
-export default SubmitButton;
+export default CustomButton;
