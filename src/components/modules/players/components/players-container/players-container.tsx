@@ -7,14 +7,15 @@ import { playersSlice } from "../../PlayersSlice";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactPaginate from "react-paginate";
-import { IPlayers } from "../../interfaces/IPlayers";
+import { IPlayers, ISelectOption } from "../../interfaces/players-interfaces";
 import SearchField from "../../../../common/components/search-field";
 import Item from "../../../../common/components/item";
+import CustomButton from "../../../../common/components/custom-button";
+import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import { getFilteredItems } from "../../selectors";
 
 import "./players-container.scss";
-import CustomButton from "../../../../common/components/custom-button";
-import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
+
 
 const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
@@ -30,8 +31,7 @@ const PlayersContainer:FC = () => {
 
     const [itemOffset, setItemOffset] = useState(0);
 
-    const options = players?.reduce((acc: any, item: any) => [...acc, {value: item.id, label: item.name}], [],);
-
+    const options = players?.reduce((acc: Array<ISelectOption>, item: any) => [...acc, {value: item.id, label: item.name}], [],);
 
     useEffect(() => {
         const endOffset = itemOffset + itemsPerPage;
@@ -61,6 +61,7 @@ const PlayersContainer:FC = () => {
             <div className="fields-wrapper">
                 <div className="left-fields">
                     <SearchField value={searchPlayerName} onChange={(val) => dispatch(setSearchPlayerName(val))} classNameWrapper="playersSearch" />
+
                     <Select
                         className="selector"
                         classNamePrefix="Multi-selector"
@@ -69,7 +70,7 @@ const PlayersContainer:FC = () => {
                         isMulti
                         options={options}
                         value={selectedPlayers}
-                        onChange={(e: any) => dispatch(setSelectedPlayers(e))}
+                        onChange={(option: any) => dispatch(setSelectedPlayers(option))}
                     />
                 </div>
 

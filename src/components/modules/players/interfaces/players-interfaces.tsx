@@ -9,3 +9,8 @@ export interface IPlayers {
     position?: string;
     team?: number;
 }
+
+export interface  ISelectOption {
+    label: string,
+    value: number
+}

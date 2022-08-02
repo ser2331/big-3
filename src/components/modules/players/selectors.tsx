@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { IPlayers } from "./interfaces/players-interfaces";
 
 const players = (state: any) => state.playersReducer.players;
 const selectedPlayers = (state: any) => state.playersReducer.selectedPlayers;
@@ -12,7 +13,7 @@ export const getFilteredItems = createSelector(
         let result = [...groupsArray];
 
         if (selected?.length) {
-            result = groupsArray?.filter((item: any) => {
+            result = groupsArray?.filter((item: IPlayers) => {
                 return selected?.find(({value}: any) => value === item.id);
             });
         }

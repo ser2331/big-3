@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getSelectedPlayer } from "../../selectors";
-import { IPlayers } from "../../interfaces/IPlayers";
+import { IPlayers } from "../../interfaces/players-interfaces";
 import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultPlayerImg from "../../../../assests/images/defaultPlayerImage.png";
@@ -14,7 +14,7 @@ const PlayerCard = () => {
 
     const player = useSelector(getSelectedPlayer);
 
-    const {name, birthday, height, weight, avatarUrl, number, position, team }: IPlayers = player;
+    const { name, birthday, height, weight, avatarUrl, number, position, team }: IPlayers = player;
 
     useEffect(() => {
         if (Object.keys(player).length == 0) {
@@ -24,9 +24,9 @@ const PlayerCard = () => {
 
     const renderDescriptionLine = (
         label?: string,
-        value?: number | string | undefined,
+        value?: number | string,
         label2?: string ,
-        value2?: number | string | undefined
+        value2?: number | string
     ) => {
         return (
             <div className="Description-line">

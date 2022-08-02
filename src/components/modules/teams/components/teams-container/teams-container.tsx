@@ -18,6 +18,8 @@ import { getFilteredItems } from "../../selectors";
 import "./teams-container.scss";
 
 
+
+
 const { optionsItemsPerPage } = Types;
 
 const TeamsContainer:FC = () => {

@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { IPlayers } from "./interfaces/IPlayers";
+import { IPlayers } from "./interfaces/players-interfaces";
 
 interface PlayersState {
     players: IPlayers[];
