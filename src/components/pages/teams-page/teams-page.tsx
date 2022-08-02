@@ -6,12 +6,14 @@ import Header from "../../common/components/header";
 import "./teams-page.scss";
 
 const TeamsPage = () => {
+
     return (
         <div className="TeamsPage">
             <Header />
 
             <div className="TeamsPage__content">
                 <Navigation />
+
                 <TeamsContainer />
             </div>
         </div>

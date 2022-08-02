@@ -1,28 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some refactor">
-      <change afterPath="$PROJECT_DIR$/src/components/api/apiService.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/components/auth-router/auth-route.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/components/auth-router/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/authorization/AuthorizationSlice.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/authorization/interfaces/authorization-interfaces.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add api, add auth">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/api/baseRequest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/api/apiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/apiService.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/core/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/core/redux/store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/actions.ts.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/asyncActions.ts.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/reducer.ts.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/selectors.ts.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/login-page/login-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login-page/login-page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/login-page/login-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login-page/login-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/interfaces/ITeams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/interfaces/ITeams.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/teams-page/teams-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/teams-page/teams-page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +110,7 @@
       <workItem from="1659099887836" duration="34496000" />
       <workItem from="1659334849934" duration="11100000" />
       <workItem from="1659358893141" duration="2317000" />
-      <workItem from="1659438506452" duration="34078000" />
+      <workItem from="1659438506452" duration="40918000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -186,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659466690035</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add api, add auth">
+      <created>1659476613415</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1659476613415</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +210,8 @@
     <MESSAGE value="some fix" />
     <MESSAGE value="add addTeam and addPlayer pages, fix navigation." />
     <MESSAGE value="some refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="some refactor" />
+    <MESSAGE value="add api, add auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="add api, add auth" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

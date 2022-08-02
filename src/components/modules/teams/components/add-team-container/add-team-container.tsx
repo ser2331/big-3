@@ -1,15 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import {apiService} from "../../../../api/apiService";
+import {IAddTeam} from "../../interfaces/ITeams";
 import Field from "../../../../common/components/field";
 import AddItemImg from "../../../../assests/images/addItemImg.svg";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 
 import "./add-team-container.scss";
+import {useAppSelector} from "../../../../core/redux/redux";
+
 
 const AddTeamContainer = () => {
+    const [addTeam, {data, isError}] = apiService.useAddTeamMutation();
+
+    const { token } = useAppSelector(state => state.authorizationReducer);
     const {register, handleSubmit, formState: { errors }} = useForm({defaultValues: {name: "", division: "", conference: "", year: ""}});
+
+    const submit = async (introducedData: IAddTeam) => {
+        await addTeam({...introducedData, token});
+    };
 
     return (
         <div className="AddTeamContainer">
@@ -27,7 +38,7 @@ const AddTeamContainer = () => {
                     </div>
 
                     <div className="form-wrapper">
-                        <form className="form" onSubmit={handleSubmit((data) => {alert(JSON.stringify(data));})}>
+                        <form className="form" onSubmit={handleSubmit((introducedData: any) => submit(introducedData))}>
                             <Field
                                 label="Name"
                                 register={register}

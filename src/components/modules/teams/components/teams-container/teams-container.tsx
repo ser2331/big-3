@@ -6,6 +6,7 @@ import { Col, Row } from "antd";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import { apiService } from "../../../../api/apiService";
 import { teamsSlice } from "../../TeamsSlice";
 import { ITeams } from "../../interfaces/ITeams";
 import Types from "../../../../types";
@@ -17,23 +18,33 @@ import { getFilteredItems } from "../../selectors";
 
 import "./teams-container.scss";
 
-
-
-
 const { optionsItemsPerPage } = Types;
 
 const TeamsContainer:FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
+    const { token } = useAppSelector(state => state.authorizationReducer);
+    const { teams, itemsPerPage, pageCount, searchTeam } = useAppSelector(state => state.teamsReducer);
+    const { data: data, error, isLoading, refetch } = apiService.useGetTeamsQuery({token, page: pageCount, pageSize: itemsPerPage});
+    const { setNumberItemsPerPage, setTeams, setSearchTeam, setTeamId, setPageCount } = teamsSlice.actions;
+
+    useEffect(() => {
+        if (data && !error) {
+            dispatch(setTeams(data.data));
+        }
+    }, [data, error]);
+
+    useEffect(() => {
+        if (pageCount && itemsPerPage) {
+            refetch();
+        }
+    }, [pageCount, itemsPerPage]);
+
     const animatedComponents = makeAnimated();
     const filteredItems = useSelector(getFilteredItems);
 
-    const { itemsPerPage, searchTeam } = useAppSelector(state => state.teamsReducer);
-    const { setNumberItemsPerPage, setSearchTeam, setTeamId } = teamsSlice.actions;
-
     const [currentItems, setCurrentItems] = useState<Array<ITeams>>([]);
-    const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
     
     const getValueItemsPerPage = () => {
@@ -66,6 +77,18 @@ const TeamsContainer:FC = () => {
         navigate(`team:${id}`);
     };
 
+    const renderItems = () => (
+        <div className="TeamsContainer__items">
+            <Row gutter={[24, 24]}>
+                {currentItems?.map((item: {year?: string, name?: string, image?: string, id?: number}) => (
+                    <Col span={6} className="TeamsContainer__item-wrapper" key={item.id}>
+                        <Item year={item.year} name={item.name} image={item.image} id={item.id} setItemId={setItemId}/>
+                    </Col>
+                ))}
+            </Row>
+        </div>
+    );
+
     return (
         <div className="TeamsContainer">
             <div className="fields-wrapper">
@@ -80,15 +103,11 @@ const TeamsContainer:FC = () => {
                 </CustomButton>
             </div>
 
-            <div className="TeamsContainer__items">
-                <Row gutter={[24, 24]}>
-                    {currentItems?.map((item: {year?: string, name?: string, image?: string, id?: number}) => (
-                        <Col span={6} className="TeamsContainer__item-wrapper" key={item.id}>
-                            <Item year={item.year} name={item.name} image={item.image} id={item.id} setItemId={setItemId}/>
-                        </Col>
-                    ))}
-                </Row>
-            </div>
+            {!teams.length && isLoading && !error ? <div>...Loading</div> : ""}
+            {!teams.length && !isLoading && error ? <div>error</div> : ""}
+            {!teams.length && !error && !isLoading  ? <div>empty data</div> : ""}
+
+            {teams.length && !error && !isLoading ? renderItems() : ""}
 
             <div className="TeamsContainer__footer-wrapper">
                 <ReactPaginate

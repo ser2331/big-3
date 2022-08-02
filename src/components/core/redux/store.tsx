@@ -2,19 +2,19 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import playersReducer from "../../modules/players/PlayersSlice";
 import teamsReducer from "../../modules/teams/TeamsSlice";
 import authorizationReducer from "../../modules/authorization/AuthorizationSlice";
-import { tokenAPI } from "../../api/apiService";
+import { apiService } from "../../api/apiService";
 
 const rootReducer = combineReducers({
     playersReducer,
     teamsReducer,
     authorizationReducer,
-    [tokenAPI.reducerPath]: tokenAPI.reducer,
+    [apiService.reducerPath]: apiService.reducer,
 });
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tokenAPI.middleware)
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiService.middleware)
     });
 };
 

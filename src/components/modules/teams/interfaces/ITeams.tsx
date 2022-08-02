@@ -1,6 +1,30 @@
 export interface ITeams {
-    name?: string,
-    foundationYear?: number,
+    name?: string;
+    foundationYear?: number;
+    division?: string;
+    conference?: string;
+    imageUrl?: string;
+    id?: number;
+}
+
+export interface IGetTeams {
+    name?: string;
+    page: number;
+    pageSize?: number;
+    token: string;
+}
+
+export interface IResTeams {
+    count: number;
+    page: number;
+    data: ITeams[];
+    size: number;
+}
+
+export interface IAddTeam {
+    token: string;
+    name: string,
+    foundationYear: string,
     division?: string,
     conference?: string,
     imageUrl?: string,
