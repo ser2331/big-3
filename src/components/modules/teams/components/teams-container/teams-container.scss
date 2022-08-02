@@ -51,10 +51,16 @@
   }
 
   &__control--menu-is-open {
-    width: 88px !important;
-
     &__label {
       color: var(--ui-white) !important;
     }
+  }
+
+  &__menu {
+    top: -189px !important;
+  }
+
+  &__indicator {
+    transform: rotate(180deg);
   }
 }
