@@ -1,18 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {apiService} from "../../../../api/apiService";
-import {IAddTeam} from "../../interfaces/ITeams";
+import { apiService } from "../../../../api/apiService";
+import { useAppSelector } from "../../../../core/redux/redux";
+import { IAddTeam } from "../../interfaces/ITeams";
 import Field from "../../../../common/components/field";
 import AddItemImg from "../../../../assests/images/addItemImg.svg";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 
 import "./add-team-container.scss";
-import {useAppSelector} from "../../../../core/redux/redux";
+import ErrorMessage from "../../../../common/components/error-message";
 
 
 const AddTeamContainer = () => {
+    const navigate = useNavigate();
     const [addTeam, {data, isError}] = apiService.useAddTeamMutation();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
@@ -22,10 +24,18 @@ const AddTeamContainer = () => {
         await addTeam({...introducedData, token});
     };
 
+    useEffect(() => {
+        if (data && !isError) {
+            navigate("/teams");
+        }
+    }, [data, isError]);
+
     return (
         <div className="AddTeamContainer">
             <div className="AddTeamContainer__content-wrapper">
                 <div className="AddTeamContainer__content-wrapper__header">
+                    {isError ? <ErrorMessage message="Что-то пошло не так..." /> : ""}
+
                     <span className="navigate-wrapper">
                         <Link to="/teams" className="home-link" >Teams </Link>
                         / Add new team
@@ -44,14 +54,14 @@ const AddTeamContainer = () => {
                                 register={register}
                                 registerName="name"
                                 error={errors.name}
-                                property={{required: "Enter team name", maxLength: 10}}
+                                property={{required: "Enter team name"}}
                             />
                             <Field
                                 label="Division"
                                 register={register}
                                 registerName="division"
                                 error={errors.division}
-                                property={{required: "enter division name", maxLength: 10}}
+                                property={{required: "enter division name"}}
                             />
                             <Field
                                 label="Conference"

@@ -15,6 +15,7 @@
   justify-content: space-between;
   background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
   border-radius: 4px;
+  cursor: pointer;
 
   @include media($mobile) {
     width: 163px;

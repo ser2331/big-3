@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add api add team, get teams">
-      <change afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-items/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-items/teams-items.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-items/teams-items.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add api delete team, get team">
+      <change afterPath="$PROJECT_DIR$/src/components/assests/images/emptyTeams.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/components/error-message/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/teams/components/empty-teams/empty-teams.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/teams/components/empty-teams/empty-teams.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/teams/components/empty-teams/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/api/apiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/apiService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/auth-wrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/auth-wrapper.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/helpers/yup-schems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/helpers/yup-schems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/interfaces/ITeams.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/interfaces/ITeams.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/selectors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/selectors.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/login-page/login-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login-page/login-page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/login-page/login-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login-page/login-page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/registration-page/registration-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/registration-page/registration-page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +70,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/modules/teams/components/teams-items" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/common/components/error-message" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -80,11 +86,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\components\error-message" />
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\teams\components\empty-teams" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\teams\components\teams-items" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\components\auth-router" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\authorization" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\players\components" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api" />
@@ -112,7 +118,7 @@
       <workItem from="1659334849934" duration="11100000" />
       <workItem from="1659358893141" duration="2317000" />
       <workItem from="1659438506452" duration="41001000" />
-      <workItem from="1659513106252" duration="11739000" />
+      <workItem from="1659513106252" duration="16317000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -191,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659483362151</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add api delete team, get team">
+      <created>1659525238107</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1659525238107</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +235,8 @@
     <MESSAGE value="add api, add auth" />
     <MESSAGE value="add api add team, get team" />
     <MESSAGE value="add api add team, get teams" />
-    <option name="LAST_COMMIT_MESSAGE" value="add api add team, get teams" />
+    <MESSAGE value="add api delete team, get team" />
+    <option name="LAST_COMMIT_MESSAGE" value="add api delete team, get team" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

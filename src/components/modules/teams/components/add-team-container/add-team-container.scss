@@ -8,11 +8,13 @@
     border-radius: 10px;
     margin-bottom: 24px;
     &__header {
+      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 24px 32px;
       border-radius: 10px 10px 0 0;
+
       .navigate-wrapper {
         color: var(--ui-red);
 

@@ -18,8 +18,7 @@ const Registration = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [getToken, {data, isError}] = apiService.useGetSignUpTokenMutation();
-    const { setUserData } = authorizationSlice.actions;
-
+    const { setUserData, setErrorIndicator } = authorizationSlice.actions;
     const [accept, setAccept] = useState(false);
     const [errorAccept, setErrorAccept] = useState("");
 
@@ -37,6 +36,9 @@ const Registration = () => {
         if (data && !isError) {
             dispatch(setUserData(data));
             navigate("/teams");
+        }
+        else {
+            dispatch(setErrorIndicator(isError));
         }
     }, [data, isError]);
 
