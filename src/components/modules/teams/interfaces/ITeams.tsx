@@ -1,10 +1,10 @@
 export interface ITeams {
-    name?: string;
-    foundationYear?: number;
-    division?: string;
-    conference?: string;
-    imageUrl?: string;
-    id?: number;
+    name: string;
+    foundationYear: number;
+    division: string;
+    conference: string;
+    imageUrl: string;
+    id: number;
 }
 
 export interface IGetTeams {
@@ -29,4 +29,21 @@ export interface IAddTeam {
     conference?: string,
     imageUrl?: string,
     id?: number
+}
+
+export interface IDeleteTeam {
+    token: string;
+    id: number
+}
+
+export interface IGetTeam {
+    token: string;
+    teamId: number | null;
+}
+
+export interface ITeamItemProps {
+    name: string;
+    year?: string;
+    image?: string;
+    id: number;
 }

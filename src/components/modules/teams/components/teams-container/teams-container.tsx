@@ -1,20 +1,16 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
-import { useSelector } from "react-redux";
-import { Col, Row } from "antd";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { apiService } from "../../../../api/apiService";
 import { teamsSlice } from "../../TeamsSlice";
-import { ITeams } from "../../interfaces/ITeams";
 import Types from "../../../../types";
 import SearchField from "../../../../common/components/search-field";
-import Item from "../../../../common/components/item";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
-import { getFilteredItems } from "../../selectors";
+import TeamsItems from "../teams-items";
 
 import "./teams-container.scss";
 
@@ -25,69 +21,45 @@ const TeamsContainer:FC = () => {
     const navigate = useNavigate();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
-    const { teams, itemsPerPage, pageCount, searchTeam } = useAppSelector(state => state.teamsReducer);
-    const { data: data, error, isLoading, refetch } = apiService.useGetTeamsQuery({token, page: pageCount, pageSize: itemsPerPage});
-    const { setNumberItemsPerPage, setTeams, setSearchTeam, setTeamId, setPageCount } = teamsSlice.actions;
+    const { teams, itemsPerPage, pageCount, currentPage, searchTeam } = useAppSelector(state => state.teamsReducer);
 
-    useEffect(() => {
-        if (data && !error) {
-            dispatch(setTeams(data.data));
-        }
-    }, [data, error]);
-
-    useEffect(() => {
-        if (pageCount && itemsPerPage) {
-            refetch();
-        }
-    }, [pageCount, itemsPerPage]);
+    const { data: data, error, isLoading, refetch } = apiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
+    const { setNumberItemsPerPage, setTeams, setSearchTeam, setPageCount, setCurrentPage } = teamsSlice.actions;
 
     const animatedComponents = makeAnimated();
-    const filteredItems = useSelector(getFilteredItems);
 
-    const [currentItems, setCurrentItems] = useState<Array<ITeams>>([]);
-    const [itemOffset, setItemOffset] = useState(0);
-    
     const getValueItemsPerPage = () => {
         return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
     };
 
-    const handleChange = (newValue: any ) => {
+    const handleChange = (newValue: {label: string, value: number} ) => {
         dispatch(setNumberItemsPerPage(newValue.value));
     };
 
-    useEffect(() => {
-        const endOffset = itemOffset + itemsPerPage;
-        setCurrentItems(filteredItems.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(filteredItems.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage, filteredItems]);
-
     const handlePageClick = (event: { selected: number }) => {
-        const newOffset = (event.selected * itemsPerPage) % filteredItems.length;
-        setItemOffset(newOffset);
+        dispatch(setCurrentPage(event.selected + 1));
     };
 
     useEffect(() => {
-        if (searchTeam) {
+        if (data && !error) {
+            const countPages = Math.floor(data.count / data.size);
+
+            dispatch(setTeams(data.data));
+            dispatch(setPageCount(countPages));
+        }
+    }, [data, error]);
+
+    useEffect(() => {
+        if ( currentPage || itemsPerPage) {
+            refetch();
+        }
+    }, [currentPage, itemsPerPage]);
+
+    useEffect(() => {
+        if (searchTeam || !teams.length) {
             handlePageClick({selected: 0});
         }
-    }, [searchTeam]);
-
-    const setItemId = (id: number) => {
-        dispatch(setTeamId(id));
-        navigate(`team:${id}`);
-    };
-
-    const renderItems = () => (
-        <div className="TeamsContainer__items">
-            <Row gutter={[24, 24]}>
-                {currentItems?.map((item: {year?: string, name?: string, image?: string, id?: number}) => (
-                    <Col span={6} className="TeamsContainer__item-wrapper" key={item.id}>
-                        <Item year={item.year} name={item.name} image={item.image} id={item.id} setItemId={setItemId}/>
-                    </Col>
-                ))}
-            </Row>
-        </div>
-    );
+    }, [searchTeam, teams]);
 
     return (
         <div className="TeamsContainer">
@@ -107,7 +79,7 @@ const TeamsContainer:FC = () => {
             {!teams.length && !isLoading && error ? <div>error</div> : ""}
             {!teams.length && !error && !isLoading  ? <div>empty data</div> : ""}
 
-            {teams.length && !error && !isLoading ? renderItems() : ""}
+            {teams.length && !error && !isLoading ? <TeamsItems /> : ""}
 
             <div className="TeamsContainer__footer-wrapper">
                 <ReactPaginate
@@ -134,7 +106,7 @@ const TeamsContainer:FC = () => {
                 <Select
                     value={getValueItemsPerPage()}
                     placeholder=""
-                    onChange={handleChange}
+                    onChange={(newValue: any) => handleChange(newValue)}
                     classNamePrefix="SelectorItemsPerPage"
                     components={animatedComponents}
                     defaultValue={[optionsItemsPerPage[1]]}

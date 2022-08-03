@@ -1,24 +1,35 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { ITeams } from "./interfaces/ITeams";
 
-interface TeamsState {
+export interface TeamsState {
     teams: ITeams[];
+    currentTeam: ITeams;
     isLoading: boolean;
     error: string;
     itemsPerPage: number;
     searchTeam: string;
     teamId: number | null;
     pageCount: number;
+    currentPage: number;
 }
 
 const initialState: TeamsState = {
     teams: [],
+    currentTeam: {
+        name: "",
+        foundationYear: 0,
+        division: "",
+        conference: "",
+        imageUrl: "",
+        id: 0,
+    },
     isLoading: false,
     error: "",
     itemsPerPage: 6,
     searchTeam: "",
-    teamId: null,
-    pageCount: 2,
+    teamId: 0,
+    pageCount: 1,
+    currentPage: 1,
 };
 
 export const teamsSlice = createSlice({
@@ -34,11 +45,17 @@ export const teamsSlice = createSlice({
         setPageCount(state, action: PayloadAction<number>) {
             state.pageCount = action.payload;
         },
+        setCurrentPage(state, action: PayloadAction<number>) {
+            state.currentPage = action.payload;
+        },
         setSearchTeam(state, action: PayloadAction<string>) {
             state.searchTeam = action.payload;
         },
         setTeamId(state, action: PayloadAction<number | null>) {
             state.teamId = action.payload;
+        },
+        setCurrentTeam(state, action: PayloadAction<ITeams>) {
+            state.currentTeam = action.payload;
         }
     }
 

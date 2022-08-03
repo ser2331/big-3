@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { ITeams } from "./interfaces/ITeams";
 
 const teams = (state: any) => state.teamsReducer.teams;
 const searchTeam = (state: any) => state.teamsReducer.searchTeam;
@@ -26,7 +27,7 @@ export const getSelectedTeam = createSelector(
         let result = {};
 
         if (team) {
-            result = groupsArray.find((item: any) => {
+            result = groupsArray.find((item: ITeams) => {
                 return item.id === team;
             });
         }

@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getSelectedTeam } from "../../selectors";
+import { apiService } from "../../../../api/apiService";
+import {Link, useNavigate} from "react-router-dom";
+import { useAppSelector } from "../../../../core/redux/redux";
 import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultLogo from "../../../../assests/images/fakeImage.png";
@@ -11,16 +11,21 @@ import "./team-card.scss";
 
 const TeamCard = () => {
     const navigate = useNavigate();
+    const { token } = useAppSelector(state => state.authorizationReducer);
+    const { currentTeam } = useAppSelector(state => state.teamsReducer);
+    const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
 
-    const team = useSelector(getSelectedTeam);
+    const [deleteTeam, {data, error, isLoading}] = apiService.useDeleteTeamMutation();
 
-    const {name, foundationYear, division, conference, imageUrl }: ITeams = team;
+    const deleteThisTeam = () => {
+        deleteTeam({token, id});
+    };
 
     useEffect(() => {
-        if (Object.keys(team).length == 0) {
+        if (data && !error && !isLoading) {
             navigate("/teams");
         }
-    }, [team]);
+    }, [data, error, isLoading]);
 
     return(
         <div className="TeamCard">
@@ -33,7 +38,7 @@ const TeamCard = () => {
 
                     <div className="control">
                         <img alt="edit" src={editIcon}/>
-                        <img alt="delete" src={deleteIcon}/>
+                        <img alt="delete" src={deleteIcon} onClick={deleteThisTeam}/>
                     </div>
 
                 </div>
