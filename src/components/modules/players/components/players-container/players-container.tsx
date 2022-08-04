@@ -1,59 +1,66 @@
-import React, {FC, useEffect, useState} from "react";
-import { useSelector } from "react-redux";
+import React, { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Col, Row } from "antd";
-import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
+import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactPaginate from "react-paginate";
-import { IPlayers, ISelectOption } from "../../interfaces/players-interfaces";
+import { playersApiService } from "../../../../api/players/playersApiService";
+import { ISelectOption } from "../../interfaces/players-interfaces";
 import SearchField from "../../../../common/components/search-field";
-import Item from "../../../../common/components/item";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
-import { getFilteredItems } from "../../selectors";
+import PlayersItems from "../players-items";
+import EmptyItems from "../../../../common/components/empty-items";
 
 import "./players-container.scss";
-
 
 const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const { players, selectedPlayers, itemsPerPage, searchPlayerName } = useAppSelector(state => state.playersReducer);
-    const { setSelectedPlayers, setSearchPlayerName, setPlayerId } = playersSlice.actions;
-    const filteredItems = useSelector(getFilteredItems);
+    const { token } = useAppSelector(state => state.authorizationReducer);
+    const { players, selectedPlayers, itemsPerPage, searchPlayerName, pageCount, currentPage } = useAppSelector(state => state.playersReducer);
+    const { setSearchPlayerName, setPlayerId, setCurrentPage, setPageCount, setPlayers } = playersSlice.actions;
+
+    const { data: data, error, isLoading, refetch } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage});
+
     const animatedComponents = makeAnimated();
 
-    const [currentItems, setCurrentItems] = useState<Array<IPlayers>>([]);
-    const [pageCount, setPageCount] = useState(0);
-
-    const [itemOffset, setItemOffset] = useState(0);
-
-    const options = players?.reduce((acc: Array<ISelectOption>, item: any) => [...acc, {value: item.id, label: item.name}], [],);
-
-    useEffect(() => {
-        const endOffset = itemOffset + itemsPerPage;
-        setCurrentItems(filteredItems.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(filteredItems.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage, filteredItems]);
+    const options = players?.reduce((acc: Array<ISelectOption>, item: any) => [...acc, {value: item.id, label: item.name}], []);
 
     const handlePageClick = (event: { selected: number }) => {
-        const newOffset = (event.selected * itemsPerPage) % filteredItems.length;
-        setItemOffset(newOffset);
+        dispatch(setCurrentPage(event.selected + 1));
     };
+
+    const setItemId = (id: number | null) => {
+        dispatch(setPlayerId(id));
+        navigate(`players:${id}`);
+    };
+
+    useEffect(() => {
+        if (data && !error) {
+            let countPages = Math.ceil(data.count / data.size);
+            if (countPages <= 0) {
+                countPages = 1;
+            }
+
+            dispatch(setPlayers(data.data));
+            dispatch(setPageCount(countPages));
+        }
+    }, [data, error]);
+
+    useEffect(() => {
+        if ( currentPage || itemsPerPage) {
+            refetch();
+        }
+    }, [currentPage, itemsPerPage]);
 
     useEffect(() => {
         if (searchPlayerName || selectedPlayers.length > 0) {
             handlePageClick({selected: 0});
         }
     }, [searchPlayerName, selectedPlayers]);
-
-    const setItemId = (id: number) => {
-        dispatch(setPlayerId(id));
-        navigate(`player:${id}`);
-    };
 
     return (
         <div className="PlayersContainer">
@@ -70,7 +77,7 @@ const PlayersContainer:FC = () => {
                         isMulti
                         options={options}
                         value={selectedPlayers}
-                        onChange={(option: any) => dispatch(setSelectedPlayers(option))}
+                        // onChange={(option: any) => dispatch(setSelectedPlayers(option))}
                     />
                 </div>
 
@@ -85,15 +92,11 @@ const PlayersContainer:FC = () => {
                 </div>
             </div>
 
-            <div className="PlayersContainer__items">
-                <Row gutter={[24, 24]}>
-                    {currentItems?.map((item: {birthday?: string, name?: string, avatarUrl?: string, id?: number}) => (
-                        <Col span={6} className="TeamsContainer__item-wrapper" key={item.id}>
-                            <Item year={item.birthday} name={item.name} image={item.avatarUrl} id={item.id} setItemId={setItemId}/>
-                        </Col>
-                    ))}
-                </Row>
-            </div>
+            {!players.length && isLoading && !error ? <div>...Loading</div> : ""}
+            {!players.length && !isLoading && error ? <div>Error</div> : ""}
+            {!players.length && !error && !isLoading  ? <EmptyItems isPlayersPage={true} namePage="players" /> : ""}
+
+            {players.length && !error && !isLoading ? <PlayersItems setItemId={setItemId}/> : ""}
 
             <ReactPaginate
                 nextLabel=">"

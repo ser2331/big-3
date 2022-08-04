@@ -11,7 +11,7 @@ import SearchField from "../../../../common/components/search-field";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import TeamsItems from "../teams-items";
-import EmptyTeams from "../empty-teams";
+import EmptyItems from "../../../../common/components/empty-items";
 
 import "./teams-container.scss";
 
@@ -85,8 +85,8 @@ const TeamsContainer:FC = () => {
             </div>
 
             {!teams.length && isLoading && !error ? <div>...Loading</div> : ""}
-            {!teams.length && !isLoading && error ? <EmptyTeams /> : ""}
-            {!teams.length && !error && !isLoading  ? <EmptyTeams /> : ""}
+            {!teams.length && !isLoading && error ? <div>error</div> : ""}
+            {!teams.length && !error && !isLoading  ? <EmptyItems isTeamsPage={true} namePage="teams" /> : ""}
 
             {teams.length && !error && !isLoading ? <TeamsItems setItemId={setItemId}/> : ""}
 

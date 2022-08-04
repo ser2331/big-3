@@ -1,5 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { IAddTeam, IDeleteTeam, IGetTeam, IGetTeams, IResTeams, ITeams } from "../../modules/teams/interfaces/ITeams";
+import {
+    IAddTeam,
+    IDeleteTeam,
+    IGetTeam,
+    IGetTeams,
+    IResTeams,
+    ITeams,
+} from "../../modules/teams/interfaces/teams-interfaces";
 import { baseUrl } from "../apiService";
 
 export const teamsApiService = createApi({

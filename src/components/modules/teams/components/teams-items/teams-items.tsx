@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useAppSelector } from "../../../../core/redux/redux";
 import { Col, Row } from "antd";
-import { ITeamItemProps, ITeams, ITeamsItems } from "../../interfaces/ITeams";
+import { ITeamItemProps, ITeams, ITeamsItems } from "../../interfaces/teams-interfaces";
 import fakeImage from "../../../../assests/images/fakeImage.png";
 
 import "./teams-items.scss";

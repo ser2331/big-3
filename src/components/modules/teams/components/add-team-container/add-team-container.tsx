@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { teamsSlice } from "../../TeamsSlice";
-import { IAddTeam, ITeams } from "../../interfaces/ITeams";
+import { IAddTeam, ITeams } from "../../interfaces/teams-interfaces";
 import Field from "../../../../common/components/field";
 import AddItemImg from "../../../../assests/images/addItemImg.svg";
 import CustomButton from "../../../../common/components/custom-button";

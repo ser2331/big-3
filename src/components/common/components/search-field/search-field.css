@@ -3,7 +3,7 @@
  * 1 | @import "src/components/assests/styles/index";
  *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  *   '
- *   search-field.scss 1:9  root stylesheet */
+ *   search-select-field.scss 1:9  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",

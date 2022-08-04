@@ -1,11 +1,9 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { ITeams } from "./interfaces/ITeams";
+import { ITeams } from "./interfaces/teams-interfaces";
 
 export interface TeamsState {
     teams: ITeams[];
     currentTeam: ITeams;
-    isLoading: boolean;
-    error: string;
     itemsPerPage: number;
     searchTeam: string;
     teamId: number | null;
@@ -23,11 +21,9 @@ const initialState: TeamsState = {
         imageUrl: "",
         id: 0,
     },
-    isLoading: false,
-    error: "",
     itemsPerPage: 6,
     searchTeam: "",
-    teamId: 0,
+    teamId: null,
     pageCount: 1,
     currentPage: 1,
 };

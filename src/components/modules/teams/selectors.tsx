@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { ITeams } from "./interfaces/ITeams";
+import { ITeams } from "./interfaces/teams-interfaces";
 
 const teams = (state: any) => state.teamsReducer.teams;
 const searchTeam = (state: any) => state.teamsReducer.searchTeam;

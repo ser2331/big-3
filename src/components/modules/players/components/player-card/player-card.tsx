@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
-import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { getSelectedPlayer } from "../../selectors";
+import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
+import { playersSlice } from "../../PlayersSlice";
+import { playersApiService } from "../../../../api/players/playersApiService";
 import { IPlayers } from "../../interfaces/players-interfaces";
 import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
@@ -10,23 +11,68 @@ import defaultPlayerImg from "../../../../assests/images/defaultPlayerImage.png"
 import "./player-card.scss";
 
 const PlayerCard = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const player = useSelector(getSelectedPlayer);
+    const { token } = useAppSelector(state => state.authorizationReducer);
+    const { currentPlayer, playerId } = useAppSelector(state => state.playersReducer);
+    const { setCurrentPlayer } = playersSlice.actions;
+    const { name, birthday, height, weight, avatarUrl, number, position, team, id }: IPlayers = currentPlayer;
 
-    const { name, birthday, height, weight, avatarUrl, number, position, team }: IPlayers = player;
+
+    const getAge = (dateString: string) => {
+        const today = new Date();
+        const birthDate = new Date(dateString);
+        let age = today.getFullYear() - birthDate.getFullYear();
+
+        let m = today.getMonth() - birthDate.getMonth();
+        const d = today.getDay() - birthDate.getDay();
+
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        if ( age === 0 ) {
+            m = 12 + m;
+            if (d < 0 || (d === 0 && today.getDate() < birthDate.getDate())) {
+                m--;
+            }
+        }
+
+        return age ? age + " г." : m + "м";
+    };
+
+    const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({token, playerId});
+    const [deletePlayer, {data, error, isLoading}] = playersApiService.useDeletePlayerMutation();
+
+    const editThisPlayer = () => {
+        navigate("/players/addPlayer");
+    };
+
+    const deleteThisPlayer = () => {
+        deletePlayer({token, id});
+    };
 
     useEffect(() => {
-        if (Object.keys(player).length == 0) {
+        refetch();
+    }, []);
+
+    useEffect(() => {
+        if (playerData && !playerError) {
+            dispatch(setCurrentPlayer(playerData));
+        }
+    }, [dispatch, playerData, playerError]);
+
+    useEffect(() => {
+        if (data && !error && !isLoading) {
             navigate("/players");
         }
-    }, [player]);
+    }, [data, error, isLoading]);
 
     const renderDescriptionLine = (
         label?: string,
-        value?: number | string,
+        value?: number | string | null,
         label2?: string ,
-        value2?: number | string
+        value2?: number | string | null
     ) => {
         return (
             <div className="Description-line">
@@ -41,6 +87,27 @@ const PlayerCard = () => {
             </div>
         );
     };
+    
+    const renderContent = () => (
+        <>
+            <div className="image-wrapper">
+                <img alt="teamLogo" className="player-photo" src={avatarUrl || defaultPlayerImg}/>
+            </div>
+
+            <div className="player-description">
+                <div className="title">
+                    {name}
+                    <span className="player-number">{` #${number}`}</span>
+                </div>
+
+                <div className="description-wrapper">
+                    {renderDescriptionLine("Position", position, "Team", team)}
+                    {renderDescriptionLine("Height", height, "Weight", weight)}
+                    {renderDescriptionLine("Age", getAge(birthday))}
+                </div>
+            </div>
+        </>
+    );
 
     return(
         <div className="PlayerCard">
@@ -52,29 +119,14 @@ const PlayerCard = () => {
                     </span>
 
                     <div className="control">
-                        <img alt="edit" src={editIcon}/>
-                        <img alt="delete" src={deleteIcon}/>
+                        <img alt="edit" src={editIcon} onClick={editThisPlayer}/>
+                        <img alt="delete" src={deleteIcon} onClick={deleteThisPlayer}/>
                     </div>
 
                 </div>
 
                 <div className="PlayerCard__wrapper__content">
-                    <div className="image-wrapper">
-                        <img alt="teamLogo" className="player-photo" src={avatarUrl || defaultPlayerImg}/>
-                    </div>
-
-                    <div className="player-description">
-                        <div className="title">
-                            {name}
-                            <span className="player-number">{` #${number}`}</span>
-                        </div>
-
-                        <div className="description-wrapper">
-                            {renderDescriptionLine("Position", position, "Team", team)}
-                            {renderDescriptionLine("Height", height, "Weight", weight)}
-                            {renderDescriptionLine("Age", birthday)}
-                        </div>
-                    </div>
+                    {playerIsLoading ? <div>Loading...</div> : renderContent()}
                 </div>
             </div>
         </div>

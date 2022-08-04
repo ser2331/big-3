@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
 import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultLogo from "../../../../assests/images/fakeImage.png";
-import { ITeams } from "../../interfaces/ITeams";
+import { ITeams } from "../../interfaces/teams-interfaces";
 import { teamsSlice } from "../../TeamsSlice";
 
 import "./team-card.scss";

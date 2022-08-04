@@ -1,38 +1,38 @@
 @import "src/components/assests/styles/index";
-
 .Field {
+  .label {
+    @include inputLabel;
+    margin-bottom: 8px;
+    color: var(--ui-grey);
+  }
 
-    .label {
-        @include inputLabel;
-        margin-bottom: 8px;
-        color: var(--ui-grey);
+  .input {
+    width: 100%;
+    height: 40px;
+    background: var(--ui-lightest-grey1);
+    border-radius: 4px;
+    border: none;
+    padding: 8px 12px;
+
+    @include links;
+
+    &:hover {
+      background: var(--ui-lightest-grey);
     }
 
-    .input{
-        width: 100%;
-        height: 40px;
-        background: var(--ui-lightest-grey1);
-        border-radius: 4px;
-        border: none;
-        padding: 8px 12px;
-
-        @include links;
-
-        &:hover {
-            background: var(--ui-lightest-grey);
-        }
-        &:focus {
-            box-shadow: 0 0 5px #D9D9D9;
-            outline: none;
-        }
+    &:focus {
+      box-shadow: 0 0 5px #D9D9D9;
+      outline: none;
     }
+  }
 
-    .error {
-        border: 1px solid var(--ui-lightest-red);
-    }
-    .error-massage {
-        height: 24px;
-        color: var(--ui-lightest-red);
-        @include errorMessage;
-    }
+  .error {
+    border: 1px solid var(--ui-lightest-red);
+  }
+
+  .error-massage {
+    height: 24px;
+    color: var(--ui-lightest-red);
+    @include errorMessage;
+  }
 }
