@@ -48,7 +48,7 @@ const TeamsContainer:FC = () => {
 
     useEffect(() => {
         if (data && !error) {
-            let countPages = Math.floor(data.count / data.size);
+            let countPages = Math.ceil(data.count / data.size);
             if (countPages <= 0) {
                 countPages = 1;
             }

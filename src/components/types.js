@@ -15,5 +15,7 @@ export default class Types {
 
     static localStorage = {
         token: "TOKEN",
+        name: "NAME",
+        avatarUrl: "AVATAR_URL",
     };
 }
