@@ -16,6 +16,7 @@
       border-radius: 10px 10px 0 0;
 
       .navigate-wrapper {
+        display: flex;
         color: var(--ui-red);
 
         .home-link {
@@ -30,20 +31,49 @@
       display: flex;
       padding: 48px 73px;
 
-      .image-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 336px;
-        height: 261px;
-        opacity: 0.5;
-        border-radius: 10px;
-        background: var(--ui-light-grey);
+      .image {
+        .image-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          width: 336px;
+          height: 261px;
+          opacity: 0.5;
+          border-radius: 10px;
+          background: var(--ui-light-grey);
 
-        img {
-          cursor: pointer;
+          .new-image {
+            position: absolute;
+            z-index: 100;
+          }
+
+          .add-item {
+            cursor: pointer;
+            z-index: 1000;
+          }
+        }
+        .image-url-wrapper {
+          position: relative;
+          margin-top: 24px;
+
+          .image-url {
+            padding-right: 40px;
+          }
+          .set-image-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: var(--ui-lightest-red);
+            cursor: pointer;
+
+            &:hover {
+              color: var(--ui-red);
+            }
+          }
         }
       }
+
 
       .form-wrapper {
         padding: 0 136px;

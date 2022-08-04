@@ -16,14 +16,16 @@ interface FieldProps {
     register: any,
     registerName: string,
     property?: object,
+    style?: string,
 }
 
-const Field:FC<FieldProps> = ({label, register, type, registerName, error, property}) => {
+const Field:FC<FieldProps> = ({label, register, type, registerName, error, property, style}) => {
+
     return (
         <div className="Field">
             <label className="label">{label}</label>
             <input
-                className={classNames("input", {error})}
+                className={classNames("input", style, {error})}
                 {...register(`${registerName}`, {...property})}
                 type={type}
             />

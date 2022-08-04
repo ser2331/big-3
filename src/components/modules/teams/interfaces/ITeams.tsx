@@ -1,10 +1,11 @@
+
 export interface ITeams {
     name: string;
-    foundationYear: number;
+    foundationYear: number | null;
     division: string;
     conference: string;
     imageUrl: string;
-    id: number;
+    id: number | null;
 }
 
 export interface IGetTeams {
@@ -24,16 +25,16 @@ export interface IResTeams {
 export interface IAddTeam {
     token: string;
     name: string,
-    foundationYear: string,
+    foundationYear?: number | null;
     division?: string,
     conference?: string,
     imageUrl?: string,
-    id?: number
+    id?: number | null;
 }
 
 export interface IDeleteTeam {
     token: string;
-    id: number
+    id: number | null;
 }
 
 export interface IGetTeam {
@@ -43,7 +44,11 @@ export interface IGetTeam {
 
 export interface ITeamItemProps {
     name: string;
-    year?: string;
+    foundationYear?: number | null;
     image?: string;
-    id: number;
+    id: number | null;
+}
+
+export interface ITeamsItems {
+    setItemId: (id: number | null) =>  void;
 }

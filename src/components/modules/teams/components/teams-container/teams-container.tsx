@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { apiService } from "../../../../api/apiService";
+import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { teamsSlice } from "../../TeamsSlice";
 import Types from "../../../../types";
 import SearchField from "../../../../common/components/search-field";
@@ -23,9 +23,9 @@ const TeamsContainer:FC = () => {
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams, itemsPerPage, pageCount, currentPage, searchTeam } = useAppSelector(state => state.teamsReducer);
+    const { setNumberItemsPerPage, setTeams, setSearchTeam, setPageCount, setCurrentPage, setTeamId } = teamsSlice.actions;
 
-    const { data: data, error, isLoading, refetch } = apiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
-    const { setNumberItemsPerPage, setTeams, setSearchTeam, setPageCount, setCurrentPage } = teamsSlice.actions;
+    const { data: data, error, isLoading, refetch } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
 
     const animatedComponents = makeAnimated();
 
@@ -41,9 +41,17 @@ const TeamsContainer:FC = () => {
         dispatch(setCurrentPage(event.selected + 1));
     };
 
+    const setItemId = (id: number | null) => {
+        dispatch(setTeamId(id));
+        navigate(`team:${id}`);
+    };
+
     useEffect(() => {
         if (data && !error) {
-            const countPages = Math.floor(data.count / data.size);
+            let countPages = Math.floor(data.count / data.size);
+            if (countPages <= 0) {
+                countPages = 1;
+            }
 
             dispatch(setTeams(data.data));
             dispatch(setPageCount(countPages));
@@ -80,7 +88,7 @@ const TeamsContainer:FC = () => {
             {!teams.length && !isLoading && error ? <EmptyTeams /> : ""}
             {!teams.length && !error && !isLoading  ? <EmptyTeams /> : ""}
 
-            {teams.length && !error && !isLoading ? <TeamsItems /> : ""}
+            {teams.length && !error && !isLoading ? <TeamsItems setItemId={setItemId}/> : ""}
 
             <div className="TeamsContainer__footer-wrapper">
                 <ReactPaginate

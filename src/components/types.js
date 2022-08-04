@@ -12,4 +12,8 @@ export default class Types {
         {value: 6, label: "6"},
         {value: 8, label: "8"},
     ];
+
+    static localStorage = {
+        token: "TOKEN",
+    };
 }
