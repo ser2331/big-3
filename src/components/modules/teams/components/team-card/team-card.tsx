@@ -50,7 +50,10 @@ const TeamCard = () => {
         if (teamData && !teamError) {
             dispatch(setCurrentTeam(teamData));
         }
-    }, [dispatch, teamData, teamError]);
+        if (!teamData && !teamIsLoading) {
+            navigate("/teams");
+        }
+    }, [dispatch, teamData, teamError, teamIsLoading]);
 
     useEffect(() => {
         if (data && !error && !isLoading) {

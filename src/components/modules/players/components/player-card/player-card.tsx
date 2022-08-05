@@ -60,7 +60,11 @@ const PlayerCard = () => {
         if (playerData && !playerError) {
             dispatch(setCurrentPlayer(playerData));
         }
-    }, [dispatch, playerData, playerError]);
+
+        if (!playerData && !playerIsLoading) {
+            navigate("/players");
+        }
+    }, [dispatch, playerData, playerError, playerIsLoading]);
 
     useEffect(() => {
         if (data && !error && !isLoading) {

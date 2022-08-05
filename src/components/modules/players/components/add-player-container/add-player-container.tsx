@@ -43,7 +43,7 @@ const AddPlayerContainer = () => {
 
     const teamOptions = teams?.reduce<ITeamOptions[]>((acc: ITeamOptions[], team) => [...acc, {label: team.name, value: team.id}], []);
     const defaultValueTeams = teamOptions.find((i) => team === i.value);
-    const defaultValueBirthday = new Date(birthday).toISOString().slice(0, 10);
+    const defaultValueBirthday = birthday ? new Date(birthday).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10);
 
     const {control, register, handleSubmit, getValues, formState: { errors }} = useForm({defaultValues: {
         name: name || "",
