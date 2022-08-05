@@ -25,7 +25,7 @@ const initialState: TeamsState = {
     searchTeam: "",
     teamId: null,
     pageCount: 1,
-    currentPage: 1,
+    currentPage: 0,
 };
 
 export const teamsSlice = createSlice({

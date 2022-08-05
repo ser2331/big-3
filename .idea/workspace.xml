@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add players api">
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="&#10;in the absence of data, go to the main page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/add-player-container/add-player-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/add-player-container/add-player-container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/player-card/player-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/player-card/player-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +113,7 @@
       <workItem from="1659513106252" duration="23722000" />
       <workItem from="1659607870598" duration="38214000" />
       <workItem from="1659649648676" duration="3779000" />
-      <workItem from="1659699500618" duration="1445000" />
+      <workItem from="1659699500618" duration="9559000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -229,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659653407829</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="&#10;in the absence of data, go to the main page">
+      <created>1659701204913</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1659701204913</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,7 +276,8 @@
     <MESSAGE value="add edit team api, add localStorage" />
     <MESSAGE value="some fix" />
     <MESSAGE value="add players api" />
-    <option name="LAST_COMMIT_MESSAGE" value="add players api" />
+    <MESSAGE value="&#10;in the absence of data, go to the main page" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;in the absence of data, go to the main page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -20,6 +20,7 @@ export interface IResPlayers {
 
 export interface IGetPlayers {
     name?: string;
+    teamIds?: number[];
     page: number;
     pageSize?: number;
     token: string;
@@ -64,11 +65,6 @@ export interface IAddPlayerFormValidation {
 export interface IDeletePlayer {
     token: string;
     id: number | null;
-}
-
-export interface  ISelectOption {
-    label: string,
-    value: number
 }
 
 export interface IPlayersItems {

@@ -14,10 +14,11 @@ export const playersApiService = createApi({
     tagTypes: ["Players"],
     endpoints: (build) => ({
         getPlayers: build.query<IResPlayers, IGetPlayers>({
-            query: ({token, page, pageSize, name}) => ({
+            query: ({token, page, pageSize, name, teamIds}) => ({
                 url: "/api/Player/GetPlayers",
                 params: {
                     name: name,
+                    teamIds,
                     page: page,
                     pageSize: pageSize,
                 },

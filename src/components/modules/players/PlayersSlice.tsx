@@ -1,12 +1,13 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { IPlayers } from "./interfaces/players-interfaces";
+import { ITeamsSelectOptions } from "../teams/interfaces/teams-interfaces";
 
 interface PlayersState {
     players: IPlayers[];
     currentPlayer: IPlayers;
     itemsPerPage: number;
     playerId: number | null;
-    selectedPlayers: IPlayers[];
+    selectedTeams: ITeamsSelectOptions[];
     searchPlayerName: string;
     pageCount: number;
     currentPage: number;
@@ -25,7 +26,7 @@ const initialState: PlayersState = {
         position: "",
         team: null,
     },
-    selectedPlayers: [],
+    selectedTeams: [],
     itemsPerPage: 6,
     searchPlayerName: "",
     playerId: null,
@@ -55,7 +56,9 @@ export const playersSlice = createSlice({
         setPlayerId(state, action: PayloadAction<number | null>) {
             state.playerId = action.payload;
         },
-
+        setSelectedTeam(state, action: PayloadAction<ITeamsSelectOptions[]>) {
+            state.selectedTeams = action.payload;
+        }
     }
 
 });

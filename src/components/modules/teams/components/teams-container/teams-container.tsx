@@ -25,7 +25,12 @@ const TeamsContainer:FC = () => {
     const { teams, itemsPerPage, pageCount, currentPage, searchTeam } = useAppSelector(state => state.teamsReducer);
     const { setNumberItemsPerPage, setTeams, setSearchTeam, setPageCount, setCurrentPage, setTeamId } = teamsSlice.actions;
 
-    const { data: data, error, isLoading, refetch } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
+    const {
+        data: teamsData,
+        error: teamsError,
+        isLoading: teamsIsLoading,
+        refetch: teamsReFetch,
+    } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage, name: searchTeam});
 
     const animatedComponents = makeAnimated();
 
@@ -47,20 +52,20 @@ const TeamsContainer:FC = () => {
     };
 
     useEffect(() => {
-        if (data && !error) {
-            let countPages = Math.ceil(data.count / data.size);
+        if (teamsData && !teamsError) {
+            let countPages = Math.ceil(teamsData.count / teamsData.size);
             if (countPages <= 0) {
                 countPages = 1;
             }
 
-            dispatch(setTeams(data.data));
+            dispatch(setTeams(teamsData.data));
             dispatch(setPageCount(countPages));
         }
-    }, [data, error]);
+    }, [dispatch, teamsData, teamsError]);
 
     useEffect(() => {
-        if ( currentPage || itemsPerPage) {
-            refetch();
+        if (currentPage || itemsPerPage) {
+            teamsReFetch();
         }
     }, [currentPage, itemsPerPage]);
 
@@ -84,11 +89,11 @@ const TeamsContainer:FC = () => {
                 </CustomButton>
             </div>
 
-            {!teams.length && isLoading && !error ? <div>...Loading</div> : ""}
-            {!teams.length && !isLoading && error ? <div>error</div> : ""}
-            {!teams.length && !error && !isLoading  ? <EmptyItems isTeamsPage={true} namePage="teams" /> : ""}
+            {!teams.length && teamsIsLoading && !teamsError ? <div>...Loading</div> : ""}
+            {!teams.length && !teamsIsLoading && teamsError ? <div>error</div> : ""}
+            {!teams.length && !teamsError && !teamsIsLoading  ? <EmptyItems isTeamsPage={true} namePage="teams" /> : ""}
 
-            {teams.length && !error && !isLoading ? <TeamsItems setItemId={setItemId}/> : ""}
+            {teams.length && !teamsError && !teamsIsLoading ? <TeamsItems setItemId={setItemId}/> : ""}
 
             <div className="TeamsContainer__footer-wrapper">
                 <ReactPaginate

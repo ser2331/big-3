@@ -5,8 +5,10 @@ import { playersSlice } from "../../PlayersSlice";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactPaginate from "react-paginate";
+import { teamsApiService } from "../../../../api/teams/teamsApiService";
+import { teamsSlice } from "../../../teams/TeamsSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
-import { ISelectOption } from "../../interfaces/players-interfaces";
+import { ITeamsSelectOptions } from "../../../teams/interfaces/teams-interfaces";
 import SearchField from "../../../../common/components/search-field";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
@@ -15,19 +17,38 @@ import EmptyItems from "../../../../common/components/empty-items";
 
 import "./players-container.scss";
 
+
 const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
-    const { players, selectedPlayers, itemsPerPage, searchPlayerName, pageCount, currentPage } = useAppSelector(state => state.playersReducer);
-    const { setSearchPlayerName, setPlayerId, setCurrentPage, setPageCount, setPlayers } = playersSlice.actions;
+    const { teams } = useAppSelector(state => state.teamsReducer);
+    const { players, selectedTeams, itemsPerPage, searchPlayerName, pageCount, currentPage } = useAppSelector(state => state.playersReducer);
+    const { setTeams } = teamsSlice.actions;
+    const { setSearchPlayerName, setPlayerId, setCurrentPage, setPageCount, setPlayers, setSelectedTeam } = playersSlice.actions;
+    const options = teams?.reduce((acc: Array<ITeamsSelectOptions>, item: any) => [...acc, {value: item.id, label: item.name}], []);
+    const arrTeamId = selectedTeams?.length ? selectedTeams?.map((i: ITeamsSelectOptions) => i.value) : undefined;
 
-    const { data: data, error, isLoading, refetch } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage});
+    const {
+        data: teamsData,
+        error: teamsError,
+    } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
+
+    useEffect(() => {
+        if (teamsData && !teamsError) {
+            dispatch(setTeams(teamsData.data));
+        }
+    }, [dispatch, teamsData, teamsError]);
+
+    const {
+        data: playersData,
+        error: playersError,
+        isLoading: playersIsLoading,
+        refetch: playersReFetch
+    } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: searchPlayerName, teamIds: arrTeamId});
 
     const animatedComponents = makeAnimated();
-
-    const options = players?.reduce((acc: Array<ISelectOption>, item: any) => [...acc, {value: item.id, label: item.name}], []);
 
     const handlePageClick = (event: { selected: number }) => {
         dispatch(setCurrentPage(event.selected + 1));
@@ -39,28 +60,28 @@ const PlayersContainer:FC = () => {
     };
 
     useEffect(() => {
-        if (data && !error) {
-            let countPages = Math.ceil(data.count / data.size);
+        if (playersData && !playersError && teams) {
+            let countPages = Math.ceil(playersData.count / playersData.size);
             if (countPages <= 0) {
                 countPages = 1;
             }
 
-            dispatch(setPlayers(data.data));
+            dispatch(setPlayers(playersData.data));
             dispatch(setPageCount(countPages));
         }
-    }, [data, error]);
+    }, [dispatch, playersData, playersError, teams]);
 
     useEffect(() => {
         if ( currentPage || itemsPerPage) {
-            refetch();
+            playersReFetch();
         }
     }, [currentPage, itemsPerPage]);
 
     useEffect(() => {
-        if (searchPlayerName || selectedPlayers.length > 0) {
+        if (searchPlayerName || selectedTeams && (selectedTeams.length > 0)) {
             handlePageClick({selected: 0});
         }
-    }, [searchPlayerName, selectedPlayers]);
+    }, [searchPlayerName, selectedTeams]);
 
     return (
         <div className="PlayersContainer">
@@ -76,8 +97,8 @@ const PlayersContainer:FC = () => {
                         components={animatedComponents}
                         isMulti
                         options={options}
-                        value={selectedPlayers}
-                        // onChange={(option: any) => dispatch(setSelectedPlayers(option))}
+                        value={selectedTeams}
+                        onChange={(option: any) => dispatch(setSelectedTeam(option))}
                     />
                 </div>
 
@@ -92,11 +113,12 @@ const PlayersContainer:FC = () => {
                 </div>
             </div>
 
-            {!players.length && isLoading && !error ? <div>...Loading</div> : ""}
-            {!players.length && !isLoading && error ? <div>Error</div> : ""}
-            {!players.length && !error && !isLoading  ? <EmptyItems isPlayersPage={true} namePage="players" /> : ""}
+            {!players.length && playersIsLoading && !playersError ? <div>...Loading</div> : ""}
+            {!players.length && !playersIsLoading && playersError ? <div>Error</div> : ""}
+            {!players.length && !playersError && !playersIsLoading  ? <EmptyItems isPlayersPage={true} namePage="players" /> : ""}
+            {players.length && playersError && !playersIsLoading  ? <div> Что-то пошло не так...</div> : ""}
 
-            {players.length && !error && !isLoading ? <PlayersItems setItemId={setItemId}/> : ""}
+            {players.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId}/> : ""}
 
             <ReactPaginate
                 nextLabel=">"

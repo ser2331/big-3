@@ -52,3 +52,8 @@ export interface ITeamItemProps {
 export interface ITeamsItems {
     setItemId: (id: number | null) =>  void;
 }
+
+export interface ITeamsSelectOptions {
+    label: string,
+    value: number
+}
