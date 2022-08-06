@@ -1,6 +1,13 @@
+@import "src/components/assests/styles/index";
+
 .AddPlayerContainer {
   width: 100%;
-  padding: 32px 80px;
+  @include media($mobile) {
+    padding: 0;
+  }
+  @include media($desktop) {
+    padding: 32px 80px;
+  }
 
   &__content-wrapper {
     width: 100%;
@@ -26,7 +33,16 @@
 
     &__content {
       display: flex;
-      padding: 48px 73px;
+      @include media($mobile) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 24px;
+      }
+      @include media($desktop) {
+        flex-direction: row;
+        padding: 48px 73px;
+      }
 
       .image {
         .image-wrapper {
@@ -34,11 +50,18 @@
           align-items: center;
           justify-content: center;
           position: relative;
-          width: 336px;
-          height: 261px;
           opacity: 0.5;
           border-radius: 10px;
           background: var(--ui-light-grey);
+
+          @include media($mobile) {
+            width: 185px;
+            height: 144px;
+          }
+          @include media($desktop) {
+            width: 336px;
+            height: 261px;
+          }
 
           .new-image {
             position: absolute;
@@ -48,11 +71,25 @@
           .add-item {
             cursor: pointer;
             z-index: 1000;
+            @include media($mobile) {
+              width: 41px;
+              height: 40px;
+            }
+            @include media($desktop) {
+              width: auto;
+              height: auto;
+            }
           }
         }
         .image-url-wrapper {
           position: relative;
           margin-top: 24px;
+          @include media($mobile) {
+            width: 185px;
+          }
+          @include media($desktop) {
+            width: auto;
+          }
 
           .image-url {
             padding-right: 40px;
@@ -72,16 +109,26 @@
       }
 
       .form-wrapper {
-        padding: 0 136px;
+        display: flex;
+        justify-content: center;
+        flex: 1 1;
 
         .form {
-          width: 366px;
-
+          @include media($mobile) {
+            width: 100%
+          }
+          @include media($desktop) {
+            width: 366px;
+          }
           .fields-line {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
+          }
+
+          .Field {
+            flex: 1 1;
           }
           .fields-line .Field:nth-child(1)  {
             margin-right: 24px;

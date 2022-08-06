@@ -17,9 +17,10 @@ interface SearchFieldTypes {
     control: any;
     isMulti?: boolean;
     defaultValue?: string | number | null;
+    isClearable: boolean;
 }
 
-const SelectField:FC<SearchFieldTypes> = ({ label, name, error, options, control, isMulti, defaultValue }) => {
+const SelectField:FC<SearchFieldTypes> = ({ label, name, error, options, control, isMulti, defaultValue, isClearable }) => {
     const animatedComponents = makeAnimated();
 
     return (
@@ -36,6 +37,7 @@ const SelectField:FC<SearchFieldTypes> = ({ label, name, error, options, control
                         closeMenuOnSelect={false}
                         classNamePrefix="Multi-selector"
                         options={options}
+                        isClearable={isClearable}
                     />
                 )}
                 control={control}

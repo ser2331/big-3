@@ -29,7 +29,7 @@ const AddPlayerContainer = () => {
     const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 
     const [addPlayer, {data, isError}] = playersApiService.useAddPlayerMutation();
-    const [editPlayer, {data: editData, error, isLoading: loading}] = playersApiService.useEditPlayerMutation();
+    const [editPlayer, {data: editData, error}] = playersApiService.useEditPlayerMutation();
     const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
 
     const positionOptions = [
@@ -137,6 +137,7 @@ const AddPlayerContainer = () => {
                                 options={positionOptions}
                                 control={control}
                                 error={errors.position}
+                                isClearable={true}
                             />
                             <SelectField
                                 label="Team"
@@ -144,6 +145,7 @@ const AddPlayerContainer = () => {
                                 options={teamOptions}
                                 control={control}
                                 error={errors.team}
+                                isClearable={true}
                             />
                             <div className="fields-line">
                                 <Field
