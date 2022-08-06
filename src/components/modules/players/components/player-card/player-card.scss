@@ -2,21 +2,38 @@
 
 .PlayerCard {
   width: 100%;
-  padding: 32px 80px;
+  @include media($mobile) {
+    padding: 0;
+  }
+  @include media($desktop) {
+    padding: 32px 80px;
+  }
 
   &__wrapper {
     width: 100%;
     background: var(--ui-white);
     border: 0.5px solid var(--ui-light-grey);
-    border-radius: 10px;
-    margin-bottom: 24px;
+    @include media($mobile) {
+      border-radius: 0;
+      margin-bottom: 16px;
+    }
+    @include media($desktop) {
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
 
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 32px;
-      border-radius: 10px 10px 0 0;
+      @include media($mobile) {
+        padding: 16px;
+        border-radius: 0;
+      }
+      @include media($desktop) {
+        padding: 24px 32px;
+        border-radius: 10px 10px 0 0;
+      }
 
       .navigate-wrapper {
         color: var(--ui-red);
@@ -46,23 +63,50 @@
       align-items: center;
       justify-content: space-between;
       background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
-      border-radius: 0 0 10px 10px;
+      @include media($mobile) {
+        flex-direction: column;
+        border-radius: 0;
+        padding: 48px 0;
+      }
+      @include media($desktop) {
+        flex-direction: row;
+        border-radius: 0 0 10px 10px;
+        padding: 65px 0;
+      }
 
       .image-wrapper {
-        .player-photo {
-          width: 531px;
-          height: 531px;
+        img {
+          @include media($mobile) {
+            width: 143px;
+            height: 112px;
+          }
+          @include media($desktop) {
+            width: 531px;
+            height: 531px;
+          }
         }
       }
 
       .player-description {
         flex: 2 1;
         color: var(--ui-white);
-        padding: 0 24px;
+        @include media($mobile) {
+          text-align: center;
+          padding-right: 0;
+        }
+        @include media($desktop) {
+          text-align: left;
+          padding: 0 24px;
+        }
 
         .title {
           @include cardTitle2;
-          margin-bottom: 40px;
+          @include media($mobile) {
+            margin: 48px 0;
+          }
+          @include media($desktop) {
+            margin-bottom: 40px;
+          }
 
           .player-number {
             color: var(--ui-lightest-red);
@@ -85,6 +129,12 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  @include media($mobile) {
+    flex-direction: column;
+  }
+  @include media($desktop) {
+    flex-direction: row;
+  }
 
   .description-info {
     display: flex;

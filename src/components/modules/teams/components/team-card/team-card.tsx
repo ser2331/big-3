@@ -14,7 +14,7 @@ const TeamCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { token } = useAppSelector(state => state.authorizationReducer);
-    const { currentTeam, teamId } = useAppSelector(state => state.teamsReducer);
+    const { currentTeam, teamId, isMobile } = useAppSelector(state => state.teamsReducer);
     const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
     const { setCurrentTeam, setTeamId } = teamsSlice.actions;
 
@@ -94,6 +94,38 @@ const TeamCard = () => {
             </div>
         </>
     );
+    
+    const renderTable = () => (
+        <table className="Table">
+            <thead className="Table__header">
+                <tr>
+                    <th className="number">#</th>
+                    <th className="player">Player</th>
+                    { !isMobile ? (
+                        <>
+                            <th className="desc">Height</th>
+                            <th className="desc">Weight</th>
+                            <th className="desc">Age</th>
+                        </>
+                    ) : ""}
+                </tr>
+            </thead>
+
+            <tbody className="Table__body">
+                <tr>
+                    <td>1</td>
+                    <td>Bol Bol</td>
+                    { !isMobile ? (
+                        <>
+                            <td>218 cm</td>
+                            <td>100 kg</td>
+                            <td>21</td>
+                        </>
+                    ) : ""}
+                </tr>
+            </tbody>
+        </table>
+    );
 
     return(
         <div className="TeamCard">
@@ -116,37 +148,8 @@ const TeamCard = () => {
             </div>
 
             <div className="TeamCard__team-players">
-                <table className="Table">
-                    <caption className="Table__title">Roster</caption>
-                    
-                    <thead className="Table__header">
-                        <tr>
-                            <th className="number">#</th>
-                            <th className="player">Player</th>
-                            <th className="desc">Height</th>
-                            <th className="desc">Weight</th>
-                            <th className="desc">Age</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody className="Table__body">
-                        <tr>
-                            <td>1</td>
-                            <td>Bol Bol</td>
-                            <td>218 cm</td>
-                            <td>100 kg</td>
-                            <td>21</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Bol Bol</td>
-                            <td>218 cm</td>
-                            <td>100 kg</td>
-                            <td>21</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="Table__title">Roster</div>
+                {renderTable()}
             </div>
         </div>
     );

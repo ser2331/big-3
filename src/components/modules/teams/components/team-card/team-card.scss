@@ -2,21 +2,40 @@
 
 .TeamCard {
   width: 100%;
-  padding: 32px 80px;
+
+  @include media($mobile) {
+    padding: 0;
+  }
+  @include media($desktop) {
+    padding: 32px 80px;
+  }
 
   &__wrapper {
     width: 100%;
     background: var(--ui-white);
     border: 0.5px solid var(--ui-light-grey);
-    border-radius: 10px;
-    margin-bottom: 24px;
+    @include media($mobile) {
+      border-radius: 0;
+      margin-bottom: 16px;
+    }
+    @include media($desktop) {
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
 
     &__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 32px;
-      border-radius: 10px 10px 0 0;
+
+      @include media($mobile) {
+        padding: 16px;
+        border-radius: 0;
+      }
+      @include media($desktop) {
+        padding: 24px 32px;
+        border-radius: 10px 10px 0 0;
+      }
       .navigate-wrapper {
         display: flex;
         color: var(--ui-red);
@@ -46,18 +65,41 @@
       justify-content: space-between;
       padding: 65px 0;
       background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
-      border-radius: 0 0 10px 10px;
+      @include media($mobile) {
+        flex-direction: column;
+        border-radius: 0;
+        padding: 48px 0;
+      }
+      @include media($desktop) {
+        flex-direction: row;
+        border-radius: 0 0 10px 10px;
+        padding: 65px 0;
+      }
 
       .image-content {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 146px;
+        @include media($mobile) {
+          padding: 0;
 
-        .image-wrapper {
-          img {
-            width: 210px;
-            height: 210px;
+          .image-wrapper {
+            margin-bottom: 48px;
+            img {
+              width: 90px;
+              height: 90px;
+            }
+          }
+        }
+        @include media($desktop) {
+          padding: 0 146px;
+          .image-wrapper {
+            margin-bottom: 0;
+
+            img {
+              width: 210px;
+              height: 210px;
+            }
           }
         }
       }
@@ -65,25 +107,58 @@
       .team-description {
         flex: 2 1;
         color: var(--ui-white);
+        @include media($mobile) {
+          text-align: center;
+          padding-right: 0;
+        }
+        @include media($desktop) {
+          text-align: left;
+          padding-right: 24px;
+        }
 
         .title {
           @include cardTitle2;
-          margin-bottom: 40px;
+          @include media($mobile) {
+            margin-bottom: 48px;
+          }
+          @include media($desktop) {
+            margin-bottom: 40px;
+          }
         }
 
         .description-wrapper {
           display: flex;
+          @include media($mobile) {
+            flex-direction: column;
+          }
+          @include media($desktop) {
+            flex-direction: row;
+          }
 
           .left-col {
-            margin-right: 84px;
+            @include media($mobile) {
+              margin-right: 0;
+            }
+            @include media($desktop) {
+              margin-right: 84px;
+            }
           }
 
-          .left-col div:nth-child(1) {
-            margin-bottom: 54px;
+          @include media($mobile) {
+            .left-col div{
+              margin-bottom: 32px;
+            }
+            .right-col div {
+
+            }
           }
+          @include media($desktop) {
+            .left-col div:nth-child(1) {
+                margin-bottom: 54px;
+            }
+            .right-col {
 
-          .right-col {
-
+            }
           }
 
           .description-info {
@@ -116,11 +191,16 @@
         padding: 14px 32px;
         text-align: left;
         background: var(--ui-white);
-        border-radius: 10px 10px 0 0;
         border: 0.5px solid  var(--ui-light-grey);
         color: var(--ui-grey);
 
         @include cardTitle;
+        @include media($mobile) {
+          border-radius: 0;
+        }
+        @include media($desktop) {
+          border-radius: 10px 10px 0 0;
+        }
       }
 
       td, th {
@@ -133,7 +213,12 @@
 
       &__header {
         .player {
-          width: 60%;
+          @include media($mobile) {
+            width: 90%;
+          }
+          @include media($desktop) {
+            width: 60%;
+          }
         }
       }
     }
