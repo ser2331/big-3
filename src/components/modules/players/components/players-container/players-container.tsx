@@ -14,9 +14,11 @@ import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import PlayersItems from "../players-items";
 import EmptyItems from "../../../../common/components/empty-items";
+import Types from "../../../../types";
 
 import "./players-container.scss";
 
+const { optionsItemsPerPage } = Types;
 
 const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
@@ -26,7 +28,7 @@ const PlayersContainer:FC = () => {
     const { teams } = useAppSelector(state => state.teamsReducer);
     const { players, selectedTeams, itemsPerPage, searchPlayerName, pageCount, currentPage } = useAppSelector(state => state.playersReducer);
     const { setTeams } = teamsSlice.actions;
-    const { setSearchPlayerName, setPlayerId, setCurrentPage, setPageCount, setPlayers, setSelectedTeam } = playersSlice.actions;
+    const { setSearchPlayerName, setPlayerId, setCurrentPage, setPageCount, setPlayers, setSelectedTeam, setNumberItemsPerPage } = playersSlice.actions;
     const options = teams?.reduce((acc: Array<ITeamsSelectOptions>, item: any) => [...acc, {value: item.id, label: item.name}], []);
     const arrTeamId = selectedTeams?.length ? selectedTeams?.map((i: ITeamsSelectOptions) => i.value) : undefined;
 
@@ -34,6 +36,8 @@ const PlayersContainer:FC = () => {
         data: teamsData,
         error: teamsError,
     } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
+
+    const animatedComponents = makeAnimated();
 
     useEffect(() => {
         if (teamsData && !teamsError) {
@@ -48,10 +52,16 @@ const PlayersContainer:FC = () => {
         refetch: playersReFetch
     } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: searchPlayerName, teamIds: arrTeamId});
 
-    const animatedComponents = makeAnimated();
+    const getValueItemsPerPage = () => {
+        return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
+    };
 
     const handlePageClick = (event: { selected: number }) => {
         dispatch(setCurrentPage(event.selected + 1));
+    };
+
+    const handleChange = (newValue: {label: string, value: number} ) => {
+        dispatch(setNumberItemsPerPage(newValue.value));
     };
 
     const setItemId = (id: number | null) => {
@@ -120,26 +130,38 @@ const PlayersContainer:FC = () => {
 
             {players.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId}/> : ""}
 
-            <ReactPaginate
-                nextLabel=">"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={3}
-                marginPagesDisplayed={2}
-                pageCount={pageCount}
-                previousLabel="<"
-                pageClassName="page-item"
-                pageLinkClassName="page-link"
-                previousClassName="page-item"
-                previousLinkClassName="page-link"
-                nextClassName="page-item"
-                nextLinkClassName="page-link"
-                breakLabel="..."
-                breakClassName="page-item"
-                breakLinkClassName="page-link"
-                containerClassName="Pagination"
-                activeClassName="active"
-                renderOnZeroPageCount={undefined}
-            />
+            <div className="TeamsContainer__footer-wrapper">
+                <ReactPaginate
+                    nextLabel=">"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
+                    pageCount={pageCount}
+                    previousLabel="<"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakLabel="..."
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    containerClassName="Pagination"
+                    activeClassName="active"
+                    renderOnZeroPageCount={undefined}
+                />
+
+                <Select
+                    value={getValueItemsPerPage()}
+                    placeholder=""
+                    onChange={(newValue: any) => handleChange(newValue)}
+                    classNamePrefix="SelectorItemsPerPage"
+                    components={animatedComponents}
+                    defaultValue={[optionsItemsPerPage[1]]}
+                    options={optionsItemsPerPage}
+                />
+            </div>
         </div>   
     );
 };

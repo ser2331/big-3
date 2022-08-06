@@ -5,7 +5,7 @@
     @include media($mobile) {
         width: 100%;
     }
-    @include media($tablet) {
+    @include media($desktop) {
         width: 364px;
     }
 

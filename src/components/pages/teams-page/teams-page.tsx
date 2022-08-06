@@ -13,7 +13,6 @@ const TeamsPage = () => {
 
             <div className="TeamsPage__content">
                 <Navigation />
-
                 <TeamsContainer />
             </div>
         </div>

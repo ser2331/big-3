@@ -2,8 +2,7 @@
 @import "../fonts/fonts";
 
 $mobile: 375px;
-$tablet: 768px;
-$large: 1440px;
+$desktop: 1152px;
 
 @mixin media($size) {
     @media (min-width: $size) {
@@ -15,11 +14,29 @@ $large: 1440px;
     font: 400 36px/49px 'Avenir 300', sans-serif;
 }
 
+@mixin emptyDataTitle {
+    @include media($mobile) {
+        font: 800 17px/25px 'Avenir 800', sans-serif;
+    }
+    @include media($desktop) {
+        font: 500 36px/49px 'Avenir 500', sans-serif;
+    }
+}
+
+@mixin emptyDataMessage {
+    @include media($mobile) {
+        font: 400 15px/24px 'Avenir 400', sans-serif;
+    }
+    @include media($desktop) {
+        font: 500 24px/33px 'Avenir 500', sans-serif;
+    }
+}
+
 @mixin inputLabel {
     @include media($mobile) {
         font: 500 17px/24px 'Avenir 500', sans-serif;
     }
-    @include media($large) {
+    @include media($desktop) {
         font: 500 14px/24px 'Avenir 500', sans-serif;
     }
 }
@@ -28,7 +45,7 @@ $large: 1440px;
     @include media($mobile) {
         font: 500 15px/24px 'Avenir 500', sans-serif;
     }
-    @include media($large) {
+    @include media($desktop) {
         font: 500 14px/24px 'Avenir 500', sans-serif;
     }
 }
@@ -45,7 +62,7 @@ $large: 1440px;
     @include media($mobile) {
         font: 500 15px/24px 'Avenir 500', sans-serif;
     }
-    @include media($large) {
+    @include media($desktop) {
         font: 500 18px/25px 'Avenir 500', sans-serif;
     }
 }
@@ -54,7 +71,7 @@ $large: 1440px;
     @include media($mobile) {
         font: 400 13px/18px 'Avenir 400', sans-serif;
     }
-    @include media($large) {
+    @include media($desktop) {
         font: 400 14px/24px 'Avenir 400', sans-serif;
     }
 }
@@ -63,7 +80,7 @@ $large: 1440px;
     @include media($mobile) {
         font: 800 17px/15px 'Avenir 800', sans-serif;
     }
-    @include media($large) {
+    @include media($desktop) {
         font: 800 36px/49px 'Avenir 800', sans-serif;
     }
 }
@@ -72,7 +89,7 @@ $large: 1440px;
     @include media($mobile) {
         font: 800 17px/25px 'Avenir 800', sans-serif;
     }
-    @include media($large) {
+    @include media($desktop) {
         font: 800 24px/33px 'Avenir 800', sans-serif;
     }
 }
@@ -80,7 +97,7 @@ $large: 1440px;
     @include media($mobile) {
         font: 500 15px/24px 'Avenir 500', sans-serif;
     }
-    @include media($large) {
+    @include media($desktop) {
         font: 500 18px/25px 'Avenir 500', sans-serif;
     }
 }

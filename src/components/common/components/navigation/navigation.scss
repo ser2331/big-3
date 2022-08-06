@@ -1,17 +1,14 @@
 @import "../../../assests/styles/index";
 
 .Navigation {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   @include media($mobile) {
     display: none;
   }
-  @include media($tablet) {
+  @include media($desktop) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 140px;
     min-height: 93vh;
     padding: 32px 0;

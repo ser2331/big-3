@@ -1,5 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { ITeams } from "./interfaces/teams-interfaces";
+import Types from "../../types";
+
+const  { appSizesMap } = Types;
 
 export interface TeamsState {
     teams: ITeams[];
@@ -9,6 +12,8 @@ export interface TeamsState {
     teamId: number | null;
     pageCount: number;
     currentPage: number;
+    showMobileMenu: boolean;
+    isMobile: boolean;
 }
 
 const initialState: TeamsState = {
@@ -26,6 +31,8 @@ const initialState: TeamsState = {
     teamId: null,
     pageCount: 1,
     currentPage: 0,
+    showMobileMenu: false,
+    isMobile: appSizesMap.get("desktop").key,
 };
 
 export const teamsSlice = createSlice({
@@ -52,6 +59,12 @@ export const teamsSlice = createSlice({
         },
         setCurrentTeam(state, action: PayloadAction<ITeams>) {
             state.currentTeam = action.payload;
+        },
+        setShowMobileMenu(state, action: PayloadAction<boolean>) {
+            state.showMobileMenu = action.payload;
+        },
+        setIsMobile(state, action: PayloadAction<boolean>) {
+            state.isMobile = action.payload;
         }
     }
 

@@ -6,6 +6,14 @@ export default class Types {
 
     static routingMap = Types.routing.reduce((acc, item) => acc.set(item.key, { ...item }), new Map());
 
+
+    static appSizes = [
+        { id: 0, key: "mobile", size: 375, value: true },
+        { id: 1, key: "desktop", size: 1152, value: false },
+    ];
+
+    static appSizesMap = Types.appSizes.reduce((acc, item) => acc.set(item.key, { ...item }), new Map());
+
     static optionsItemsPerPage = [
         {value: 2, label: "2"},
         {value: 4, label: "4"},

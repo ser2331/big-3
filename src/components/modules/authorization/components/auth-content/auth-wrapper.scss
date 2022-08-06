@@ -11,11 +11,7 @@
     width: 100%;
     padding: 0 24px;
   }
-  @include media($tablet) {
-    width: 41%;
-    padding: 0 34px;
-  }
-  @include media($large) {
+  @include media($desktop) {
     padding: 0 120px;
   }
 

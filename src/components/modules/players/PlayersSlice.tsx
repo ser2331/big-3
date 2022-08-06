@@ -58,7 +58,10 @@ export const playersSlice = createSlice({
         },
         setSelectedTeam(state, action: PayloadAction<ITeamsSelectOptions[]>) {
             state.selectedTeams = action.payload;
-        }
+        },
+        setNumberItemsPerPage(state, action: PayloadAction<number>) {
+            state.itemsPerPage = action.payload;
+        },
     }
 
 });

@@ -8,10 +8,13 @@ import { ITeams } from "../../../teams/interfaces/teams-interfaces";
 import "./players-items.scss";
 
 const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
-    const { teams } = useAppSelector(state => state.teamsReducer);
+    const { teams, isMobile } = useAppSelector(state => state.teamsReducer);
     const { players } = useAppSelector(state => state.playersReducer);
 
-    const Item:FC<IPlayerItemProps> = ({name, image, id, team}) => {
+    const span = isMobile ? 12 : 8;
+    const gutter = isMobile ? 16 : 24;
+
+    const Item:FC<IPlayerItemProps> = ({name, image, id, team, number}) => {
         const teamName = teams.find((item: ITeams) => item.id === team);
 
         return (
@@ -20,8 +23,12 @@ const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
                     <img alt="teamImage" src={image || fakeImage}/>
                 </div>
                 <div className="description-wrapper">
-                    <span className="team-name">{name}</span>
-                    <span className="team-year">{teamName?.name}</span>
+                    <div className="name-wrapper">
+                        <div className="player-name">{name}</div>
+                        <div className="player-number">{`#${number}`}</div>
+                    </div>
+
+                    <span className="team-name">{teamName?.name}</span>
                 </div>
             </div>
         );
@@ -29,10 +36,16 @@ const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
 
     return (
         <div className="PlayersItems">
-            <Row gutter={[24, 24]}>
+            <Row gutter={[gutter, gutter]}>
                 {players?.map((item) => (
-                    <Col span={6} className="PlayersItems__item-wrapper" key={item.id}>
-                        <Item name={item.name} team={item.team} image={item.avatarUrl} id={item.id} />
+                    <Col span={span} className="PlayersItems__item-wrapper" key={item.id}>
+                        <Item
+                            name={item.name}
+                            team={item.team}
+                            image={item.avatarUrl}
+                            id={item.id}
+                            number={item.number}
+                        />
                     </Col>
                 ))}
             </Row>

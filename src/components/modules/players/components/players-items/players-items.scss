@@ -1,83 +1,91 @@
 @import "src/components/assests/styles/index";
 
 .PlayersItems {
-    margin-bottom: 32px;
+  @include media($mobile) {
+    min-height: 400px;
+    margin-bottom: 18px;
+  }
+  @include media($desktop) {
     min-height: 784px;
+    margin-bottom: 32px;
+  }
+  .ant-row {
+    justify-content: flex-start !important;
+  }
+}
 
-    &__item-wrapper {
+
+.PlayerItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
+  border-radius: 4px;
+  cursor: pointer;
+
+  @include media($mobile) {
+    height: 200px;
+  }
+  @include media($desktop) {
+    height: 380px;
+  }
+
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+
+    img {
+      @include media($mobile) {
+        width: 60px;
+        height: 50px;
+      }
+      @include media($desktop) {
+        width: 150px;
+        height: 150px;
+      }
     }
   }
 
-
-  .PlayerItem {
+  .description-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
-    border-radius: 4px;
-    cursor: pointer;
-
+    align-items: center;
+    justify-content: center;
+    background: var(--ui-dark-grey);
+    border-radius: 0 0 4px 4px;
     @include media($mobile) {
-      width: 163px;
-      height: 200px;
+      height: 94px;
+      padding: 0 10px;
     }
-    @include media($tablet) {
-      width: 235px;
-      height: 300px;
+    @include media($desktop) {
+      height: 100px;
+      padding: 0;
     }
-    @include media($large) {
-      width: 364px;
-      height: 380px;
-    }
-
-    .image-wrapper {
+    .name-wrapper {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      flex-grow: 1;
 
-      img {
-        @include media($mobile) {
-          width: 60px;
-          height: 50px;
-        }
-        @include media($tablet) {
-          width: 90px;
-          height: 90px;
-        }
-        @include media($large) {
-          width: 150px;
-          height: 150px;
-        }
-      }
-    }
-
-    .description-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--ui-dark-grey);
-      border-radius: 0 0 4px 4px;
-      @include media($mobile) {
-        height: 94px;
-        padding: 0 10px;
-      }
-      @include media($tablet) {
-        height: 100px;
-        padding: 0;
-      }
-
-      .team-name {
+      .player-name {
         color: var(--ui-white);
         @include cardTitle;
         text-align: center;
+        margin-right: 4px;
       }
-
-      .team-year {
-        color: var(--ui-light-grey);
-        @include cardYear;
+      .player-number {
+        color: var(--ui-light-red);
+        @include cardTitle;
         text-align: center;
       }
     }
+
+    .team-name {
+      color: var(--ui-light-grey);
+      @include cardYear;
+      text-align: center;
+    }
+  }
 }

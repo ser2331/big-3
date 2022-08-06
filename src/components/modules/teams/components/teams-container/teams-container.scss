@@ -2,20 +2,35 @@
 
 .TeamsContainer {
   width: 100%;
-
+  position: relative;
+  min-height: 93vh;
   @include media($mobile) {
     padding: 16px 12px;
   }
-  @include media($tablet) {
+  @include media($desktop) {
     padding: 32px 80px;
   }
+
   .fields-wrapper {
     display: flex;
     justify-content: space-between;
     margin-bottom: 32px;
+    @include media($mobile) {
+      flex-direction: column
+    }
+    @include media($desktop) {
+      flex-direction: row;
+    }
 
     .add-item {
-      width: 104px;
+      @include media($mobile) {
+        width: 100%;
+        margin-top: 16px;
+      }
+      @include media($desktop) {
+        width: 104px;
+        margin-top: 0;
+      }
     }
   }
 
@@ -29,14 +44,32 @@
   &__footer-wrapper {
     display: flex;
     justify-content: space-between;
+
+    @include media($mobile) {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 4px 12px;
+      background: var(--ui-lightest-grey1);
+    }
+    @include media($desktop) {
+      position: static;
+      bottom: 0;
+    }
   }
 }
 
 .SelectorItemsPerPage {
   &__control {
     width: 88px !important;
-    height: 40px !important;
     @include links;
+
+    @include media($mobile) {
+      height: 28px !important;
+    }
+    @include media($desktop) {
+      height: 40px !important;
+    }
   }
 
   &__control--is-focused {

@@ -2,11 +2,13 @@
 
 .PlayersContainer {
   width: 100%;
+  position: relative;
+  min-height: 93vh;
 
   @include media($mobile) {
     padding: 16px 12px;
   }
-  @include media($tablet) {
+  @include media($desktop) {
     padding: 32px 80px;
   }
 
@@ -18,7 +20,7 @@
       flex-direction: column;
       justify-content: center;
     }
-    @include media($tablet) {
+    @include media($desktop) {
       flex-direction: row;
       justify-content: left;
     }
@@ -26,14 +28,39 @@
     .left-fields {
       display: flex;
       flex: 1 1;
+      @include media($mobile) {
+        flex-direction: column;
+      }
+      @include media($desktop) {
+        flex-direction: row;
+      }
       .playersSearch {
-        margin-right: 24px;
+        @include media($mobile) {
+          margin: 0 0 16px 0;
+        }
+        @include media($desktop) {
+          margin: 0 24px 0 0;
+        }
+      }
+
+      .selector {
+        @include media($mobile) {
+          margin: 0 0 16px 0;
+        }
+        @include media($desktop) {
+          margin: 0;
+        }
       }
     }
 
     .right-fields {
       .add-item {
-        width: 104px;
+        @include media($mobile) {
+          width: 100%
+        }
+        @include media($desktop) {
+          width: 104px;
+        }
       }
     }
   }
@@ -46,8 +73,25 @@
     @include media($mobile) {
       justify-content: center;
     }
-    @include media($tablet) {
+    @include media($desktop) {
       justify-content: left;
+    }
+  }
+
+  &__footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include media($mobile) {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 4px 12px;
+      background: var(--ui-lightest-grey1);
+    }
+    @include media($desktop) {
+      position: static;
+      bottom: 0;
     }
   }
 
@@ -69,7 +113,7 @@
     @include media($mobile) {
       width: auto;
     }
-    @include media($tablet) {
+    @include media($desktop) {
       width: 364px !important;
     }
   }

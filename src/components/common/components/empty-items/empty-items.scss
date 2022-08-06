@@ -1,26 +1,48 @@
+@import "src/components/assests/styles/index";
 .EmptyItems {
-  padding: 100px 327px;
-
+  @include media($mobile) {
+    padding: 0;
+  }
+  @include media($desktop) {
+    padding: 100px 327px;
+  }
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: var(--ui-white);
-    padding: 48px 90px;
     border-radius: 15px;
 
+    @include media($mobile) {
+      padding: 48px 60px;
+    }
+    @include media($desktop) {
+      padding: 48px 90px;
+    }
+
     img {
-      margin-bottom: 70px;
+      @include media($mobile) {
+        margin-bottom: 60px;
+      }
+      @include media($desktop) {
+        margin-bottom: 70px;
+      }
     }
     .title {
-      margin-bottom: 24px;
-      font: 500 36px/49px 'Avenir 500', sans-serif;
       color: var(--ui-lightest-red);
+      @include emptyDataTitle;
+
+      @include media($mobile) {
+        margin-bottom: 45px;
+      }
+      @include media($desktop) {
+        margin-bottom: 24px;
+      }
     }
     .message {
-      font: 500 24px/33px 'Avenir 500', sans-serif;
       color: var(--ui-grey);
+      @include emptyDataMessage;
     }
   }
 }

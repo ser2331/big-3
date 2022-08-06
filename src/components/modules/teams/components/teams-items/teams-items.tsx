@@ -8,7 +8,10 @@ import "./teams-items.scss";
 
 const TeamsItems:FC<ITeamsItems> = ({ setItemId } ) => {
 
-    const { teams } = useAppSelector(state => state.teamsReducer);
+    const { teams, isMobile } = useAppSelector(state => state.teamsReducer);
+
+    const span = isMobile ? 12 : 8;
+    const gutter = isMobile ? 16 : 24;
 
     const Item:FC<ITeamItemProps> = ({name, foundationYear, image, id}) =>  (
         <div className="TeamItem" onClick={() => setItemId(id)}>
@@ -24,9 +27,9 @@ const TeamsItems:FC<ITeamsItems> = ({ setItemId } ) => {
 
     return (
         <div className="Teams-items">
-            <Row gutter={[24, 24]}>
+            <Row gutter={[gutter, gutter]}>
                 {teams?.map((item: ITeams) => (
-                    <Col span={6} className="Teams-items__item-wrapper" key={item.id}>
+                    <Col span={span} className="Teams-items__item-wrapper" key={item.id}>
                         <Item foundationYear={item.foundationYear} name={item.name} image={item.imageUrl} id={item.id} />
                     </Col>
                 ))}
