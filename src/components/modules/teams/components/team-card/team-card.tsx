@@ -11,9 +11,9 @@ import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultLogo from "../../../../assests/images/teamLogo.jpeg";
 import avatar from "../../../../assests/images/avatar.jpg";
+import ErrorMessage from "../../../../common/components/error-message";
 
 import "./team-card.scss";
-import ErrorMessage from "../../../../common/components/error-message";
 
 const TeamCard = () => {
     const dispatch = useAppDispatch();

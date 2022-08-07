@@ -1,29 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add adaptive mobile to add player and add team pages">
-      <change afterPath="$PROJECT_DIR$/src/components/assests/images/avatar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/assests/images/teamLogo.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assests/images/defaultPlayerImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assests/images/defoultPhoto.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assests/images/fakeImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assests/styles/base/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assests/styles/base/base.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/mobile-naavigation/mobile-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/mobile-naavigation/mobile-navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/auth-wrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/auth-content/auth-wrapper.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/add-player-container/add-player-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/add-player-container/add-player-container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/player-card/player-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/player-card/player-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/players-items/players-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/players-items/players-items.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/selectors.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/selectors.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/add-team-container/add-team-container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.scss" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some fix">
       <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-items/teams-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-items/teams-items.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/login-page/login-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login-page/login-page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/login-page/login-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/login-page/login-page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/registration-page/regisrtation-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/registration-page/regisrtation-page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/registration-page/registration-page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/registration-page/registration-page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +105,7 @@
       <workItem from="1659513106252" duration="23722000" />
       <workItem from="1659607870598" duration="38214000" />
       <workItem from="1659649648676" duration="3779000" />
-      <workItem from="1659699500618" duration="41548000" />
+      <workItem from="1659699500618" duration="42237000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -282,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659793719609</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="some fix">
+      <created>1659877749149</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1659877749149</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,14 +301,14 @@
     <MESSAGE value="add api delete team, get team" />
     <MESSAGE value="add empty message, refactor login and registration validation" />
     <MESSAGE value="add edit team api, add localStorage" />
-    <MESSAGE value="some fix" />
     <MESSAGE value="add players api" />
     <MESSAGE value="&#10;in the absence of data, go to the main page" />
     <MESSAGE value="&#10;add search and filter" />
     <MESSAGE value="add adaptive mobile to players and teams pages" />
     <MESSAGE value="add adaptive mobile to player-card and team-card pages" />
     <MESSAGE value="add adaptive mobile to add player and add team pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="add adaptive mobile to add player and add team pages" />
+    <MESSAGE value="some fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="some fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
