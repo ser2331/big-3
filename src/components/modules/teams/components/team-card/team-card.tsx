@@ -2,24 +2,38 @@ import React, {useEffect} from "react";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useNavigate } from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
-import editIcon from "../../../../assests/images/editImage.png";
-import deleteIcon from  "../../../../assests/images/deleteIcon.png";
-import defaultLogo from "../../../../assests/images/fakeImage.png";
 import { ITeams } from "../../interfaces/teams-interfaces";
 import { teamsSlice } from "../../TeamsSlice";
+import {playersSlice} from "../../../players/PlayersSlice";
+import {playersApiService} from "../../../../api/players/playersApiService";
+import {getAge} from "../../../players/selectors";
+import editIcon from "../../../../assests/images/editImage.png";
+import deleteIcon from  "../../../../assests/images/deleteIcon.png";
+import defaultLogo from "../../../../assests/images/teamLogo.jpeg";
+import avatar from "../../../../assests/images/avatar.jpg";
 
 import "./team-card.scss";
+import ErrorMessage from "../../../../common/components/error-message";
 
 const TeamCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentTeam, teamId, isMobile } = useAppSelector(state => state.teamsReducer);
-    const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
+    const { players } = useAppSelector(state => state.playersReducer);
     const { setCurrentTeam, setTeamId } = teamsSlice.actions;
+    const { setPlayers } = playersSlice.actions;
+
+    const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
+    const newTeamId = id ? [id] : undefined;
 
     const { data: teamData, error: teamError, isLoading: teamIsLoading, refetch } = teamsApiService.useGetTeamQuery({token, teamId});
-    const [deleteTeam, {data, error, isLoading}] = teamsApiService.useDeleteTeamMutation();
+    const {
+        data: playersData,
+        error: playersError,
+    } = playersApiService.useGetPlayersQuery({token, page: 1, pageSize: 100, name: "", teamIds: newTeamId});
+
+    const [deleteTeam, {data, error: deleteError, isLoading: deleteIsLoading}] = teamsApiService.useDeleteTeamMutation();
 
     const editThisTeam = () => {
         navigate("/teams/addTeam");
@@ -56,10 +70,16 @@ const TeamCard = () => {
     }, [dispatch, teamData, teamError, teamIsLoading]);
 
     useEffect(() => {
-        if (data && !error && !isLoading) {
+        if (playersData && !playersError) {
+            dispatch(setPlayers(playersData.data));
+        }
+    }, [dispatch, playersData, playersError]);
+
+    useEffect(() => {
+        if (data && !deleteError && !deleteIsLoading) {
             navigate("/teams");
         }
-    }, [data, error, isLoading]);
+    }, [data, deleteError, deleteIsLoading]);
 
     const renderContent = () => (
         <>
@@ -112,17 +132,36 @@ const TeamCard = () => {
             </thead>
 
             <tbody className="Table__body">
-                <tr>
-                    <td>1</td>
-                    <td>Bol Bol</td>
-                    { !isMobile ? (
-                        <>
-                            <td>218 cm</td>
-                            <td>100 kg</td>
-                            <td>21</td>
-                        </>
-                    ) : ""}
-                </tr>
+                {players.map((player) => {
+                    const age = getAge(player.birthday);
+                    return (
+                        <tr key={player.id}>
+                            <td>{player.number}</td>
+                            <td>
+                                <div className="player-wrapper">
+                                    <div className="image-wrapper">
+                                        <img alt="player-photo" src={player.avatarUrl || avatar}/>
+                                    </div>
+                                    <div className="player-name-wrapper">
+                                        <div className="player-name">
+                                            {player.name}
+                                        </div>
+                                        <div className="player-position">
+                                            {player.position}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            { !isMobile ? (
+                                <>
+                                    <td>{`${player.height} cm`}</td>
+                                    <td>{`${player.weight} kg`}</td>
+                                    <td>{age}</td>
+                                </>
+                            ) : ""}
+                        </tr>
+                    );
+                })}
             </tbody>
         </table>
     );
@@ -134,6 +173,8 @@ const TeamCard = () => {
                     <span className="navigate-wrapper" >
                         <div className="home-link" onClick={goHome}>Teams </div> / {name}
                     </span>
+
+                    {deleteError && <ErrorMessage message="Что-то пошло не так..." />}
 
                     <div className="control">
                         <img alt="edit" src={editIcon} onClick={editThisTeam}/>

@@ -12,6 +12,7 @@
     padding: 0 24px;
   }
   @include media($desktop) {
+    width: 42%;
     padding: 0 120px;
   }
 

@@ -10,7 +10,7 @@ const RegistrationPage:FC = () => {
     const { error } = useAppSelector(state => state.authorizationReducer);
 
     return (
-        <div className="RegistrationPage">
+        <div className="RegistrationPage auth-page-container">
             {error ? <ErrorMessage message="Что-то пошло не так.." /> : ""}
 
             <Registration/>

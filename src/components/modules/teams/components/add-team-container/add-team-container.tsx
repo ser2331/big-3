@@ -18,7 +18,7 @@ const AddTeamContainer = () => {
     const navigate = useNavigate();
     const [showImageField, setShowImageField] = useState(false);
     const [addTeam, {data, isError}] = teamsApiService.useAddTeamMutation();
-    const [editTeam, {data: editData, error, isLoading: loading}] = teamsApiService.useEditTeamMutation();
+    const [editTeam, {data: editData, error}] = teamsApiService.useEditTeamMutation();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentTeam } = useAppSelector(state => state.teamsReducer);
@@ -115,14 +115,13 @@ const AddTeamContainer = () => {
                                 register={register}
                                 registerName="conference"
                                 error={errors.conference}
-                                property={{maxLength: 10}}
                             />
                             <Field
                                 label="Year of foundation"
                                 register={register}
                                 registerName="foundationYear"
                                 error={errors.foundationYear}
-                                property={{maxLength: 10}}
+                                property={{required: "enter foundation year"}}
                             />
 
                             <div className="form-control">

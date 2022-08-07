@@ -6,9 +6,11 @@ import { playersApiService } from "../../../../api/players/playersApiService";
 import { IPlayers } from "../../interfaces/players-interfaces";
 import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
-import defaultPlayerImg from "../../../../assests/images/defaultPlayerImage.png";
+import defaultPlayerImg from "../../../../assests/images/avatar.jpg";
+import { getAge } from "../../selectors";
 
 import "./player-card.scss";
+import ErrorMessage from "../../../../common/components/error-message";
 
 const PlayerCard = () => {
     const dispatch = useAppDispatch();
@@ -19,30 +21,8 @@ const PlayerCard = () => {
     const { setCurrentPlayer } = playersSlice.actions;
     const { name, birthday, height, weight, avatarUrl, number, position, team, id }: IPlayers = currentPlayer;
 
-
-    const getAge = (dateString: string) => {
-        const today = new Date();
-        const birthDate = new Date(dateString);
-        let age = today.getFullYear() - birthDate.getFullYear();
-
-        let m = today.getMonth() - birthDate.getMonth();
-        const d = today.getDay() - birthDate.getDay();
-
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        if ( age === 0 ) {
-            m = 12 + m;
-            if (d < 0 || (d === 0 && today.getDate() < birthDate.getDate())) {
-                m--;
-            }
-        }
-
-        return age ? age + " г." : m + "м";
-    };
-
     const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({token, playerId});
-    const [deletePlayer, {data, error, isLoading}] = playersApiService.useDeletePlayerMutation();
+    const [deletePlayer, {data, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
 
     const editThisPlayer = () => {
         navigate("/players/addPlayer");
@@ -67,10 +47,10 @@ const PlayerCard = () => {
     }, [dispatch, playerData, playerError, playerIsLoading]);
 
     useEffect(() => {
-        if (data && !error && !isLoading) {
+        if (data && !deleteError && !deleteIsLoading) {
             navigate("/players");
         }
-    }, [data, error, isLoading]);
+    }, [data, deleteError, deleteIsLoading]);
 
     const renderDescriptionLine = (
         label?: string,
@@ -121,6 +101,8 @@ const PlayerCard = () => {
                         <Link to="/players" className="home-link" >Players </Link>
                         / Denver Nuggets
                     </span>
+
+                    {deleteError && <ErrorMessage message="Что-то пошло не так..." />}
 
                     <div className="control">
                         <img alt="edit" src={editIcon} onClick={editThisPlayer}/>

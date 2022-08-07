@@ -8,9 +8,12 @@ import "./login-page.scss";
 
 const LoginPage:FC = () => {
     const { error } = useAppSelector(state => state.authorizationReducer);
+    const { isMobile } = useAppSelector(state => state.teamsReducer);
 
     return (
         <div className="LoginPage">
+            {error && isMobile ? <ErrorMessage message="User with the specified username / password was not found." /> : ""}
+
             <Login />
 
             <div className="LoginPage__image-wrapper">

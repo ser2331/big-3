@@ -88,10 +88,10 @@ const PlayersContainer:FC = () => {
     }, [currentPage, itemsPerPage]);
 
     useEffect(() => {
-        if (searchPlayerName || selectedTeams && (selectedTeams.length > 0)) {
+        if (searchPlayerName || selectedTeams && (selectedTeams.length > 0) || !players.length) {
             handlePageClick({selected: 0});
         }
-    }, [searchPlayerName, selectedTeams]);
+    }, [searchPlayerName, selectedTeams, players]);
 
     return (
         <div className="PlayersContainer">

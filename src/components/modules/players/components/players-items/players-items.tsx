@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Col, Row } from "antd";
 import { useAppSelector } from "../../../../core/redux/redux";
-import fakeImage from "../../../../assests/images/fakeImage.png";
+import fakeImage from "../../../../assests/images/avatar.jpg";
 import { IPlayerItemProps, IPlayersItems } from "../../interfaces/players-interfaces";
 import { ITeams } from "../../../teams/interfaces/teams-interfaces";
 

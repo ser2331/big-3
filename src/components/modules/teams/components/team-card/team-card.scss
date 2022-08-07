@@ -209,6 +209,24 @@
         padding: 8px 32px;
         color: var(--ui-grey);
         @include links;
+
+        .player-wrapper {
+          display: flex;
+          align-items: center;
+
+          .image-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin-right: 8px;
+          }
+
+          .player-position {
+            @include cardYear;
+            color: var(--ui-light-grey);
+          }
+        }
       }
 
       &__header {

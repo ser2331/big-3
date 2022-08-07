@@ -15,6 +15,7 @@ import SelectField from "../../../../common/components/select-field";
 import {FieldTypes} from "../../../../common/components/field/field";
 
 import "./add-player-container.scss";
+import ErrorMessage from "../../../../common/components/error-message";
 
 const AddPlayerContainer = () => {
     const dispatch = useAppDispatch();
@@ -28,8 +29,8 @@ const AddPlayerContainer = () => {
     const { id, name, birthday, avatarUrl, height, weight, number, position, team }: IPlayers = currentPlayer;
     const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 
-    const [addPlayer, {data, isError}] = playersApiService.useAddPlayerMutation();
-    const [editPlayer, {data: editData, error}] = playersApiService.useEditPlayerMutation();
+    const [addPlayer, {data, error: addError}] = playersApiService.useAddPlayerMutation();
+    const [editPlayer, {data: editData, error: editError}] = playersApiService.useEditPlayerMutation();
     const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
 
     const positionOptions = [
@@ -81,10 +82,10 @@ const AddPlayerContainer = () => {
     };
 
     useEffect(() => {
-        if ((data && !isError) || (editData && !error)) {
+        if ((data && !addError) || (editData && !editError)) {
             navigate("/players");
         }
-    }, [data, isError, editData, error]);
+    }, [data, addError, editData, editError]);
 
     useEffect(() => {
         if (teamsData && !teamsError) {
@@ -99,6 +100,8 @@ const AddPlayerContainer = () => {
                     <span className="navigate-wrapper">
                         <div className="home-link" onClick={goHome}>Players </div> / Add new player
                     </span>
+
+                    {addError || editError ? <ErrorMessage message="Чьл-ьл пошло не так..." /> : ""}
                 </div>
 
                 <div className="AddPlayerContainer__content-wrapper__content">

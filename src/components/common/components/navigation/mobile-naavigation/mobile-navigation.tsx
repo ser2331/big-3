@@ -35,6 +35,7 @@ const MobileNavigation: FC = () => {
 
     const signOut = () => {
         dispatch(setUserData({name: "", avatarUrl: "", token: ""}));
+        dispatch(setShowMobileMenu(false));
     };
 
     const goToTeamsPage = () => {
