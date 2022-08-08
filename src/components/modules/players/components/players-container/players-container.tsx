@@ -35,6 +35,7 @@ const PlayersContainer:FC = () => {
     const {
         data: teamsData,
         error: teamsError,
+        refetch: teamsReFetch
     } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
 
     const animatedComponents = makeAnimated();
@@ -84,6 +85,7 @@ const PlayersContainer:FC = () => {
     useEffect(() => {
         if ( currentPage || itemsPerPage) {
             playersReFetch();
+            teamsReFetch();
         }
     }, [currentPage, itemsPerPage]);
 

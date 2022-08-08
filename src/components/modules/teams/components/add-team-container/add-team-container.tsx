@@ -4,19 +4,41 @@ import { useForm } from "react-hook-form";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { teamsSlice } from "../../TeamsSlice";
+import axios from "axios";
 import { IAddTeam, ITeams } from "../../interfaces/teams-interfaces";
 import Field from "../../../../common/components/field";
-import AddItemImg from "../../../../assests/images/addItemImg.svg";
 import CustomButton from "../../../../common/components/custom-button";
 import ErrorMessage from "../../../../common/components/error-message";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
+import { baseUrl } from "../../../../api/apiService";
 
 import "./add-team-container.scss";
 
 const AddTeamContainer = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const [showImageField, setShowImageField] = useState(false);
+    const [avatar, setAvatar] = useState(null);
+    const newImage = avatar ? baseUrl + avatar : "";
+
+    const sendFile = React.useCallback(async (event: React.ChangeEvent) => {
+        const target= event.target as HTMLInputElement;
+        const file = target.files ? target.files[0] : "";
+        try {
+            const data = new FormData();
+            data.append("file", file);
+
+            await axios.post(baseUrl + "/api/Image/SaveImage", data, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => setAvatar(res.data));
+
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
+
     const [addTeam, {data, isError}] = teamsApiService.useAddTeamMutation();
     const [editTeam, {data: editData, error}] = teamsApiService.useEditTeamMutation();
 
@@ -25,7 +47,7 @@ const AddTeamContainer = () => {
     const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
     const { setCurrentTeam, setTeamId } = teamsSlice.actions;
 
-    const {register, handleSubmit, getValues, formState: { errors }} = useForm({defaultValues: {
+    const {register, handleSubmit, formState: { errors }} = useForm({defaultValues: {
         name: name || "",
         division: division || "",
         conference: conference || "",
@@ -33,12 +55,11 @@ const AddTeamContainer = () => {
         imageUrl: imageUrl || "",
     }});
 
-
     const submit = async (introducedData: IAddTeam) => {
         if (id) {
-            await editTeam({...introducedData, token, id});
+            await editTeam({...introducedData, imageUrl: newImage|| imageUrl, token, id});
         } else {
-            await addTeam({...introducedData, token});
+            await addTeam({...introducedData, imageUrl: newImage|| imageUrl, token});
         }
     };
 
@@ -75,22 +96,11 @@ const AddTeamContainer = () => {
                 <div className="AddTeamContainer__content-wrapper__content">
                     <div className="image">
                         <div className="image-wrapper" >
-                            <img
-                                alt="addItem"
-                                className="add-item"
-                                src={AddItemImg}
-                                onClick={() => setShowImageField(!showImageField)}
-                            />
+                            <label className="custom-file-upload" htmlFor="file-upload" />
+                            <input type="file" onChange={sendFile} id="file-upload" className="upload" />
 
-                            {getValues().imageUrl ? <img className="new-image" alt="addItem" src={getValues().imageUrl} /> : ""}
+                            {newImage || imageUrl ? <img className="new-image" alt="addItem" src={newImage || imageUrl} /> : ""}
                         </div>
-
-                        {showImageField ? (
-                            <div className="image-url-wrapper">
-                                <Field style="image-url" registerName="imageUrl" register={register} />
-                                <div className="set-image-btn" onClick={() => setShowImageField(false)}>OK</div>
-                            </div>
-                        ) : ""}
                     </div>
 
 

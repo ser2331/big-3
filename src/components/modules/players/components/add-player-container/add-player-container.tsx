@@ -7,20 +7,41 @@ import {playersSlice} from "../../PlayersSlice";
 import {teamsSlice} from "../../../teams/TeamsSlice";
 import {playersApiService} from "../../../../api/players/playersApiService";
 import {teamsApiService} from "../../../../api/teams/teamsApiService";
+import {baseUrl} from "../../../../api/apiService";
+import axios from "axios";
 import Field from "../../../../common/components/field";
-import AddItemImg from "../../../../assests/images/addItemImg.svg";
 import CustomButton from "../../../../common/components/custom-button";
 import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
 import SelectField from "../../../../common/components/select-field";
 import {FieldTypes} from "../../../../common/components/field/field";
+import ErrorMessage from "../../../../common/components/error-message";
 
 import "./add-player-container.scss";
-import ErrorMessage from "../../../../common/components/error-message";
 
 const AddPlayerContainer = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const [showImageField, setShowImageField] = useState(false);
+    const [avatar, setAvatar] = useState(null);
+    const newImage = avatar ? baseUrl + avatar : "";
+
+    const sendFile = React.useCallback(async (event: React.ChangeEvent) => {
+        const target= event.target as HTMLInputElement;
+        const file = target.files ? target.files[0] : "";
+        try {
+            const data = new FormData();
+            data.append("file", file);
+
+            await axios.post(baseUrl + "/api/Image/SaveImage", data, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => setAvatar(res.data));
+
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams, currentPage, itemsPerPage } = useAppSelector(state => state.teamsReducer);
@@ -46,7 +67,7 @@ const AddPlayerContainer = () => {
     const defaultValueTeams = teamOptions.find((i) => team === i.value);
     const defaultValueBirthday = birthday ? new Date(birthday).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10);
 
-    const {control, register, handleSubmit, getValues, formState: { errors }} = useForm({defaultValues: {
+    const {control, register, handleSubmit, formState: { errors }} = useForm({defaultValues: {
         name: name || "",
         position: defaultValuePosition || "",
         team: defaultValueTeams || null,
@@ -59,9 +80,9 @@ const AddPlayerContainer = () => {
 
     const submit = async (introducedData: IAddPlayerFormValidation) => {
         if (id) {
-            await editPlayer({...introducedData, token, id});
+            await editPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token, id});
         } else {
-            await addPlayer({...introducedData, token});
+            await addPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token});
         }
     };
 
@@ -107,22 +128,11 @@ const AddPlayerContainer = () => {
                 <div className="AddPlayerContainer__content-wrapper__content">
                     <div className="image">
                         <div className="image-wrapper" >
-                            <img
-                                alt="addItem"
-                                className="add-item"
-                                src={AddItemImg}
-                                onClick={() => setShowImageField(!showImageField)}
-                            />
+                            <label className="custom-file-upload" htmlFor="file-upload" />
+                            <input type="file" onChange={sendFile} id="file-upload" className="upload" />
 
-                            {getValues().avatarUrl ? <img className="new-image" alt="addItem" src={getValues().avatarUrl} /> : ""}
+                            {newImage || avatarUrl ? <img className="new-image" alt="addItem" src={newImage || avatarUrl} /> : ""}
                         </div>
-
-                        {showImageField ? (
-                            <div className="image-url-wrapper">
-                                <Field style="image-url" registerName="avatarUrl" register={register} />
-                                <div className="set-image-btn" onClick={() => setShowImageField(false)}>OK</div>
-                            </div>
-                        ) : ""}
                     </div>
 
                     <div className="form-wrapper">

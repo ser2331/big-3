@@ -65,12 +65,12 @@
             height: 261px;
           }
 
-          .new-image {
-            position: absolute;
-            z-index: 100;
+          .upload {
+            display: none;
           }
 
-          .add-item {
+          .custom-file-upload {
+            background: url("../../../../assests/images/addItemImg.svg") center no-repeat;
             cursor: pointer;
             z-index: 1000;
             @include media($mobile) {
@@ -78,35 +78,15 @@
               height: 40px;
             }
             @include media($desktop) {
-              width: auto;
-              height: auto;
+              width: 80px;
+              height: 80px;
             }
           }
-        }
-        .image-url-wrapper {
-          position: relative;
-          margin-top: 24px;
 
-          @include media($mobile) {
-            width: 185px;
-          }
-          @include media($desktop) {
-            width: auto;
-          }
-
-          .image-url {
-            padding-right: 40px;
-          }
-          .set-image-btn {
+          .new-image {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            color: var(--ui-lightest-red);
-            cursor: pointer;
-
-            &:hover {
-              color: var(--ui-red);
-            }
+            opacity: 0.5;
+            z-index: 100;
           }
         }
       }

@@ -19,7 +19,11 @@ export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware()
-            .concat(apiService.middleware, teamsApiService.middleware, playersApiService.middleware),
+            .concat(
+                apiService.middleware,
+                teamsApiService.middleware,
+                playersApiService.middleware,
+            ),
     });
 };
 
