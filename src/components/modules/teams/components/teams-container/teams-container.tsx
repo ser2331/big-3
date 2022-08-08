@@ -70,10 +70,10 @@ const TeamsContainer:FC = () => {
     }, [currentPage, itemsPerPage]);
 
     useEffect(() => {
-        if (searchTeam || !teams.length) {
+        if (searchTeam || !teams.length && currentPage !== 0) {
             handlePageClick({selected: 0});
         }
-    }, [searchTeam, teams]);
+    }, [searchTeam, teams, currentPage]);
 
     return (
         <div className="TeamsContainer">

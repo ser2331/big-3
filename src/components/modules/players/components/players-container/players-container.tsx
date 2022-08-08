@@ -128,7 +128,7 @@ const PlayersContainer:FC = () => {
             {!players.length && !playersError && !playersIsLoading  ? <EmptyItems isPlayersPage={true} namePage="players" /> : ""}
             {players.length && playersError && !playersIsLoading  ? <div> Что-то пошло не так...</div> : ""}
 
-            {players.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId}/> : ""}
+            {players.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId} /> : ""}
 
             <div className="TeamsContainer__footer-wrapper">
                 <ReactPaginate

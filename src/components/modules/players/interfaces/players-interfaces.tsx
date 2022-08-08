@@ -19,10 +19,10 @@ export interface IResPlayers {
 }
 
 export interface IGetPlayers {
-    name?: string;
+    name: string;
     teamIds?: number[];
     page: number;
-    pageSize?: number;
+    pageSize: number;
     token: string;
 }
 
