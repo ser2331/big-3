@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="added add file" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add hash router" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +105,7 @@
       <workItem from="1659649648676" duration="3779000" />
       <workItem from="1659699500618" duration="42899000" />
       <workItem from="1659880388926" duration="183000" />
-      <workItem from="1659957320400" duration="18015000" />
+      <workItem from="1659957320400" duration="18455000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -296,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659976307880</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="add hash router">
+      <created>1659976941193</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1659976941193</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +344,8 @@
     <MESSAGE value="add adaptive mobile to add player and add team pages" />
     <MESSAGE value="some fix" />
     <MESSAGE value="added add file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added add file" />
+    <MESSAGE value="add hash router" />
+    <option name="LAST_COMMIT_MESSAGE" value="add hash router" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
