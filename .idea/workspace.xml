@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="added add file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +52,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cars" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -70,11 +68,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\core\hooks" />
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api\images" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\components\navigation\mobile-naavigation" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\components" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\teams\components\players-items" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api\players" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api\storageService" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\players\components" />
@@ -107,6 +105,7 @@
       <workItem from="1659649648676" duration="3779000" />
       <workItem from="1659699500618" duration="42899000" />
       <workItem from="1659880388926" duration="183000" />
+      <workItem from="1659957320400" duration="18015000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -276,7 +275,28 @@
       <option name="project" value="LOCAL" />
       <updated>1659880295889</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="some fix">
+      <created>1659958289609</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1659958289609</updated>
+    </task>
+    <task id="LOCAL-00026" summary="added add file">
+      <created>1659972879146</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1659972879146</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added add file">
+      <created>1659976307880</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1659976307880</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +336,8 @@
     <MESSAGE value="add adaptive mobile to player-card and team-card pages" />
     <MESSAGE value="add adaptive mobile to add player and add team pages" />
     <MESSAGE value="some fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fix" />
+    <MESSAGE value="added add file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added add file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
