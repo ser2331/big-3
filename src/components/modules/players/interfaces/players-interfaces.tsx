@@ -20,7 +20,7 @@ export interface IResPlayers {
 
 export interface IGetPlayers {
     name: string;
-    teamIds?: number[];
+    teamIds?: (number | null)[];
     page: number;
     pageSize: number;
     token: string;
@@ -73,7 +73,7 @@ export interface IPlayersItems {
 
 export interface IPlayerItemProps {
     name: string;
-    team: number | null;
+    teamName?: string;
     image?: string;
     id: number | null;
     number: number | null;

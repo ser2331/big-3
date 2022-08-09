@@ -8,21 +8,23 @@ import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultPlayerImg from "../../../../assests/images/avatar.jpg";
 import { getAge } from "../../selectors";
+import ErrorMessage from "../../../../common/components/error-message";
 
 import "./player-card.scss";
-import ErrorMessage from "../../../../common/components/error-message";
 
 const PlayerCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
+    const { teams } = useAppSelector(state => state.teamsReducer);
     const { currentPlayer, playerId } = useAppSelector(state => state.playersReducer);
     const { setCurrentPlayer } = playersSlice.actions;
     const { name, birthday, height, weight, avatarUrl, number, position, team, id }: IPlayers = currentPlayer;
 
     const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({token, playerId});
     const [deletePlayer, {data, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
+    const teamName = teams?.find((t) => t.id === team);
 
     const editThisPlayer = () => {
         navigate("/players/addPlayer");
@@ -85,7 +87,7 @@ const PlayerCard = () => {
                 </div>
 
                 <div className="description-wrapper">
-                    {renderDescriptionLine("Position", position, "Team", team)}
+                    {renderDescriptionLine("Position", position, "Team", teamName?.name)}
                     {renderDescriptionLine("Height", height, "Weight", weight)}
                     {renderDescriptionLine("Age", getAge(birthday))}
                 </div>

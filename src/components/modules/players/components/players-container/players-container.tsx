@@ -29,7 +29,7 @@ const PlayersContainer:FC = () => {
     const { players, selectedTeams, itemsPerPage, searchPlayerName, pageCount, currentPage } = useAppSelector(state => state.playersReducer);
     const { setTeams } = teamsSlice.actions;
     const { setSearchPlayerName, setPlayerId, setCurrentPage, setPageCount, setPlayers, setSelectedTeam, setNumberItemsPerPage } = playersSlice.actions;
-    const options = teams?.reduce((acc: Array<ITeamsSelectOptions>, item: any) => [...acc, {value: item.id, label: item.name}], []);
+    const options = teams?.reduce<ITeamsSelectOptions[]>((acc: ITeamsSelectOptions[], item) => [...acc, {value: item.id, label: item.name}], []);
     const arrTeamId = selectedTeams?.length ? selectedTeams?.map((i: ITeamsSelectOptions) => i.value) : undefined;
 
     const {
@@ -71,7 +71,7 @@ const PlayersContainer:FC = () => {
     };
 
     useEffect(() => {
-        if (playersData && !playersError && teams) {
+        if (playersData && !playersError) {
             let countPages = Math.ceil(playersData.count / playersData.size);
             if (countPages <= 0) {
                 countPages = 1;
@@ -80,7 +80,7 @@ const PlayersContainer:FC = () => {
             dispatch(setPlayers(playersData.data));
             dispatch(setPageCount(countPages));
         }
-    }, [dispatch, playersData, playersError, teams]);
+    }, [dispatch, playersData, playersError]);
 
     useEffect(() => {
         if ( currentPage || itemsPerPage) {

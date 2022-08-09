@@ -14,8 +14,7 @@ const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
     const span = isMobile ? 12 : 8;
     const gutter = isMobile ? 16 : 24;
 
-    const Item:FC<IPlayerItemProps> = ({name, image, id, team, number}) => {
-        const teamName = teams.find((item: ITeams) => item.id === team);
+    const Item:FC<IPlayerItemProps> = ({name, image, id, teamName, number}) => {
 
         return (
             <div className="PlayerItem" onClick={() => setItemId(id)}>
@@ -28,7 +27,7 @@ const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
                         <div className="player-number">{`#${number}`}</div>
                     </div>
 
-                    <span className="team-name">{teamName?.name}</span>
+                    <span className="team-name">{teamName}</span>
                 </div>
             </div>
         );
@@ -37,17 +36,22 @@ const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
     return (
         <div className="PlayersItems">
             <Row gutter={[gutter, gutter]}>
-                {players?.map((item) => (
-                    <Col span={span} className="PlayersItems__item-wrapper" key={item.id}>
-                        <Item
-                            name={item.name}
-                            team={item.team}
-                            image={item.avatarUrl}
-                            id={item.id}
-                            number={item.number}
-                        />
-                    </Col>
-                ))}
+                {players?.map((item) => {
+                    const playerTeam = teams.find((t: ITeams) => t.id === item.team);
+                    const teamName = playerTeam?.name;
+
+                    return (
+                        <Col span={span} className="PlayersItems__item-wrapper" key={item.id}>
+                            <Item
+                                name={item.name}
+                                teamName={teamName}
+                                image={item.avatarUrl}
+                                id={item.id}
+                                number={item.number}
+                            />
+                        </Col>
+                    );
+                })}
             </Row>
         </div>
     );

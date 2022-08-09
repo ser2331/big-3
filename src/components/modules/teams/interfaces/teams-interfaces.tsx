@@ -54,6 +54,6 @@ export interface ITeamsItems {
 }
 
 export interface ITeamsSelectOptions {
-    label: string,
-    value: number
+    label: string;
+    value: number | null;
 }
