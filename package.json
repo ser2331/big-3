@@ -2,7 +2,7 @@
   "name": "big-3",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ser2331.github.io/big-3/",
+  "homepage": ".",
   "engines": {
     "node": "14.18.0",
     "npm": "6.14.15"
@@ -35,7 +35,7 @@
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11",
-    "gh-pages": "^4.0.0"
+    "serve": "^14.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
