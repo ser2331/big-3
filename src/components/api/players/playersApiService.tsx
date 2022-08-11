@@ -39,6 +39,14 @@ export const playersApiService = createApi({
                 }
             })
         }),
+        getPositions: build.query({
+            query: ({token}) => ({
+                url: "/api/Player/GetPositions",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+        }),
         addPlayer: build.mutation<IAddPlayer, IAddPlayerFormValidation>({
             query: ({ token, name, number, position, team, birthday, height, weight, avatarUrl }) => ({
                 url: "/api/Player/Add",

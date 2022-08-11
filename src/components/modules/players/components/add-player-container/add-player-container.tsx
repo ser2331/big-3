@@ -53,15 +53,12 @@ const AddPlayerContainer = () => {
     const [addPlayer, {data, error: addError}] = playersApiService.useAddPlayerMutation();
     const [editPlayer, {data: editData, error: editError}] = playersApiService.useEditPlayerMutation();
     const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
+    const { data: positionsData, error: positionsError } = playersApiService.useGetPositionsQuery({token});
 
-    const positionOptions = [
-        {label: "Center Forward", value: "Center Forward"},
-        {label: "Guard Forward", value: "Guard Forward"},
-        {label: "Forward", value: "Forward"},
-        {label: "Center", value: "Center"},
-        {label: "Guard", value: "Guard"},
-    ];
-    const defaultValuePosition = positionOptions.find((i) => position === i.value);
+    const positionOptions = (!positionsError && positionsData) && positionsData.reduce((acc: ITeamOptions[], p: string) => [
+        ...acc, {label: p.replace(/([A-Z])/g, " $1").trim(), value: p}
+    ], []);
+    const defaultValuePosition = positionOptions?.find((i: ITeamOptions) => position === i.value);
 
     const teamOptions = teams?.reduce<ITeamOptions[]>((acc: ITeamOptions[], team) => [...acc, {label: team.name, value: team.id}], []);
     const defaultValueTeams = teamOptions.find((i) => team === i.value);

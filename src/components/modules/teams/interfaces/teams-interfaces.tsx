@@ -10,7 +10,7 @@ export interface ITeams {
 
 export interface IGetTeams {
     name?: string;
-    page: number;
+    page?: number;
     pageSize?: number;
     token: string;
 }

@@ -3,12 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
+import { teamsApiService } from "../../../../api/teams/teamsApiService";
+import { teamsSlice } from "../../../teams/TeamsSlice";
 import { IPlayers } from "../../interfaces/players-interfaces";
 import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultPlayerImg from "../../../../assests/images/avatar.jpg";
 import { getAge } from "../../selectors";
 import ErrorMessage from "../../../../common/components/error-message";
+import {ITeams} from "../../../teams/interfaces/teams-interfaces";
 
 import "./player-card.scss";
 
@@ -17,14 +20,17 @@ const PlayerCard = () => {
     const navigate = useNavigate();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
-    const { teams } = useAppSelector(state => state.teamsReducer);
     const { currentPlayer, playerId } = useAppSelector(state => state.playersReducer);
     const { setCurrentPlayer } = playersSlice.actions;
+    const { setTeams } = teamsSlice.actions;
     const { name, birthday, height, weight, avatarUrl, number, position, team, id }: IPlayers = currentPlayer;
+    const { teams } = useAppSelector(state => state.teamsReducer);
 
+    const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
     const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({token, playerId});
     const [deletePlayer, {data, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
-    const teamName = teams?.find((t) => t.id === team);
+
+    const teamName = teams.find((item: ITeams) => item.id === team);
 
     const editThisPlayer = () => {
         navigate("/players/addPlayer");
@@ -47,6 +53,12 @@ const PlayerCard = () => {
             navigate("/players");
         }
     }, [dispatch, playerData, playerError, playerIsLoading]);
+
+    useEffect(() => {
+        if (teamsData && !teamsError) {
+            dispatch(setTeams(teamsData.data));
+        }
+    }, [dispatch, teamsData, teamsError]);
 
     useEffect(() => {
         if (data && !deleteError && !deleteIsLoading) {
