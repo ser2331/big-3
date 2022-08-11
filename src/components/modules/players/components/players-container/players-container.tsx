@@ -17,6 +17,7 @@ import EmptyItems from "../../../../common/components/empty-items";
 import Types from "../../../../types";
 
 import "./players-container.scss";
+import {useDebounce} from "../../../../common/hooks/debounce";
 
 const { optionsItemsPerPage } = Types;
 
@@ -32,11 +33,13 @@ const PlayersContainer:FC = () => {
     const options = teams?.reduce<ITeamsSelectOptions[]>((acc: ITeamsSelectOptions[], item) => [...acc, {value: item.id, label: item.name}], []);
     const arrTeamId = selectedTeams?.length ? selectedTeams?.map((i: ITeamsSelectOptions) => i.value) : undefined;
 
+    const debounced = useDebounce(searchPlayerName);
+
     const {
         data: teamsData,
         error: teamsError,
         refetch: teamsReFetch
-    } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
+    } = teamsApiService.useGetTeamsQuery({token});
 
     const animatedComponents = makeAnimated();
 
@@ -51,7 +54,9 @@ const PlayersContainer:FC = () => {
         error: playersError,
         isLoading: playersIsLoading,
         refetch: playersReFetch
-    } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: searchPlayerName, teamIds: arrTeamId});
+    } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced, teamIds: arrTeamId});
+
+    const missingCount = playersData && playersData.count <= 0 && !playersError;
 
     const getValueItemsPerPage = () => {
         return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
@@ -98,9 +103,13 @@ const PlayersContainer:FC = () => {
     return (
         <div className="PlayersContainer">
 
-            <div className="fields-wrapper">
+            {!missingCount && (<div className="fields-wrapper">
                 <div className="left-fields">
-                    <SearchField value={searchPlayerName} onChange={(val) => dispatch(setSearchPlayerName(val))} classNameWrapper="playersSearch" />
+                    <SearchField
+                        value={searchPlayerName}
+                        onChange={(val) => dispatch(setSearchPlayerName(val))}
+                        classNameWrapper="playersSearch"
+                    />
 
                     <Select
                         className="selector"
@@ -123,7 +132,7 @@ const PlayersContainer:FC = () => {
                         Add +
                     </CustomButton>
                 </div>
-            </div>
+            </div>)}
 
             {!players.length && playersIsLoading && !playersError ? <div>...Loading</div> : ""}
             {!players.length && !playersIsLoading && playersError ? <div>Error</div> : ""}
@@ -132,38 +141,40 @@ const PlayersContainer:FC = () => {
 
             {players.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId} /> : ""}
 
-            <div className="TeamsContainer__footer-wrapper">
-                <ReactPaginate
-                    nextLabel=">"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={3}
-                    marginPagesDisplayed={2}
-                    pageCount={pageCount}
-                    previousLabel="<"
-                    pageClassName="page-item"
-                    pageLinkClassName="page-link"
-                    previousClassName="page-item"
-                    previousLinkClassName="page-link"
-                    nextClassName="page-item"
-                    nextLinkClassName="page-link"
-                    breakLabel="..."
-                    breakClassName="page-item"
-                    breakLinkClassName="page-link"
-                    containerClassName="Pagination"
-                    activeClassName="active"
-                    renderOnZeroPageCount={undefined}
-                />
+            {!missingCount && (
+                <div className="TeamsContainer__footer-wrapper">
+                    <ReactPaginate
+                        nextLabel=">"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={3}
+                        marginPagesDisplayed={2}
+                        pageCount={pageCount}
+                        previousLabel="<"
+                        pageClassName="page-item"
+                        pageLinkClassName="page-link"
+                        previousClassName="page-item"
+                        previousLinkClassName="page-link"
+                        nextClassName="page-item"
+                        nextLinkClassName="page-link"
+                        breakLabel="..."
+                        breakClassName="page-item"
+                        breakLinkClassName="page-link"
+                        containerClassName="Pagination"
+                        activeClassName="active"
+                        renderOnZeroPageCount={undefined}
+                    />
 
-                <Select
-                    value={getValueItemsPerPage()}
-                    placeholder=""
-                    onChange={(newValue: any) => handleChange(newValue)}
-                    classNamePrefix="SelectorItemsPerPage"
-                    components={animatedComponents}
-                    defaultValue={[optionsItemsPerPage[1]]}
-                    options={optionsItemsPerPage}
-                />
-            </div>
+                    <Select
+                        value={getValueItemsPerPage()}
+                        placeholder=""
+                        onChange={(newValue: any) => handleChange(newValue)}
+                        classNamePrefix="SelectorItemsPerPage"
+                        components={animatedComponents}
+                        defaultValue={[optionsItemsPerPage[1]]}
+                        options={optionsItemsPerPage}
+                    />
+                </div>
+            )}
         </div>   
     );
 };

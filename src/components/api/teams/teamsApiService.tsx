@@ -78,7 +78,7 @@ export const teamsApiService = createApi({
             query: ({token, id}) => ({
                 url: "/api/Team/Delete",
                 method: "DELETE",
-                body: {
+                params: {
                     id
                 },
                 headers: {

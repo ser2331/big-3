@@ -31,7 +31,7 @@ const TeamCard = () => {
     const {
         data: playersData,
         error: playersError,
-    } = playersApiService.useGetPlayersQuery({token, page: 1, pageSize: 100, name: "", teamIds: newTeamId});
+    } = playersApiService.useGetPlayersQuery({token, teamIds: newTeamId});
 
     const [deleteTeam, {data, error: deleteError, isLoading: deleteIsLoading}] = teamsApiService.useDeleteTeamMutation();
 

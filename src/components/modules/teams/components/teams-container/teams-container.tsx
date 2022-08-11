@@ -14,25 +14,28 @@ import TeamsItems from "../teams-items";
 import EmptyItems from "../../../../common/components/empty-items";
 
 import "./teams-container.scss";
+import {useDebounce} from "../../../../common/hooks/debounce";
 
 const { optionsItemsPerPage } = Types;
 
 const TeamsContainer:FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const animatedComponents = makeAnimated();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams, itemsPerPage, pageCount, currentPage, searchTeam } = useAppSelector(state => state.teamsReducer);
     const { setNumberItemsPerPage, setTeams, setSearchTeam, setPageCount, setCurrentPage, setTeamId } = teamsSlice.actions;
+    const debounced = useDebounce(searchTeam);
 
     const {
         data: teamsData,
         error: teamsError,
         isLoading: teamsIsLoading,
         refetch: teamsReFetch,
-    } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage, name: searchTeam});
+    } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced});
 
-    const animatedComponents = makeAnimated();
+    const missingCount = teamsData && teamsData.count <= 0 && !teamsError;
 
     const getValueItemsPerPage = () => {
         return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
@@ -78,7 +81,12 @@ const TeamsContainer:FC = () => {
     return (
         <div className="TeamsContainer">
             <div className="fields-wrapper">
-                <SearchField value={searchTeam} onChange={(val) => dispatch(setSearchTeam(val))} className="teamSearch" />
+                { !missingCount && (
+                    <SearchField
+                        value={searchTeam}
+                        onChange={(val) => dispatch(setSearchTeam(val))}
+                        className="teamSearch"/>
+                )}
 
                 <CustomButton
                     type={ButtonTypes.button}
@@ -95,38 +103,40 @@ const TeamsContainer:FC = () => {
 
             {teams.length && !teamsError && !teamsIsLoading ? <TeamsItems setItemId={setItemId}/> : ""}
 
-            <div className="TeamsContainer__footer-wrapper">
-                <ReactPaginate
-                    nextLabel=">"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={3}
-                    marginPagesDisplayed={2}
-                    pageCount={pageCount}
-                    previousLabel="<"
-                    pageClassName="page-item"
-                    pageLinkClassName="page-link"
-                    previousClassName="page-item"
-                    previousLinkClassName="page-link"
-                    nextClassName="page-item"
-                    nextLinkClassName="page-link"
-                    breakLabel="..."
-                    breakClassName="page-item"
-                    breakLinkClassName="page-link"
-                    containerClassName="Pagination"
-                    activeClassName="active"
-                    renderOnZeroPageCount={undefined}
-                />
+            {!missingCount && (
+                <div className="TeamsContainer__footer-wrapper">
+                    <ReactPaginate
+                        nextLabel=">"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={3}
+                        marginPagesDisplayed={2}
+                        pageCount={pageCount}
+                        previousLabel="<"
+                        pageClassName="page-item"
+                        pageLinkClassName="page-link"
+                        previousClassName="page-item"
+                        previousLinkClassName="page-link"
+                        nextClassName="page-item"
+                        nextLinkClassName="page-link"
+                        breakLabel="..."
+                        breakClassName="page-item"
+                        breakLinkClassName="page-link"
+                        containerClassName="Pagination"
+                        activeClassName="active"
+                        renderOnZeroPageCount={undefined}
+                    />
 
-                <Select
-                    value={getValueItemsPerPage()}
-                    placeholder=""
-                    onChange={(newValue: any) => handleChange(newValue)}
-                    classNamePrefix="SelectorItemsPerPage"
-                    components={animatedComponents}
-                    defaultValue={[optionsItemsPerPage[1]]}
-                    options={optionsItemsPerPage}
-                />
-            </div>
+                    <Select
+                        value={getValueItemsPerPage()}
+                        placeholder=""
+                        onChange={(newValue: any) => handleChange(newValue)}
+                        classNamePrefix="SelectorItemsPerPage"
+                        components={animatedComponents}
+                        defaultValue={[optionsItemsPerPage[1]]}
+                        options={optionsItemsPerPage}
+                    />
+                </div>
+            )}
         </div>   
     ); 
 };

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="upstream">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_08_2022_16_25_[Default_Changelist]/defaultPlayerImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_08_2022_16_25_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_08_2022_16_25__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add get positions, some fix">
+      <change afterPath="$PROJECT_DIR$/src/components/common/hooks/debounce.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/add-player-container/add-player-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/add-player-container/add-player-container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/player-card/player-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/player-card/player-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +116,7 @@
       <workItem from="1659880388926" duration="183000" />
       <workItem from="1659957320400" duration="25286000" />
       <workItem from="1659991868711" duration="631000" />
-      <workItem from="1660219849881" duration="4258000" />
+      <workItem from="1660219849881" duration="7481000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -356,7 +356,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659985744584</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="add get positions, some fix">
+      <created>1660224524481</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1660224524481</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add get positions, some fix">
+      <created>1660224713020</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1660224713020</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +414,8 @@
     <MESSAGE value="add hash router" />
     <MESSAGE value="heroku" />
     <MESSAGE value="upstream" />
-    <option name="LAST_COMMIT_MESSAGE" value="upstream" />
+    <MESSAGE value="add get positions, some fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="add get positions, some fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

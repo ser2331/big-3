@@ -92,7 +92,7 @@ export const playersApiService = createApi({
             query: ({token, id}) => ({
                 url: "/api/Player/Delete",
                 method: "DELETE",
-                body: {
+                params: {
                     id
                 },
                 headers: {
