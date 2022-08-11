@@ -44,7 +44,7 @@ const AddPlayerContainer = () => {
     }, []);
 
     const { token } = useAppSelector(state => state.authorizationReducer);
-    const { teams, currentPage, itemsPerPage } = useAppSelector(state => state.teamsReducer);
+    const { teams } = useAppSelector(state => state.teamsReducer);
     const { currentPlayer } = useAppSelector(state => state.playersReducer);
     const { setTeams } = teamsSlice.actions;
     const { id, name, birthday, avatarUrl, height, weight, number, position, team }: IPlayers = currentPlayer;
@@ -52,7 +52,7 @@ const AddPlayerContainer = () => {
 
     const [addPlayer, {data, error: addError}] = playersApiService.useAddPlayerMutation();
     const [editPlayer, {data: editData, error: editError}] = playersApiService.useEditPlayerMutation();
-    const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage});
+    const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
     const { data: positionsData, error: positionsError } = playersApiService.useGetPositionsQuery({token});
 
     const positionOptions = (!positionsError && positionsData) && positionsData.reduce((acc: ITeamOptions[], p: string) => [
@@ -147,7 +147,7 @@ const AddPlayerContainer = () => {
                                 options={positionOptions}
                                 control={control}
                                 error={errors.position}
-                                isClearable={true}
+                                isClearable
                             />
                             <SelectField
                                 label="Team"
@@ -155,7 +155,7 @@ const AddPlayerContainer = () => {
                                 options={teamOptions}
                                 control={control}
                                 error={errors.team}
-                                isClearable={true}
+                                isClearable
                             />
                             <div className="fields-line">
                                 <Field

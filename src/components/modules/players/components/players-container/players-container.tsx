@@ -55,7 +55,7 @@ const PlayersContainer:FC = () => {
         refetch: playersReFetch
     } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced, teamIds: arrTeamId});
 
-    const missingCount = playersData && (playersData.count <= 0) && !playersError && !debounced.length;
+    const missingCount = playersData && (playersData.count <= 0) && !playersError && !debounced.length && !arrTeamId?.length;
 
     const getValueItemsPerPage = () => {
         return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
@@ -113,7 +113,6 @@ const PlayersContainer:FC = () => {
                     <Select
                         className="selector"
                         classNamePrefix="Multi-selector"
-                        closeMenuOnSelect={false}
                         components={animatedComponents}
                         isMulti
                         options={options}

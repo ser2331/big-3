@@ -34,7 +34,6 @@ const SelectField:FC<SearchFieldTypes> = ({ label, name, error, options, control
                         {...field}
                         isMulti={isMulti}
                         components={animatedComponents}
-                        closeMenuOnSelect={false}
                         classNamePrefix="Multi-selector"
                         options={options}
                         isClearable={isClearable}
