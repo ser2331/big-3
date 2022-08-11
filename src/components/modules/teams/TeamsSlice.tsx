@@ -27,7 +27,7 @@ const initialState: TeamsState = {
     pagination: {
         itemsPerPage: 6,
         pageCount: 1,
-        currentPage: 0,
+        currentPage: 1,
     },
     searchTeam: "",
     teamId: null,

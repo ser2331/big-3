@@ -29,7 +29,7 @@ const initialState: PlayersState = {
     pagination: {
         itemsPerPage: 6,
         pageCount: 1,
-        currentPage: 0,
+        currentPage: 1,
     },
     searchPlayerName: "",
     playerId: null,

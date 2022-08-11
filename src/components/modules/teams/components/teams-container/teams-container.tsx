@@ -124,7 +124,7 @@ const TeamsContainer:FC = () => {
                         breakLinkClassName="page-link"
                         containerClassName="Pagination"
                         activeClassName="active"
-                        renderOnZeroPageCount={undefined}
+                        forcePage={currentPage - 1}
                     />
 
                     <Select
