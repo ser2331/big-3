@@ -3,17 +3,10 @@ import classNames from "classnames";
 
 import "./field.scss";
 
-export enum FieldTypes {
-    number = "number",
-    text = "text",
-    password = "password",
-    date = "date",
-}
-
 interface FieldProps {
     error?: any;
     label?: string;
-    type?: FieldTypes;
+    type?: "number" | "text" | "password" | "date";
     register: any;
     registerName: string;
     property?: object;

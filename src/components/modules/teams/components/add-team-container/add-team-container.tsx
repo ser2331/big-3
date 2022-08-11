@@ -130,6 +130,7 @@ const AddTeamContainer = () => {
                                 label="Year of foundation"
                                 register={register}
                                 registerName="foundationYear"
+                                type="number"
                                 error={errors.foundationYear}
                                 property={{required: "enter foundation year"}}
                             />

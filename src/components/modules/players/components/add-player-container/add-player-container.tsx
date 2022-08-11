@@ -13,7 +13,6 @@ import Field from "../../../../common/components/field";
 import CustomButton from "../../../../common/components/custom-button";
 import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
 import SelectField from "../../../../common/components/select-field";
-import {FieldTypes} from "../../../../common/components/field/field";
 import ErrorMessage from "../../../../common/components/error-message";
 
 import "./add-player-container.scss";
@@ -162,6 +161,7 @@ const AddPlayerContainer = () => {
                                     label="Height (cm)"
                                     register={register}
                                     registerName="height"
+                                    type="number"
                                     error={errors.height}
                                     property={{required: "Enter height"}}
                                 />
@@ -169,6 +169,7 @@ const AddPlayerContainer = () => {
                                     label="Weight (kg)"
                                     register={register}
                                     registerName="weight"
+                                    type="number"
                                     error={errors.weight}
                                     property={{required: "Enter weight"}}
                                 />
@@ -180,13 +181,14 @@ const AddPlayerContainer = () => {
                                     register={register}
                                     registerName="birthday"
                                     error={errors.birthday}
-                                    type={FieldTypes.date}
+                                    type="date"
                                     property={{required: "Enter birthday"}}
                                 />
                                 <Field
                                     label="Number"
                                     register={register}
                                     registerName="number"
+                                    type="number"
                                     error={errors.number}
                                     property={{required: "Enter player number"}}
                                 />
