@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUserData } from "./interfaces/authorization-interfaces";
-import StorageService from "../../api/storageService/storage-service";
+import StorageService from "../../common/helpers/storageService/storage-service";
 import Types from "../../types";
 
 const { localStorage } = Types;

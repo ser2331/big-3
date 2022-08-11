@@ -3,10 +3,15 @@ import { Navigate, Outlet } from "react-router-dom";
 
 interface IAuthRoute {
     token: string;
+    isAuth?: boolean;
 }
 
-const AuthRoute = ({ token }: IAuthRoute) => {
-    return token ? <Outlet /> : <Navigate to="/" />;
+const AuthRoute = ({ token, isAuth = false }: IAuthRoute) => {
+    return !isAuth ? (
+        token ? <Outlet /> : <Navigate to="/" />
+    ) : (
+        token ? <Navigate to="/teams" /> : <Outlet />
+    );
 };
 
 export default AuthRoute;

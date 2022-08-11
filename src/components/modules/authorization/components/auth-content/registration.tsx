@@ -6,7 +6,7 @@ import { useAppDispatch } from "../../../../core/redux/redux";
 import { authorizationSlice } from "../../AuthorizationSlice";
 import { registrationSchema } from "../../helpers/yup-schems";
 import Field from "../../../../common/components/field";
-import { apiService } from "../../../../api/apiService";
+import { authService } from "../../../../api/authService/authService";
 import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import CustomCheckbox from "../../../../common/components/custom-checkbox";
@@ -17,7 +17,7 @@ import "./auth-wrapper.scss";
 const Registration = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const [getToken, {data, isError}] = apiService.useGetSignUpTokenMutation();
+    const [getToken, {data, isError}] = authService.useGetSignUpTokenMutation();
     const { setUserData, setErrorIndicator } = authorizationSlice.actions;
     const [accept, setAccept] = useState(false);
     const [errorAccept, setErrorAccept] = useState("");

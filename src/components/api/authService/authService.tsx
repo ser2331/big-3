@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { IGetToken, IUserData } from "../modules/authorization/interfaces/authorization-interfaces";
+import { IGetToken, IUserData } from "../../modules/authorization/interfaces/authorization-interfaces";
 
 export const baseUrl = "http://dev.trainee.dex-it.ru";
 
-export const apiService = createApi({
-    reducerPath: "apiService",
+export const authService = createApi({
+    reducerPath: "authService",
     baseQuery: fetchBaseQuery({baseUrl: baseUrl}),
     tagTypes: ["Teams"],
     endpoints: (build) => ({

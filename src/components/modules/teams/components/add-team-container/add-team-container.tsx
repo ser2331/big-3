@@ -10,7 +10,7 @@ import Field from "../../../../common/components/field";
 import CustomButton from "../../../../common/components/custom-button";
 import ErrorMessage from "../../../../common/components/error-message";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
-import { baseUrl } from "../../../../api/apiService";
+import { baseUrl } from "../../../../api/authService/authService";
 
 import "./add-team-container.scss";
 

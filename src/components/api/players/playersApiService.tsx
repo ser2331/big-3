@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { baseUrl } from "../apiService";
+import { baseUrl } from "../authService/authService";
 import {
     IAddPlayer, IAddPlayerFormValidation, IDeletePlayer,
     IGetPlayer,

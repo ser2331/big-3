@@ -7,7 +7,7 @@ import {playersSlice} from "../../PlayersSlice";
 import {teamsSlice} from "../../../teams/TeamsSlice";
 import {playersApiService} from "../../../../api/players/playersApiService";
 import {teamsApiService} from "../../../../api/teams/teamsApiService";
-import {baseUrl} from "../../../../api/apiService";
+import {baseUrl} from "../../../../api/authService/authService";
 import axios from "axios";
 import Field from "../../../../common/components/field";
 import CustomButton from "../../../../common/components/custom-button";

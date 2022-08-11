@@ -50,8 +50,12 @@ const App: FC = () => {
     return (
         <div className="App">
             <Routes>
-                <Route path="/" element={<LoginPage />} />
-                <Route path="/registration" element={<RegistrationPage />} />
+                <Route path='/' element={<AuthRoute token={token} isAuth={true} />}>
+                    <Route path="/" element={<LoginPage />} />
+                </Route>
+                <Route path='/' element={<AuthRoute token={token} isAuth={true} />}>
+                    <Route path="/registration" element={<RegistrationPage />} />
+                </Route>
 
                 <Route path='/' element={<AuthRoute token={token} />}>
                     <Route path='/teams' element={<TeamsPage/>}/>

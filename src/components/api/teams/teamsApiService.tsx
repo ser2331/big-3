@@ -7,7 +7,7 @@ import {
     IResTeams,
     ITeams,
 } from "../../modules/teams/interfaces/teams-interfaces";
-import { baseUrl } from "../apiService";
+import { baseUrl } from "../authService/authService";
 
 export const teamsApiService = createApi({
     reducerPath: "teamsApiService",
