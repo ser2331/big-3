@@ -15,15 +15,16 @@ import { ButtonTypes } from "../../../../common/components/custom-button/custom-
 import PlayersItems from "../players-items";
 import EmptyItems from "../../../../common/components/empty-items";
 import Types from "../../../../types";
+import { useDebounce } from "../../../../common/hooks/debounce";
 
 import "./players-container.scss";
-import {useDebounce} from "../../../../common/hooks/debounce";
 
 const { optionsItemsPerPage } = Types;
 
 const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const animatedComponents = makeAnimated();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
@@ -41,8 +42,6 @@ const PlayersContainer:FC = () => {
         refetch: teamsReFetch
     } = teamsApiService.useGetTeamsQuery({token});
 
-    const animatedComponents = makeAnimated();
-
     useEffect(() => {
         if (teamsData && !teamsError) {
             dispatch(setTeams(teamsData.data));
@@ -56,7 +55,7 @@ const PlayersContainer:FC = () => {
         refetch: playersReFetch
     } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced, teamIds: arrTeamId});
 
-    const missingCount = playersData && playersData.count <= 0 && !playersError;
+    const missingCount = playersData && (playersData.count <= 0) && !playersError && !debounced.length;
 
     const getValueItemsPerPage = () => {
         return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";

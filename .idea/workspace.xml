@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add get positions, some fix">
-      <change afterPath="$PROJECT_DIR$/src/components/common/hooks/debounce.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add debounce to search players and teams, add missing count">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/players-container/players-container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/team-card/team-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/teams-container/teams-container.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +110,7 @@
       <workItem from="1659880388926" duration="183000" />
       <workItem from="1659957320400" duration="25286000" />
       <workItem from="1659991868711" duration="631000" />
-      <workItem from="1660219849881" duration="7481000" />
+      <workItem from="1660219849881" duration="8311000" />
     </task>
     <task id="LOCAL-00001" summary="added project layout">
       <created>1659009687570</created>
@@ -370,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660224713020</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="add debounce to search players and teams, add missing count">
+      <created>1660228078137</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1660228078137</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +391,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added project layout" />
     <MESSAGE value="fix auth components" />
     <MESSAGE value="master upStream" />
     <MESSAGE value="add team card and player card" />
@@ -415,7 +415,8 @@
     <MESSAGE value="heroku" />
     <MESSAGE value="upstream" />
     <MESSAGE value="add get positions, some fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="add get positions, some fix" />
+    <MESSAGE value="add debounce to search players and teams, add missing count" />
+    <option name="LAST_COMMIT_MESSAGE" value="add debounce to search players and teams, add missing count" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

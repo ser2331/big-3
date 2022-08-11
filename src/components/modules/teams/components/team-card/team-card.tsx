@@ -174,7 +174,7 @@ const TeamCard = () => {
                         <div className="home-link" onClick={goHome}>Teams </div> / {name}
                     </span>
 
-                    {deleteError && <ErrorMessage message="Что-то пошло не так..." />}
+                    {deleteError && <ErrorMessage message="Нельзя удалить команду, в которой есть игроки..." />}
 
                     <div className="control">
                         <img alt="edit" src={editIcon} onClick={editThisTeam}/>

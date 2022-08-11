@@ -12,9 +12,9 @@ import CustomButton from "../../../../common/components/custom-button";
 import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import TeamsItems from "../teams-items";
 import EmptyItems from "../../../../common/components/empty-items";
+import { useDebounce } from "../../../../common/hooks/debounce";
 
 import "./teams-container.scss";
-import {useDebounce} from "../../../../common/hooks/debounce";
 
 const { optionsItemsPerPage } = Types;
 
@@ -35,7 +35,7 @@ const TeamsContainer:FC = () => {
         refetch: teamsReFetch,
     } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced});
 
-    const missingCount = teamsData && teamsData.count <= 0 && !teamsError;
+    const missingCount = teamsData && (teamsData.count <= 0) && !teamsError && !debounced.length;
 
     const getValueItemsPerPage = () => {
         return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
