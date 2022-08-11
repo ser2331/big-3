@@ -4,7 +4,9 @@
     padding: 0;
   }
   @include media($desktop) {
-    padding: 100px 327px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &__content {
     display: flex;
