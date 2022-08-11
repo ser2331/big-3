@@ -8,6 +8,12 @@ export interface ITeams {
     id: number | null;
 }
 
+export interface IPagination {
+    itemsPerPage: number;
+    pageCount: number;
+    currentPage: number;
+}
+
 export interface IGetTeams {
     name?: string;
     page?: number;

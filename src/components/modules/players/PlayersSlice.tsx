@@ -1,16 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { IPlayers } from "./interfaces/players-interfaces";
-import { ITeamsSelectOptions } from "../teams/interfaces/teams-interfaces";
+import { IPagination, ITeamsSelectOptions } from "../teams/interfaces/teams-interfaces";
 
 interface PlayersState {
     players: IPlayers[];
     currentPlayer: IPlayers;
-    itemsPerPage: number;
     playerId: number | null;
     selectedTeams: ITeamsSelectOptions[];
     searchPlayerName: string;
-    pageCount: number;
-    currentPage: number;
+    pagination: IPagination;
+
 }
 
 const initialState: PlayersState = {
@@ -27,11 +26,13 @@ const initialState: PlayersState = {
         team: null,
     },
     selectedTeams: [],
-    itemsPerPage: 6,
+    pagination: {
+        itemsPerPage: 6,
+        pageCount: 1,
+        currentPage: 0,
+    },
     searchPlayerName: "",
     playerId: null,
-    pageCount: 1,
-    currentPage: 1,
 };
 
 export const playersSlice = createSlice({
@@ -41,11 +42,8 @@ export const playersSlice = createSlice({
         setPlayers(state, action: PayloadAction<IPlayers[]>) {
             state.players = action.payload;
         },
-        setCurrentPage(state, action: PayloadAction<number>) {
-            state.currentPage = action.payload;
-        },
-        setPageCount(state, action: PayloadAction<number>) {
-            state.pageCount = action.payload;  
+        setPagination(state, action: PayloadAction<IPagination>) {
+            state.pagination = action.payload;
         },
         setCurrentPlayer(state, action: PayloadAction<IPlayers>) {
             state.currentPlayer = action.payload;
@@ -58,9 +56,6 @@ export const playersSlice = createSlice({
         },
         setSelectedTeam(state, action: PayloadAction<ITeamsSelectOptions[]>) {
             state.selectedTeams = action.payload;
-        },
-        setNumberItemsPerPage(state, action: PayloadAction<number>) {
-            state.itemsPerPage = action.payload;
         },
     }
 

@@ -24,9 +24,10 @@ const TeamsContainer:FC = () => {
     const animatedComponents = makeAnimated();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
-    const { teams, itemsPerPage, pageCount, currentPage, searchTeam } = useAppSelector(state => state.teamsReducer);
-    const { setNumberItemsPerPage, setTeams, setSearchTeam, setPageCount, setCurrentPage, setTeamId } = teamsSlice.actions;
+    const { teams, pagination, searchTeam } = useAppSelector(state => state.teamsReducer);
+    const { setTeams, setSearchTeam, setTeamId, setPagination } = teamsSlice.actions;
     const debounced = useDebounce(searchTeam);
+    const { itemsPerPage, pageCount, currentPage } = pagination;
 
     const {
         data: teamsData,
@@ -42,11 +43,11 @@ const TeamsContainer:FC = () => {
     };
 
     const handleChange = (newValue: {label: string, value: number} ) => {
-        dispatch(setNumberItemsPerPage(newValue.value));
+        dispatch(setPagination({ itemsPerPage: newValue.value, pageCount, currentPage}));
     };
 
     const handlePageClick = (event: { selected: number }) => {
-        dispatch(setCurrentPage(event.selected + 1));
+        dispatch(setPagination({ itemsPerPage, pageCount, currentPage: event.selected + 1}));
     };
 
     const setItemId = (id: number | null) => {
@@ -62,7 +63,7 @@ const TeamsContainer:FC = () => {
             }
 
             dispatch(setTeams(teamsData.data));
-            dispatch(setPageCount(countPages));
+            dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
         }
     }, [dispatch, teamsData, teamsError]);
 

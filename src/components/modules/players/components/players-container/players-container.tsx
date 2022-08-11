@@ -28,13 +28,14 @@ const PlayersContainer:FC = () => {
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
-    const { players, selectedTeams, itemsPerPage, searchPlayerName, pageCount, currentPage } = useAppSelector(state => state.playersReducer);
+    const { players, selectedTeams, searchPlayerName, pagination } = useAppSelector(state => state.playersReducer);
     const { setTeams } = teamsSlice.actions;
-    const { setSearchPlayerName, setPlayerId, setCurrentPage, setPageCount, setPlayers, setSelectedTeam, setNumberItemsPerPage } = playersSlice.actions;
+    const { setSearchPlayerName, setPlayerId, setPagination, setPlayers, setSelectedTeam } = playersSlice.actions;
     const options = teams?.reduce<ITeamsSelectOptions[]>((acc: ITeamsSelectOptions[], item) => [...acc, {value: item.id, label: item.name}], []);
     const arrTeamId = selectedTeams?.length ? selectedTeams?.map((i: ITeamsSelectOptions) => i.value) : undefined;
 
     const debounced = useDebounce(searchPlayerName);
+    const { itemsPerPage, pageCount, currentPage } = pagination;
 
     const {
         data: teamsData,
@@ -62,11 +63,11 @@ const PlayersContainer:FC = () => {
     };
 
     const handlePageClick = (event: { selected: number }) => {
-        dispatch(setCurrentPage(event.selected + 1));
+        dispatch(setPagination({ itemsPerPage, pageCount, currentPage: event.selected + 1}));
     };
 
     const handleChange = (newValue: {label: string, value: number} ) => {
-        dispatch(setNumberItemsPerPage(newValue.value));
+        dispatch(setPagination({ itemsPerPage: newValue.value, pageCount, currentPage}));
     };
 
     const setItemId = (id: number | null) => {
@@ -82,7 +83,7 @@ const PlayersContainer:FC = () => {
             }
 
             dispatch(setPlayers(playersData.data));
-            dispatch(setPageCount(countPages));
+            dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
         }
     }, [dispatch, playersData, playersError]);
 

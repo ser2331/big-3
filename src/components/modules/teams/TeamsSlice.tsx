@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { ITeams } from "./interfaces/teams-interfaces";
+import { IPagination, ITeams } from "./interfaces/teams-interfaces";
 import Types from "../../types";
 
 const  { appSizesMap } = Types;
@@ -7,11 +7,9 @@ const  { appSizesMap } = Types;
 export interface TeamsState {
     teams: ITeams[];
     currentTeam: ITeams;
-    itemsPerPage: number;
     searchTeam: string;
     teamId: number | null;
-    pageCount: number;
-    currentPage: number;
+    pagination: IPagination;
     showMobileMenu: boolean;
     isMobile: boolean;
 }
@@ -26,11 +24,13 @@ const initialState: TeamsState = {
         imageUrl: "",
         id: 0,
     },
-    itemsPerPage: 6,
+    pagination: {
+        itemsPerPage: 6,
+        pageCount: 1,
+        currentPage: 0,
+    },
     searchTeam: "",
     teamId: null,
-    pageCount: 1,
-    currentPage: 0,
     showMobileMenu: false,
     isMobile: appSizesMap.get("desktop").key,
 };
@@ -42,14 +42,8 @@ export const teamsSlice = createSlice({
         setTeams(state, action: PayloadAction<ITeams[]>) {
             state.teams = action.payload;
         },
-        setNumberItemsPerPage(state, action: PayloadAction<number>) {
-            state.itemsPerPage = action.payload;
-        },
-        setPageCount(state, action: PayloadAction<number>) {
-            state.pageCount = action.payload;
-        },
-        setCurrentPage(state, action: PayloadAction<number>) {
-            state.currentPage = action.payload;
+        setPagination(state, action: PayloadAction<IPagination>) {
+            state.pagination = action.payload;
         },
         setSearchTeam(state, action: PayloadAction<string>) {
             state.searchTeam = action.payload;
