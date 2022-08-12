@@ -11,10 +11,11 @@ import teamsRed from "../../../assests/images/teamsRed.svg";
 import players from "../../../assests/images/person_rounded.svg";
 import playersRed from "../../../assests/images/personRed.svg";
 import signOutIcon from "../../../assests/images/signOut.png";
+import StorageService from "../../helpers/storageService/storage-service";
 
 import "./navigation.scss";
 
-const { routingMap } = Types;
+const { routingMap, localStorage } = Types;
 
 const Navigation = () => {
     const dispatch = useAppDispatch();
@@ -29,6 +30,7 @@ const Navigation = () => {
     const isTeamsPage = location.pathname.includes(routingMap.get("teams").value);
 
     const signOut = () => {
+        StorageService.set(localStorage.token, "");
         dispatch(setUserData({name: "", avatarUrl: "", token: ""}));
     };
 

@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUserData } from "./interfaces/authorization-interfaces";
 import StorageService from "../../common/helpers/storageService/storage-service";
 import Types from "../../types";
+import { IUserData } from "./interfaces/authorization-interfaces";
 
 const { localStorage } = Types;
 
@@ -32,10 +32,6 @@ export const authorizationSlice = createSlice({
     initialState,
     reducers: {
         setUserData(state, action: PayloadAction<IUserData>) {
-            StorageService.set(localStorage.token, action.payload.token);
-            StorageService.set(localStorage.name, action.payload.name);
-            StorageService.set(localStorage.avatarUrl, action.payload.avatarUrl);
-
             state.name = action.payload.name;
             state.avatarUrl = action.payload.avatarUrl;
             state.token = action.payload.token;

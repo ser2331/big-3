@@ -6,19 +6,24 @@ import { useAppDispatch } from "../../../../core/redux/redux";
 import { authService } from "../../../../api/authService/authService";
 import { authorizationSlice } from "../../AuthorizationSlice";
 import { loginSchema } from "../../helpers/yup-schems";
+import StorageService from "../../../../common/helpers/storageService/storage-service";
 import Field from "../../../../common/components/field";
 import CustomButton from "../../../../common/components/custom-button";
 import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
 import { IGetToken } from "../../interfaces/authorization-interfaces";
+import Types from "../../../../types";
 
 import "./auth-wrapper.scss";
+
+const { localStorage } = Types;
 
 const Login: FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [getToken, {data, isError}] = authService.useGetSignInTokenMutation();
 
-    const { setUserData, setErrorIndicator } = authorizationSlice.actions;
+    const { setErrorIndicator } = authorizationSlice.actions;
+    const { setUserData } = authorizationSlice.actions;
 
     const formOptions = { resolver: yupResolver(loginSchema) };
     const {register, handleSubmit, formState: { errors }} = useForm(formOptions);
@@ -27,6 +32,10 @@ const Login: FC = () => {
         if (data && !isError) {
             dispatch(setErrorIndicator(isError));
             dispatch(setUserData(data));
+
+            StorageService.set(localStorage.token, data.token);
+            StorageService.set(localStorage.name, data.name);
+            StorageService.set(localStorage.avatarUrl, data.avatarUrl);
             navigate("teams");
         } else {
             dispatch(setErrorIndicator(isError));

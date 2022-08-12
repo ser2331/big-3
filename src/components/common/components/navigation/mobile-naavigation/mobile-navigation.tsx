@@ -13,10 +13,11 @@ import players from "../../../../assests/images/person_rounded.svg";
 import playersRed from "../../../../assests/images/personRed.svg";
 import signOutIcon from "../../../../assests/images/signOut.png";
 import userPhoto from "../../../../assests/images/profile.png";
+import StorageService from "../../../helpers/storageService/storage-service";
 
 import "./mobile-navigation.scss";
 
-const { routingMap } = Types;
+const { routingMap, localStorage } = Types;
 
 const MobileNavigation: FC = () => {
     const dispatch = useAppDispatch();
@@ -34,6 +35,7 @@ const MobileNavigation: FC = () => {
     const isTeamsPage = location.pathname.includes(routingMap.get("teams").value);
 
     const signOut = () => {
+        StorageService.set(localStorage.token, "");
         dispatch(setUserData({name: "", avatarUrl: "", token: ""}));
         dispatch(setShowMobileMenu(false));
     };
