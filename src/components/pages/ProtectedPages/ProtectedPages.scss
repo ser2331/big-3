@@ -1,0 +1,10 @@
+.ProtectedPages {
+  display: flex;
+  flex-direction: column;
+  background: var(--ui-lightest-grey1);
+
+  &__content {
+    display: flex;
+    height: max-content;
+  }
+}

@@ -1,0 +1,269 @@
+@charset "UTF-8";
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --ui-dark-grey: #303030;
+  --ui-grey: #707070;
+  --ui-light-grey: #9C9C9C;
+  --ui-lightest-grey: #D1D1D1;
+  --ui-lightest-grey1: #F6F6F6;
+  --ui-white: #FFFFFF;
+  --ui-dark-red: #C60E2E;
+  --ui-red: #E4163A;
+  --ui-light-red: #FF5761;
+  --ui-lightest-red: #FF768E;
+  --ui-blue: #344472;
+}
+
+:root {
+  --ui-dark-grey: #303030;
+  --ui-grey: #707070;
+  --ui-light-grey: #9C9C9C;
+  --ui-lightest-grey: #D1D1D1;
+  --ui-lightest-grey1: #F6F6F6;
+  --ui-white: #FFFFFF;
+  --ui-dark-red: #C60E2E;
+  --ui-red: #E4163A;
+  --ui-light-red: #FF5761;
+  --ui-lightest-red: #FF768E;
+  --ui-blue: #344472;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Light.eot");
+  src: local("Avenir Light"), local("Avenir-Light"), url("Avenir-Light.eot?#iefix") format("embedded-opentype"), url("Avenir-Light.woff2") format("woff2"), url("Avenir-Light.woff") format("woff"), url("Avenir-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Medium.eot");
+  src: local("Avenir Medium"), local("Avenir-Medium"), url("Avenir-Medium.eot?#iefix") format("embedded-opentype"), url("Avenir-Medium.woff2") format("woff2"), url("Avenir-Medium.woff") format("woff"), url("Avenir-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Heavy.eot");
+  src: local("Avenir Heavy"), local("Avenir-Heavy"), url("Avenir-Heavy.eot?#iefix") format("embedded-opentype"), url("Avenir-Heavy.woff2") format("woff2"), url("Avenir-Heavy.woff") format("woff"), url("Avenir-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+body {
+  font-family: "Museo Sans Cyrl 500", serif;
+  font-weight: 500;
+  min-height: 100%;
+}
+
+.Pagination {
+  display: flex;
+}
+@media (min-width: 375px) {
+  .Pagination .page-item {
+    font: 500 15px/24px "Avenir 500", sans-serif;
+  }
+}
+@media (min-width: 1440px) {
+  .Pagination .page-item {
+    font: 500 14px/24px "Avenir 500", sans-serif;
+  }
+}
+.Pagination .page-item .page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  color: var(--ui-grey);
+  cursor: pointer;
+  -webkit-user-select: none;
+}
+.Pagination .page-item.active .page-link {
+  background: var(--ui-red);
+  color: var(--ui-white);
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Light.eot");
+  src: local("Avenir Light"), local("Avenir-Light"), url("Avenir-Light.eot?#iefix") format("embedded-opentype"), url("Avenir-Light.woff2") format("woff2"), url("Avenir-Light.woff") format("woff"), url("Avenir-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Medium.eot");
+  src: local("Avenir Medium"), local("Avenir-Medium"), url("Avenir-Medium.eot?#iefix") format("embedded-opentype"), url("Avenir-Medium.woff2") format("woff2"), url("Avenir-Medium.woff") format("woff"), url("Avenir-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Heavy.eot");
+  src: local("Avenir Heavy"), local("Avenir-Heavy"), url("Avenir-Heavy.eot?#iefix") format("embedded-opentype"), url("Avenir-Heavy.woff2") format("woff2"), url("Avenir-Heavy.woff") format("woff"), url("Avenir-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+:root {
+  --ui-dark-grey: #303030;
+  --ui-grey: #707070;
+  --ui-light-grey: #9C9C9C;
+  --ui-lightest-grey: #D1D1D1;
+  --ui-lightest-grey1: #F6F6F6;
+  --ui-white: #FFFFFF;
+  --ui-dark-red: #C60E2E;
+  --ui-red: #E4163A;
+  --ui-light-red: #FF5761;
+  --ui-lightest-red: #FF768E;
+  --ui-blue: #344472;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Light.eot");
+  src: local("Avenir Light"), local("Avenir-Light"), url("Avenir-Light.eot?#iefix") format("embedded-opentype"), url("Avenir-Light.woff2") format("woff2"), url("Avenir-Light.woff") format("woff"), url("Avenir-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Medium.eot");
+  src: local("Avenir Medium"), local("Avenir-Medium"), url("Avenir-Medium.eot?#iefix") format("embedded-opentype"), url("Avenir-Medium.woff2") format("woff2"), url("Avenir-Medium.woff") format("woff"), url("Avenir-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Heavy.eot");
+  src: local("Avenir Heavy"), local("Avenir-Heavy"), url("Avenir-Heavy.eot?#iefix") format("embedded-opentype"), url("Avenir-Heavy.woff2") format("woff2"), url("Avenir-Heavy.woff") format("woff"), url("Avenir-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+.Header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background: var(--ui-white);
+  box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
+}
+@media (min-width: 375px) {
+  .Header {
+    justify-content: center;
+    padding: 14px 0;
+  }
+}
+@media (min-width: 768px) {
+  .Header {
+    justify-content: space-between;
+    padding: 0 51px;
+  }
+}
+@media (min-width: 375px) {
+  .Header__logo {
+    width: 137px;
+    height: 34px;
+  }
+}
+@media (min-width: 768px) {
+  .Header__logo {
+    width: 191px;
+    height: 48px;
+  }
+}
+@media (min-width: 375px) {
+  .Header__user-info-wrapper {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .Header__user-info-wrapper {
+    display: flex;
+    align-items: center;
+  }
+}
+.Header__user-info-wrapper .user-name {
+  margin-right: 20px;
+}
+
+/*# sourceMappingURL=Header.css.map */
