@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../../core/redux/redux";
 import { authorizationSlice } from "../../../modules/authorization/AuthorizationSlice";
 import { teamsSlice } from "../../../modules/teams/TeamsSlice";
 import { playersSlice } from "../../../modules/players/PlayersSlice";
+import { imageSlice } from "../../../api/images/ImagesApiService";
 import Types from "../../../types";
 import teams from "../../../assests/images/group-person-rounded.svg";
 import teamsRed from "../../../assests/images/teamsRed.svg";
@@ -17,14 +18,15 @@ import "./Navigation.scss";
 
 const { routingMap, localStorage } = Types;
 
+const { setImage } = imageSlice.actions;
+const { setUserData } = authorizationSlice.actions;
+const { setCurrentTeam, setTeamId } = teamsSlice.actions;
+const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
+
 export const Navigation = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-
-    const { setUserData } = authorizationSlice.actions;
-    const { setCurrentTeam, setTeamId } = teamsSlice.actions;
-    const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 
     const isPlayersPage = location.pathname.includes(routingMap.get("players").value);
     const isTeamsPage = location.pathname.includes(routingMap.get("teams").value);
@@ -44,6 +46,7 @@ export const Navigation = () => {
             id: null,
         }));
         dispatch(setTeamId(null));
+        dispatch(setImage(""));
         navigate("/teams");
     };
     
@@ -60,6 +63,7 @@ export const Navigation = () => {
             team: null,
         }));
         dispatch(setPlayerId(null));
+        dispatch(setImage(""));
         navigate("/players");
     };
 

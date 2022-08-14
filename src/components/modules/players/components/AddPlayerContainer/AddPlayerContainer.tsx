@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { IPlayers, ISubmitPlayer, ITeamOptions } from "../../interfaces/players-interfaces";
 import { playersSlice } from "../../PlayersSlice";
 import { teamsSlice } from "../../../teams/TeamsSlice";
+import { imageSlice } from "../../../../api/images/ImagesApiService";
 import { playersApiService } from "../../../../api/players/playersApiService";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { baseUrl } from "../../../../api/authService/authService";
@@ -16,6 +17,7 @@ import "./AddPlayerContainer.scss";
 
 const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 const { setTeams } = teamsSlice.actions;
+const { setImage } = imageSlice.actions;
 
 export const AddPlayerContainer = () => {
     const dispatch = useAppDispatch();
@@ -76,10 +78,8 @@ export const AddPlayerContainer = () => {
 
     const submit: SubmitHandler<ISubmitPlayer> = async (introducedData) => {
         if (id) {
-            console.log(introducedData);
             await editPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token, id});
         } else {
-            console.log(introducedData.team);
             await addPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token});
         }
     };
@@ -97,12 +97,13 @@ export const AddPlayerContainer = () => {
             team: null,
         }));
         dispatch(setPlayerId(null));
+        dispatch(setImage(""));
         navigate("/players");
     };
 
     useEffect(() => {
         if ((addPlayerData && !addPlayerError) || (editPlayerData && !editPlayerError)) {
-            navigate("/players");
+            goHome();
         }
     }, [addPlayerData, addPlayerError, editPlayerData, editPlayerError]);
 
@@ -124,7 +125,7 @@ export const AddPlayerContainer = () => {
                 </div>
 
                 <div className="AddPlayerContainer__content-wrapper__content">
-                    <AddImage imageUrl={avatarUrl} avatar={avatar} setAvatar={setAvatar} />
+                    <AddImage imageUrl={avatarUrl} avatar={newImage} setAvatar={setAvatar} />
 
                     <AddPlayerForm
                         register={register}

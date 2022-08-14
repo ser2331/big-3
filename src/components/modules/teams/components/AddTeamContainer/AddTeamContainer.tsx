@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { teamsSlice } from "../../TeamsSlice";
+import { imageSlice } from "../../../../api/images/ImagesApiService";
 import { AddTeamForm } from "../AddTeamForm/AddTeamForm";
 import { AddImage } from "../../../../common/components/AddImage/AddImage";
 import { ISubmitTeams, ITeams } from "../../interfaces/teams-interfaces";
@@ -13,6 +14,7 @@ import { baseUrl } from "../../../../api/authService/authService";
 import "./AddTeamContainer.scss";
 
 const { setCurrentTeam, setTeamId } = teamsSlice.actions;
+const { setImage } = imageSlice.actions;
 
 export const AddTeamContainer = () => {
     const dispatch = useAppDispatch();
@@ -53,12 +55,13 @@ export const AddTeamContainer = () => {
             id: null,
         }));
         dispatch(setTeamId(null));
+        dispatch(setImage(""));
         navigate("/teams");
     }, [dispatch, navigate]);
 
     useEffect(() => {
         if ((addTeamData && !addTeamError) || (editData && !editTeamError)) {
-            navigate("/teams");
+            goHome();
         }
     }, [addTeamData, addTeamError, editData, editTeamError]);
 
@@ -74,7 +77,7 @@ export const AddTeamContainer = () => {
                 </div>
 
                 <div className="AddTeamContainer__content-wrapper__content">
-                    <AddImage imageUrl={imageUrl} avatar={avatar} setAvatar={setAvatar} />
+                    <AddImage imageUrl={imageUrl} avatar={newImage} setAvatar={setAvatar} />
 
                     <AddTeamForm register={register} handleSubmit={handleSubmit} errors={errors} submit={submit} />
                 </div>

@@ -1,7 +1,6 @@
-import React, { Dispatch, FC, SetStateAction, useCallback, useEffect } from "react";
-import { baseUrl } from "../../../api/authService/authService";
-import { useAppSelector } from "../../../core/redux/redux";
-import { imagesApiService } from "../../../api/images/imagesApiService";
+import React, {Dispatch, FC, SetStateAction, useCallback, useEffect} from "react";
+import { useAppDispatch, useAppSelector } from "../../../core/redux/redux";
+import { setImageToServer } from "../../../api/images/ImagesApiService";
 
 import "./AddImage.scss";
 
@@ -12,49 +11,23 @@ interface IAddTeamImage {
 }
 
 export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
-    const newImage = avatar ? baseUrl + avatar : "";
+    const dispatch = useAppDispatch();
     const { token } = useAppSelector(state => state.authorizationReducer);
-    
-    const [setImageToServer, {data: imageData, error: imageError}] = imagesApiService.useSetImageToServerMutation();
+    const { image } = useAppSelector(state => state.imageReducer);
 
-    const sendFile = useCallback( async (event: React.ChangeEvent) => {
+    const sendFile = useCallback(async (event: React.ChangeEvent) => {
         const target= event.target as HTMLInputElement;
         const file = target.files ? target.files[0] : "";
-        try {
-            const data = new FormData();
-            data.append("file", file);
-            console.log(data);
-
-            await setImageToServer({token, data}).unwrap();
-
-        } catch (err) {
-            console.log(err);
-        }
+        const data = new FormData();
+        data.append("file", file);
+        dispatch(setImageToServer({token, data}));
     }, []);
 
     useEffect(() => {
-        if (imageData && !imageError) {
-            setAvatar(imageData);
+        if (image) {
+            setAvatar(image);
         }
-    }, [imageData, imageError]);
-    // const sendFile = React.useCallback(async (event: React.ChangeEvent) => {
-    //     const target= event.target as HTMLInputElement;
-    //     const file = target.files ? target.files[0] : "";
-    //     try {
-    //         const data = new FormData();
-    //         data.append("file", file);
-    //
-    //         await axios.post(baseUrl + "/api/Image/SaveImage", data, {
-    //             headers: {
-    //                 "Authorization": `Bearer ${token}`
-    //             }
-    //         })
-    //             .then(res => setAvatar(res.data));
-    //
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }, []);
+    }, [image]);
 
     return (
         <div className="AddImage">
@@ -62,7 +35,7 @@ export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
                 <label className="custom-file-upload" htmlFor="file-upload" />
                 <input type="file" onChange={sendFile} id="file-upload" className="upload" />
 
-                {newImage || imageUrl ? <img className="new-image" alt="addItem" src={newImage || imageUrl} /> : ""}
+                {avatar || imageUrl ? <img className="new-image" alt="addItem" src={avatar || imageUrl} /> : ""}
             </div>
         </div>
     );

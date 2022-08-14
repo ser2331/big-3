@@ -3,10 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import { Drawer } from "antd";
 import Types from "../../../../types";
-import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
-import {authorizationSlice} from "../../../../modules/authorization/AuthorizationSlice";
-import {playersSlice} from "../../../../modules/players/PlayersSlice";
-import {teamsSlice} from "../../../../modules/teams/TeamsSlice";
+import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
+import { authorizationSlice } from "../../../../modules/authorization/AuthorizationSlice";
+import { playersSlice } from "../../../../modules/players/PlayersSlice";
+import { teamsSlice } from "../../../../modules/teams/TeamsSlice";
+import { imageSlice } from "../../../../api/images/ImagesApiService";
 import teams from "../../../../assests/images/group-person-rounded.svg";
 import teamsRed from "../../../../assests/images/teamsRed.svg";
 import players from "../../../../assests/images/person_rounded.svg";
@@ -19,6 +20,11 @@ import "./MobileNavigation.scss";
 
 const { routingMap, localStorage } = Types;
 
+const { setUserData } = authorizationSlice.actions;
+const { setCurrentTeam, setTeamId, setShowMobileMenu } = teamsSlice.actions;
+const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
+const { setImage } = imageSlice.actions;
+
 export const MobileNavigation: FC = () => {
     const dispatch = useAppDispatch();
     const location = useLocation();
@@ -26,10 +32,6 @@ export const MobileNavigation: FC = () => {
 
     const { showMobileMenu } = useAppSelector(state => state.teamsReducer);
     const { name, avatarUrl } = useAppSelector(state => state.authorizationReducer);
-
-    const { setUserData } = authorizationSlice.actions;
-    const { setCurrentTeam, setTeamId, setShowMobileMenu } = teamsSlice.actions;
-    const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 
     const isPlayersPage = location.pathname.includes(routingMap.get("players").value);
     const isTeamsPage = location.pathname.includes(routingMap.get("teams").value);
@@ -50,6 +52,7 @@ export const MobileNavigation: FC = () => {
             id: null,
         }));
         dispatch(setTeamId(null));
+        dispatch(setImage(""));
         navigate("/teams");
     };
 
@@ -66,6 +69,7 @@ export const MobileNavigation: FC = () => {
             team: null,
         }));
         dispatch(setPlayerId(null));
+        dispatch(setImage(""));
         navigate("/players");
     };
 

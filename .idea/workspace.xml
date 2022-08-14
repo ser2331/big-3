@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/api/images/imagesApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/images/ImagesApiService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/core/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/core/redux/store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,14 +118,7 @@
       <workItem from="1660235214946" duration="8400000" />
       <workItem from="1660300739708" duration="9743000" />
       <workItem from="1660462144450" duration="22324000" />
-      <workItem from="1660484999029" duration="13553000" />
-    </task>
-    <task id="LOCAL-00002" summary="fix auth components">
-      <created>1659010081846</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1659010081846</updated>
+      <workItem from="1660484999029" duration="24686000" />
     </task>
     <task id="LOCAL-00003" summary="master upStream">
       <created>1659285026376</created>
@@ -461,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660501542555</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="refactor">
+      <created>1660502825865</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1660502825865</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
