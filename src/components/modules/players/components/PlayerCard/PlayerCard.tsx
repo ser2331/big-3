@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
@@ -15,32 +15,34 @@ import {ITeams} from "../../../teams/interfaces/teams-interfaces";
 
 import "./PlayerCard.scss";
 
+const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
+const { setTeams } = teamsSlice.actions;
+
 export const PlayerCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentPlayer, playerId } = useAppSelector(state => state.playersReducer);
-    const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
-    const { setTeams } = teamsSlice.actions;
-    const { name, birthday, height, weight, avatarUrl, number, position, team, id }: IPlayers = currentPlayer;
     const { teams } = useAppSelector(state => state.teamsReducer);
+
+    const { name, birthday, height, weight, avatarUrl, number, position, team, id }: IPlayers = currentPlayer;
 
     const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
     const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({token, playerId});
     const [deletePlayer, {data, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
 
-    const teamName = teams.find((item: ITeams) => item.id === team);
+    const teamName = useMemo(() => teams.find((item: ITeams) => item.id === team), [team]);
 
-    const editThisPlayer = () => {
+    const editThisPlayer = useCallback(() => {
         navigate("/players/addPlayer");
-    };
+    }, [navigate]);
 
     const deleteThisPlayer = () => {
         deletePlayer({token, id});
     };
 
-    const goHome = () => {
+    const goHome = useCallback(() => {
         dispatch(setCurrentPlayer({
             id: null,
             name: "",
@@ -54,7 +56,7 @@ export const PlayerCard = () => {
         }));
         dispatch(setPlayerId(null));
         navigate("/players");
-    };
+    }, [dispatch, navigate]);
 
     useEffect(() => {
         refetch();
@@ -66,7 +68,7 @@ export const PlayerCard = () => {
         }
 
         if (!playerData && !playerIsLoading) {
-            navigate("/players");
+            goHome();
         }
     }, [dispatch, playerData, playerError, playerIsLoading]);
 
@@ -78,7 +80,7 @@ export const PlayerCard = () => {
 
     useEffect(() => {
         if (data && !deleteError && !deleteIsLoading) {
-            navigate("/players");
+            goHome();
         }
     }, [data, deleteError, deleteIsLoading]);
 

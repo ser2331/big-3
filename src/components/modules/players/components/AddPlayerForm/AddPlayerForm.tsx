@@ -23,81 +23,79 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
     errors, submit,
     positionOptions,
     teamOptions, control
-}) => {
-    return (
-        <div className="AddPlayerForm">
-            <form className="form" onSubmit={handleSubmit(submit)}>
+}) => (
+    <div className="AddPlayerForm">
+        <form className="form" onSubmit={handleSubmit(submit)}>
+            <Field
+                label="Name"
+                register={register}
+                registerName="name"
+                error={errors.name}
+                property={{required: "Enter player name"}}
+            />
+            <SelectField
+                label="Position"
+                name="position"
+                options={positionOptions}
+                control={control}
+                error={errors.position}
+                isClearable
+            />
+            <SelectField
+                label="Team"
+                name="team"
+                options={teamOptions}
+                control={control}
+                error={errors.team}
+                isClearable
+            />
+            <div className="fields-line">
                 <Field
-                    label="Name"
+                    label="Height (cm)"
                     register={register}
-                    registerName="name"
-                    error={errors.name}
-                    property={{required: "Enter player name"}}
+                    registerName="height"
+                    type="number"
+                    error={errors.height}
+                    property={{required: "Enter height"}}
                 />
-                <SelectField
-                    label="Position"
-                    name="position"
-                    options={positionOptions}
-                    control={control}
-                    error={errors.position}
-                    isClearable
+                <Field
+                    label="Weight (kg)"
+                    register={register}
+                    registerName="weight"
+                    type="number"
+                    error={errors.weight}
+                    property={{required: "Enter weight"}}
                 />
-                <SelectField
-                    label="Team"
-                    name="team"
-                    options={teamOptions}
-                    control={control}
-                    error={errors.team}
-                    isClearable
+            </div>
+
+            <div className="fields-line">
+                <Field
+                    label="Birthday"
+                    register={register}
+                    registerName="birthday"
+                    error={errors.birthday}
+                    type="date"
+                    property={{required: "Enter birthday"}}
                 />
-                <div className="fields-line">
-                    <Field
-                        label="Height (cm)"
-                        register={register}
-                        registerName="height"
-                        type="number"
-                        error={errors.height}
-                        property={{required: "Enter height"}}
-                    />
-                    <Field
-                        label="Weight (kg)"
-                        register={register}
-                        registerName="weight"
-                        type="number"
-                        error={errors.weight}
-                        property={{required: "Enter weight"}}
-                    />
-                </div>
+                <Field
+                    label="Number"
+                    register={register}
+                    registerName="number"
+                    type="number"
+                    error={errors.number}
+                    property={{required: "Enter player number"}}
+                />
+            </div>
 
-                <div className="fields-line">
-                    <Field
-                        label="Birthday"
-                        register={register}
-                        registerName="birthday"
-                        error={errors.birthday}
-                        type="date"
-                        property={{required: "Enter birthday"}}
-                    />
-                    <Field
-                        label="Number"
-                        register={register}
-                        registerName="number"
-                        type="number"
-                        error={errors.number}
-                        property={{required: "Enter player number"}}
-                    />
-                </div>
+            <div className="form-control">
+                <CustomButton type="reset" className="reset-btn">
+                    Cancel
+                </CustomButton>
 
-                <div className="form-control">
-                    <CustomButton type="reset" className="reset-btn">
-                        Cancel
-                    </CustomButton>
-
-                    <CustomButton type="submit">
-                        Save
-                    </CustomButton>
-                </div>
-            </form>
-        </div>
-    );
-};
+                <CustomButton type="submit">
+                    Save
+                </CustomButton>
+            </div>
+        </form>
+    </div>
+);

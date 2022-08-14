@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { Col, Row } from "antd";
 import { useAppSelector } from "../../../../core/redux/redux";
 import fakeImage from "../../../../assests/images/avatar.jpg";
@@ -11,8 +11,8 @@ export const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
     const { teams, isMobile } = useAppSelector(state => state.teamsReducer);
     const { players } = useAppSelector(state => state.playersReducer);
 
-    const span = isMobile ? 12 : 8;
-    const gutter = isMobile ? 16 : 24;
+    const span = useMemo(() => isMobile ? 12 : 8, [isMobile]);
+    const gutter = useMemo(() => isMobile ? 16 : 24, [isMobile]);
 
     const Item:FC<IPlayerItemProps> = ({name, image, id, teamName, number}) => {
 

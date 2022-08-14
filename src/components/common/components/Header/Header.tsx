@@ -7,11 +7,12 @@ import mobileMenu from "../../../assests/images/mobile-menu.png";
 
 import "./Header.scss";
 
+const { setShowMobileMenu } = teamsSlice.actions;
+
 export const Header = () => {
     const dispatch = useAppDispatch();
     const { name, avatarUrl } = useAppSelector(state => state.authorizationReducer);
     const { showMobileMenu } = useAppSelector(state => state.teamsReducer);
-    const { setShowMobileMenu } = teamsSlice.actions;
 
     const showMenu = () => {
         dispatch(setShowMobileMenu(!showMobileMenu));

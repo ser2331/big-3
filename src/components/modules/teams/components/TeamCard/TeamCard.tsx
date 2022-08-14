@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useNavigate } from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
@@ -15,19 +15,21 @@ import ErrorMessage from "../../../../common/components/error-message";
 
 import "./TeamCard.scss";
 
+const { setCurrentTeam, setTeamId } = teamsSlice.actions;
+const { setPlayers } = playersSlice.actions;
+
 export const TeamCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentTeam, teamId, isMobile } = useAppSelector(state => state.teamsReducer);
     const { players } = useAppSelector(state => state.playersReducer);
-    const { setCurrentTeam, setTeamId } = teamsSlice.actions;
-    const { setPlayers } = playersSlice.actions;
 
     const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
     const newTeamId = id ? [id] : undefined;
 
     const { data: teamData, error: teamError, isLoading: teamIsLoading, refetch } = teamsApiService.useGetTeamQuery({token, teamId});
+
     const {
         data: playersData,
         error: playersError,
@@ -35,15 +37,15 @@ export const TeamCard = () => {
 
     const [deleteTeam, {data, error: deleteError, isLoading: deleteIsLoading}] = teamsApiService.useDeleteTeamMutation();
 
-    const editThisTeam = () => {
+    const editThisTeam = useCallback(() => {
         navigate("/teams/addTeam");
-    };
+    }, [navigate]);
 
     const deleteThisTeam = () => {
         deleteTeam({token, id});
     };
     
-    const goHome = () => {
+    const goHome = useCallback(() => {
         dispatch(setCurrentTeam({
             name: "",
             foundationYear: null,
@@ -54,7 +56,7 @@ export const TeamCard = () => {
         }));
         dispatch(setTeamId(null));
         navigate("/teams");
-    };
+    }, [dispatch, navigate]);
 
     useEffect(() => {
         refetch();
@@ -65,7 +67,7 @@ export const TeamCard = () => {
             dispatch(setCurrentTeam(teamData));
         }
         if (!teamData && !teamIsLoading) {
-            navigate("/teams");
+            goHome();
         }
     }, [dispatch, teamData, teamError, teamIsLoading]);
 
@@ -77,7 +79,7 @@ export const TeamCard = () => {
 
     useEffect(() => {
         if (data && !deleteError && !deleteIsLoading) {
-            navigate("/teams");
+            goHome();
         }
     }, [data, deleteError, deleteIsLoading]);
 

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, {FC, useCallback, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
@@ -9,17 +9,21 @@ import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { teamsSlice } from "../../../teams/TeamsSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
 import { authorizationSlice } from "../../../authorization/AuthorizationSlice";
-import { ITeamsSelectOptions } from "../../../teams/interfaces/teams-interfaces";
 import { PlayersItems } from "../PlayersItems/PlayersItems";
 import SearchField from "../../../../common/components/search-field";
 import CustomButton from "../../../../common/components/custom-button";
 import EmptyItems from "../../../../common/components/empty-items";
 import Types from "../../../../types";
 import { useDebounce } from "../../../../common/hooks/debounce";
+import {getArrayTeamsId, getOptions} from "../../selectors";
 
 import "./PlayersContainer.scss";
 
 const { optionsItemsPerPage } = Types;
+
+const { setTokenError } = authorizationSlice.actions;
+const { setTeams } = teamsSlice.actions;
+const { setSearchPlayerName, setPlayerId, setPagination, setPlayers, setSelectedTeam } = playersSlice.actions;
 
 export const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
@@ -29,14 +33,11 @@ export const PlayersContainer:FC = () => {
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
     const { players, selectedTeams, searchPlayerName, pagination } = useAppSelector(state => state.playersReducer);
-    const { setTokenError } = authorizationSlice.actions;
-    const { setTeams } = teamsSlice.actions;
-    const { setSearchPlayerName, setPlayerId, setPagination, setPlayers, setSelectedTeam } = playersSlice.actions;
-    const options = teams?.reduce<ITeamsSelectOptions[]>((acc: ITeamsSelectOptions[], item) => [...acc, {value: item.id, label: item.name}], []);
-    const arrTeamId = selectedTeams?.length ? selectedTeams?.map((i: ITeamsSelectOptions) => i.value) : undefined;
-
-    const debounced = useDebounce(searchPlayerName);
     const { itemsPerPage, pageCount, currentPage } = pagination;
+
+    const options = getOptions(teams);
+    const selectedTeamsId = getArrayTeamsId(selectedTeams);
+    const debounced = useDebounce(searchPlayerName);
 
     const {
         data: teamsData,
@@ -55,26 +56,26 @@ export const PlayersContainer:FC = () => {
         error: playersError,
         isLoading: playersIsLoading,
         refetch: playersReFetch
-    } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced, teamIds: arrTeamId});
+    } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced, teamIds: selectedTeamsId});
 
-    const missingCount = playersData && (playersData.count <= 0) && !playersError && !debounced.length && !arrTeamId?.length;
+    const missingCount = playersData && (playersData.count <= 0) && !playersError && !debounced.length && !selectedTeamsId?.length;
 
-    const getValueItemsPerPage = () => {
+    const getValueItemsPerPage = useCallback(() => {
         return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
-    };
+    }, [itemsPerPage]);
 
     const handlePageClick = (event: { selected: number }) => {
         dispatch(setPagination({ itemsPerPage, pageCount, currentPage: event.selected + 1}));
     };
 
-    const handleChange = (newValue: {label: string, value: number} ) => {
+    const handleChange = useCallback((newValue: {label: string, value: number} ) => {
         dispatch(setPagination({ itemsPerPage: newValue.value, pageCount, currentPage}));
-    };
+    }, [dispatch]);
 
-    const setItemId = (id: number | null) => {
+    const setItemId = useCallback((id: number | null) => {
         dispatch(setPlayerId(id));
         navigate(`player:${id}`);
-    };
+    }, [dispatch]);
 
     useEffect(() => {
         if (playersData && !playersError) {

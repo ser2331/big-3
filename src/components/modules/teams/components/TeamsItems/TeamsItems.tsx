@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { useAppSelector } from "../../../../core/redux/redux";
 import { Col, Row } from "antd";
 import { ITeamItemProps, ITeams, ITeamsItems } from "../../interfaces/teams-interfaces";
@@ -10,8 +10,8 @@ export const TeamsItems:FC<ITeamsItems> = ({ setItemId } ) => {
 
     const { teams, isMobile } = useAppSelector(state => state.teamsReducer);
 
-    const span = isMobile ? 12 : 8;
-    const gutter = isMobile ? 16 : 24;
+    const span = useMemo(() => isMobile ? 12 : 8, [isMobile]);
+    const gutter = useMemo(() => isMobile ? 16 : 24, [isMobile]);
 
     const Item:FC<ITeamItemProps> = ({name, foundationYear, image, id}) =>  (
         <div className="TeamItem" onClick={() => setItemId(id)}>

@@ -9,14 +9,15 @@ import Types from "../types";
 
 import "./App.scss";
 
-const { appSizesMap, localStorage } = Types;
+const { appSizesMap, localStorage } = Types
+;
+const { setIsMobile } = teamsSlice.actions;
+const { setUserData, setTokenError } = authorizationSlice.actions;
 
 export const App: FC = () => {
     const dispatch = useAppDispatch();
     const { token, tokenError } = useAppSelector( state => state.authorizationReducer);
     const { showMobileMenu } = useAppSelector(state => state.teamsReducer);
-    const { setIsMobile } = teamsSlice.actions;
-    const { setUserData, setTokenError } = authorizationSlice.actions;
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

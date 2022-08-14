@@ -1,3 +1,5 @@
+import { ITeams, ITeamsSelectOptions } from "../teams/interfaces/teams-interfaces";
+
 export const getAge = (dateString: string) => {
     const today = new Date();
     const birthDate = new Date(dateString);
@@ -17,4 +19,16 @@ export const getAge = (dateString: string) => {
     }
 
     return age ? age : m;
+};
+
+export const getOptions = (arr: ITeams[]) => {
+    if (arr) {
+        return arr?.reduce<ITeamsSelectOptions[]>((acc: ITeamsSelectOptions[], item) => [...acc, {value: item.id, label: item.name}], []);
+    }
+};
+
+export const getArrayTeamsId = (selectedArray: ITeamsSelectOptions[]) => {
+    if (selectedArray.length) {
+        return selectedArray?.map((i: ITeamsSelectOptions) => i.value);
+    }
 };

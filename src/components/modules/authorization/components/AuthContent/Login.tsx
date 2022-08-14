@@ -16,12 +16,12 @@ import "./AuthWrapper.scss";
 
 const { localStorage } = Types;
 
+const { setErrorIndicator, setUserData } = authorizationSlice.actions;
+
 const Login: FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [getToken, {data, isError}] = authService.useGetSignInTokenMutation();
-
-    const { setErrorIndicator, setUserData } = authorizationSlice.actions;
 
     const formOptions = { resolver: yupResolver(loginSchema) };
     const {register, handleSubmit, formState: { errors }} = useForm<IGetToken>(formOptions);

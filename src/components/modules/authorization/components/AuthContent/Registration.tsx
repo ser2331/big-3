@@ -17,11 +17,12 @@ import "./AuthWrapper.scss";
 
 const { localStorage } = Types;
 
+const { setErrorIndicator, setUserData } = authorizationSlice.actions;
+
 const Registration = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [getToken, {data, isError}] = authService.useGetSignUpTokenMutation();
-    const { setErrorIndicator, setUserData } = authorizationSlice.actions;
 
     const [accept, setAccept] = useState(false);
     const [errorAccept, setErrorAccept] = useState("");

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
@@ -14,6 +14,9 @@ import ErrorMessage from "../../../../common/components/error-message";
 
 import "./AddPlayerContainer.scss";
 
+const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
+const { setTeams } = teamsSlice.actions;
+
 export const AddPlayerContainer = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -23,23 +26,42 @@ export const AddPlayerContainer = () => {
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
     const { currentPlayer } = useAppSelector(state => state.playersReducer);
-    const { setTeams } = teamsSlice.actions;
     const { id, name, birthday, avatarUrl, height, weight, number, position, team }: IPlayers = currentPlayer;
-    const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 
     const [addPlayer, {data: addPlayerData, error: addPlayerError}] = playersApiService.useAddPlayerMutation();
     const [editPlayer, {data: editPlayerData, error: editPlayerError}] = playersApiService.useEditPlayerMutation();
     const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
     const { data: positionsData, error: positionsError } = playersApiService.useGetPositionsQuery({token});
 
-    const positionOptions = (!positionsError && positionsData) && positionsData.reduce((acc: ITeamOptions[], p: string) => [
-        ...acc, {label: p.replace(/([A-Z])/g, " $1").trim(), value: p}
-    ], []);
-    const defaultValuePosition = positionOptions?.find((i: ITeamOptions) => position === i.value);
+    const positionOptions = useMemo(() => {
+        if (!positionsError && positionsData) {
+            return positionsData.reduce((acc: ITeamOptions[], p: string) => [...acc, {label: p.replace(/([A-Z])/g, " $1").trim(), value: p}], []);
+        }
+    }, [positionsError, positionsData]);
 
-    const teamOptions = teams?.reduce<ITeamOptions[]>((acc: ITeamOptions[], team) => [...acc, {label: team.name, value: team.id}], []);
-    const defaultValueTeams = teamOptions.find((i) => team === i.value);
-    const defaultValueBirthday = birthday ? new Date(birthday).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10);
+    const defaultValuePosition = useMemo(() => {
+        if (positionOptions?.length && position) {
+            return positionOptions.find((i: ITeamOptions) => position === i.value);
+        }
+    }, [positionOptions, position]);
+
+    const teamOptions = useMemo(() => {
+        if (teams) {
+            return teams.reduce<ITeamOptions[]>((acc: ITeamOptions[], t) => [...acc, {label: t.name, value: t.id}], []);
+        } else return [{label: "", value: ""}];
+    }, [teams]);
+
+    const defaultValueTeams = useMemo(() => {
+        if (teamOptions && team) {
+            return teamOptions.find((i) => team === i.value);
+        }
+    }, [teamOptions, team]);
+
+    const defaultValueBirthday = useMemo(() => {
+        if (birthday) {
+            return new Date(birthday).toISOString().slice(0, 10);
+        } else new Date().toISOString().slice(0, 10);
+    }, [birthday]);
 
     const {control, register, handleSubmit, formState: { errors }} = useForm<ISubmitPlayer>({defaultValues: {
         name: name || "",
@@ -54,8 +76,10 @@ export const AddPlayerContainer = () => {
 
     const submit: SubmitHandler<ISubmitPlayer> = async (introducedData) => {
         if (id) {
+            console.log(introducedData);
             await editPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token, id});
         } else {
+            console.log(introducedData.team);
             await addPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token});
         }
     };

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import ReactPaginate from "react-paginate";
@@ -18,6 +18,9 @@ import "./TeamsContainer.scss";
 
 const { optionsItemsPerPage } = Types;
 
+const { setTokenError } = authorizationSlice.actions;
+const { setTeams, setSearchTeam, setTeamId, setPagination } = teamsSlice.actions;
+
 export const TeamsContainer:FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -25,10 +28,9 @@ export const TeamsContainer:FC = () => {
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams, pagination, searchTeam } = useAppSelector(state => state.teamsReducer);
-    const { setTeams, setSearchTeam, setTeamId, setPagination } = teamsSlice.actions;
-    const { setTokenError } = authorizationSlice.actions;
-    const debounced = useDebounce(searchTeam);
     const { itemsPerPage, pageCount, currentPage } = pagination;
+
+    const debounced = useDebounce(searchTeam);
 
     const {
         data: teamsData,
@@ -39,22 +41,24 @@ export const TeamsContainer:FC = () => {
 
     const missingCount = teamsData && (teamsData.count <= 0) && !teamsError && !debounced.length;
 
-    const getValueItemsPerPage = () => {
-        return itemsPerPage ? optionsItemsPerPage.find((c) => c.value === itemsPerPage) : "";
-    };
+    const getValueItemsPerPage = useCallback(() => {
+        if (itemsPerPage) {
+            return optionsItemsPerPage.find((c) => c.value === itemsPerPage);
+        }
+    }, [itemsPerPage]);
 
-    const handleChange = (newValue: {label: string, value: number} ) => {
+    const handleChange = useCallback((newValue: {label: string, value: number} ) => {
         dispatch(setPagination({ itemsPerPage: newValue.value, pageCount, currentPage}));
-    };
+    }, []);
 
     const handlePageClick = (event: { selected: number }) => {
         dispatch(setPagination({ itemsPerPage, pageCount, currentPage: event.selected + 1}));
     };
 
-    const setItemId = (id: number | null) => {
+    const setItemId = useCallback((id: number | null) => {
         dispatch(setTeamId(id));
         navigate(`team:${id}`);
-    };
+    }, []);
 
     useEffect(() => {
         if (teamsData && !teamsError) {

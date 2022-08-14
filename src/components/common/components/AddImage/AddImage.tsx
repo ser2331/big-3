@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction, useEffect } from "react";
+import React, { Dispatch, FC, SetStateAction, useCallback, useEffect } from "react";
 import { baseUrl } from "../../../api/authService/authService";
 import { useAppSelector } from "../../../core/redux/redux";
 import { imagesApiService } from "../../../api/images/imagesApiService";
@@ -16,14 +16,8 @@ export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
     const { token } = useAppSelector(state => state.authorizationReducer);
     
     const [setImageToServer, {data: imageData, error: imageError}] = imagesApiService.useSetImageToServerMutation();
-    
-    useEffect(() => {
-        if (imageData && !imageError) {
-            setAvatar(imageData);
-        }
-    }, [imageData, imageError]);
 
-    const sendFile = React.useCallback( async (event: React.ChangeEvent) => {
+    const sendFile = useCallback( async (event: React.ChangeEvent) => {
         const target= event.target as HTMLInputElement;
         const file = target.files ? target.files[0] : "";
         try {
@@ -31,13 +25,18 @@ export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
             data.append("file", file);
             console.log(data);
 
-            await setImageToServer({token, data});
+            await setImageToServer({token, data}).unwrap();
 
         } catch (err) {
             console.log(err);
         }
     }, []);
 
+    useEffect(() => {
+        if (imageData && !imageError) {
+            setAvatar(imageData);
+        }
+    }, [imageData, imageError]);
     // const sendFile = React.useCallback(async (event: React.ChangeEvent) => {
     //     const target= event.target as HTMLInputElement;
     //     const file = target.files ? target.files[0] : "";
