@@ -1,18 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {useForm} from "react-hook-form";
-import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
-import {IAddPlayerFormValidation, IPlayers, ITeamOptions} from "../../interfaces/players-interfaces";
-import {playersSlice} from "../../PlayersSlice";
-import {teamsSlice} from "../../../teams/TeamsSlice";
-import {playersApiService} from "../../../../api/players/playersApiService";
-import {teamsApiService} from "../../../../api/teams/teamsApiService";
-import {baseUrl} from "../../../../api/authService/authService";
-import axios from "axios";
-import Field from "../../../../common/components/field";
-import CustomButton from "../../../../common/components/custom-button";
-import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
-import SelectField from "../../../../common/components/select-field";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
+import { IPlayers, ISubmitPlayer, ITeamOptions } from "../../interfaces/players-interfaces";
+import { playersSlice } from "../../PlayersSlice";
+import { teamsSlice } from "../../../teams/TeamsSlice";
+import { playersApiService } from "../../../../api/players/playersApiService";
+import { teamsApiService } from "../../../../api/teams/teamsApiService";
+import { baseUrl } from "../../../../api/authService/authService";
+import { AddImage } from "../../../../common/components/AddImage/AddImage";
+import { AddPlayerForm } from "../AddPlayerForm/AddPlayerForm";
 import ErrorMessage from "../../../../common/components/error-message";
 
 import "./AddPlayerContainer.scss";
@@ -20,27 +17,8 @@ import "./AddPlayerContainer.scss";
 export const AddPlayerContainer = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const [avatar, setAvatar] = useState(null);
+    const [avatar, setAvatar] = useState("");
     const newImage = avatar ? baseUrl + avatar : "";
-
-    const sendFile = React.useCallback(async (event: React.ChangeEvent) => {
-        const target= event.target as HTMLInputElement;
-        const file = target.files ? target.files[0] : "";
-        try {
-            const data = new FormData();
-            data.append("file", file);
-
-            await axios.post(baseUrl + "/api/Image/SaveImage", data, {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            })
-                .then(res => setAvatar(res.data));
-
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
@@ -63,7 +41,7 @@ export const AddPlayerContainer = () => {
     const defaultValueTeams = teamOptions.find((i) => team === i.value);
     const defaultValueBirthday = birthday ? new Date(birthday).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10);
 
-    const {control, register, handleSubmit, formState: { errors }} = useForm({defaultValues: {
+    const {control, register, handleSubmit, formState: { errors }} = useForm<ISubmitPlayer>({defaultValues: {
         name: name || "",
         position: defaultValuePosition || "",
         team: defaultValueTeams || null,
@@ -74,7 +52,7 @@ export const AddPlayerContainer = () => {
         avatarUrl: avatarUrl || "",
     }});
 
-    const submit = async (introducedData: IAddPlayerFormValidation) => {
+    const submit: SubmitHandler<ISubmitPlayer> = async (introducedData) => {
         if (id) {
             await editPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token, id});
         } else {
@@ -122,89 +100,17 @@ export const AddPlayerContainer = () => {
                 </div>
 
                 <div className="AddPlayerContainer__content-wrapper__content">
-                    <div className="image">
-                        <div className="image-wrapper" >
-                            <label className="custom-file-upload" htmlFor="file-upload" />
-                            <input type="file" onChange={sendFile} id="file-upload" className="upload" />
+                    <AddImage imageUrl={avatarUrl} avatar={avatar} setAvatar={setAvatar} />
 
-                            {newImage || avatarUrl ? <img className="new-image" alt="addItem" src={newImage || avatarUrl} /> : ""}
-                        </div>
-                    </div>
-
-                    <div className="form-wrapper">
-                        <form className="form" onSubmit={handleSubmit((introducedData: any) => submit(introducedData))}>
-                            <Field
-                                label="Name"
-                                register={register}
-                                registerName="name"
-                                error={errors.name}
-                                property={{required: "Enter player name"}}
-                            />
-                            <SelectField
-                                label="Position"
-                                name="position"
-                                options={positionOptions}
-                                control={control}
-                                error={errors.position}
-                                isClearable
-                            />
-                            <SelectField
-                                label="Team"
-                                name="team"
-                                options={teamOptions}
-                                control={control}
-                                error={errors.team}
-                                isClearable
-                            />
-                            <div className="fields-line">
-                                <Field
-                                    label="Height (cm)"
-                                    register={register}
-                                    registerName="height"
-                                    type="number"
-                                    error={errors.height}
-                                    property={{required: "Enter height"}}
-                                />
-                                <Field
-                                    label="Weight (kg)"
-                                    register={register}
-                                    registerName="weight"
-                                    type="number"
-                                    error={errors.weight}
-                                    property={{required: "Enter weight"}}
-                                />
-                            </div>
-
-                            <div className="fields-line">
-                                <Field
-                                    label="Birthday"
-                                    register={register}
-                                    registerName="birthday"
-                                    error={errors.birthday}
-                                    type="date"
-                                    property={{required: "Enter birthday"}}
-                                />
-                                <Field
-                                    label="Number"
-                                    register={register}
-                                    registerName="number"
-                                    type="number"
-                                    error={errors.number}
-                                    property={{required: "Enter player number"}}
-                                />
-                            </div>
-
-                            <div className="form-control">
-                                <CustomButton type={ButtonTypes.reset} className="reset-btn">
-                                    Cancel
-                                </CustomButton>
-
-                                <CustomButton type={ButtonTypes.submit}>
-                                    Save
-                                </CustomButton>
-                            </div>
-                        </form>
-                    </div>
+                    <AddPlayerForm
+                        register={register}
+                        submit={submit}
+                        handleSubmit={handleSubmit}
+                        errors={errors}
+                        control={control}
+                        positionOptions={positionOptions}
+                        teamOptions={teamOptions}
+                    />
                 </div>
             </div>
         </div>

@@ -43,20 +43,32 @@ export interface IAddPlayer {
     id?: number;
     token: string;
 }
-export interface IAddPlayerFormValidation {
+
+export interface ISubmitPlayer {
     name: string;
-    number: number;
     position: {
         label: string;
         value: string;
     };
-    team: {
+    team: ITeamOptions | null;
+    height: number | null;
+    weight: number | null;
+    birthday: string;
+    number: string | number;
+    avatarUrl: string;
+}
+
+export interface IAddPlayerFormValidation {
+    name: string;
+    position: {
         label: string;
         value: string;
     };
+    team: ITeamOptions | null;
+    height: number | null;
+    weight: number | null;
     birthday: string;
-    height: number;
-    weight: number;
+    number: string | number;
     avatarUrl: string;
     id?: number;
     token: string;

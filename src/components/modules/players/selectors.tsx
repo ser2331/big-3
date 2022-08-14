@@ -16,5 +16,5 @@ export const getAge = (dateString: string) => {
         }
     }
 
-    return age ? age + " г." : m + "м";
+    return age ? age : m;
 };

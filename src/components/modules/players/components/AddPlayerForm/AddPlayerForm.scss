@@ -1,0 +1,43 @@
+@import "src/components/assests/styles/index";
+
+.AddPlayerForm {
+  display: flex;
+  justify-content: center;
+  flex: 1 1;
+
+  .form {
+    @include media($mobile) {
+      width: 100%
+    }
+    @include media($desktop) {
+      width: 366px;
+    }
+
+    .fields-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .Field {
+      flex: 1 1;
+    }
+    .fields-line .Field:nth-child(1)  {
+      margin-right: 24px;
+    }
+
+    .form-control {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .reset-btn {
+        background: var(--ui-white);
+        border: 1px solid var(--ui-light-grey);
+        margin-right: 12px;
+        color: var(--ui-light-grey);
+      }
+    }
+  }
+}

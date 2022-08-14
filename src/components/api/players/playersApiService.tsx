@@ -47,7 +47,7 @@ export const playersApiService = createApi({
                 }
             })
         }),
-        addPlayer: build.mutation<IAddPlayer, IAddPlayerFormValidation>({
+        addPlayer: build.mutation<IPlayers, IAddPlayerFormValidation>({
             query: ({ token, name, number, position, team, birthday, height, weight, avatarUrl }) => ({
                 url: "/api/Player/Add",
                 method: "POST",
@@ -55,7 +55,7 @@ export const playersApiService = createApi({
                     name,
                     number,
                     position: position.value,
-                    team: team.value,
+                    team: team?.value,
                     birthday,
                     height,
                     weight,
@@ -75,7 +75,7 @@ export const playersApiService = createApi({
                     name,
                     number,
                     position: position.value,
-                    team: team.value,
+                    team: team?.value,
                     birthday,
                     height,
                     weight,

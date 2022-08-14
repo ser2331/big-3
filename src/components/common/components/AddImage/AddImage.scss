@@ -1,0 +1,48 @@
+@import "src/components/assests/styles/index";
+
+.AddImage {
+  &__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    opacity: 0.5;
+    border-radius: 10px;
+    background: var(--ui-light-grey);
+
+    @include media($mobile) {
+      width: 185px;
+      height: 144px;
+    }
+    @include media($desktop) {
+      width: 336px;
+      height: 261px;
+    }
+
+    .upload {
+      display: none;
+    }
+
+    .custom-file-upload {
+      background: url("../../../assests/images/addItemImg.svg") center no-repeat;
+      cursor: pointer;
+      z-index: 1000;
+      @include media($mobile) {
+        width: 40px;
+        height: 40px;
+        background-size: 40px;
+      }
+      @include media($desktop) {
+        width: 80px;
+        height: 80px;
+        background-size: 80px;
+      }
+    }
+
+    .new-image {
+      position: absolute;
+      opacity: 0.5;
+      z-index: 100;
+    }
+  }
+}

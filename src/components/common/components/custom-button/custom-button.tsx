@@ -3,17 +3,11 @@ import classNames from "classnames";
 
 import "./custom-button.scss";
 
-export enum ButtonTypes {
-    button = "button",
-    submit = "submit",
-    reset = "reset"
-}
-
 interface CustomButtonProps {
     disabled?: boolean,
     children: string,
     className?: string,
-    type: ButtonTypes,
+    type: "button" | "submit" | "reset",
     onClick?: () => void
 }
 

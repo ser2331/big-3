@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
-import { useForm } from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useAppDispatch } from "../../../../core/redux/redux";
 import { authorizationSlice } from "../../AuthorizationSlice";
@@ -9,9 +9,8 @@ import Field from "../../../../common/components/field";
 import { authService } from "../../../../api/authService/authService";
 import StorageService from "../../../../common/helpers/storageService/storage-service";
 import CustomButton from "../../../../common/components/custom-button";
-import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import CustomCheckbox from "../../../../common/components/custom-checkbox";
-import { IGetToken } from "../../interfaces/authorization-interfaces";
+import { IGetTokenRegistration } from "../../interfaces/authorization-interfaces";
 import Types from "../../../../types";
 
 import "./AuthWrapper.scss";
@@ -29,7 +28,7 @@ const Registration = () => {
 
     const formOptions = { resolver: yupResolver(registrationSchema) };
 
-    const {register, handleSubmit, formState: { errors }} = useForm(formOptions);
+    const {register, handleSubmit, formState: { errors }} = useForm<IGetTokenRegistration>(formOptions);
 
     useEffect(() => {
         if (!accept && !errors) {
@@ -51,14 +50,14 @@ const Registration = () => {
         }
     }, [data, isError]);
 
-    const submit = async (introducedData: IGetToken) => {
+    const submit: SubmitHandler<IGetTokenRegistration> = async (introducedData) => {
         await getToken(introducedData);
     };
 
     return(
         <div className="Registration Auth-wrapper">
             <h1 className="auth-title">Sign Up</h1>
-            <form onSubmit={handleSubmit((introducedData: any) => submit(introducedData))}>
+            <form onSubmit={handleSubmit(submit)}>
 
                 <Field
                     label="Name"
@@ -88,7 +87,7 @@ const Registration = () => {
                 <CustomCheckbox checked={accept} onChange={setAccept} error={errorAccept} />
 
                 <CustomButton
-                    type={ButtonTypes.submit}
+                    type="submit"
                     disabled={!accept}
                 >
                     Sign In

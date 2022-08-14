@@ -4,18 +4,17 @@ import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import ReactPaginate from "react-paginate";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import { authorizationSlice } from "../../../authorization/AuthorizationSlice";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { teamsSlice } from "../../TeamsSlice";
 import Types from "../../../../types";
 import { TeamsItems } from "../TeamsItems/TeamsItems";
 import SearchField from "../../../../common/components/search-field";
 import CustomButton from "../../../../common/components/custom-button";
-import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import EmptyItems from "../../../../common/components/empty-items";
 import { useDebounce } from "../../../../common/hooks/debounce";
 
 import "./TeamsContainer.scss";
-import {authorizationSlice} from "../../../authorization/AuthorizationSlice";
 
 const { optionsItemsPerPage } = Types;
 
@@ -94,7 +93,7 @@ export const TeamsContainer:FC = () => {
                 )}
 
                 <CustomButton
-                    type={ButtonTypes.button}
+                    type="button"
                     className="add-item"
                     onClick={() => navigate("addTeam")}
                 >

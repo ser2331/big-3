@@ -38,6 +38,14 @@ export interface IAddTeam {
     id?: number | null;
 }
 
+export interface ISubmitTeams{
+    name: string,
+    foundationYear: number | null;
+    division: string,
+    conference: string,
+    imageUrl: string,
+}
+
 export interface IDeleteTeam {
     token: string;
     id: number | null;

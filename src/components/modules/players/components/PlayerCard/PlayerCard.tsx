@@ -116,7 +116,7 @@ export const PlayerCard = () => {
 
                 <div className="description-wrapper">
                     {renderDescriptionLine("Position", position, "Team", teamName?.name)}
-                    {renderDescriptionLine("Height", height, "Weight", weight)}
+                    {renderDescriptionLine("Height", `${height} cm`, "Weight", `${weight} kg`)}
                     {renderDescriptionLine("Age", getAge(birthday))}
                 </div>
             </div>

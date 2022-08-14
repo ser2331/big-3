@@ -13,7 +13,6 @@ import { ITeamsSelectOptions } from "../../../teams/interfaces/teams-interfaces"
 import { PlayersItems } from "../PlayersItems/PlayersItems";
 import SearchField from "../../../../common/components/search-field";
 import CustomButton from "../../../../common/components/custom-button";
-import { ButtonTypes } from "../../../../common/components/custom-button/custom-button";
 import EmptyItems from "../../../../common/components/empty-items";
 import Types from "../../../../types";
 import { useDebounce } from "../../../../common/hooks/debounce";
@@ -128,7 +127,7 @@ export const PlayersContainer:FC = () => {
 
                 <div className="right-fields">
                     <CustomButton
-                        type={ButtonTypes.button}
+                        type="button"
                         className="add-item"
                         onClick={() => navigate("addPlayer")}
                     >

@@ -5,6 +5,7 @@ import authorizationReducer from "../../modules/authorization/AuthorizationSlice
 import { authService } from "../../api/authService/authService";
 import { teamsApiService } from "../../api/teams/teamsApiService";
 import { playersApiService } from "../../api/players/playersApiService";
+import { imagesApiService } from "../../api/images/imagesApiService";
 
 const rootReducer = combineReducers({
     playersReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     [authService.reducerPath]: authService.reducer,
     [teamsApiService.reducerPath]: teamsApiService.reducer,
     [playersApiService.reducerPath]: playersApiService.reducer,
+    [imagesApiService.reducerPath]: imagesApiService.reducer,
 });
 
 export const setupStore = () => {
@@ -23,6 +25,7 @@ export const setupStore = () => {
                 authService.middleware,
                 teamsApiService.middleware,
                 playersApiService.middleware,
+                imagesApiService.middleware,
             ),
     });
 };

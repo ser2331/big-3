@@ -1,6 +1,6 @@
 import React, {FC, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useAppDispatch } from "../../../../core/redux/redux";
 import { authService } from "../../../../api/authService/authService";
@@ -9,7 +9,6 @@ import { loginSchema } from "../../helpers/yup-schems";
 import StorageService from "../../../../common/helpers/storageService/storage-service";
 import Field from "../../../../common/components/field";
 import CustomButton from "../../../../common/components/custom-button";
-import {ButtonTypes} from "../../../../common/components/custom-button/custom-button";
 import { IGetToken } from "../../interfaces/authorization-interfaces";
 import Types from "../../../../types";
 
@@ -25,7 +24,7 @@ const Login: FC = () => {
     const { setErrorIndicator, setUserData } = authorizationSlice.actions;
 
     const formOptions = { resolver: yupResolver(loginSchema) };
-    const {register, handleSubmit, formState: { errors }} = useForm(formOptions);
+    const {register, handleSubmit, formState: { errors }} = useForm<IGetToken>(formOptions);
 
     useEffect(() => {
         if (data && !isError) {
@@ -41,14 +40,14 @@ const Login: FC = () => {
         }
     }, [data, isError]);
 
-    const submit = async (introducedData: IGetToken) => {
+    const submit: SubmitHandler<IGetToken> = async (introducedData) => {
         await getToken(introducedData);
     };
 
     return (
         <div className="Login Auth-wrapper">
             <h1 className="auth-title">Sign In</h1>
-            <form onSubmit={handleSubmit((introducedData: any) => submit(introducedData))}>
+            <form onSubmit={handleSubmit(submit)}>
                 <Field
                     label="Name"
                     register={register}
@@ -64,7 +63,7 @@ const Login: FC = () => {
                 />
 
                 <CustomButton
-                    type={ButtonTypes.submit}>
+                    type="submit">
                     Sign In
                 </CustomButton>
             </form>
