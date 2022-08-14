@@ -87,18 +87,18 @@ export const PlayerCard = () => {
     const renderDescriptionLine = (
         label?: string,
         value?: number | string | null,
-        label2?: string ,
+        label2?: string,
         value2?: number | string | null
     ) => {
         return (
             <div className="Description-line">
                 <div className="description-info">
-                    <span className="label">{label}</span>
-                    <span className="value">{value}</span>
+                    {label && <span className="label">{label}</span>}
+                    {value && <span className="value">{value}</span>}
                 </div>
                 <div className="description-info">
-                    <span className="label">{label2}</span>
-                    <span className="value">{value2}</span>
+                    {label2 && <span className="label">{label2}</span>}
+                    {value2 && <span className="value">{value2}</span>}
                 </div>
             </div>
         );
