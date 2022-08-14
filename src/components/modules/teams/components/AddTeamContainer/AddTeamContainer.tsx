@@ -39,8 +39,8 @@ export const AddTeamContainer = () => {
         }
     }, []);
 
-    const [addTeam, {data, isError}] = teamsApiService.useAddTeamMutation();
-    const [editTeam, {data: editData, error}] = teamsApiService.useEditTeamMutation();
+    const [addTeam, {data: addTeamData, error: addTeamError}] = teamsApiService.useAddTeamMutation();
+    const [editTeam, {data: editData, error: editTeamError}] = teamsApiService.useEditTeamMutation();
 
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentTeam } = useAppSelector(state => state.teamsReducer);
@@ -77,16 +77,16 @@ export const AddTeamContainer = () => {
     };
 
     useEffect(() => {
-        if ((data && !isError) || (editData && !error)) {
+        if ((addTeamData && !addTeamError) || (editData && !editTeamError)) {
             navigate("/teams");
         }
-    }, [data, isError, editData, error]);
+    }, [addTeamData, addTeamError, editData, editTeamError]);
 
     return (
         <div className="AddTeamContainer">
             <div className="AddTeamContainer__content-wrapper">
                 <div className="AddTeamContainer__content-wrapper__header">
-                    {isError ? <ErrorMessage message="Что-то пошло не так..." /> : ""}
+                    {addTeamError || editTeamError ? <ErrorMessage message="Что-то пошло не так..." /> : ""}
 
                     <span className="navigate-wrapper">
                         <div className="home-link" onClick={goHome}>Teams </div> / Add new team

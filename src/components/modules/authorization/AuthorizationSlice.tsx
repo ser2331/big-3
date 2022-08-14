@@ -1,7 +1,8 @@
-import {createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, SerializedError } from "@reduxjs/toolkit";
 import StorageService from "../../common/helpers/storageService/storage-service";
 import Types from "../../types";
 import { IUserData } from "./interfaces/authorization-interfaces";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query/fetchBaseQuery";
 
 const { localStorage } = Types;
 
@@ -16,6 +17,7 @@ interface AuthorizationState {
     avatarUrl: string;
     token: string;
     error: boolean;
+    tokenError: FetchBaseQueryError | SerializedError;
 }
 
 const initialState: AuthorizationState = {
@@ -25,6 +27,10 @@ const initialState: AuthorizationState = {
     avatarUrl: avatar || "",
     token: token || "",
     error: false,
+    tokenError:   {
+        status: 0,
+        data: undefined,
+    },
 };
 
 export const authorizationSlice = createSlice({
@@ -38,7 +44,10 @@ export const authorizationSlice = createSlice({
         },
         setErrorIndicator(state, action: PayloadAction<boolean>) {
             state.error = action.payload;
-        }
+        },
+        setTokenError(state, action: PayloadAction<FetchBaseQueryError | SerializedError>) {
+            state.tokenError = action.payload;
+        },
     }
 });
 

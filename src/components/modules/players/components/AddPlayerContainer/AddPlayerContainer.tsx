@@ -49,8 +49,8 @@ export const AddPlayerContainer = () => {
     const { id, name, birthday, avatarUrl, height, weight, number, position, team }: IPlayers = currentPlayer;
     const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 
-    const [addPlayer, {data, error: addError}] = playersApiService.useAddPlayerMutation();
-    const [editPlayer, {data: editData, error: editError}] = playersApiService.useEditPlayerMutation();
+    const [addPlayer, {data: addPlayerData, error: addPlayerError}] = playersApiService.useAddPlayerMutation();
+    const [editPlayer, {data: editPlayerData, error: editPlayerError}] = playersApiService.useEditPlayerMutation();
     const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
     const { data: positionsData, error: positionsError } = playersApiService.useGetPositionsQuery({token});
 
@@ -99,10 +99,10 @@ export const AddPlayerContainer = () => {
     };
 
     useEffect(() => {
-        if ((data && !addError) || (editData && !editError)) {
+        if ((addPlayerData && !addPlayerError) || (editPlayerData && !editPlayerError)) {
             navigate("/players");
         }
-    }, [data, addError, editData, editError]);
+    }, [addPlayerData, addPlayerError, editPlayerData, editPlayerError]);
 
     useEffect(() => {
         if (teamsData && !teamsError) {
@@ -118,7 +118,7 @@ export const AddPlayerContainer = () => {
                         <div className="home-link" onClick={goHome}>Players </div> / Add new player
                     </span>
 
-                    {addError || editError ? <ErrorMessage message="Чьл-ьл пошло не так..." /> : ""}
+                    {addPlayerError || editPlayerData ? <ErrorMessage message="Чьл-ьл пошло не так..." /> : ""}
                 </div>
 
                 <div className="AddPlayerContainer__content-wrapper__content">

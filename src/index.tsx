@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { setupStore } from "./components/core/redux/store";
 import { HashRouter as Router } from "react-router-dom";
 
-import App from "./components/app";
+import { App } from "./components/App/App";
 
 import "antd/dist/antd.css";
 import "./components/assests/styles/index.scss";

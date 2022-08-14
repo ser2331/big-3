@@ -18,7 +18,7 @@ export const UnprotectedPages = () => {
 
     return (
         <div className="UnprotectedPages">
-            <Routes>
+            <Routes location="/">
                 <Route path="/" element={<Login />} />
                 <Route path="/registration" element={<Registration />} />
             </Routes>

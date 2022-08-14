@@ -15,6 +15,7 @@ import EmptyItems from "../../../../common/components/empty-items";
 import { useDebounce } from "../../../../common/hooks/debounce";
 
 import "./TeamsContainer.scss";
+import {authorizationSlice} from "../../../authorization/AuthorizationSlice";
 
 const { optionsItemsPerPage } = Types;
 
@@ -26,6 +27,7 @@ export const TeamsContainer:FC = () => {
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams, pagination, searchTeam } = useAppSelector(state => state.teamsReducer);
     const { setTeams, setSearchTeam, setTeamId, setPagination } = teamsSlice.actions;
+    const { setTokenError } = authorizationSlice.actions;
     const debounced = useDebounce(searchTeam);
     const { itemsPerPage, pageCount, currentPage } = pagination;
 
@@ -64,6 +66,8 @@ export const TeamsContainer:FC = () => {
 
             dispatch(setTeams(teamsData.data));
             dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
+        } else if (!teamsData && (teamsError)) {
+            dispatch(setTokenError(teamsError));
         }
     }, [dispatch, teamsData, teamsError]);
 

@@ -8,6 +8,7 @@ import ReactPaginate from "react-paginate";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { teamsSlice } from "../../../teams/TeamsSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
+import { authorizationSlice } from "../../../authorization/AuthorizationSlice";
 import { ITeamsSelectOptions } from "../../../teams/interfaces/teams-interfaces";
 import { PlayersItems } from "../PlayersItems/PlayersItems";
 import SearchField from "../../../../common/components/search-field";
@@ -29,6 +30,7 @@ export const PlayersContainer:FC = () => {
     const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
     const { players, selectedTeams, searchPlayerName, pagination } = useAppSelector(state => state.playersReducer);
+    const { setTokenError } = authorizationSlice.actions;
     const { setTeams } = teamsSlice.actions;
     const { setSearchPlayerName, setPlayerId, setPagination, setPlayers, setSelectedTeam } = playersSlice.actions;
     const options = teams?.reduce<ITeamsSelectOptions[]>((acc: ITeamsSelectOptions[], item) => [...acc, {value: item.id, label: item.name}], []);
@@ -84,6 +86,8 @@ export const PlayersContainer:FC = () => {
 
             dispatch(setPlayers(playersData.data));
             dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
+        } else if (!playersData && (playersError)) {
+            dispatch(setTokenError(playersError));
         }
     }, [dispatch, playersData, playersError]);
 
