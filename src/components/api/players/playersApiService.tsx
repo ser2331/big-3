@@ -15,12 +15,11 @@ export const playersApiService = createApi({
     endpoints: (build) => ({
         getPlayers: build.query<IResPlayers, IGetPlayers>({
             query: ({token, page, pageSize, name, teamIds}) => ({
-                url: "/api/Player/GetPlayers",
+                url: `/api/Player/GetPlayers?${teamIds?.map((id: string | number | null) => [`teamIds=${id}`]).join("&") || ""}`,
                 params: {
-                    name: name,
-                    teamIds,
-                    page: page,
-                    pageSize: pageSize,
+                    name,
+                    page,
+                    pageSize,
                 },
                 headers: {
                     "Authorization": `Bearer ${token}`
