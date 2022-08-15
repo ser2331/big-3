@@ -1,10 +1,12 @@
-
-export interface ITeams {
-    name: string;
+export interface ISubmitTeams{
+    name: string,
     foundationYear: number | null;
-    division: string;
-    conference: string;
-    imageUrl: string;
+    division: string,
+    conference: string,
+    imageUrl: string,
+}
+
+export interface ITeams extends ISubmitTeams {
     id: number | null;
 }
 
@@ -28,22 +30,22 @@ export interface IResTeams {
     size: number;
 }
 
+export interface ITeamItemProps {
+    name: string;
+    foundationYear?: number | null;
+    image?: string;
+    id: number | null;
+}
+
 export interface IAddTeam {
     token: string;
+
     name: string,
     foundationYear?: number | null;
     division?: string,
     conference?: string,
     imageUrl?: string,
     id?: number | null;
-}
-
-export interface ISubmitTeams{
-    name: string,
-    foundationYear: number | null;
-    division: string,
-    conference: string,
-    imageUrl: string,
 }
 
 export interface IDeleteTeam {
@@ -54,13 +56,6 @@ export interface IDeleteTeam {
 export interface IGetTeam {
     token: string;
     teamId: number | null;
-}
-
-export interface ITeamItemProps {
-    name: string;
-    foundationYear?: number | null;
-    image?: string;
-    id: number | null;
 }
 
 export interface ITeamsItems {

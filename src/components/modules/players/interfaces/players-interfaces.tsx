@@ -1,14 +1,40 @@
 
-export interface IPlayers {
-    id: number | null;
-    name: string;
-    birthday: string;
-    avatarUrl: string;
+export interface IForPlayers {
     height: number | null;
     weight: number | null;
-    number: number | null;
+    birthday: string;
+    avatarUrl: string;
+}
+
+export interface IPlayers extends IForPlayers{
+    id: number | null;
+    name: string;
     position: string;
     team: number | null;
+    number: number | null;
+}
+
+export interface ISubmitPlayer extends IForPlayers{
+    name: string;
+    position: {
+        label: string;
+        value: string;
+    };
+    team: ITeamOptions | null;
+    number: string | number;
+}
+
+export interface IAddPlayer {
+    name: string;
+    number: number;
+    position: string;
+    team: number;
+    birthday: string;
+    height: number;
+    weight: number;
+    avatarUrl: string;
+    id?: number;
+    token: string;
 }
 
 export interface IResPlayers {
@@ -31,52 +57,14 @@ export interface IGetPlayer {
     playerId: number | null;
 }
 
-export interface IAddPlayer {
-    name: string;
-    number: number;
-    position: string;
-    team: number;
-    birthday: string;
-    height: number;
-    weight: number;
-    avatarUrl: string;
-    id?: number;
-    token: string;
-}
-
-export interface ISubmitPlayer {
-    name: string;
-    position: {
-        label: string;
-        value: string;
-    };
-    team: ITeamOptions | null;
-    height: number | null;
-    weight: number | null;
-    birthday: string;
-    number: string | number;
-    avatarUrl: string;
-}
-
-export interface IAddPlayerFormValidation {
-    name: string;
-    position: {
-        label: string;
-        value: string;
-    };
-    team: ITeamOptions | null;
-    height: number | null;
-    weight: number | null;
-    birthday: string;
-    number: string | number;
-    avatarUrl: string;
-    id?: number;
-    token: string;
-}
-
 export interface IDeletePlayer {
     token: string;
-    id: number | null;
+    id: number;
+}
+
+export interface IAddPlayerFormValidation extends ISubmitPlayer {
+    id?: number;
+    token: string;
 }
 
 export interface IPlayersItems {

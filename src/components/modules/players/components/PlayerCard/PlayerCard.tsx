@@ -39,7 +39,9 @@ export const PlayerCard = () => {
     }, [navigate]);
 
     const deleteThisPlayer = () => {
-        deletePlayer({token, id});
+        if (id && token) {
+            deletePlayer({token, id});
+        }
     };
 
     const goHome = useCallback(() => {

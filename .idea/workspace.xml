@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix add image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/api/images/ImagesApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/images/imageSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/core/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/core/redux/store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +80,11 @@
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\teams\components\AddItemForm" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\image\components" />
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\image" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api\authService" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\helpers" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\players\components" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -123,14 +118,7 @@
       <workItem from="1660300739708" duration="9743000" />
       <workItem from="1660462144450" duration="22324000" />
       <workItem from="1660484999029" duration="25323000" />
-      <workItem from="1660550232435" duration="2739000" />
-    </task>
-    <task id="LOCAL-00004" summary="add search">
-      <created>1659346354528</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1659346354528</updated>
+      <workItem from="1660550232435" duration="4857000" />
     </task>
     <task id="LOCAL-00005" summary="add search">
       <created>1659446702269</created>
@@ -468,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660514428788</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="fix add image">
+      <created>1660553893780</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1660553893781</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
