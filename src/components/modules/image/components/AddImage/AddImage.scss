@@ -1,4 +1,4 @@
-@import "src/components/assests/styles/index";
+@import "../../../../assests/styles/index";
 
 .AddImage {
   &__image-wrapper {
@@ -24,7 +24,7 @@
     }
 
     .custom-file-upload {
-      background: url("../../../assests/images/addItemImg.svg") center no-repeat;
+      background: url("../../../../assests/images/addItemImg.svg") center no-repeat;
       cursor: pointer;
       z-index: 1000;
       @include media($mobile) {
@@ -37,6 +37,13 @@
         height: 80px;
         background-size: 80px;
       }
+    }
+
+    .loading {
+      position: absolute;
+      z-index: 5000;
+      font-size: 30px;
+      opacity: 1;
     }
 
     .new-image {

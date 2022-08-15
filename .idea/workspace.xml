@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="refactor">
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix add image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/api/images/imagesApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/images/ImagesApiService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/api/images/ImagesApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/images/imageSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/AddImage/AddImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/core/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/core/redux/store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,14 +122,8 @@
       <workItem from="1660235214946" duration="8400000" />
       <workItem from="1660300739708" duration="9743000" />
       <workItem from="1660462144450" duration="22324000" />
-      <workItem from="1660484999029" duration="24686000" />
-    </task>
-    <task id="LOCAL-00003" summary="master upStream">
-      <created>1659285026376</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1659285026376</updated>
+      <workItem from="1660484999029" duration="25323000" />
+      <workItem from="1660550232435" duration="2739000" />
     </task>
     <task id="LOCAL-00004" summary="add search">
       <created>1659346354528</created>
@@ -463,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660502825865</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="fix add image">
+      <created>1660514428787</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1660514428788</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add edit team api, add localStorage" />
     <MESSAGE value="add players api" />
     <MESSAGE value="&#10;in the absence of data, go to the main page" />
     <MESSAGE value="&#10;add search and filter" />
@@ -508,7 +512,8 @@
     <MESSAGE value="add then token failed logout" />
     <MESSAGE value="refactor add pages" />
     <MESSAGE value="refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
+    <MESSAGE value="fix add image" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix add image" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

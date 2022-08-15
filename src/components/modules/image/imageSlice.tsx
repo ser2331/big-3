@@ -1,17 +1,17 @@
-import { baseUrl } from "../authService/authService";
+import { baseUrl } from "../../api/authService/authService";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface ImageState {
     image: string;
     isLoading: boolean;
-    error: boolean;
+    error: string;
 }
 
 const initialState: ImageState = {
     isLoading: false,
     image: "",
-    error: false
+    error: ""
 };
 
 export const setImageToServer = createAsyncThunk(
@@ -25,7 +25,7 @@ export const setImageToServer = createAsyncThunk(
             });
             return res.data;
         } catch (e) {
-            return thunkAPI.rejectWithValue("Не удвлось загрузить фото");
+            return thunkAPI.rejectWithValue("Зашрузка изображения не удалась...");
         }
     }
 );
@@ -42,13 +42,13 @@ export const imageSlice = createSlice({
         [setImageToServer.fulfilled.type]: (state, action: PayloadAction<string>) => {
             state.isLoading = false;
             state.image = action.payload;
-            state.error = false;
+            state.error = "";
         },
         [setImageToServer.pending.type]:  (state) => {
             state.isLoading = true;
         },
-        [setImageToServer.rejected.type]: (state) => {
-            state.error = true;
+        [setImageToServer.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.error = action.payload;
         },
     },
 });

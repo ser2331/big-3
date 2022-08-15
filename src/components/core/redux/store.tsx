@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import playersReducer from "../../modules/players/PlayersSlice";
 import teamsReducer from "../../modules/teams/TeamsSlice";
 import authorizationReducer from "../../modules/authorization/AuthorizationSlice";
-import imageReducer from "../../api/images/ImagesApiService";
+import imageReducer from "../../modules/image/imageSlice";
 import { authService } from "../../api/authService/authService";
 import { teamsApiService } from "../../api/teams/teamsApiService";
 import { playersApiService } from "../../api/players/playersApiService";

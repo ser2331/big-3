@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { authorizationSlice } from "../../../../modules/authorization/AuthorizationSlice";
 import { playersSlice } from "../../../../modules/players/PlayersSlice";
 import { teamsSlice } from "../../../../modules/teams/TeamsSlice";
-import { imageSlice } from "../../../../api/images/ImagesApiService";
+import { imageSlice } from "../../../../modules/image/imageSlice";
 import teams from "../../../../assests/images/group-person-rounded.svg";
 import teamsRed from "../../../../assests/images/teamsRed.svg";
 import players from "../../../../assests/images/person_rounded.svg";

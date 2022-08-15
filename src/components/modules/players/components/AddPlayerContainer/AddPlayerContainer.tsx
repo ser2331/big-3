@@ -5,11 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { IPlayers, ISubmitPlayer, ITeamOptions } from "../../interfaces/players-interfaces";
 import { playersSlice } from "../../PlayersSlice";
 import { teamsSlice } from "../../../teams/TeamsSlice";
-import { imageSlice } from "../../../../api/images/ImagesApiService";
+import { imageSlice } from "../../../image/imageSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { baseUrl } from "../../../../api/authService/authService";
-import { AddImage } from "../../../../common/components/AddImage/AddImage";
+import { AddImage } from "../../../image/components/AddImage/AddImage";
 import { AddPlayerForm } from "../AddPlayerForm/AddPlayerForm";
 import ErrorMessage from "../../../../common/components/error-message";
 
