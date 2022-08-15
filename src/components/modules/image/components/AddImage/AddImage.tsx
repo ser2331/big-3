@@ -1,6 +1,6 @@
 import React, {Dispatch, FC, SetStateAction, useCallback, useEffect} from "react";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
-import { setImageToServer } from "../../imageSlice";
+import { setImageToServer } from "../../ActionCreators";
 import ErrorMessage from "../../../../common/components/error-message";
 
 import "./AddImage.scss";

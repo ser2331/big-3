@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { teamsSlice } from "../../TeamsSlice";
-import { imageSlice } from "../../../image/imageSlice";
+import { imageSlice } from "../../../image/ImageSlice";
 import { AddTeamForm } from "../AddTeamForm/AddTeamForm";
 import { AddImage } from "../../../image/components/AddImage/AddImage";
 import { ISubmitTeams, ITeams } from "../../interfaces/teams-interfaces";

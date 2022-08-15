@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { IPlayers, ISubmitPlayer, ITeamOptions } from "../../interfaces/players-interfaces";
 import { playersSlice } from "../../PlayersSlice";
 import { teamsSlice } from "../../../teams/TeamsSlice";
-import { imageSlice } from "../../../image/imageSlice";
+import { imageSlice } from "../../../image/ImageSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { baseUrl } from "../../../../api/authService/authService";
