@@ -107,25 +107,27 @@ export const PlayersContainer:FC = () => {
     return (
         <div className="PlayersContainer">
 
-            {!missingCount && (<div className="fields-wrapper">
-                <div className="left-fields">
-                    <SearchField
-                        value={searchPlayerName}
-                        onChange={(val) => dispatch(setSearchPlayerName(val))}
-                        classNameWrapper="playersSearch"
-                    />
+            
+            <div className="fields-wrapper">
+                {!missingCount && (
+                    <div className="left-fields">
+                        <SearchField
+                            value={searchPlayerName}
+                            onChange={(val) => dispatch(setSearchPlayerName(val))}
+                            classNameWrapper="playersSearch"
+                        />
 
-                    <Select
-                        className="selector"
-                        classNamePrefix="Multi-selector"
-                        components={animatedComponents}
-                        isMulti
-                        options={options}
-                        value={selectedTeams}
-                        onChange={(option: any) => dispatch(setSelectedTeam(option))}
-                    />
-                </div>
-
+                        <Select
+                            className="selector"
+                            classNamePrefix="Multi-selector"
+                            components={animatedComponents}
+                            isMulti
+                            options={options}
+                            value={selectedTeams}
+                            onChange={(option: any) => dispatch(setSelectedTeam(option))}
+                        />
+                    </div>
+                )}
                 <div className="right-fields">
                     <CustomButton
                         type="button"
@@ -135,7 +137,7 @@ export const PlayersContainer:FC = () => {
                         Add +
                     </CustomButton>
                 </div>
-            </div>)}
+            </div>
 
             {!players.length && playersIsLoading && !playersError ? <div>...Loading</div> : ""}
             {!players.length && !playersIsLoading && playersError ? <div>Error</div> : ""}

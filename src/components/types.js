@@ -2,6 +2,7 @@ export default class Types {
     static routing = [
         { id: 0, key: "players", value: "/players" },
         { id: 1, key: "teams", value: "/teams" },
+        { id: 3, key: "initial", value: "/" },
     ];
 
     static routingMap = Types.routing.reduce((acc, item) => acc.set(item.key, { ...item }), new Map());

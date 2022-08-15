@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useAppSelector } from "../../../../core/redux/redux";
 import Field from "../../../../common/components/field";
 import SelectField from "../../../../common/components/select-field";
 import CustomButton from "../../../../common/components/custom-button";
@@ -23,79 +24,83 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
     errors, submit,
     positionOptions,
     teamOptions, control
-}) => (
-    <div className="AddPlayerForm">
-        <form className="form" onSubmit={handleSubmit(submit)}>
-            <Field
-                label="Name"
-                register={register}
-                registerName="name"
-                error={errors.name}
-                property={{required: "Enter player name"}}
-            />
-            <SelectField
-                label="Position"
-                name="position"
-                options={positionOptions}
-                control={control}
-                error={errors.position}
-                isClearable
-            />
-            <SelectField
-                label="Team"
-                name="team"
-                options={teamOptions}
-                control={control}
-                error={errors.team}
-                isClearable
-            />
-            <div className="fields-line">
-                <Field
-                    label="Height (cm)"
-                    register={register}
-                    registerName="height"
-                    type="number"
-                    error={errors.height}
-                    property={{required: "Enter height"}}
-                />
-                <Field
-                    label="Weight (kg)"
-                    register={register}
-                    registerName="weight"
-                    type="number"
-                    error={errors.weight}
-                    property={{required: "Enter weight"}}
-                />
-            </div>
+}) =>  {
+    const { isLoading: imageLoading } = useAppSelector(state => state.imageReducer);
 
-            <div className="fields-line">
+    return (
+        <div className="AddPlayerForm">
+            <form className="form" onSubmit={handleSubmit(submit)}>
                 <Field
-                    label="Birthday"
+                    label="Name"
                     register={register}
-                    registerName="birthday"
-                    error={errors.birthday}
-                    type="date"
-                    property={{required: "Enter birthday"}}
+                    registerName="name"
+                    error={errors.name}
+                    property={{required: "Enter player name"}}
                 />
-                <Field
-                    label="Number"
-                    register={register}
-                    registerName="number"
-                    type="number"
-                    error={errors.number}
-                    property={{required: "Enter player number"}}
+                <SelectField
+                    label="Position"
+                    name="position"
+                    options={positionOptions}
+                    control={control}
+                    error={errors.position}
+                    isClearable
                 />
-            </div>
+                <SelectField
+                    label="Team"
+                    name="team"
+                    options={teamOptions}
+                    control={control}
+                    error={errors.team}
+                    isClearable
+                />
+                <div className="fields-line">
+                    <Field
+                        label="Height (cm)"
+                        register={register}
+                        registerName="height"
+                        type="number"
+                        error={errors.height}
+                        property={{required: "Enter height"}}
+                    />
+                    <Field
+                        label="Weight (kg)"
+                        register={register}
+                        registerName="weight"
+                        type="number"
+                        error={errors.weight}
+                        property={{required: "Enter weight"}}
+                    />
+                </div>
 
-            <div className="form-control">
-                <CustomButton type="reset" className="reset-btn">
-                    Cancel
-                </CustomButton>
+                <div className="fields-line">
+                    <Field
+                        label="Birthday"
+                        register={register}
+                        registerName="birthday"
+                        error={errors.birthday}
+                        type="date"
+                        property={{required: "Enter birthday"}}
+                    />
+                    <Field
+                        label="Number"
+                        register={register}
+                        registerName="number"
+                        type="number"
+                        error={errors.number}
+                        property={{required: "Enter player number"}}
+                    />
+                </div>
 
-                <CustomButton type="submit">
-                    Save
-                </CustomButton>
-            </div>
-        </form>
-    </div>
-);
+                <div className="form-control">
+                    <CustomButton type="reset" className="reset-btn">
+                        Cancel
+                    </CustomButton>
+
+                    <CustomButton type="submit" disabled={imageLoading}>
+                        Save
+                    </CustomButton>
+                </div>
+            </form>
+        </div>
+    );
+};

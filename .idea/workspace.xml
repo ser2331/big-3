@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix add image">
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/interfaces/players-interfaces.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/interfaces/teams-interfaces.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/types.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,8 +90,8 @@
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\teams\components\AddItemForm" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\image\components" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\image" />
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\image\components" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api\authService" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\helpers" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3" />
@@ -118,21 +128,7 @@
       <workItem from="1660300739708" duration="9743000" />
       <workItem from="1660462144450" duration="22324000" />
       <workItem from="1660484999029" duration="25323000" />
-      <workItem from="1660550232435" duration="4857000" />
-    </task>
-    <task id="LOCAL-00005" summary="add search">
-      <created>1659446702269</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1659446702269</updated>
-    </task>
-    <task id="LOCAL-00006" summary="some fix">
-      <created>1659446831464</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1659446831464</updated>
+      <workItem from="1660550232435" duration="12196000" />
     </task>
     <task id="LOCAL-00007" summary="some fix">
       <created>1659447215589</created>
@@ -463,7 +459,21 @@
       <option name="project" value="LOCAL" />
       <updated>1660553893781</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="fix interfaces">
+      <created>1660556563711</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1660556563711</updated>
+    </task>
+    <task id="LOCAL-00055" summary="some fix">
+      <created>1660556888093</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1660556888093</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,13 +493,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add players api" />
     <MESSAGE value="&#10;in the absence of data, go to the main page" />
     <MESSAGE value="&#10;add search and filter" />
     <MESSAGE value="add adaptive mobile to players and teams pages" />
     <MESSAGE value="add adaptive mobile to player-card and team-card pages" />
     <MESSAGE value="add adaptive mobile to add player and add team pages" />
-    <MESSAGE value="some fix" />
     <MESSAGE value="added add file" />
     <MESSAGE value="add hash router" />
     <MESSAGE value="heroku" />
@@ -508,7 +516,9 @@
     <MESSAGE value="refactor add pages" />
     <MESSAGE value="refactor" />
     <MESSAGE value="fix add image" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix add image" />
+    <MESSAGE value="fix interfaces" />
+    <MESSAGE value="some fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="some fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

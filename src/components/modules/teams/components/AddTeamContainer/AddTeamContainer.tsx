@@ -37,13 +37,13 @@ export const AddTeamContainer = () => {
         imageUrl: imageUrl || "",
     }});
 
-    const submit: SubmitHandler<ISubmitTeams> = useCallback( async (introducedData) => {
+    const submit: SubmitHandler<ISubmitTeams> = async (introducedData) => {
         if (id) {
             await editTeam({...introducedData, imageUrl: newImage|| imageUrl, token, id});
         } else {
             await addTeam({...introducedData, imageUrl: newImage|| imageUrl, token});
         }
-    }, [id]);
+    };
 
     const goHome = useCallback(() => {
         dispatch(setCurrentTeam({

@@ -13,13 +13,14 @@
 
   .fields-wrapper {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 32px;
     @include media($mobile) {
-      flex-direction: column
+      flex-direction: column;
+      justify-content: center;
     }
     @include media($desktop) {
       flex-direction: row;
+      justify-content: space-between;
     }
 
     .add-item {

@@ -30,19 +30,13 @@ export const PlayerCard = () => {
 
     const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
     const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({token, playerId});
-    const [deletePlayer, {data, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
+    const [deletePlayer, {data: deletePlayerData, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
 
     const teamName = useMemo(() => teams.find((item: ITeams) => item.id === team), [team]);
 
     const editThisPlayer = useCallback(() => {
         navigate("/players/addPlayer");
     }, [navigate]);
-
-    const deleteThisPlayer = () => {
-        if (id && token) {
-            deletePlayer({token, id});
-        }
-    };
 
     const goHome = useCallback(() => {
         dispatch(setCurrentPlayer({
@@ -59,6 +53,13 @@ export const PlayerCard = () => {
         dispatch(setPlayerId(null));
         navigate("/players");
     }, [dispatch, navigate]);
+
+
+    const deleteThisPlayer = async () => {
+        if (id && token) {
+            await deletePlayer({token, id});
+        }
+    };
 
     useEffect(() => {
         refetch();
@@ -81,10 +82,10 @@ export const PlayerCard = () => {
     }, [dispatch, teamsData, teamsError]);
 
     useEffect(() => {
-        if (data && !deleteError && !deleteIsLoading) {
+        if (deletePlayerData && !deleteError && !deleteIsLoading) {
             goHome();
         }
-    }, [data, deleteError, deleteIsLoading]);
+    }, [deletePlayerData, deleteError, deleteIsLoading]);
 
     const renderDescriptionLine = (
         label?: string,

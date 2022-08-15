@@ -9,8 +9,8 @@ import Types from "../types";
 
 import "./App.scss";
 
-const { appSizesMap, localStorage } = Types
-;
+const { appSizesMap, localStorage } = Types;
+
 const { setIsMobile } = teamsSlice.actions;
 const { setUserData, setTokenError } = authorizationSlice.actions;
 

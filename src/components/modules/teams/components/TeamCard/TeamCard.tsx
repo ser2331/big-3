@@ -41,10 +41,12 @@ export const TeamCard = () => {
         navigate("/teams/addTeam");
     }, [navigate]);
 
-    const deleteThisTeam = () => {
-        deleteTeam({token, id});
+    const deleteThisTeam = async () => {
+        if (token && id) {
+            await deleteTeam({token, id});
+        }
     };
-    
+
     const goHome = useCallback(() => {
         dispatch(setCurrentTeam({
             name: "",

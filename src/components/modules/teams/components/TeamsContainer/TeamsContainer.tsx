@@ -89,12 +89,12 @@ export const TeamsContainer:FC = () => {
     return (
         <div className="TeamsContainer">
             <div className="fields-wrapper">
-                { !missingCount && (
+                { !missingCount ? (
                     <SearchField
                         value={searchTeam}
                         onChange={(val) => dispatch(setSearchTeam(val))}
                         className="teamSearch"/>
-                )}
+                ) : <div />}
 
                 <CustomButton
                     type="button"
