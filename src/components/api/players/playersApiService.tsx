@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { baseUrl } from "../authService/authService";
+import {builderParamsIds} from "../../common/helpers/builderParamsIds";
 import {
     IAddPlayer, IAddPlayerFormValidation, IDeletePlayer,
     IGetPlayer,
@@ -15,7 +16,7 @@ export const playersApiService = createApi({
     endpoints: (build) => ({
         getPlayers: build.query<IResPlayers, IGetPlayers>({
             query: ({token, page, pageSize, name, teamIds}) => ({
-                url: `/api/Player/GetPlayers?${teamIds?.map((id: string | number | null) => [`teamIds=${id}`]).join("&") || ""}`,
+                url: `/api/Player/GetPlayers?${builderParamsIds(teamIds)}`,
                 params: {
                     name,
                     page,
