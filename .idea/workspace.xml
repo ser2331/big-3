@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some fix">
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix query players by teams">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,14 +116,7 @@
       <workItem from="1660300739708" duration="9743000" />
       <workItem from="1660462144450" duration="22324000" />
       <workItem from="1660484999029" duration="25323000" />
-      <workItem from="1660550232435" duration="17980000" />
-    </task>
-    <task id="LOCAL-00008" summary="add addTeam and addPlayer pages, fix navigation.">
-      <created>1659458835052</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1659458835052</updated>
+      <workItem from="1660550232435" duration="19431000" />
     </task>
     <task id="LOCAL-00009" summary="some refactor">
       <created>1659466690035</created>
@@ -461,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660564499213</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="fix query players by teams">
+      <created>1660591055174</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1660591055174</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +481,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="&#10;in the absence of data, go to the main page" />
     <MESSAGE value="&#10;add search and filter" />
     <MESSAGE value="add adaptive mobile to players and teams pages" />
     <MESSAGE value="add adaptive mobile to player-card and team-card pages" />
@@ -506,7 +505,8 @@
     <MESSAGE value="fix add image" />
     <MESSAGE value="fix interfaces" />
     <MESSAGE value="some fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fix" />
+    <MESSAGE value="fix query players by teams" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix query players by teams" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
