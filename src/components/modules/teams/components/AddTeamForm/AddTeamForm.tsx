@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import { useAppSelector } from "../../../../core/redux/redux";
-import Field from "../../../../common/components/field";
-import CustomButton from "../../../../common/components/custom-button";
+import { Field } from "../../../../common/components/field/field";
+import { CustomButton } from "../../../../common/components/custom-button/custom-button";
 import { DeepRequired, FieldErrorsImpl, SubmitHandler, UseFormRegister } from "react-hook-form";
 import { UseFormHandleSubmit } from "react-hook-form/dist/types/form";
 import { ISubmitTeams } from "../../interfaces/teams-interfaces";
 
-import "./AddTeamForm.scss";
+import s from "./AddTeamForm.module.scss";
 
 interface IAddTeamForm {
     register: UseFormRegister<ISubmitTeams>;
@@ -20,8 +20,8 @@ export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, su
     const { isLoading: imageLoading } = useAppSelector(state => state.imageReducer);
 
     return (
-        <div className="AddTeamForm">
-            <form className="form" onSubmit={handleSubmit(submit)}>
+        <div className={s.AddTeamForm}>
+            <form className={s.form} onSubmit={handleSubmit(submit)}>
                 <Field
                     label="Name"
                     register={register}
@@ -51,8 +51,8 @@ export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, su
                     property={{required: "enter foundation year"}}
                 />
 
-                <div className="form-control">
-                    <CustomButton type="reset" className="reset-btn">
+                <div className={s.formControl}>
+                    <CustomButton type="reset" className={s.resetBtn}>
                         Cancel
                     </CustomButton>
 

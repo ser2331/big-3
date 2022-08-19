@@ -11,7 +11,7 @@ interface CustomButtonProps {
     onClick?: () => void
 }
 
-const CustomButton:FC<CustomButtonProps> = ({onClick, children, className, type, disabled}) => (
+export const CustomButton:FC<CustomButtonProps> = ({onClick, children, className, type, disabled}) => (
     <button
         className={classNames("CustomButton", type, className)}
         onClick={onClick}
@@ -21,5 +21,3 @@ const CustomButton:FC<CustomButtonProps> = ({onClick, children, className, type,
         {children}
     </button>
 );
-
-export default CustomButton;

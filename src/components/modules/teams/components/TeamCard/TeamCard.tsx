@@ -1,28 +1,29 @@
-import React, {useCallback, useEffect} from "react";
+import React, { useCallback, useEffect } from "react";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useNavigate } from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../core/redux/redux";
 import { ITeams } from "../../interfaces/teams-interfaces";
 import { teamsSlice } from "../../TeamsSlice";
-import {playersSlice} from "../../../players/PlayersSlice";
-import {playersApiService} from "../../../../api/players/playersApiService";
-import {getAge} from "../../../players/selectors";
+import { playersSlice } from "../../../players/PlayersSlice";
+import { playersApiService } from "../../../../api/players/playersApiService";
+import { getAge } from "../../../players/selectors";
 import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultLogo from "../../../../assests/images/teamLogo.jpeg";
 import avatar from "../../../../assests/images/avatar.jpg";
-import ErrorMessage from "../../../../common/components/error-message";
+import { ErrorMessage } from "../../../../common/components/error-message/error-message";
 
-import "./TeamCard.scss";
+import s from "./TeamCard.module.scss";
 
-const { setCurrentTeam, resetTeamsInformation } = teamsSlice.actions;
+const { setCurrentTeam } = teamsSlice.actions;
 const { setPlayers } = playersSlice.actions;
 
 export const TeamCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { token } = useAppSelector(state => state.authorizationReducer);
-    const { currentTeam, teamId, isMobile } = useAppSelector(state => state.teamsReducer);
+    const { currentTeam, teamId } = useAppSelector(state => state.teamsReducer);
+    const { isMobile } = useAppSelector(state => state.appReducer);
     const { players } = useAppSelector(state => state.playersReducer);
 
     const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
@@ -76,39 +77,33 @@ export const TeamCard = () => {
         }
     }, [data, deleteError, deleteIsLoading]);
 
-    useEffect(() => {
-        return () => {
-            dispatch(resetTeamsInformation());
-        };
-    }, []);
-
     const renderContent = () => (
         <>
-            <div className="image-content">
-                <div className="image-wrapper">
-                    <img alt="teamLogo" className="team-logo" src={imageUrl || defaultLogo}/>
+            <div className={s.imageContent}>
+                <div className={s.imageWrapper}>
+                    <img alt="teamLogo" className={s.teamLogo} src={imageUrl || defaultLogo}/>
                 </div>
             </div>
 
-            <div className="team-description">
-                <div className="title">{name}</div>
+            <div className={s.teamDescription}>
+                <div className={s.title}>{name}</div>
 
-                <div className="description-wrapper">
-                    <div className="left-col">
-                        <div className="description-info">
-                            <span className="label">Year of Foundation</span>
-                            <span className="value">{foundationYear}</span>
+                <div className={s.descriptionWrapper}>
+                    <div className={s.leftCol}>
+                        <div className={s.descriptionInfo}>
+                            <span className={s.label}>Year of Foundation</span>
+                            <span className={s.value}>{foundationYear}</span>
                         </div>
-                        <div className="description-info">
-                            <span className="label">Conference</span>
-                            <span className="value">{conference}</span>
+                        <div className={s.descriptionInfo}>
+                            <span className={s.label}>Conference</span>
+                            <span className={s.value}>{conference}</span>
                         </div>
                     </div>
 
-                    <div className="right-col">
-                        <div className="description-info">
-                            <span className="label">Division</span>
-                            <span className="value">{division}</span>
+                    <div className={s.rightCol}>
+                        <div className={s.descriptionInfo}>
+                            <span className={s.label}>Division</span>
+                            <span className={s.value}>{division}</span>
                         </div>
                     </div>
                 </div>
@@ -117,37 +112,37 @@ export const TeamCard = () => {
     );
     
     const renderTable = () => (
-        <table className="Table">
-            <thead className="Table__header">
+        <table className={s.Table}>
+            <thead className={s.Table__header}>
                 <tr>
-                    <th className="number">#</th>
-                    <th className="player">Player</th>
+                    <th className={s.number}>#</th>
+                    <th className={s.player}>Player</th>
                     { !isMobile ? (
                         <>
-                            <th className="desc">Height</th>
-                            <th className="desc">Weight</th>
-                            <th className="desc">Age</th>
+                            <th className={s.desc}>Height</th>
+                            <th className={s.desc}>Weight</th>
+                            <th className={s.desc}>Age</th>
                         </>
                     ) : ""}
                 </tr>
             </thead>
 
-            <tbody className="Table__body">
+            <tbody className={s.Table__body}>
                 {players.map((player) => {
                     const age = getAge(player.birthday);
                     return (
                         <tr key={player.id}>
                             <td>{player.number}</td>
                             <td>
-                                <div className="player-wrapper">
-                                    <div className="image-wrapper">
+                                <div className={s.playerWrapper}>
+                                    <div className={s.imageWrapper}>
                                         <img alt="player-photo" src={player.avatarUrl || avatar}/>
                                     </div>
-                                    <div className="player-name-wrapper">
-                                        <div className="player-name">
+                                    <div className={s.playerNameWrapper}>
+                                        <div className={s.playerName}>
                                             {player.name}
                                         </div>
-                                        <div className="player-position">
+                                        <div className={s.playerPosition}>
                                             {player.position}
                                         </div>
                                     </div>
@@ -168,29 +163,29 @@ export const TeamCard = () => {
     );
 
     return(
-        <div className="TeamCard">
-            <div className="TeamCard__wrapper">
-                <div className="TeamCard__wrapper__header">
-                    <span className="navigate-wrapper" >
-                        <div className="home-link" onClick={goHome}>Teams </div> / {name}
+        <div className={s.TeamCard}>
+            <div className={s.TeamCard__wrapper}>
+                <div className={s.TeamCard__wrapper__header}>
+                    <span className={s.navigateWrapper} >
+                        <div className={s.homeLink} onClick={goHome}>Teams </div> / {name}
                     </span>
 
                     {deleteError && <ErrorMessage message="Нельзя удалить команду, в которой есть игроки..." />}
 
-                    <div className="control">
+                    <div className={s.control}>
                         <img alt="edit" src={editIcon} onClick={editThisTeam}/>
                         <img alt="delete" src={deleteIcon} onClick={deleteThisTeam}/>
                     </div>
 
                 </div>
 
-                <div className="TeamCard__wrapper__content">
+                <div className={s.TeamCard__wrapper__content}>
                     {teamIsLoading ? <div>Loading...</div> : renderContent()}
                 </div>
             </div>
 
-            <div className="TeamCard__team-players">
-                <div className="Table__title">Roster</div>
+            <div className={s.TeamCard__teamPlayers}>
+                <div className={s.Table__title}>Roster</div>
                 {renderTable()}
             </div>
         </div>

@@ -10,7 +10,7 @@ interface CustomCheckbox {
     onChange(checked: boolean): void,
 }
 
-const CustomCheckbox:FC<CustomCheckbox> = ({ checked, onChange, error }) => (
+export const CustomCheckbox:FC<CustomCheckbox> = ({ checked, onChange, error }) => (
 
     <div className="CustomCheckbox" onClick={() => onChange(!checked)}>
         <div className="checkbox-wrapper">
@@ -24,5 +24,3 @@ const CustomCheckbox:FC<CustomCheckbox> = ({ checked, onChange, error }) => (
 
     </div>
 );
-
-export default CustomCheckbox;

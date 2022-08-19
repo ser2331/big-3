@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add reset reducer, add style to reset button">
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="delete antDes, some fix">
+      <change afterPath="$PROJECT_DIR$/src/components/modules/App/AppSlice.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assests/styles/variables/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assests/styles/variables/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/App/components/App/App.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/App/components/App/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/assests/styles/base/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assests/styles/base/base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/Header/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/Header/Header.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/Header/Header.module.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/Header/Header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/Header/Header.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/custom-button/custom-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/custom-button/custom-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/custom-button/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/custom-checkbox/custom-checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/custom-checkbox/custom-checkbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/custom-checkbox/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/empty-items/empty-items.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/empty-items/empty-items.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/empty-items/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/error-message/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/field/field.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/field/field.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/field/field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/field/field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/field/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.module.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/search-field/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/search-field/search-field.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/search-field/search-field.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/search-field/search-field.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/search-field/search-field.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/search-field/search-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/search-field/search-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/select-field/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/core/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/core/redux/store.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/AuthWrapper.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/AuthWrapper.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/AuthWrapper.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/AuthWrapper.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.module.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayerCard/PlayerCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.module.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamCard/TeamCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.module.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +127,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yoby/analytics-front" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/modules/App" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -87,18 +143,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\App" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\players\components" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\components" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\teams\components\AddTeamImage" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\teams\components\AddItemForm" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\App\components\App" />
+      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\image" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\modules\image\components" />
       <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\api\authService" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3\src\components\common\helpers" />
-      <recent name="C:\Users\laptop\Desktop\projects\big-3" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -135,14 +191,7 @@
       <workItem from="1660550232435" duration="19431000" />
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
-      <workItem from="1660909450545" duration="16892000" />
-    </task>
-    <task id="LOCAL-00011" summary="add api add team, get teams">
-      <created>1659483362151</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1659483362151</updated>
+      <workItem from="1660909450545" duration="29591000" />
     </task>
     <task id="LOCAL-00012" summary="add api delete team, get team">
       <created>1659525238107</created>
@@ -480,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660918856171</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="delete antDes, some fix">
+      <created>1660926691978</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1660926691978</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +556,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add adaptive mobile to player-card and team-card pages" />
     <MESSAGE value="add adaptive mobile to add player and add team pages" />
     <MESSAGE value="added add file" />
     <MESSAGE value="add hash router" />
@@ -525,7 +580,8 @@
     <MESSAGE value="fix query players by teams" />
     <MESSAGE value="add builderParamsIds and fix request players" />
     <MESSAGE value="add reset reducer, add style to reset button" />
-    <option name="LAST_COMMIT_MESSAGE" value="add reset reducer, add style to reset button" />
+    <MESSAGE value="delete antDes, some fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete antDes, some fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

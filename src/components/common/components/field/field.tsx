@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import classNames from "classnames";
 
-import "./field.scss";
+import s from "./field.module.scss";
 
 interface FieldProps {
     error?: any;
@@ -14,22 +14,20 @@ interface FieldProps {
     defaultValue?: string;
 }
 
-const Field:FC<FieldProps> = ({label, register, type, registerName, error, property, style, defaultValue}) => {
+export const Field:FC<FieldProps> = ({label, register, type, registerName, error, property, style, defaultValue}) => {
 
     return (
-        <div className="Field">
-            <label className="label">{label}</label>
+        <div className={s.Field}>
+            <label className={s.label}>{label}</label>
             <input
-                className={classNames("input", style, {error})}
+                className={classNames(s.input, style && style, error && s.error)}
                 {...register(`${registerName}`, {...property})}
                 type={type}
                 defaultValue={defaultValue}
             />
-            <div className="error-massage">
+            <div className={s.errorMessage}>
                 {error ? error.message : "" }
             </div>
         </div>
     );
 };
-
-export default Field;

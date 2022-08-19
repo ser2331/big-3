@@ -7,12 +7,12 @@ import { authService } from "../../../../api/authService/authService";
 import { authorizationSlice } from "../../AuthorizationSlice";
 import { loginSchema } from "../../helpers/yup-schems";
 import StorageService from "../../../../common/helpers/storageService/storage-service";
-import Field from "../../../../common/components/field";
-import CustomButton from "../../../../common/components/custom-button";
+import { Field } from "../../../../common/components/field/field";
+import { CustomButton } from "../../../../common/components/custom-button/custom-button";
 import { IGetToken } from "../../interfaces/authorization-interfaces";
 import Types from "../../../../types";
 
-import "./AuthWrapper.scss";
+import s from "./AuthWrapper.module.scss";
 
 const { localStorage } = Types;
 
@@ -45,7 +45,7 @@ const Login: FC = () => {
     };
 
     return (
-        <div className="Login Auth-wrapper">
+        <div className={`${s.Login} ${s.AuthWrapper}`}>
             <h1 className="auth-title">Sign In</h1>
             <form onSubmit={handleSubmit(submit)}>
                 <Field
@@ -68,7 +68,7 @@ const Login: FC = () => {
                 </CustomButton>
             </form>
 
-            <div className="not-member">
+            <div className={s.notMember}>
                 <span>Not a member yet? </span>
                 <Link to="/registration">Sign up</Link>
             </div>

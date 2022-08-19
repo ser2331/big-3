@@ -10,12 +10,12 @@ import editIcon from "../../../../assests/images/editImage.png";
 import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultPlayerImg from "../../../../assests/images/avatar.jpg";
 import { getAge } from "../../selectors";
-import ErrorMessage from "../../../../common/components/error-message";
+import { ErrorMessage } from "../../../../common/components/error-message/error-message";
 import {ITeams} from "../../../teams/interfaces/teams-interfaces";
 
-import "./PlayerCard.scss";
+import s from "./PlayerCard.module.scss";
 
-const { setCurrentPlayer, resetPlayersInformation } = playersSlice.actions;
+const { setCurrentPlayer } = playersSlice.actions;
 const { setTeams } = teamsSlice.actions;
 
 export const PlayerCard = () => {
@@ -75,12 +75,6 @@ export const PlayerCard = () => {
         }
     }, [deletePlayerData, deleteError, deleteIsLoading]);
 
-    useEffect(() => {
-        return () => {
-            dispatch(resetPlayersInformation());
-        };
-    }, []);
-
     const renderDescriptionLine = (
         label?: string,
         value?: number | string | null,
@@ -88,14 +82,14 @@ export const PlayerCard = () => {
         value2?: number | string | null
     ) => {
         return (
-            <div className="Description-line">
-                <div className="description-info">
-                    {label && <span className="label">{label}</span>}
-                    {value && <span className="value">{value}</span>}
+            <div className={s.DescriptionLine}>
+                <div className={s.descriptionInfo}>
+                    {label && <span className={s.label}>{label}</span>}
+                    {value && <span className={s.value}>{value}</span>}
                 </div>
-                <div className="description-info">
-                    {label2 && <span className="label">{label2}</span>}
-                    {value2 && <span className="value">{value2}</span>}
+                <div className={s.descriptionInfo}>
+                    {label2 && <span className={s.label}>{label2}</span>}
+                    {value2 && <span className={s.value}>{value2}</span>}
                 </div>
             </div>
         );
@@ -103,17 +97,17 @@ export const PlayerCard = () => {
     
     const renderContent = () => (
         <>
-            <div className="image-wrapper">
-                <img alt="teamLogo" className="player-photo" src={avatarUrl || defaultPlayerImg}/>
+            <div className={s.imageWrapper}>
+                <img alt="teamLogo" className={s.playerPhoto} src={avatarUrl || defaultPlayerImg}/>
             </div>
 
-            <div className="player-description">
-                <div className="title">
+            <div className={s.playerDescription}>
+                <div className={s.title}>
                     {name}
-                    <span className="player-number">{` #${number}`}</span>
+                    <span className={s.playerNumber}>{` #${number}`}</span>
                 </div>
 
-                <div className="description-wrapper">
+                <div className={s.descriptionWrapper}>
                     {renderDescriptionLine("Position", position, "Team", teamName?.name)}
                     {renderDescriptionLine("Height", `${height} cm`, "Weight", `${weight} kg`)}
                     {renderDescriptionLine("Age", getAge(birthday))}
@@ -123,23 +117,23 @@ export const PlayerCard = () => {
     );
 
     return(
-        <div className="PlayerCard">
-            <div className="PlayerCard__wrapper">
-                <div className="PlayerCard__wrapper__header">
-                    <span className="navigate-wrapper">
-                        <div className="home-link" onClick={goHome}>Players </div> / {currentPlayer.name}
+        <div className={s.PlayerCard}>
+            <div className={s.PlayerCard__wrapper}>
+                <div className={s.PlayerCard__wrapper__header}>
+                    <span className={s.navigateWrapper}>
+                        <div className={s.homeLink} onClick={goHome}>Players </div> / {currentPlayer.name}
                     </span>
 
                     {deleteError && <ErrorMessage message="Что-то пошло не так..." />}
 
-                    <div className="control">
+                    <div className={s.control}>
                         <img alt="edit" src={editIcon} onClick={editThisPlayer}/>
                         <img alt="delete" src={deleteIcon} onClick={deleteThisPlayer}/>
                     </div>
 
                 </div>
 
-                <div className="PlayerCard__wrapper__content">
+                <div className={s.PlayerCard__wrapper__content}>
                     {playerIsLoading ? <div>Loading...</div> : renderContent()}
                 </div>
             </div>

@@ -13,26 +13,22 @@
       width: 366px;
     }
 
-    .fields-line {
+    .fieldsLine {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
     }
-
-    .Field {
-      flex: 1 1;
-    }
-    .fields-line .Field:nth-child(1)  {
+    .fieldsLine > div:nth-child(1)  {
       margin-right: 24px;
     }
 
-    .form-control {
+    .formControl {
       display: flex;
       justify-content: space-between;
       width: 100%;
 
-      .reset-btn {
+      .resetBtn {
         margin-right: 12px;
       }
     }

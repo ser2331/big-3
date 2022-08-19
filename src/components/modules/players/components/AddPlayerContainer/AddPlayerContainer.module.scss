@@ -1,5 +1,6 @@
 @import "src/components/assests/styles/index";
-.AddTeamContainer {
+
+.AddPlayerContainer {
   width: 100%;
   @include media($mobile) {
     padding: 0;
@@ -8,24 +9,20 @@
     padding: 32px 80px;
   }
 
-  &__content-wrapper {
+  &__contentWrapper {
     width: 100%;
     background: var(--ui-white);
     border-radius: 10px;
     margin-bottom: 24px;
-    &__header {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .header {
       padding: 24px 32px;
       border-radius: 10px 10px 0 0;
-
-      .navigate-wrapper {
+      .navigateWrapper {
         display: flex;
+        align-items: center;
         color: var(--ui-red);
 
-        .home-link {
+        .homeLink {
           text-decoration: none;
           color: var(--ui-red);
           cursor: pointer;

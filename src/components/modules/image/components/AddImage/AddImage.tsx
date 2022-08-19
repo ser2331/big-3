@@ -1,9 +1,9 @@
 import React, {Dispatch, FC, SetStateAction, useCallback, useEffect} from "react";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { setImageToServer } from "../../ActionCreators";
-import ErrorMessage from "../../../../common/components/error-message";
+import { ErrorMessage } from "../../../../common/components/error-message/error-message";
 
-import "./AddImage.scss";
+import s from "./AddImage.module.scss";
 
 interface IAddTeamImage {
     imageUrl: string;
@@ -42,14 +42,16 @@ export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
         }
     }, [image]);
 
+    console.log(image);
+
     return (
-        <div className="AddImage">
+        <div className={s.AddImage}>
             {error && <ErrorMessage message={error} />}
-            <div className="AddImage__image-wrapper" >
-                <label className="custom-file-upload" htmlFor="file-upload" />
-                <input type="file" onChange={sendFile} accept={acceptOptions.join()} id="file-upload" className="upload" />
-                {isLoading && <div className="loading">Loading...</div>}
-                {avatar || imageUrl ? <img className="new-image" alt="addItem" src={avatar || imageUrl} /> : ""}
+            <div className={s.AddImage__imageWrapper} >
+                <label className={s.customFileUpload} htmlFor="file-upload" />
+                <input type="file" onChange={sendFile} accept={acceptOptions.join()} id="file-upload" className={s.upload} />
+                {isLoading && <div className={s.loading} >Loading...</div>}
+                {avatar || imageUrl ? <img className={s.newImage} alt="addItem" src={avatar || imageUrl} /> : ""}
             </div>
         </div>
     );

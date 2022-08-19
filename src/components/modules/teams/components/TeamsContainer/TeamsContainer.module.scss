@@ -11,7 +11,7 @@
     padding: 32px 80px;
   }
 
-  .fields-wrapper {
+  .fieldsWrapper {
     display: flex;
     margin-bottom: 32px;
     @include media($mobile) {
@@ -23,7 +23,7 @@
       justify-content: space-between;
     }
 
-    .add-item {
+    .addItem {
       @include media($mobile) {
         width: 100%;
         margin-top: 16px;
@@ -35,14 +35,7 @@
     }
   }
 
-  .ant-row {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  &__footer-wrapper {
+  .footerWrapper {
     display: flex;
     justify-content: space-between;
 
@@ -57,39 +50,5 @@
       position: static;
       bottom: 0;
     }
-  }
-}
-
-.SelectorItemsPerPage {
-  &__control {
-    width: 88px !important;
-    @include links;
-
-    @include media($mobile) {
-      height: 28px !important;
-    }
-    @include media($desktop) {
-      height: 40px !important;
-    }
-  }
-
-  &__control--is-focused {
-    border-color: #D9D9D9 !important;
-    box-shadow: 0 0 5px #D9D9D9 !important;
-    outline: none !important;
-  }
-
-  &__control--menu-is-open {
-    &__label {
-      color: var(--ui-white) !important;
-    }
-  }
-
-  &__menu {
-    top: -189px !important;
-  }
-
-  &__indicator {
-    transform: rotate(180deg);
   }
 }

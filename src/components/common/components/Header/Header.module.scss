@@ -20,7 +20,7 @@
     min-height: 80px;
   }
 
-  &__mobile-menu {
+  &__mobileMenu {
     @include media($mobile) {
       position: absolute;
       left: 14px;
@@ -32,6 +32,7 @@
   }
 
   &__logo {
+    cursor: pointer;
     @include media($mobile) {
       width: 137px;
       height: 34px;
@@ -41,8 +42,15 @@
       height: 48px;
     }
   }
+  &__logo:hover {
+    border-radius: 12px;
+    box-shadow: 0 1px 10px var(--ui-light-grey);;
+  }
+  &__logo:active {
+    border: 1px solid var(--ui-light-grey);
+  }
 
-  &__user-info-wrapper {
+  &__userInfoWrapper {
     @include media($mobile) {
       display: none;
     }
@@ -51,7 +59,7 @@
       align-items: center;
     }
 
-    .user-name {
+    .userName {
       margin-right: 20px;
     }
   }

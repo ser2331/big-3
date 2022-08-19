@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import classNames from "classnames";
 
-import "./search-field.scss";
+import s from "./search-field.module.scss";
 
 interface FieldProps {
     name?: string,
@@ -11,11 +11,11 @@ interface FieldProps {
     onChange(text: string): void,
 }
 
-const SearchField:FC<FieldProps> = ({value, onChange, className, classNameWrapper}) => {
+export const SearchField:FC<FieldProps> = ({value, onChange, className, classNameWrapper}) => {
     return (
-        <div className={classNames("SearchField", classNameWrapper)}>
+        <div className={classNames(s.SearchField, classNameWrapper)}>
             <input
-                className={classNames("input", className)}
+                className={classNames(s.input, className)}
                 type="text"
                 onChange={(e) => onChange(e.target.value)}
                 value={value}
@@ -24,5 +24,3 @@ const SearchField:FC<FieldProps> = ({value, onChange, className, classNameWrappe
         </div>
     );
 };
-
-export default SearchField;

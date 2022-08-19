@@ -1,7 +1,7 @@
 @import "../../../../assests/styles/index";
 
 .AddImage {
-  &__image-wrapper {
+  &__imageWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@
       display: none;
     }
 
-    .custom-file-upload {
+    .customFileUpload {
       background: url("../../../../assests/images/addItemImg.svg") center no-repeat;
       cursor: pointer;
       z-index: 1000;
@@ -46,7 +46,7 @@
       opacity: 1;
     }
 
-    .new-image {
+    .newImage {
       position: absolute;
       opacity: 0.5;
       z-index: 100;

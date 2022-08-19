@@ -1,5 +1,6 @@
 @import "src/components/assests/styles/index";
 .Field {
+  flex: 1 1;
   .label {
     @include inputLabel;
     margin-bottom: 8px;
@@ -38,7 +39,7 @@
     border: 1px solid var(--ui-lightest-red);
   }
 
-  .error-massage {
+  .errorMessage {
     height: 24px;
     color: var(--ui-lightest-red);
     @include errorMessage;

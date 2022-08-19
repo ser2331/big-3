@@ -1,6 +1,6 @@
 @import "src/components/assests/styles/index";
 
-.Auth-wrapper {
+.AuthWrapper {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
     margin-bottom: 32px;
   }
 
-  .not-member {
+  .notMember {
     width: 100%;
     text-align: center;
     margin-top: 24px;

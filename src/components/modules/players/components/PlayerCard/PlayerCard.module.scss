@@ -35,7 +35,7 @@
         border-radius: 10px 10px 0 0;
       }
 
-      .navigate-wrapper {
+      .navigateWrapper {
         display: flex;
         color: var(--ui-red);
 
@@ -75,7 +75,7 @@
         padding: 65px 0;
       }
 
-      .image-wrapper {
+      .imageWrapper {
         img {
           @include media($mobile) {
             width: 143px;
@@ -88,7 +88,7 @@
         }
       }
 
-      .player-description {
+      .playerDescription {
         flex: 2 1;
         color: var(--ui-white);
         @include media($mobile) {
@@ -109,16 +109,16 @@
             margin-bottom: 40px;
           }
 
-          .player-number {
+          .playerNumber {
             color: var(--ui-lightest-red);
           }
         }
 
-        .description-wrapper div {
+        .descriptionWrapper div {
           margin-bottom: 24px;
         }
 
-        .description-wrapper div:last-child {
+        .descriptionWrapper div:last-child {
           margin-bottom: 0;
         }
       }
@@ -126,7 +126,7 @@
   }
 }
 
-.Description-line {
+.DescriptionLine {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -137,7 +137,7 @@
     flex-direction: row;
   }
 
-  .description-info {
+  .descriptionInfo {
     display: flex;
     justify-content: center;
     flex-direction: column;

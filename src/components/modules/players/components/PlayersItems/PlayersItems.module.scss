@@ -6,23 +6,23 @@
   justify-content: flex-start;
 
   @include media($mobile) {
-    &__item-wrapper {
+    &__itemWrapper {
       height: 200px;
       width: calc(100% / 2 - 12px);
       margin:0 0 12px;
     }
-    &__item-wrapper:nth-child(1n-1) {
+    &__itemWrapper:nth-child(1n-1) {
       margin-left: 6px;
       margin-right: 6px;
     }
   }
   @include media($desktop) {
-    &__item-wrapper {
+    &__itemWrapper {
       height: 380px;
       width: calc(100% / 3 - 27px);
       margin:0 0 24px;
     }
-    &__item-wrapper:nth-child(3n-1) {
+    &__itemWrapper:nth-child(3n-1) {
       margin-left:12px;
       margin-right:12px;
     }
@@ -45,7 +45,7 @@
     height: 380px;
   }
 
-  .image-wrapper {
+  .imageWrapper {
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -63,7 +63,7 @@
     }
   }
 
-  .description-wrapper {
+  .descriptionWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,26 +78,26 @@
       height: 100px;
       padding: 0;
     }
-    .name-wrapper {
+    .nameWrapper {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
 
-      .player-name {
+      .playerName {
         color: var(--ui-white);
         @include cardTitle;
         text-align: center;
         margin-right: 4px;
       }
-      .player-number {
+      .playerNumber {
         color: var(--ui-light-red);
         @include cardTitle;
         text-align: center;
       }
     }
 
-    .team-name {
+    .teamName {
       color: var(--ui-light-grey);
       @include cardYear;
       text-align: center;

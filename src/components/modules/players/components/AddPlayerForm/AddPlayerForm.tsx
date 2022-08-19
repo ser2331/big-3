@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { useAppSelector } from "../../../../core/redux/redux";
-import Field from "../../../../common/components/field";
-import SelectField from "../../../../common/components/select-field";
-import CustomButton from "../../../../common/components/custom-button";
+import { Field } from "../../../../common/components/field/field";
+import { SelectField } from "../../../../common/components/select-field/select-field";
+import { CustomButton } from "../../../../common/components/custom-button/custom-button";
 import { ISubmitPlayer, ITeamOptions } from "../../interfaces/players-interfaces";
 import { Control, DeepRequired, FieldErrorsImpl, SubmitHandler, UseFormRegister } from "react-hook-form";
 import { UseFormHandleSubmit } from "react-hook-form/dist/types/form";
 
-import "./AddPlayerForm.scss";
+import s from "./AddPlayerForm.module.scss";
 
 interface IAddPlayerForm {
     register: UseFormRegister<ISubmitPlayer>;
@@ -28,8 +28,8 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
     const { isLoading: imageLoading } = useAppSelector(state => state.imageReducer);
 
     return (
-        <div className="AddPlayerForm">
-            <form className="form" onSubmit={handleSubmit(submit)}>
+        <div className={s.AddPlayerForm}>
+            <form className={s.form} onSubmit={handleSubmit(submit)}>
                 <Field
                     label="Name"
                     register={register}
@@ -53,7 +53,7 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                     error={errors.team}
                     isClearable
                 />
-                <div className="fields-line">
+                <div className={s.fieldsLine}>
                     <Field
                         label="Height (cm)"
                         register={register}
@@ -61,6 +61,7 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         type="number"
                         error={errors.height}
                         property={{required: "Enter height"}}
+                        style={s.Field}
                     />
                     <Field
                         label="Weight (kg)"
@@ -69,10 +70,11 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         type="number"
                         error={errors.weight}
                         property={{required: "Enter weight"}}
+                        style={s.Field}
                     />
                 </div>
 
-                <div className="fields-line">
+                <div className={s.fieldsLine}>
                     <Field
                         label="Birthday"
                         register={register}
@@ -80,6 +82,7 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         error={errors.birthday}
                         type="date"
                         property={{required: "Enter birthday"}}
+                        style={s.Field}
                     />
                     <Field
                         label="Number"
@@ -88,11 +91,12 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         type="number"
                         error={errors.number}
                         property={{required: "Enter player number"}}
+                        style={s.Field}
                     />
                 </div>
 
-                <div className="form-control">
-                    <CustomButton type="reset" className="reset-btn">
+                <div className={s.formControl}>
+                    <CustomButton type="reset" className={s.resetBtn}>
                         Cancel
                     </CustomButton>
 

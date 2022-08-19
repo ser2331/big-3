@@ -10,7 +10,7 @@ interface IEmptyItems {
     namePage: string;
 }
 
-const EmptyItems:FC<IEmptyItems> = ({ isTeamsPage=false, isPlayersPage=false, namePage }) => {
+export const EmptyItems:FC<IEmptyItems> = ({ isTeamsPage=false, isPlayersPage=false, namePage }) => {
 
     const emptyTeamsImage = isTeamsPage ? emptyTeams : "";
     const emptyPlayersImage = isPlayersPage ? emptyPlayers : "";
@@ -25,5 +25,3 @@ const EmptyItems:FC<IEmptyItems> = ({ isTeamsPage=false, isPlayersPage=false, na
         </div>
     );
 };
-
-export default EmptyItems;

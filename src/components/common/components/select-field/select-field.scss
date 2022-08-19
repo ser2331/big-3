@@ -1,6 +1,6 @@
 @import "src/components/assests/styles/index";
 
-.SearchField {
+.SelectField {
   .label {
     @include inputLabel;
     margin-bottom: 8px;
@@ -26,5 +26,10 @@
         background-color: var(--ui-red);
       }
     }
+  }
+  .error-message {
+    height: 24px;
+    color: var(--ui-lightest-red);
+    @include errorMessage;
   }
 }

@@ -20,11 +20,11 @@ interface SearchFieldTypes {
     isClearable: boolean;
 }
 
-const SelectField:FC<SearchFieldTypes> = ({ label, name, error, options, control, isMulti, defaultValue, isClearable }) => {
+export const SelectField:FC<SearchFieldTypes> = ({ label, name, error, options, control, isMulti, defaultValue, isClearable }) => {
     const animatedComponents = makeAnimated();
 
     return (
-        <div className="SearchField Field">
+        <div className="SelectField Field">
             <label className="label">{label}</label>
 
             <Controller
@@ -43,11 +43,9 @@ const SelectField:FC<SearchFieldTypes> = ({ label, name, error, options, control
                 defaultValue={defaultValue}
             />
 
-            <div className="error-massage">
+            <div className="error-message">
                 {error ? error.message : "" }
             </div>
         </div>
     );
 };
-
-export default SelectField;

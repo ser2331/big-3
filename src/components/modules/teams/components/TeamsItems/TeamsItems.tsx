@@ -3,28 +3,28 @@ import { useAppSelector } from "../../../../core/redux/redux";
 import { ITeamItemProps, ITeams, ITeamsItems } from "../../interfaces/teams-interfaces";
 import fakeImage from "../../../../assests/images/teamLogo.jpeg";
 
-import "./TeamsItems.scss";
+import s from "./TeamsItems.module.scss";
 
 export const TeamsItems:FC<ITeamsItems> = ({ setItemId } ) => {
 
     const { teams } = useAppSelector(state => state.teamsReducer);
 
     const Item:FC<ITeamItemProps> = ({name, foundationYear, image, id}) =>  (
-        <div className="TeamItem" onClick={() => setItemId(id)}>
-            <div className="image-wrapper">
+        <div className={s.TeamItem} onClick={() => setItemId(id)}>
+            <div className={s.imageWrapper}>
                 <img alt="teamImage" src={image || fakeImage}/>
             </div>
-            <div className="description-wrapper">
-                <span className="team-name">{name}</span>
-                <span className="team-year">{`Year of foundation: ${foundationYear}`}</span>
+            <div className={s.descriptionWrapper}>
+                <span className={s.teamName}>{name}</span>
+                <span className={s.teamYear}>{`Year of foundation: ${foundationYear}`}</span>
             </div>
         </div>
     );
 
     return (
-        <div className="Teams-items">
+        <div className={s.TeamsItems}>
             {teams?.map((item: ITeams) => (
-                <div className="Teams-items__item-wrapper" key={item.id}>
+                <div className={s.TeamsItems__itemWrapper} key={item.id}>
                     <Item foundationYear={item.foundationYear} name={item.name} image={item.imageUrl} id={item.id} />
                 </div>
             ))}

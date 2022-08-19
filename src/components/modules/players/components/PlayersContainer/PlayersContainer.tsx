@@ -10,21 +10,21 @@ import { teamsSlice } from "../../../teams/TeamsSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
 import { authorizationSlice } from "../../../authorization/AuthorizationSlice";
 import { PlayersItems } from "../PlayersItems/PlayersItems";
-import SearchField from "../../../../common/components/search-field";
-import CustomButton from "../../../../common/components/custom-button";
-import EmptyItems from "../../../../common/components/empty-items";
+import { SearchField } from "../../../../common/components/search-field/search-field";
+import { CustomButton } from "../../../../common/components/custom-button/custom-button";
+import { EmptyItems } from "../../../../common/components/empty-items/empty-items";
 import Types from "../../../../types";
 import { useDebounce } from "../../../../common/hooks/debounce";
 import { getArrayTeamsId, getOptions } from "../../selectors";
 import { ITeamsSelectOptions } from "../../../teams/interfaces/teams-interfaces";
 
-import "./PlayersContainer.scss";
+import s from "./PlayersContainer.module.scss";
 
 const { optionsItemsPerPage } = Types;
 
 const { setTokenError } = authorizationSlice.actions;
 const { setTeams } = teamsSlice.actions;
-const { setSearchPlayerName, setPlayerId, setPagination, setPlayers, setSelectedTeam } = playersSlice.actions;
+const { setSearchPlayerName, setPlayerId, setPagination, setPlayers, setSelectedTeam, resetPlayersInformation } = playersSlice.actions;
 
 export const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
@@ -52,6 +52,10 @@ export const PlayersContainer:FC = () => {
         }
     }, [dispatch, teamsData, teamsError]);
 
+    useEffect(() => {
+        dispatch(resetPlayersInformation());
+    }, []);
+
     const {
         data: playersData,
         error: playersError,
@@ -70,6 +74,8 @@ export const PlayersContainer:FC = () => {
     };
 
     const handleChangeNumberPerPage = useCallback(({ value }: { label: string, value: number }) => {
+        // eslint-disable-next-line no-debugger
+        // debugger;
         dispatch(setPagination({ itemsPerPage: value, pageCount, currentPage}));
     }, [dispatch]);
 
@@ -110,19 +116,19 @@ export const PlayersContainer:FC = () => {
     }, [players]);
 
     return (
-        <div className="PlayersContainer">
-            <div className="fields-wrapper">
+        <div className={s.PlayersContainer}>
+            <div className={s.fieldsWrapper}>
                 {!missingCount && (
-                    <div className="left-fields">
+                    <div className={s.leftFields}>
                         <SearchField
                             value={searchPlayerName}
                             onChange={(val) => dispatch(setSearchPlayerName(val))}
-                            classNameWrapper="playersSearch"
+                            classNameWrapper={s.playersSearch}
                         />
 
                         <Select
-                            className="selector"
-                            classNamePrefix="Multi-selector"
+                            className={s.selector}
+                            classNamePrefix="MultiSelector"
                             components={animatedComponents}
                             isMulti
                             options={options}
@@ -133,10 +139,10 @@ export const PlayersContainer:FC = () => {
                         />
                     </div>
                 )}
-                <div className="right-fields">
+                <div className={s.rightFields}>
                     <CustomButton
                         type="button"
-                        className="add-item"
+                        className={s.addItem}
                         onClick={() => navigate("addPlayer")}
                     >
                         Add +
@@ -152,7 +158,7 @@ export const PlayersContainer:FC = () => {
             {players.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId} /> : ""}
 
             {!missingCount && (
-                <div className="TeamsContainer__footer-wrapper">
+                <div className={s.footerWrapper}>
                     <ReactPaginate
                         nextLabel=">"
                         onPageChange={handlePageClick}

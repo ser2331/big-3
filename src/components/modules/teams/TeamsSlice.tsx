@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPagination, ITeams } from "./interfaces/teams-interfaces";
-import Types from "../../types";
-
-const  { appSizesMap } = Types;
 
 export interface TeamsState {
     teams: ITeams[];
@@ -10,8 +7,6 @@ export interface TeamsState {
     searchTeam: string;
     teamId: number | null;
     pagination: IPagination;
-    showMobileMenu: boolean;
-    isMobile: boolean;
 }
 
 const initialState: TeamsState = {
@@ -31,8 +26,6 @@ const initialState: TeamsState = {
     },
     searchTeam: "",
     teamId: null,
-    showMobileMenu: false,
-    isMobile: appSizesMap.get("desktop").key,
 };
 
 export const teamsSlice = createSlice({
@@ -53,12 +46,6 @@ export const teamsSlice = createSlice({
         },
         setCurrentTeam(state, action: PayloadAction<ITeams>) {
             state.currentTeam = action.payload;
-        },
-        setShowMobileMenu(state, action: PayloadAction<boolean>) {
-            state.showMobileMenu = action.payload;
-        },
-        setIsMobile(state, action: PayloadAction<boolean>) {
-            state.isMobile = action.payload;
         },
         resetTeamsInformation(state) {
             state.currentTeam = {

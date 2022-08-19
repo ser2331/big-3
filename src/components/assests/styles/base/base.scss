@@ -41,3 +41,84 @@ body {
         }
     }
 }
+
+.MultiSelector {
+    &__control {
+        height: 40px !important;
+        @include links;
+
+        @include media($mobile) {
+            width: auto;
+        }
+        @include media($desktop) {
+            width: 364px !important;
+        }
+    }
+
+    &__control--is-focused {
+        border-color: #D9D9D9 !important;
+        box-shadow: 0 0 5px #D9D9D9 !important;
+        outline: none !important;
+    }
+
+    &__value-container--has-value {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+    }
+
+    &__multi-value {
+        display: flex !important;
+        align-items: center !important;
+        color: var(--ui-white) !important;
+        height: 24px !important;
+        background-color: var(--ui-red) !important;
+        border-radius: 4px !important;
+
+        &__label {
+            color: var(--ui-white) !important;
+        }
+    }
+}
+
+.SelectorItemsPerPage {
+    &__control {
+        width: 88px !important;
+        @include links;
+
+        @include media($mobile) {
+            height: 28px !important;
+        }
+        @include media($desktop) {
+            height: 40px !important;
+        }
+    }
+
+    &__control--is-focused {
+        border-color: #D9D9D9 !important;
+        box-shadow: 0 0 5px #D9D9D9 !important;
+        outline: none !important;
+    }
+
+    &__control--menu-is-open {
+        &__label {
+            color: var(--ui-white) !important;
+        }
+    }
+
+    &__menu {
+        top: -189px !important;
+
+        .SelectorItemsPerPage__option--is-selected {
+            background: var(--ui-red);
+        }
+        .SelectorItemsPerPage__option--is-focused {
+            background: var(--ui-lightest-red);
+        }
+    }
+
+    &__indicator {
+        transform: rotate(180deg);
+    }
+}

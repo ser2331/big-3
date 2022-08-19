@@ -36,11 +36,11 @@
         padding: 24px 32px;
         border-radius: 10px 10px 0 0;
       }
-      .navigate-wrapper {
+      .navigateWrapper {
         display: flex;
         color: var(--ui-red);
 
-        .home-link {
+        .homeLink {
           text-decoration: none;
           color: var(--ui-red);
           cursor: pointer;
@@ -76,14 +76,14 @@
         padding: 65px 0;
       }
 
-      .image-content {
+      .imageContent {
         display: flex;
         align-items: center;
         justify-content: center;
         @include media($mobile) {
           padding: 0;
 
-          .image-wrapper {
+          .imageWrapper {
             margin-bottom: 48px;
             img {
               width: 90px;
@@ -93,7 +93,7 @@
         }
         @include media($desktop) {
           padding: 0 146px;
-          .image-wrapper {
+          .imageWrapper {
             margin-bottom: 0;
 
             img {
@@ -104,7 +104,7 @@
         }
       }
 
-      .team-description {
+      .teamDescription {
         flex: 2 1;
         color: var(--ui-white);
         @include media($mobile) {
@@ -126,7 +126,7 @@
           }
         }
 
-        .description-wrapper {
+        .descriptionWrapper {
           display: flex;
           @include media($mobile) {
             flex-direction: column;
@@ -135,7 +135,7 @@
             flex-direction: row;
           }
 
-          .left-col {
+          .leftCol {
             @include media($mobile) {
               margin-right: 0;
             }
@@ -145,7 +145,7 @@
           }
 
           @include media($mobile) {
-            .left-col div{
+            .leftCol div{
               margin-bottom: 32px;
             }
             .right-col div {
@@ -153,15 +153,15 @@
             }
           }
           @include media($desktop) {
-            .left-col div:nth-child(1) {
+            .leftCol div:nth-child(1) {
                 margin-bottom: 54px;
             }
-            .right-col {
+            .rightCol {
 
             }
           }
 
-          .description-info {
+          .descriptionInfo {
             display: flex;
             flex-direction: column;
             .label {
@@ -177,7 +177,7 @@
     }
   }
 
-  &__team-players {
+  &__teamPlayers {
     width: 100%;
 
     .Table {
@@ -210,11 +210,11 @@
         color: var(--ui-grey);
         @include links;
 
-        .player-wrapper {
+        .playerWrapper {
           display: flex;
           align-items: center;
 
-          .image-wrapper {
+          .imageWrapper {
             display: flex;
             justify-content: center;
             width: 40px;
@@ -222,7 +222,7 @@
             margin-right: 8px;
           }
 
-          .player-position {
+          .playerPosition {
             @include cardYear;
             color: var(--ui-light-grey);
           }

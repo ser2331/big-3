@@ -1,23 +1,23 @@
 import React, { FC, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../core/redux/redux";
-import { authorizationSlice } from "../modules/authorization/AuthorizationSlice";
-import { teamsSlice } from "../modules/teams/TeamsSlice";
-import { ProtectedPages } from "../pages/ProtectedPages/ProtectedPages";
-import { UnprotectedPages } from "../pages/UnprotectedPages/UnprotectedPages";
-import StorageService from "../common/helpers/storageService/storage-service";
-import Types from "../types";
+import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
+import { authorizationSlice } from "../../../authorization/AuthorizationSlice";
+import { appSlice } from "../../AppSlice";
+import { ProtectedPages } from "../../../../pages/ProtectedPages/ProtectedPages";
+import { UnprotectedPages } from "../../../../pages/UnprotectedPages/UnprotectedPages";
+import StorageService from "../../../../common/helpers/storageService/storage-service";
+import Types from "../../../../types";
 
-import "./App.scss";
+import s from "./App.module.scss";
 
 const { appSizesMap, localStorage } = Types;
 
-const { setIsMobile } = teamsSlice.actions;
+const { setIsMobile } = appSlice.actions;
 const { setUserData, setTokenError } = authorizationSlice.actions;
 
 export const App: FC = () => {
     const dispatch = useAppDispatch();
     const { token, tokenError } = useAppSelector( state => state.authorizationReducer);
-    const { showMobileMenu } = useAppSelector(state => state.teamsReducer);
+    const { showMobileMenu } = useAppSelector(state => state.appReducer);
 
     useEffect(() => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -53,7 +53,7 @@ export const App: FC = () => {
     }, [dispatch]);
 
     return (
-        <div className="App">
+        <div className={s.App}>
             {token ? (<ProtectedPages />) : (<UnprotectedPages />)}
         </div>
     );

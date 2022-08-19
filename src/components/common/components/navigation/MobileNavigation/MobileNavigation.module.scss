@@ -1,6 +1,6 @@
 @import "src/components/assests/styles/index";
 
-.MobileNavigation-wrapper {
+.MobileNavigationWrapper {
   position: absolute;
   width: 100%;
   z-index: 1000;
@@ -41,8 +41,8 @@
     padding: 20px;
     flex: 1 1;
 
-    .links-wrapper {
-      .link-wrapper {
+    .linksWrapper {
+      .linkWrapper {
         display: flex;
         align-items: center;
         margin-bottom: 36px;
@@ -50,14 +50,14 @@
         text-decoration: none;
         color: var(--ui-light-grey);
 
-        .link-image {
+        .linkImage {
           width: 24px;
           height: 24px;
           margin-right: 4px;
           cursor: pointer;
         }
 
-        .link-name {
+        .linkName {
           @include cardYear;
           cursor: pointer;
         }
@@ -68,12 +68,12 @@
       }
     }
 
-    .sign-out-wrapper {
+    .signOutWrapper {
       display: flex;
       color: var(--ui-lightest-red);
       cursor: pointer;
 
-      .sign-out-image {
+      .signOutImage {
         width: 24px;
         height: 24px;
         margin-right: 4px;

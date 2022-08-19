@@ -5,15 +5,15 @@ import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useAppDispatch } from "../../../../core/redux/redux";
 import { authorizationSlice } from "../../AuthorizationSlice";
 import { registrationSchema } from "../../helpers/yup-schems";
-import Field from "../../../../common/components/field";
+import { Field } from "../../../../common/components/field/field";
+import { CustomButton } from "../../../../common/components/custom-button/custom-button";
+import { CustomCheckbox } from "../../../../common/components/custom-checkbox/custom-checkbox";
 import { authService } from "../../../../api/authService/authService";
 import StorageService from "../../../../common/helpers/storageService/storage-service";
-import CustomButton from "../../../../common/components/custom-button";
-import CustomCheckbox from "../../../../common/components/custom-checkbox";
 import { IGetTokenRegistration } from "../../interfaces/authorization-interfaces";
 import Types from "../../../../types";
 
-import "./AuthWrapper.scss";
+import s from "./AuthWrapper.module.scss";
 
 const { localStorage } = Types;
 
@@ -56,7 +56,7 @@ const Registration = () => {
     };
 
     return(
-        <div className="Registration Auth-wrapper">
+        <div className={`${s.Registration} ${s.AuthWrapper}`}>
             <h1 className="auth-title">Sign Up</h1>
             <form onSubmit={handleSubmit(submit)}>
 
@@ -95,7 +95,7 @@ const Registration = () => {
                 </CustomButton>
             </form>
 
-            <div className="not-member">
+            <div className={s.notMember}>
                 <span>Already a member? </span>
                 <Link to="/">Sign up</Link>
             </div>

@@ -12,7 +12,7 @@
     padding: 32px 80px;
   }
 
-  .fields-wrapper {
+  .fieldsWrapper {
     display: flex;
     margin-bottom: 32px;
 
@@ -25,7 +25,7 @@
       justify-content: right;
     }
 
-    .left-fields {
+    .leftFields {
       display: flex;
       flex: 1 1;
       @include media($mobile) {
@@ -53,8 +53,8 @@
       }
     }
 
-    .right-fields {
-      .add-item {
+    .rightFields {
+      .addItem {
         @include media($mobile) {
           width: 100%
         }
@@ -65,20 +65,7 @@
     }
   }
 
-  .ant-row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    @include media($mobile) {
-      justify-content: center;
-    }
-    @include media($desktop) {
-      justify-content: left;
-    }
-  }
-
-  &__footer-wrapper {
+  .footerWrapper {
     display: flex;
     justify-content: space-between;
 
@@ -94,58 +81,5 @@
       bottom: 0;
     }
   }
-
-  &__items {
-    margin-bottom: 32px;
-    min-height: 784px;
-  }
 }
 
-.Multi-selector {
-  &__control {
-    height: 40px !important;
-    @include links;
-
-    @include media($mobile) {
-      width: auto;
-    }
-    @include media($desktop) {
-      width: 364px !important;
-    }
-  }
-
-  &__control--is-focused {
-    border-color: #D9D9D9 !important;
-    box-shadow: 0 0 5px #D9D9D9 !important;
-    outline: none !important;
-  }
-
-  &__value-container--has-value {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    justify-content: flex-start !important;
-    overflow-x: auto !important;
-  }
-
-  //&__value-container--has-value > div:nth-child(-n+3) {
-  //
-  //}
-  &__multi-value {
-    display: flex !important;
-    align-items: center !important;
-    color: var(--ui-white) !important;
-    height: 24px !important;
-    background-color: var(--ui-red) !important;
-    border-radius: 4px !important;
-
-    &__label {
-      color: var(--ui-white) !important;
-    }
-  }
-  //&__value-container--has-value > div:not(:nth-child(-n+3)) {
-  //  .Multi-selector__multi-value {
-  //    display: none
-  //  }
-  //}
-
-}

@@ -9,17 +9,17 @@ import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { teamsSlice } from "../../TeamsSlice";
 import Types from "../../../../types";
 import { TeamsItems } from "../TeamsItems/TeamsItems";
-import SearchField from "../../../../common/components/search-field";
-import CustomButton from "../../../../common/components/custom-button";
-import EmptyItems from "../../../../common/components/empty-items";
+import { SearchField } from "../../../../common/components/search-field/search-field";
+import { CustomButton } from "../../../../common/components/custom-button/custom-button";
+import { EmptyItems } from "../../../../common/components/empty-items/empty-items";
 import { useDebounce } from "../../../../common/hooks/debounce";
 
-import "./TeamsContainer.scss";
+import s from "./TeamsContainer.module.scss";
 
 const { optionsItemsPerPage } = Types;
 
 const { setTokenError } = authorizationSlice.actions;
-const { setTeams, setSearchTeam, setTeamId, setPagination } = teamsSlice.actions;
+const { setTeams, setSearchTeam, setTeamId, setPagination, resetTeamsInformation } = teamsSlice.actions;
 
 export const TeamsContainer:FC = () => {
     const dispatch = useAppDispatch();
@@ -86,19 +86,23 @@ export const TeamsContainer:FC = () => {
         }
     }, [teams]);
 
+    useEffect(() => {
+        dispatch(resetTeamsInformation());
+    }, []);
+
     return (
-        <div className="TeamsContainer">
-            <div className="fields-wrapper">
+        <div className={s.TeamsContainer}>
+            <div className={s.fieldsWrapper}>
                 { !missingCount ? (
                     <SearchField
                         value={searchTeam}
                         onChange={(val) => dispatch(setSearchTeam(val))}
-                        className="teamSearch"/>
+                        className={s.teamSearch}/>
                 ) : <div />}
 
                 <CustomButton
                     type="button"
-                    className="add-item"
+                    className={s.addItem}
                     onClick={() => navigate("addTeam")}
                 >
                     Add +
@@ -112,7 +116,7 @@ export const TeamsContainer:FC = () => {
             {teams.length && !teamsError && !teamsIsLoading ? <TeamsItems setItemId={setItemId}/> : ""}
 
             {!missingCount && (
-                <div className="TeamsContainer__footer-wrapper">
+                <div className={s.footerWrapper}>
                     <ReactPaginate
                         nextLabel=">"
                         onPageChange={handlePageClick}

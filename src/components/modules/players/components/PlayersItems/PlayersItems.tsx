@@ -4,7 +4,7 @@ import fakeImage from "../../../../assests/images/avatar.jpg";
 import { IPlayerItemProps, IPlayersItems } from "../../interfaces/players-interfaces";
 import { ITeams } from "../../../teams/interfaces/teams-interfaces";
 
-import "./PlayersItems.scss";
+import s from "./PlayersItems.module.scss";
 
 export const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
     const { teams } = useAppSelector(state => state.teamsReducer);
@@ -13,30 +13,30 @@ export const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
     const Item:FC<IPlayerItemProps> = ({name, image, id, teamName, number}) => {
 
         return (
-            <div className="PlayerItem" onClick={() => setItemId(id)}>
-                <div className="image-wrapper">
+            <div className={s.PlayerItem} onClick={() => setItemId(id)}>
+                <div className={s.imageWrapper}>
                     <img alt="teamImage" src={image || fakeImage}/>
                 </div>
-                <div className="description-wrapper">
-                    <div className="name-wrapper">
-                        <div className="player-name">{name}</div>
-                        <div className="player-number">{`#${number}`}</div>
+                <div className={s.descriptionWrapper}>
+                    <div className={s.nameWrapper}>
+                        <div className={s.playerName}>{name}</div>
+                        <div className={s.playerNumber}>{`#${number}`}</div>
                     </div>
 
-                    <span className="team-name">{teamName}</span>
+                    <span className={s.teamName}>{teamName}</span>
                 </div>
             </div>
         );
     };
 
     return (
-        <div className="PlayersItems">
+        <div className={s.PlayersItems}>
             {players?.map((item) => {
                 const playerTeam = teams.find((t: ITeams) => t.id === item.team);
                 const teamName = playerTeam?.name;
 
                 return (
-                    <div className="PlayersItems__item-wrapper" key={item.id}>
+                    <div className={s.PlayersItems__itemWrapper} key={item.id}>
                         <Item
                             name={item.name}
                             teamName={teamName}

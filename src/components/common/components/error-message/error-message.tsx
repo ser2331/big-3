@@ -6,12 +6,10 @@ interface IErrorMessage {
     message: string;
 }
 
-const ErrorMessage: FC<IErrorMessage> = ({message}) => {
+export const ErrorMessage: FC<IErrorMessage> = ({message}) => {
     return (
         <div className="Error-message">
             {message}
         </div>
     );
 };
-
-export default ErrorMessage;

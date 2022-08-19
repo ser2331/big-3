@@ -11,9 +11,9 @@ import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { baseUrl } from "../../../../api/authService/authService";
 import { AddImage } from "../../../image/components/AddImage/AddImage";
 import { AddPlayerForm } from "../AddPlayerForm/AddPlayerForm";
-import ErrorMessage from "../../../../common/components/error-message";
+import { ErrorMessage } from "../../../../common/components/error-message/error-message";
 
-import "./AddPlayerContainer.scss";
+import s from "./AddPlayerContainer.module.scss";
 
 const { setTeams } = teamsSlice.actions;
 const { setImage } = imageSlice.actions;
@@ -109,17 +109,17 @@ export const AddPlayerContainer = () => {
 
 
     return (
-        <div className="AddPlayerContainer">
-            <div className="AddPlayerContainer__content-wrapper">
-                <div className="AddTeamContainer__content-wrapper__header">
-                    <span className="navigate-wrapper">
-                        <div className="home-link" onClick={goHome}>Players </div> / Add new player
+        <div className={s.AddPlayerContainer}>
+            <div className={s.AddPlayerContainer__contentWrapper}>
+                <div className={s.header}>
+                    <span className={s.navigateWrapper}>
+                        <div className={s.homeLink} onClick={goHome}>Players </div> / Add new player
                     </span>
 
                     {addPlayerError || editPlayerData ? <ErrorMessage message="Чьл-ьл пошло не так..." /> : ""}
                 </div>
 
-                <div className="AddPlayerContainer__content-wrapper__content">
+                <div className={s.AddPlayerContainer__contentWrapper__content}>
                     <AddImage imageUrl={avatarUrl} avatar={newImage} setAvatar={setAvatar} />
 
                     <AddPlayerForm

@@ -3,7 +3,7 @@ import { Outlet, Route, Routes, useLocation, useNavigate } from "react-router-do
 import { useAppDispatch, useAppSelector } from "../../core/redux/redux";
 import StorageService from "../../common/helpers/storageService/storage-service";
 import { authorizationSlice } from "../../modules/authorization/AuthorizationSlice";
-import { teamsSlice } from "../../modules/teams/TeamsSlice";
+import { appSlice } from "../../modules/App/AppSlice";
 import { Navigation } from "../../common/components/navigation/Navigation";
 import { AddTeamContainer } from "../../modules/teams/components/AddTeamContainer/AddTeamContainer";
 import { TeamsContainer } from "../../modules/teams/components/TeamsContainer/TeamsContainer";
@@ -15,19 +15,19 @@ import { MobileNavigation } from "../../common/components/navigation/MobileNavig
 import { Header } from "../../common/components/Header/Header";
 import Types from "../../types";
 
-import "./ProtectedPages.scss";
+import s from "./ProtectedPages.module.scss";
 
 const { routingMap, localStorage } = Types;
 
 const { setUserData } = authorizationSlice.actions;
-const { setShowMobileMenu } = teamsSlice.actions;
+const { setShowMobileMenu } = appSlice.actions;
 
 export const ProtectedPages = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { showMobileMenu, isMobile } = useAppSelector(state => state.teamsReducer);
+    const { showMobileMenu, isMobile } = useAppSelector(state => state.appReducer);
     const { name, avatarUrl } = useAppSelector(state => state.authorizationReducer);
 
     const isPlayersPage = location.pathname.includes(routingMap.get("players").value);
@@ -58,10 +58,10 @@ export const ProtectedPages = () => {
     }, [location, navigate]);
 
     return (
-        <div className="ProtectedPages">
+        <div className={s.ProtectedPages}>
             <Header/>
 
-            <div className="ProtectedPages__content">
+            <div className={s.ProtectedPages__content}>
 
                 {(isMobile && showMobileMenu) ? (
                     <MobileNavigation
