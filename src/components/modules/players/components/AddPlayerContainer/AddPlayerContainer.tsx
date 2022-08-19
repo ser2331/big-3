@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
@@ -15,9 +15,9 @@ import ErrorMessage from "../../../../common/components/error-message";
 
 import "./AddPlayerContainer.scss";
 
-const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
 const { setTeams } = teamsSlice.actions;
 const { setImage } = imageSlice.actions;
+const { resetPlayersInformation } = playersSlice.actions;
 
 export const AddPlayerContainer = () => {
     const dispatch = useAppDispatch();
@@ -84,22 +84,9 @@ export const AddPlayerContainer = () => {
         }
     };
 
-    const goHome = () => {
-        dispatch(setCurrentPlayer({
-            id: null,
-            name: "",
-            birthday: "",
-            avatarUrl: "",
-            height: null,
-            weight: null,
-            number: null,
-            position: "",
-            team: null,
-        }));
-        dispatch(setPlayerId(null));
-        dispatch(setImage(""));
+    const goHome = useCallback(() => {
         navigate("/players");
-    };
+    }, [navigate]);
 
     useEffect(() => {
         if ((addPlayerData && !addPlayerError) || (editPlayerData && !editPlayerError)) {
@@ -112,6 +99,14 @@ export const AddPlayerContainer = () => {
             dispatch(setTeams(teamsData.data));
         }
     }, [teamsData, teamsError]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(setImage(""));
+            dispatch(resetPlayersInformation());
+        };
+    }, [dispatch, navigate]);
+
 
     return (
         <div className="AddPlayerContainer">

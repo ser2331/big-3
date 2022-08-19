@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix pages players and teams">
-      <change afterPath="$PROJECT_DIR$/src/components/common/helpers/builderParamsIds.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add builderParamsIds and fix request players">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/api/players/playersApiService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/custom-button/custom-button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/custom-button/custom-button.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/custom-button/custom-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/custom-button/custom-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/MobileNavigation/MobileNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/navigation/Navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +67,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yoby/site/yobidoyobi-site" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yoby/analytics-front" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -118,13 +129,9 @@
       <workItem from="1660462144450" duration="22324000" />
       <workItem from="1660484999029" duration="25323000" />
       <workItem from="1660550232435" duration="19431000" />
-    </task>
-    <task id="LOCAL-00009" summary="some refactor">
-      <created>1659466690035</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1659466690035</updated>
+      <workItem from="1660734703985" duration="870000" />
+      <workItem from="1660897058182" duration="11192000" />
+      <workItem from="1660909450545" duration="9120000" />
     </task>
     <task id="LOCAL-00010" summary="add api, add auth">
       <created>1659476613415</created>
@@ -462,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660591055174</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="add builderParamsIds and fix request players">
+      <created>1660657345503</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1660657345503</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="&#10;add search and filter" />
     <MESSAGE value="add adaptive mobile to players and teams pages" />
     <MESSAGE value="add adaptive mobile to player-card and team-card pages" />
     <MESSAGE value="add adaptive mobile to add player and add team pages" />
@@ -507,7 +520,8 @@
     <MESSAGE value="fix interfaces" />
     <MESSAGE value="some fix" />
     <MESSAGE value="fix query players by teams" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix query players by teams" />
+    <MESSAGE value="add builderParamsIds and fix request players" />
+    <option name="LAST_COMMIT_MESSAGE" value="add builderParamsIds and fix request players" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

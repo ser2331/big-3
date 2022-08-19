@@ -59,6 +59,17 @@ export const teamsSlice = createSlice({
         },
         setIsMobile(state, action: PayloadAction<boolean>) {
             state.isMobile = action.payload;
+        },
+        resetTeamsInformation(state) {
+            state.currentTeam = {
+                name: "",
+                foundationYear: 0,
+                division: "",
+                conference: "",
+                imageUrl: "",
+                id: 0,
+            };
+            state.teamId = null;
         }
     }
 

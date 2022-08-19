@@ -13,7 +13,7 @@ interface CustomButtonProps {
 
 const CustomButton:FC<CustomButtonProps> = ({onClick, children, className, type, disabled}) => (
     <button
-        className={classNames("SubmitButton", className)}
+        className={classNames("CustomButton", type, className)}
         onClick={onClick}
         type={type}
         disabled={disabled}

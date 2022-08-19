@@ -13,7 +13,7 @@ import { baseUrl } from "../../../../api/authService/authService";
 
 import "./AddTeamContainer.scss";
 
-const { setCurrentTeam, setTeamId } = teamsSlice.actions;
+const { resetTeamsInformation } = teamsSlice.actions;
 const { setImage } = imageSlice.actions;
 
 export const AddTeamContainer = () => {
@@ -46,24 +46,21 @@ export const AddTeamContainer = () => {
     };
 
     const goHome = useCallback(() => {
-        dispatch(setCurrentTeam({
-            name: "",
-            foundationYear: null,
-            division: "",
-            conference: "",
-            imageUrl: "",
-            id: null,
-        }));
-        dispatch(setTeamId(null));
-        dispatch(setImage(""));
         navigate("/teams");
-    }, [dispatch, navigate]);
+    }, [navigate]);
 
     useEffect(() => {
         if ((addTeamData && !addTeamError) || (editData && !editTeamError)) {
             goHome();
         }
     }, [addTeamData, addTeamError, editData, editTeamError]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(setImage(""));
+            dispatch(resetTeamsInformation());
+        };
+    }, [dispatch, navigate]);
 
     return (
         <div className="AddTeamContainer">

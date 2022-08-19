@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect} from "react";
+import React, { FC, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
@@ -15,7 +15,8 @@ import CustomButton from "../../../../common/components/custom-button";
 import EmptyItems from "../../../../common/components/empty-items";
 import Types from "../../../../types";
 import { useDebounce } from "../../../../common/hooks/debounce";
-import {getArrayTeamsId, getOptions} from "../../selectors";
+import { getArrayTeamsId, getOptions } from "../../selectors";
+import { ITeamsSelectOptions } from "../../../teams/interfaces/teams-interfaces";
 
 import "./PlayersContainer.scss";
 
@@ -68,8 +69,12 @@ export const PlayersContainer:FC = () => {
         dispatch(setPagination({ itemsPerPage, pageCount, currentPage: event.selected + 1}));
     };
 
-    const handleChange = useCallback((newValue: {label: string, value: number} ) => {
-        dispatch(setPagination({ itemsPerPage: newValue.value, pageCount, currentPage}));
+    const handleChangeNumberPerPage = useCallback(({ value }: { label: string, value: number }) => {
+        dispatch(setPagination({ itemsPerPage: value, pageCount, currentPage}));
+    }, [dispatch]);
+
+    const handleChangeSelectedTeams = useCallback(( option: ITeamsSelectOptions[] ) => {
+        dispatch(setSelectedTeam(option));
     }, [dispatch]);
 
     const setItemId = useCallback((id: number | null) => {
@@ -106,8 +111,6 @@ export const PlayersContainer:FC = () => {
 
     return (
         <div className="PlayersContainer">
-
-            
             <div className="fields-wrapper">
                 {!missingCount && (
                     <div className="left-fields">
@@ -124,7 +127,9 @@ export const PlayersContainer:FC = () => {
                             isMulti
                             options={options}
                             value={selectedTeams}
-                            onChange={(option: any) => dispatch(setSelectedTeam(option))}
+                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                            // @ts-ignore
+                            onChange={handleChangeSelectedTeams}
                         />
                     </div>
                 )}
@@ -172,7 +177,9 @@ export const PlayersContainer:FC = () => {
                     <Select
                         value={getValueItemsPerPage()}
                         placeholder=""
-                        onChange={(newValue: any) => handleChange(newValue)}
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        onChange={handleChangeNumberPerPage}
                         classNamePrefix="SelectorItemsPerPage"
                         components={animatedComponents}
                         defaultValue={[optionsItemsPerPage[1]]}

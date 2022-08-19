@@ -1,15 +1,17 @@
 @import "src/components/assests/styles/index";
 
-.SubmitButton {
+.CustomButton {
   width: 100%;
   height: 40px;
   border-radius: 4px;
   cursor: pointer;
+  @include submitButton;
+}
+
+.submit, .button {
   background: var(--ui-red);
   border: none;
   color: var(--ui-white);
-
-  @include submitButton;
 
   &:hover {
     background: var(--ui-light-red);
@@ -18,6 +20,26 @@
   &:active {
     background: var(--ui-dark-red);
   }
+
+  &:disabled {
+    background: var(--ui-lightest-grey1);
+    color: var(--ui-lightest-grey);
+  }
+}
+
+.reset {
+  background: var(--ui-white);
+  border: 1px solid var(--ui-light-grey);
+  color: var(--ui-light-grey);
+
+  &:hover {
+    background: var(--ui-lightest-grey);
+  }
+
+  &:active {
+    background: var(--ui-grey);
+  }
+
   &:disabled {
     background: var(--ui-lightest-grey1);
     color: var(--ui-lightest-grey);

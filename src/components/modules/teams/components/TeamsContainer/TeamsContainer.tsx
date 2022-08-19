@@ -47,9 +47,9 @@ export const TeamsContainer:FC = () => {
         }
     }, [itemsPerPage]);
 
-    const handleChange = useCallback((newValue: {label: string, value: number} ) => {
+    const handleChangeNumberPerPage = useCallback((newValue: {label: string, value: number} ) => {
         dispatch(setPagination({ itemsPerPage: newValue.value, pageCount, currentPage}));
-    }, []);
+    }, [dispatch]);
 
     const handlePageClick = (event: { selected: number }) => {
         dispatch(setPagination({ itemsPerPage, pageCount, currentPage: event.selected + 1}));
@@ -58,7 +58,7 @@ export const TeamsContainer:FC = () => {
     const setItemId = useCallback((id: number | null) => {
         dispatch(setTeamId(id));
         navigate(`team:${id}`);
-    }, []);
+    }, [dispatch, navigate]);
 
     useEffect(() => {
         if (teamsData && !teamsError) {
@@ -137,7 +137,9 @@ export const TeamsContainer:FC = () => {
                     <Select
                         value={getValueItemsPerPage()}
                         placeholder=""
-                        onChange={(newValue: any) => handleChange(newValue)}
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        onChange={handleChangeNumberPerPage}
                         classNamePrefix="SelectorItemsPerPage"
                         components={animatedComponents}
                         defaultValue={[optionsItemsPerPage[1]]}

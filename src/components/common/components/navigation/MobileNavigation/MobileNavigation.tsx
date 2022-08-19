@@ -5,9 +5,7 @@ import { Drawer } from "antd";
 import Types from "../../../../types";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { authorizationSlice } from "../../../../modules/authorization/AuthorizationSlice";
-import { playersSlice } from "../../../../modules/players/PlayersSlice";
 import { teamsSlice } from "../../../../modules/teams/TeamsSlice";
-import { imageSlice } from "../../../../modules/image/ImageSlice";
 import teams from "../../../../assests/images/group-person-rounded.svg";
 import teamsRed from "../../../../assests/images/teamsRed.svg";
 import players from "../../../../assests/images/person_rounded.svg";
@@ -21,9 +19,7 @@ import "./MobileNavigation.scss";
 const { routingMap, localStorage } = Types;
 
 const { setUserData } = authorizationSlice.actions;
-const { setCurrentTeam, setTeamId, setShowMobileMenu } = teamsSlice.actions;
-const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
-const { setImage } = imageSlice.actions;
+const { setShowMobileMenu } = teamsSlice.actions;
 
 export const MobileNavigation: FC = () => {
     const dispatch = useAppDispatch();
@@ -43,33 +39,10 @@ export const MobileNavigation: FC = () => {
     };
 
     const goToTeamsPage = () => {
-        dispatch(setCurrentTeam({
-            name: "",
-            foundationYear: null,
-            division: "",
-            conference: "",
-            imageUrl: "",
-            id: null,
-        }));
-        dispatch(setTeamId(null));
-        dispatch(setImage(""));
         navigate("/teams");
     };
 
     const goToPlayersPage = () => {
-        dispatch(setCurrentPlayer({
-            id: null,
-            name: "",
-            birthday: "",
-            avatarUrl: "",
-            height: null,
-            weight: null,
-            number: null,
-            position: "",
-            team: null,
-        }));
-        dispatch(setPlayerId(null));
-        dispatch(setImage(""));
         navigate("/players");
     };
 

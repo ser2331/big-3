@@ -57,6 +57,20 @@ export const playersSlice = createSlice({
         setSelectedTeam(state, action: PayloadAction<ITeamsSelectOptions[]>) {
             state.selectedTeams = action.payload;
         },
+        resetPlayersInformation(state) {
+            state.currentPlayer = {
+                id: null,
+                name: "",
+                birthday: "",
+                avatarUrl: "",
+                height: null,
+                weight: null,
+                number: null,
+                position: "",
+                team: null,
+            };
+            state.playerId = null;
+        }
     }
 
 });
