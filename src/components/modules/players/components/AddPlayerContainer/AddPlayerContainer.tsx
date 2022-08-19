@@ -105,7 +105,7 @@ export const AddPlayerContainer = () => {
             dispatch(setImage(""));
             dispatch(resetPlayersInformation());
         };
-    }, [dispatch, navigate]);
+    }, []);
 
 
     return (

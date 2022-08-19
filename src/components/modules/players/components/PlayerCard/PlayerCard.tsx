@@ -15,7 +15,7 @@ import {ITeams} from "../../../teams/interfaces/teams-interfaces";
 
 import "./PlayerCard.scss";
 
-const { setCurrentPlayer, setPlayerId } = playersSlice.actions;
+const { setCurrentPlayer, resetPlayersInformation } = playersSlice.actions;
 const { setTeams } = teamsSlice.actions;
 
 export const PlayerCard = () => {
@@ -39,18 +39,6 @@ export const PlayerCard = () => {
     }, [navigate]);
 
     const goHome = useCallback(() => {
-        dispatch(setCurrentPlayer({
-            id: null,
-            name: "",
-            birthday: "",
-            avatarUrl: "",
-            height: null,
-            weight: null,
-            number: null,
-            position: "",
-            team: null,
-        }));
-        dispatch(setPlayerId(null));
         navigate("/players");
     }, [dispatch, navigate]);
 
@@ -86,6 +74,12 @@ export const PlayerCard = () => {
             goHome();
         }
     }, [deletePlayerData, deleteError, deleteIsLoading]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(resetPlayersInformation());
+        };
+    }, []);
 
     const renderDescriptionLine = (
         label?: string,

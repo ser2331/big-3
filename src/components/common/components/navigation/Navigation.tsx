@@ -1,42 +1,22 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, {FC} from "react";
 import classNames from "classnames";
-import { useAppDispatch } from "../../../core/redux/redux";
-import { authorizationSlice } from "../../../modules/authorization/AuthorizationSlice";
-import Types from "../../../types";
 import teams from "../../../assests/images/group-person-rounded.svg";
 import teamsRed from "../../../assests/images/teamsRed.svg";
 import players from "../../../assests/images/person_rounded.svg";
 import playersRed from "../../../assests/images/personRed.svg";
 import signOutIcon from "../../../assests/images/signOut.png";
-import StorageService from "../../helpers/storageService/storage-service";
 
 import "./Navigation.scss";
 
-const { routingMap, localStorage } = Types;
+interface INavigation {
+    signOut: () => void;
+    goToTeamsPage: () => void;
+    goToPlayersPage: () => void;
+    isTeamsPage: boolean;
+    isPlayersPage: boolean;
+}
 
-const { setUserData } = authorizationSlice.actions;
-
-export const Navigation = () => {
-    const dispatch = useAppDispatch();
-    const location = useLocation();
-    const navigate = useNavigate();
-
-    const isPlayersPage = location.pathname.includes(routingMap.get("players").value);
-    const isTeamsPage = location.pathname.includes(routingMap.get("teams").value);
-
-    const signOut = () => {
-        StorageService.set(localStorage.token, "");
-        dispatch(setUserData({name: "", avatarUrl: "", token: ""}));
-    };
-
-    const goToTeamsPage = () => {
-        navigate("/teams");
-    };
-    
-    const goToPlayersPage = () => {
-        navigate("/players");
-    };
+export const Navigation: FC<INavigation> = ({ signOut, goToTeamsPage, goToPlayersPage, isTeamsPage, isPlayersPage}) => {
 
     return (
         <div className="Navigation">

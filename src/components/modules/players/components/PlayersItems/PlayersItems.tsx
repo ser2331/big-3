@@ -1,5 +1,4 @@
-import React, { FC, useMemo } from "react";
-import { Col, Row } from "antd";
+import React, { FC } from "react";
 import { useAppSelector } from "../../../../core/redux/redux";
 import fakeImage from "../../../../assests/images/avatar.jpg";
 import { IPlayerItemProps, IPlayersItems } from "../../interfaces/players-interfaces";
@@ -8,11 +7,8 @@ import { ITeams } from "../../../teams/interfaces/teams-interfaces";
 import "./PlayersItems.scss";
 
 export const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
-    const { teams, isMobile } = useAppSelector(state => state.teamsReducer);
+    const { teams } = useAppSelector(state => state.teamsReducer);
     const { players } = useAppSelector(state => state.playersReducer);
-
-    const span = useMemo(() => isMobile ? 12 : 8, [isMobile]);
-    const gutter = useMemo(() => isMobile ? 16 : 24, [isMobile]);
 
     const Item:FC<IPlayerItemProps> = ({name, image, id, teamName, number}) => {
 
@@ -35,24 +31,22 @@ export const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
 
     return (
         <div className="PlayersItems">
-            <Row gutter={[gutter, gutter]}>
-                {players?.map((item) => {
-                    const playerTeam = teams.find((t: ITeams) => t.id === item.team);
-                    const teamName = playerTeam?.name;
+            {players?.map((item) => {
+                const playerTeam = teams.find((t: ITeams) => t.id === item.team);
+                const teamName = playerTeam?.name;
 
-                    return (
-                        <Col span={span} className="PlayersItems__item-wrapper" key={item.id}>
-                            <Item
-                                name={item.name}
-                                teamName={teamName}
-                                image={item.avatarUrl}
-                                id={item.id}
-                                number={item.number}
-                            />
-                        </Col>
-                    );
-                })}
-            </Row>
+                return (
+                    <div className="PlayersItems__item-wrapper" key={item.id}>
+                        <Item
+                            name={item.name}
+                            teamName={teamName}
+                            image={item.avatarUrl}
+                            id={item.id}
+                            number={item.number}
+                        />
+                    </div>
+                );
+            })}
         </div>
     );
 };

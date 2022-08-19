@@ -1,21 +1,33 @@
 @import "src/components/assests/styles/index";
 
 .Teams-items {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+
   @include media($mobile) {
-    min-height: 400px;
-    margin-bottom: 18px;
+    &__item-wrapper {
+      height: 200px;
+      width: calc(100% / 2 - 12px);
+      margin:0 0 12px;
+    }
+    &__item-wrapper:nth-child(1n-1) {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
   }
   @include media($desktop) {
-    min-height: 784px;
-    margin-bottom: 32px;
+    &__item-wrapper {
+      height: 380px;
+      width: calc(100% / 3 - 27px);
+      margin:0 0 24px;
+    }
+    &__item-wrapper:nth-child(3n-1) {
+      margin-left:12px;
+      margin-right:12px;
+    }
   }
-
-  .ant-row {
-    justify-content: flex-start !important;
-  }
-
 }
-
 
 .TeamItem {
   display: flex;

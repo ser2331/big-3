@@ -60,7 +60,7 @@ export const AddTeamContainer = () => {
             dispatch(setImage(""));
             dispatch(resetTeamsInformation());
         };
-    }, [dispatch, navigate]);
+    }, []);
 
     return (
         <div className="AddTeamContainer">

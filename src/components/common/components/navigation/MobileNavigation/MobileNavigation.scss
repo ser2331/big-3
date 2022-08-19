@@ -1,81 +1,83 @@
 @import "src/components/assests/styles/index";
 
-.MobileNavigation {
-
-}
-
 .MobileNavigation-wrapper {
-  top: 7vh !important;
-  height: 93vh !important;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
 
-  @include media($desktop) {
-    display: none !important;
+  &__background {
+    width: 50%;
+    background: var(--ui-dark-grey1);
+    opacity: 0.6;
+  }
+}
+.MobileNavigation {
+  display: flex;
+  flex-direction: column;
+  background: var(--ui-white);
+  height: 93vh;
+  width: 50%;
+  z-index: 10000;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid var(--ui-lightest-grey);
+    padding: 20px;
+    @include cardTitle;
+
+    img {
+      width: 48px;
+      height: 48px;
+      margin-right: 8px;
+    }
   }
 
-  .ant-drawer-content-wrapper  {
-    width: 50% !important;
-  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    flex: 1 1;
 
-  .ant-drawer-wrapper-body {
-    .mobile-user-info-wrapper {
-      display: flex;
-      align-items: center;
-      @include links;
-      color: var(--ui-dark-grey);
+    .links-wrapper {
+      .link-wrapper {
+        display: flex;
+        align-items: center;
+        margin-bottom: 36px;
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--ui-light-grey);
 
-      img {
-        width: 48px;
-        height: 48px;
-        margin-right: 8px;
+        .link-image {
+          width: 24px;
+          height: 24px;
+          margin-right: 4px;
+          cursor: pointer;
+        }
+
+        .link-name {
+          @include cardYear;
+          cursor: pointer;
+        }
+      }
+
+      .active {
+        color: var(--ui-red)
       }
     }
 
-    .ant-drawer-body {
+    .sign-out-wrapper {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 32px 24px;
-      background: var(--ui-white);
-      box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
+      color: var(--ui-lightest-red);
+      cursor: pointer;
 
-      .links-wrapper {
-        .link-wrapper {
-          display: flex;
-          align-items: center;
-          margin-bottom: 36px;
-          cursor: pointer;
-          text-decoration: none;
-          color: var(--ui-light-grey);
-
-          .link-image {
-            width: 24px;
-            height: 24px;
-            margin-right: 4px;
-            cursor: pointer;
-          }
-
-          .link-name {
-            @include errorMessage;
-            cursor: pointer;
-          }
-        }
-
-        .active {
-          color: var(--ui-red)
-        }
+      .sign-out-image {
+        width: 24px;
+        height: 24px;
+        margin-right: 4px;
       }
-
-      .sign-out-wrapper {
-        display: flex;
-        color: var(--ui-lightest-red);
-        cursor: pointer;
-
-        .sign-out-image {
-          margin-right: 4px;
-        }
-      }
-
     }
   }
 }

@@ -15,7 +15,7 @@ import ErrorMessage from "../../../../common/components/error-message";
 
 import "./TeamCard.scss";
 
-const { setCurrentTeam, setTeamId } = teamsSlice.actions;
+const { setCurrentTeam, resetTeamsInformation } = teamsSlice.actions;
 const { setPlayers } = playersSlice.actions;
 
 export const TeamCard = () => {
@@ -48,15 +48,6 @@ export const TeamCard = () => {
     };
 
     const goHome = useCallback(() => {
-        dispatch(setCurrentTeam({
-            name: "",
-            foundationYear: null,
-            division: "",
-            conference: "",
-            imageUrl: "",
-            id: null,
-        }));
-        dispatch(setTeamId(null));
         navigate("/teams");
     }, [dispatch, navigate]);
 
@@ -84,6 +75,12 @@ export const TeamCard = () => {
             goHome();
         }
     }, [data, deleteError, deleteIsLoading]);
+
+    useEffect(() => {
+        return () => {
+            dispatch(resetTeamsInformation());
+        };
+    }, []);
 
     const renderContent = () => (
         <>

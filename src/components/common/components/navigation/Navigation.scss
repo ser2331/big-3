@@ -1,20 +1,15 @@
 @import "../../../assests/styles/index";
 
 .Navigation {
-  @include media($mobile) {
-    display: none;
-  }
-  @include media($desktop) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 140px;
-    min-height: 93vh;
-    padding: 32px 0;
-    background: var(--ui-white);
-    box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 140px;
+  min-height: 93vh;
+  padding: 32px 0;
+  background: var(--ui-white);
+  box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
 
   .links-wrapper {
     .link-wrapper {
