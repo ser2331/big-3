@@ -2,21 +2,21 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import playersReducer from "../../modules/players/PlayersSlice";
 import teamsReducer from "../../modules/teams/TeamsSlice";
 import authorizationReducer from "../../modules/authorization/AuthorizationSlice";
-import imageReducer from "../../modules/image/ImageSlice";
 import appReducer from "../../modules/App/AppSlice";
 import { authService } from "../../api/authService/authService";
 import { teamsApiService } from "../../api/teams/teamsApiService";
 import { playersApiService } from "../../api/players/playersApiService";
+import { imagesApiService } from "../../api/images/imagesApiService";
 
 const rootReducer = combineReducers({
     playersReducer,
     teamsReducer,
     authorizationReducer,
-    imageReducer,
     appReducer,
     [authService.reducerPath]: authService.reducer,
     [teamsApiService.reducerPath]: teamsApiService.reducer,
     [playersApiService.reducerPath]: playersApiService.reducer,
+    [imagesApiService.reducerPath]: imagesApiService.reducer,
 });
 
 export const setupStore = () => {
@@ -27,6 +27,7 @@ export const setupStore = () => {
                 authService.middleware,
                 teamsApiService.middleware,
                 playersApiService.middleware,
+                imagesApiService.middleware
             ),
     });
 };

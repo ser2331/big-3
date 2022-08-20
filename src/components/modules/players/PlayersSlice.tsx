@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPlayers } from "./interfaces/players-interfaces";
 import { IPagination, ITeamsSelectOptions } from "../teams/interfaces/teams-interfaces";
 

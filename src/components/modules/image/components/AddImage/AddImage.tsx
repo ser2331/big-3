@@ -1,7 +1,7 @@
 import React, {Dispatch, FC, SetStateAction, useCallback, useEffect} from "react";
-import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
-import { setImageToServer } from "../../ActionCreators";
+import { imagesApiService } from "../../../../api/images/imagesApiService";
 import { ErrorMessage } from "../../../../common/components/error-message/error-message";
+import { baseUrl } from "../../../../api/authService/authService";
 
 import s from "./AddImage.module.scss";
 
@@ -14,9 +14,7 @@ interface IAddTeamImage {
 const acceptOptions = [".jpeg", ".jpg", ".png"];
 
 export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
-    const dispatch = useAppDispatch();
-    const { token } = useAppSelector(state => state.authorizationReducer);
-    const { image, error, isLoading } = useAppSelector(state => state.imageReducer);
+    const [uploadImage, {data: imageData, error: addImageError, isLoading: addImageLoading}] = imagesApiService.useAddImageMutation();
 
     const sendFile = useCallback(async (event: React.ChangeEvent) => {
         const target= event.target as HTMLInputElement;
@@ -33,24 +31,22 @@ export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
         const data = new FormData();
         data.append("file", file);
 
-        dispatch(setImageToServer({token, data}));
+        uploadImage(data);
     }, []);
 
     useEffect(() => {
-        if (image) {
-            setAvatar(image);
+        if (imageData) {
+            setAvatar(baseUrl + imageData);
         }
-    }, [image]);
-
-    console.log(image);
+    }, [imageData]);
 
     return (
         <div className={s.AddImage}>
-            {error && <ErrorMessage message={error} />}
+            {addImageError && <ErrorMessage message="Не удалось загрузить фото..." />}
             <div className={s.AddImage__imageWrapper} >
                 <label className={s.customFileUpload} htmlFor="file-upload" />
                 <input type="file" onChange={sendFile} accept={acceptOptions.join()} id="file-upload" className={s.upload} />
-                {isLoading && <div className={s.loading} >Loading...</div>}
+                {addImageLoading && <div className={s.loading} >Loading...</div>}
                 {avatar || imageUrl ? <img className={s.newImage} alt="addItem" src={avatar || imageUrl} /> : ""}
             </div>
         </div>

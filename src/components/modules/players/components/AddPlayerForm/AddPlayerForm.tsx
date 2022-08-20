@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { useAppSelector } from "../../../../core/redux/redux";
 import { Field } from "../../../../common/components/field/field";
 import { SelectField } from "../../../../common/components/select-field/select-field";
 import { CustomButton } from "../../../../common/components/custom-button/custom-button";
@@ -24,10 +23,8 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
     errors, submit,
     positionOptions,
     teamOptions, control
-}) =>  {
-    const { isLoading: imageLoading } = useAppSelector(state => state.imageReducer);
-
-    return (
+}) =>
+    (
         <div className={s.AddPlayerForm}>
             <form className={s.form} onSubmit={handleSubmit(submit)}>
                 <Field
@@ -100,11 +97,10 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         Cancel
                     </CustomButton>
 
-                    <CustomButton type="submit" disabled={imageLoading}>
+                    <CustomButton type="submit">
                         Save
                     </CustomButton>
                 </div>
             </form>
         </div>
     );
-};

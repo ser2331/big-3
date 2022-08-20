@@ -5,10 +5,8 @@ import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { IPlayers, ISubmitPlayer, ITeamOptions } from "../../interfaces/players-interfaces";
 import { playersSlice } from "../../PlayersSlice";
 import { teamsSlice } from "../../../teams/TeamsSlice";
-import { imageSlice } from "../../../image/ImageSlice";
 import { playersApiService } from "../../../../api/players/playersApiService";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
-import { baseUrl } from "../../../../api/authService/authService";
 import { AddImage } from "../../../image/components/AddImage/AddImage";
 import { AddPlayerForm } from "../AddPlayerForm/AddPlayerForm";
 import { ErrorMessage } from "../../../../common/components/error-message/error-message";
@@ -16,14 +14,12 @@ import { ErrorMessage } from "../../../../common/components/error-message/error-
 import s from "./AddPlayerContainer.module.scss";
 
 const { setTeams } = teamsSlice.actions;
-const { setImage } = imageSlice.actions;
 const { resetPlayersInformation } = playersSlice.actions;
 
 export const AddPlayerContainer = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [avatar, setAvatar] = useState("");
-    const newImage = avatar ? baseUrl + avatar : "";
 
     const { teams } = useAppSelector(state => state.teamsReducer);
     const { currentPlayer } = useAppSelector(state => state.playersReducer);
@@ -77,9 +73,9 @@ export const AddPlayerContainer = () => {
 
     const submit: SubmitHandler<ISubmitPlayer> = async (introducedData) => {
         if (id) {
-            await editPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, id});
+            await editPlayer({...introducedData, avatarUrl: avatar || avatarUrl, id});
         } else {
-            await addPlayer({...introducedData, avatarUrl: newImage|| avatarUrl});
+            await addPlayer({...introducedData, avatarUrl: avatarUrl || avatarUrl});
         }
     };
 
@@ -101,7 +97,6 @@ export const AddPlayerContainer = () => {
 
     useEffect(() => {
         return () => {
-            dispatch(setImage(""));
             dispatch(resetPlayersInformation());
         };
     }, []);
@@ -119,7 +114,7 @@ export const AddPlayerContainer = () => {
                 </div>
 
                 <div className={s.AddPlayerContainer__contentWrapper__content}>
-                    <AddImage imageUrl={avatarUrl} avatar={newImage} setAvatar={setAvatar} />
+                    <AddImage imageUrl={avatarUrl} avatar={avatar} setAvatar={setAvatar} />
 
                     <AddPlayerForm
                         register={register}

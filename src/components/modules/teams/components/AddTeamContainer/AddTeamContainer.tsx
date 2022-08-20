@@ -4,23 +4,19 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { teamsSlice } from "../../TeamsSlice";
-import { imageSlice } from "../../../image/ImageSlice";
 import { AddTeamForm } from "../AddTeamForm/AddTeamForm";
 import { AddImage } from "../../../image/components/AddImage/AddImage";
 import { ISubmitTeams, ITeams } from "../../interfaces/teams-interfaces";
 import { ErrorMessage } from "../../../../common/components/error-message/error-message";
-import { baseUrl } from "../../../../api/authService/authService";
 
 import s from "./AddTeamContainer.module.scss";
 
 const { resetTeamsInformation } = teamsSlice.actions;
-const { setImage } = imageSlice.actions;
 
 export const AddTeamContainer = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [avatar, setAvatar] = useState("");
-    const newImage = avatar ? baseUrl + avatar : "";
 
     const [addTeam, {data: addTeamData, error: addTeamError}] = teamsApiService.useAddTeamMutation();
     const [editTeam, {data: editData, error: editTeamError}] = teamsApiService.useEditTeamMutation();
@@ -38,9 +34,9 @@ export const AddTeamContainer = () => {
 
     const submit: SubmitHandler<ISubmitTeams> = async (introducedData) => {
         if (id) {
-            await editTeam({...introducedData, imageUrl: newImage|| imageUrl, id});
+            await editTeam({...introducedData, imageUrl: avatar || imageUrl, id});
         } else {
-            await addTeam({...introducedData, imageUrl: newImage|| imageUrl});
+            await addTeam({...introducedData, imageUrl: avatar || imageUrl});
         }
     };
 
@@ -56,7 +52,6 @@ export const AddTeamContainer = () => {
 
     useEffect(() => {
         return () => {
-            dispatch(setImage(""));
             dispatch(resetTeamsInformation());
         };
     }, []);
@@ -73,7 +68,7 @@ export const AddTeamContainer = () => {
                 </div>
 
                 <div className={s.AddTeamContainer__contentWrapper__content}>
-                    <AddImage imageUrl={imageUrl} avatar={newImage} setAvatar={setAvatar} />
+                    <AddImage imageUrl={imageUrl} avatar={avatar} setAvatar={setAvatar} />
 
                     <AddTeamForm register={register} handleSubmit={handleSubmit} errors={errors} submit={submit} />
                 </div>

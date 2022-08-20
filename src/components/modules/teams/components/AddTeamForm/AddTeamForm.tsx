@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { useAppSelector } from "../../../../core/redux/redux";
 import { Field } from "../../../../common/components/field/field";
 import { CustomButton } from "../../../../common/components/custom-button/custom-button";
 import { DeepRequired, FieldErrorsImpl, SubmitHandler, UseFormRegister } from "react-hook-form";
@@ -15,11 +14,8 @@ interface IAddTeamForm {
     errors: FieldErrorsImpl<DeepRequired<ISubmitTeams>>
 }
 
-export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, submit}) => {
-
-    const { isLoading: imageLoading } = useAppSelector(state => state.imageReducer);
-
-    return (
+export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, submit}) =>
+    (
         <div className={s.AddTeamForm}>
             <form className={s.form} onSubmit={handleSubmit(submit)}>
                 <Field
@@ -56,11 +52,10 @@ export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, su
                         Cancel
                     </CustomButton>
 
-                    <CustomButton type="submit" disabled={imageLoading}>
+                    <CustomButton type="submit">
                         Save
                     </CustomButton>
                 </div>
             </form>
         </div>
     );
-};
