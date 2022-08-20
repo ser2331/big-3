@@ -34,6 +34,7 @@ export interface ITeamItemProps {
     foundationYear?: number | null;
     image?: string;
     id: number | null;
+    setItemId: (id: number | null) =>  void;
 }
 
 export interface IAddTeam {

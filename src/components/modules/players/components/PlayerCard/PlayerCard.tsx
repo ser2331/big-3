@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo} from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
@@ -11,7 +11,7 @@ import deleteIcon from  "../../../../assests/images/deleteIcon.png";
 import defaultPlayerImg from "../../../../assests/images/avatar.jpg";
 import { getAge } from "../../selectors";
 import { ErrorMessage } from "../../../../common/components/error-message/error-message";
-import {ITeams} from "../../../teams/interfaces/teams-interfaces";
+import { ITeams } from "../../../teams/interfaces/teams-interfaces";
 
 import s from "./PlayerCard.module.scss";
 
@@ -74,7 +74,7 @@ export const PlayerCard = () => {
         }
     }, [deletePlayerData, deleteError, deleteIsLoading]);
 
-    const renderDescriptionLine = (
+    const renderDescriptionLine = useCallback((
         label?: string,
         value?: number | string | null,
         label2?: string,
@@ -92,9 +92,9 @@ export const PlayerCard = () => {
                 </div>
             </div>
         );
-    };
+    }, [currentPlayer, teams]);
     
-    const renderContent = () => (
+    const renderContent = useCallback(() => (
         <>
             <div className={s.imageWrapper}>
                 <img alt="teamLogo" className={s.playerPhoto} src={avatarUrl || defaultPlayerImg}/>
@@ -113,7 +113,7 @@ export const PlayerCard = () => {
                 </div>
             </div>
         </>
-    );
+    ), [currentPlayer]);
 
     return(
         <div className={s.PlayerCard}>

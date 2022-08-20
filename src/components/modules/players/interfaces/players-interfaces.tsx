@@ -75,6 +75,7 @@ export interface IPlayerItemProps {
     image?: string;
     id: number | null;
     number: number | null;
+    setItemId: (id: number | null) =>  void;
 }
 
 export interface ITeamOptions {

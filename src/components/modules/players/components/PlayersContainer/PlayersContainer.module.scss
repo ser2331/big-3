@@ -81,5 +81,14 @@
       bottom: 0;
     }
   }
+
+  .spreadLabel {
+    width: 20px !important;
+    height: 24px;
+    border-radius: 4px;
+    background: var(--ui-red);
+    color: var(--ui-white);
+    pointer-events: none;
+  }
 }
 

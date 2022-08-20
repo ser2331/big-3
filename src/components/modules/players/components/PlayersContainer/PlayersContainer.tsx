@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../core/redux/redux";
 import { playersSlice } from "../../PlayersSlice";
-import Select from "react-select";
+import Select, { ClearIndicatorProps } from "react-select";
 import makeAnimated from "react-select/animated";
 import ReactPaginate from "react-paginate";
 import { teamsApiService } from "../../../../api/teams/teamsApiService";
@@ -113,6 +113,24 @@ export const PlayersContainer:FC = () => {
         }
     }, [playersData]);
 
+    const ClearIndicator = (props: ClearIndicatorProps<ITeamsSelectOptions, true>) => {
+        if (selectedTeams.length > 2) {
+            const {
+                children = <>...</>,
+                innerProps: { ref, ...restInnerProps },
+            } = props;
+            return (
+                <div
+                    {...restInnerProps}
+                    ref={ref}
+                    className={s.spreadLabel}
+                >
+                    <div style={{ padding: "0px 5px" }}>{children}</div>
+                </div>
+            );
+        } else return <div />;
+    };
+
     return (
         <div className={s.PlayersContainer}>
             <div className={s.fieldsWrapper}>
@@ -127,10 +145,11 @@ export const PlayersContainer:FC = () => {
                         <Select
                             className={s.selector}
                             classNamePrefix="MultiSelector"
-                            components={animatedComponents}
+                            components={{ ClearIndicator  }}
                             isMulti
                             options={options}
                             value={selectedTeams}
+                            isSearchable={false}
                             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                             // @ts-ignore
                             onChange={handleChangeSelectedTeams}

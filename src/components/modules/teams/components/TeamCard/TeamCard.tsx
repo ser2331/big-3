@@ -76,7 +76,7 @@ export const TeamCard = () => {
         }
     }, [data, deleteError, deleteIsLoading]);
 
-    const renderContent = () => (
+    const renderContent = useCallback(() => (
         <>
             <div className={s.imageContent}>
                 <div className={s.imageWrapper}>
@@ -108,9 +108,9 @@ export const TeamCard = () => {
                 </div>
             </div>
         </>
-    );
+    ), [currentTeam]);
     
-    const renderTable = () => (
+    const renderTable = useCallback(() => (
         <table className={s.Table}>
             <thead className={s.Table__header}>
                 <tr>
@@ -159,7 +159,7 @@ export const TeamCard = () => {
                 })}
             </tbody>
         </table>
-    );
+    ), [players, isMobile]);
 
     return(
         <div className={s.TeamCard}>

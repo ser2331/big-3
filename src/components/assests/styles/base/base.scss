@@ -67,6 +67,12 @@ body {
         justify-content: flex-start !important;
         overflow-x: auto !important;
     }
+    &__value-container--has-value div:nth-child(n+3) {
+        display:none !important;
+    }
+    &__value-container--has-value &__multi-value:nth-child(-n+2) {
+        width: 142px;
+    }
 
     &__multi-value {
         display: flex !important;
@@ -78,6 +84,7 @@ body {
 
         &__label {
             color: var(--ui-white) !important;
+            flex: 1 1;
         }
     }
 }
