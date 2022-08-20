@@ -25,7 +25,6 @@ export const AddTeamContainer = () => {
     const [addTeam, {data: addTeamData, error: addTeamError}] = teamsApiService.useAddTeamMutation();
     const [editTeam, {data: editData, error: editTeamError}] = teamsApiService.useEditTeamMutation();
 
-    const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentTeam } = useAppSelector(state => state.teamsReducer);
     const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
 
@@ -39,9 +38,9 @@ export const AddTeamContainer = () => {
 
     const submit: SubmitHandler<ISubmitTeams> = async (introducedData) => {
         if (id) {
-            await editTeam({...introducedData, imageUrl: newImage|| imageUrl, token, id});
+            await editTeam({...introducedData, imageUrl: newImage|| imageUrl, id});
         } else {
-            await addTeam({...introducedData, imageUrl: newImage|| imageUrl, token});
+            await addTeam({...introducedData, imageUrl: newImage|| imageUrl});
         }
     };
 

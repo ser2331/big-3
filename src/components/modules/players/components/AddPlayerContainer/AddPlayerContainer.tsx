@@ -25,15 +25,14 @@ export const AddPlayerContainer = () => {
     const [avatar, setAvatar] = useState("");
     const newImage = avatar ? baseUrl + avatar : "";
 
-    const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
     const { currentPlayer } = useAppSelector(state => state.playersReducer);
     const { id, name, birthday, avatarUrl, height, weight, number, position, team }: IPlayers = currentPlayer;
 
     const [addPlayer, {data: addPlayerData, error: addPlayerError}] = playersApiService.useAddPlayerMutation();
     const [editPlayer, {data: editPlayerData, error: editPlayerError}] = playersApiService.useEditPlayerMutation();
-    const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
-    const { data: positionsData, error: positionsError } = playersApiService.useGetPositionsQuery({token});
+    const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({});
+    const { data: positionsData, error: positionsError } = playersApiService.useGetPositionsQuery({});
 
     const positionOptions = useMemo(() => {
         if (!positionsError && positionsData) {
@@ -78,9 +77,9 @@ export const AddPlayerContainer = () => {
 
     const submit: SubmitHandler<ISubmitPlayer> = async (introducedData) => {
         if (id) {
-            await editPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token, id});
+            await editPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, id});
         } else {
-            await addPlayer({...introducedData, avatarUrl: newImage|| avatarUrl, token});
+            await addPlayer({...introducedData, avatarUrl: newImage|| avatarUrl});
         }
     };
 

@@ -26,7 +26,6 @@ export const TeamsContainer:FC = () => {
     const navigate = useNavigate();
     const animatedComponents = makeAnimated();
 
-    const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams, pagination, searchTeam } = useAppSelector(state => state.teamsReducer);
     const { itemsPerPage, pageCount, currentPage } = pagination;
 
@@ -37,7 +36,7 @@ export const TeamsContainer:FC = () => {
         error: teamsError,
         isLoading: teamsIsLoading,
         refetch: teamsReFetch,
-    } = teamsApiService.useGetTeamsQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced});
+    } = teamsApiService.useGetTeamsQuery({page: currentPage, pageSize: itemsPerPage, name: debounced});
 
     const missingCount = teamsData && (teamsData.count <= 0) && !teamsError && !debounced.length;
 

@@ -31,7 +31,6 @@ export const PlayersContainer:FC = () => {
     const navigate = useNavigate();
     const animatedComponents = makeAnimated();
 
-    const { token } = useAppSelector(state => state.authorizationReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
     const { players, selectedTeams, searchPlayerName, pagination } = useAppSelector(state => state.playersReducer);
     const { itemsPerPage, pageCount, currentPage } = pagination;
@@ -44,7 +43,7 @@ export const PlayersContainer:FC = () => {
         data: teamsData,
         error: teamsError,
         refetch: teamsReFetch
-    } = teamsApiService.useGetTeamsQuery({token});
+    } = teamsApiService.useGetTeamsQuery({});
 
     useEffect(() => {
         if (teamsData && !teamsError) {
@@ -61,7 +60,7 @@ export const PlayersContainer:FC = () => {
         error: playersError,
         isLoading: playersIsLoading,
         refetch: playersReFetch
-    } = playersApiService.useGetPlayersQuery({token, page: currentPage, pageSize: itemsPerPage, name: debounced, teamIds: selectedTeamsId});
+    } = playersApiService.useGetPlayersQuery({page: currentPage, pageSize: itemsPerPage, name: debounced, teamIds: selectedTeamsId});
 
     const missingCount = playersData && (playersData.count <= 0) && !playersError && !debounced.length && !selectedTeamsId?.length;
 

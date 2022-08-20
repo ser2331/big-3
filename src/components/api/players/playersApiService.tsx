@@ -8,34 +8,38 @@ import {
     IPlayers,
     IResPlayers
 } from "../../modules/players/interfaces/players-interfaces";
+import { RootState } from "../../core/redux/store";
 
 export const playersApiService = createApi({
     reducerPath: "playersApiService",
-    baseQuery: fetchBaseQuery({baseUrl: baseUrl}),
+    baseQuery: fetchBaseQuery({
+        baseUrl: baseUrl,
+        prepareHeaders: (headers, {getState}) => {
+            const token = (getState() as RootState).authorizationReducer.token;
+            if (token) {
+                headers.set("Authorization", token ? `Bearer ${token}` : "");
+            }
+            return headers;
+        }
+    }),
     tagTypes: ["Players"],
     endpoints: (build) => ({
         getPlayers: build.query<IResPlayers, IGetPlayers>({
-            query: ({token, page, pageSize, name, teamIds}) => ({
+            query: ({page, pageSize, name, teamIds}) => ({
                 url: `/api/Player/GetPlayers?${builderParamsIds(teamIds)}`,
                 params: {
                     name,
                     page,
                     pageSize,
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             }),
             providesTags: result => ["Players"],
         }),
         getPlayer: build.query<IPlayers, IGetPlayer>({
-            query: ({token, playerId}) => ({
+            query: ({playerId}) => ({
                 url: "/api/Player/Get",
                 params: {
                     id: playerId,
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             })
         }),
@@ -48,7 +52,7 @@ export const playersApiService = createApi({
             })
         }),
         addPlayer: build.mutation<IPlayers, IAddPlayerFormValidation>({
-            query: ({ token, name, number, position, team, birthday, height, weight, avatarUrl }) => ({
+            query: ({ name, number, position, team, birthday, height, weight, avatarUrl }) => ({
                 url: "/api/Player/Add",
                 method: "POST",
                 body: {
@@ -60,15 +64,12 @@ export const playersApiService = createApi({
                     height,
                     weight,
                     avatarUrl
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             }),
             invalidatesTags: ["Players"]
         }),
         editPlayer: build.mutation<IAddPlayer, IAddPlayerFormValidation>({
-            query: ({token, name, number, position, team, birthday, height, weight, avatarUrl, id}) => ({
+            query: ({name, number, position, team, birthday, height, weight, avatarUrl, id}) => ({
                 url: "/api/Player/Update",
                 method: "PUT",
                 body: {
@@ -81,23 +82,15 @@ export const playersApiService = createApi({
                     weight,
                     avatarUrl,
                     id,
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             }),
             invalidatesTags: ["Players"]
         }),
         deletePlayer: build.mutation<IAddPlayer, IDeletePlayer>({
-            query: ({token, id}) => ({
+            query: (id) => ({
                 url: "/api/Player/Delete",
                 method: "DELETE",
-                params: {
-                    id
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
+                params: {id}
             })
         }),
     })

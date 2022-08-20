@@ -34,7 +34,6 @@ export interface IAddPlayer {
     weight: number;
     avatarUrl: string;
     id?: number;
-    token: string;
 }
 
 export interface IResPlayers {
@@ -49,22 +48,18 @@ export interface IGetPlayers {
     teamIds?: (number | null | string)[];
     page?: number;
     pageSize?: number;
-    token: string;
 }
 
 export interface IGetPlayer {
-    token: string;
     playerId: number | null;
 }
 
 export interface IDeletePlayer {
-    token: string;
     id: number;
 }
 
 export interface IAddPlayerFormValidation extends ISubmitPlayer {
     id?: number;
-    token: string;
 }
 
 export interface IPlayersItems {

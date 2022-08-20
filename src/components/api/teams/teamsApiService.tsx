@@ -8,39 +8,43 @@ import {
     ITeams,
 } from "../../modules/teams/interfaces/teams-interfaces";
 import { baseUrl } from "../authService/authService";
+import { RootState } from "../../core/redux/store";
 
 export const teamsApiService = createApi({
     reducerPath: "teamsApiService",
-    baseQuery: fetchBaseQuery({baseUrl: baseUrl}),
+    baseQuery: fetchBaseQuery({
+        baseUrl: baseUrl,
+        prepareHeaders: (headers, {getState}) => {
+            const token = (getState() as RootState).authorizationReducer.token;
+            if (token) {
+                headers.set("Authorization", token ? `Bearer ${token}` : "");
+            }
+            return headers;
+        }
+    }),
     tagTypes: ["Teams"],
     endpoints: (build) => ({
         getTeams: build.query<IResTeams, IGetTeams>({
-            query: ({token, page, pageSize, name}) => ({
+            query: ({page, pageSize, name}) => ({
                 url: "/api/Team/GetTeams",
                 params: {
                     name: name,
                     page: page,
                     pageSize: pageSize,
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             }),
             providesTags: result => ["Teams"],
         }),
         getTeam: build.query<ITeams, IGetTeam>({
-            query: ({token, teamId}) => ({
+            query: ({teamId}) => ({
                 url: "/api/Team/Get",
                 params: {
                     id: teamId,
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             })
         }),
         addTeam: build.mutation<IAddTeam, IAddTeam>({
-            query: ({token, name, foundationYear, division, conference, imageUrl}) => ({
+            query: ({name, foundationYear, division, conference, imageUrl}) => ({
                 url: "/api/Team/Add",
                 method: "POST",
                 body: {
@@ -49,15 +53,12 @@ export const teamsApiService = createApi({
                     division,
                     conference,
                     imageUrl,
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             }),
             invalidatesTags: ["Teams"]
         }),
         editTeam: build.mutation<IAddTeam, IAddTeam>({
-            query: ({token, name, foundationYear, division, conference, imageUrl, id}) => ({
+            query: ({name, foundationYear, division, conference, imageUrl, id}) => ({
                 url: "/api/Team/Update",
                 method: "PUT",
                 body: {
@@ -67,22 +68,16 @@ export const teamsApiService = createApi({
                     conference,
                     imageUrl,
                     id,
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             }),
             invalidatesTags: ["Teams"]
         }),
         deleteTeam: build.mutation<IAddTeam, IDeleteTeam>({
-            query: ({token, id}) => ({
+            query: ({id}) => ({
                 url: "/api/Team/Delete",
                 method: "DELETE",
                 params: {
                     id
-                },
-                headers: {
-                    "Authorization": `Bearer ${token}`
                 }
             })
         }),

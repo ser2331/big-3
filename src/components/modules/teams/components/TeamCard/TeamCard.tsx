@@ -21,7 +21,6 @@ const { setPlayers } = playersSlice.actions;
 export const TeamCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentTeam, teamId } = useAppSelector(state => state.teamsReducer);
     const { isMobile } = useAppSelector(state => state.appReducer);
     const { players } = useAppSelector(state => state.playersReducer);
@@ -29,12 +28,12 @@ export const TeamCard = () => {
     const { name, foundationYear, division, conference, imageUrl, id }: ITeams = currentTeam;
     const newTeamId = id ? [id] : undefined;
 
-    const { data: teamData, error: teamError, isLoading: teamIsLoading, refetch } = teamsApiService.useGetTeamQuery({token, teamId});
+    const { data: teamData, error: teamError, isLoading: teamIsLoading, refetch } = teamsApiService.useGetTeamQuery({teamId});
 
     const {
         data: playersData,
         error: playersError,
-    } = playersApiService.useGetPlayersQuery({token, teamIds: newTeamId});
+    } = playersApiService.useGetPlayersQuery({teamIds: newTeamId});
 
     const [deleteTeam, {data, error: deleteError, isLoading: deleteIsLoading}] = teamsApiService.useDeleteTeamMutation();
 
@@ -43,8 +42,8 @@ export const TeamCard = () => {
     }, [navigate]);
 
     const deleteThisTeam = async () => {
-        if (token && id) {
-            await deleteTeam({token, id});
+        if (id) {
+            await deleteTeam({id});
         }
     };
 

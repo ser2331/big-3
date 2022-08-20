@@ -22,14 +22,13 @@ export const PlayerCard = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const { token } = useAppSelector(state => state.authorizationReducer);
     const { currentPlayer, playerId } = useAppSelector(state => state.playersReducer);
     const { teams } = useAppSelector(state => state.teamsReducer);
 
     const { name, birthday, height, weight, avatarUrl, number, position, team, id }: IPlayers = currentPlayer;
 
-    const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({token});
-    const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({token, playerId});
+    const { data: teamsData, error: teamsError } = teamsApiService.useGetTeamsQuery({});
+    const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({playerId});
     const [deletePlayer, {data: deletePlayerData, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
 
     const teamName = useMemo(() => teams.find((item: ITeams) => item.id === team), [team]);
@@ -44,8 +43,8 @@ export const PlayerCard = () => {
 
 
     const deleteThisPlayer = async () => {
-        if (id && token) {
-            await deletePlayer({token, id});
+        if (id) {
+            await deletePlayer({id});
         }
     };
 

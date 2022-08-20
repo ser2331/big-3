@@ -20,7 +20,6 @@ export interface IGetTeams {
     name?: string;
     page?: number;
     pageSize?: number;
-    token: string;
 }
 
 export interface IResTeams {
@@ -38,8 +37,6 @@ export interface ITeamItemProps {
 }
 
 export interface IAddTeam {
-    token: string;
-
     name: string,
     foundationYear?: number | null;
     division?: string,
@@ -49,12 +46,10 @@ export interface IAddTeam {
 }
 
 export interface IDeleteTeam {
-    token: string;
     id: number | null;
 }
 
 export interface IGetTeam {
-    token: string;
     teamId: number | null;
 }
 
