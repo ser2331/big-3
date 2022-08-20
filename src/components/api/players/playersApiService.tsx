@@ -33,7 +33,7 @@ export const playersApiService = createApi({
                     pageSize,
                 }
             }),
-            providesTags: result => ["Players"],
+            providesTags: () => ["Players"],
         }),
         getPlayer: build.query<IPlayers, IGetPlayer>({
             query: ({playerId}) => ({

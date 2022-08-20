@@ -33,7 +33,7 @@ export const teamsApiService = createApi({
                     pageSize: pageSize,
                 }
             }),
-            providesTags: result => ["Teams"],
+            providesTags: () => ["Teams"],
         }),
         getTeam: build.query<ITeams, IGetTeam>({
             query: ({teamId}) => ({
