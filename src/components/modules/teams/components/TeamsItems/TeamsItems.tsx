@@ -1,13 +1,10 @@
 import React, { FC } from "react";
-import { useAppSelector } from "../../../../core/redux/redux";
 import { ITeamItemProps, ITeams, ITeamsItems } from "../../interfaces/teams-interfaces";
 import fakeImage from "../../../../assests/images/teamLogo.jpeg";
 
 import s from "./TeamsItems.module.scss";
 
-export const TeamsItems:FC<ITeamsItems> = ({ setItemId } ) => {
-
-    const { teams } = useAppSelector(state => state.teamsReducer);
+export const TeamsItems:FC<ITeamsItems> = ({ setItemId, teamsData } ) => {
 
     const Item:FC<ITeamItemProps> = ({name, foundationYear, image, id}) =>  (
         <div className={s.TeamItem} onClick={() => setItemId(id)}>
@@ -23,7 +20,7 @@ export const TeamsItems:FC<ITeamsItems> = ({ setItemId } ) => {
 
     return (
         <div className={s.TeamsItems}>
-            {teams?.map((item: ITeams) => (
+            {teamsData.map((item: ITeams) => (
                 <div className={s.TeamsItems__itemWrapper} key={item.id}>
                     <Item foundationYear={item.foundationYear} name={item.name} image={item.imageUrl} id={item.id} />
                 </div>

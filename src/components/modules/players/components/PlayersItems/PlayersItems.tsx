@@ -6,9 +6,8 @@ import { ITeams } from "../../../teams/interfaces/teams-interfaces";
 
 import s from "./PlayersItems.module.scss";
 
-export const PlayersItems: FC<IPlayersItems> = ({ setItemId }) => {
+export const PlayersItems: FC<IPlayersItems> = ({ setItemId, players }) => {
     const { teams } = useAppSelector(state => state.teamsReducer);
-    const { players } = useAppSelector(state => state.playersReducer);
 
     const Item:FC<IPlayerItemProps> = ({name, image, id, teamName, number}) => {
 

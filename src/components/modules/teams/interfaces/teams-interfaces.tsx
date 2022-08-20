@@ -54,6 +54,7 @@ export interface IGetTeam {
 }
 
 export interface ITeamsItems {
+    teamsData: ITeams[];
     setItemId: (id: number | null) =>  void;
 }
 

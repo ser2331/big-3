@@ -24,7 +24,7 @@ export const getAge = (dateString: string) => {
 export const getOptions = (arr: ITeams[]) => {
     if (arr) {
         return arr?.reduce<ITeamsSelectOptions[]>((acc: ITeamsSelectOptions[], item) => [...acc, {value: item.id, label: item.name}], []);
-    }
+    } else return [];
 };
 
 export const getArrayTeamsId = (selectedArray: ITeamsSelectOptions[]) => {

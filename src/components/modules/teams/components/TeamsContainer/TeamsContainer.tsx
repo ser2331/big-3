@@ -19,14 +19,14 @@ import s from "./TeamsContainer.module.scss";
 const { optionsItemsPerPage } = Types;
 
 const { setTokenError } = authorizationSlice.actions;
-const { setTeams, setSearchTeam, setTeamId, setPagination, resetTeamsInformation } = teamsSlice.actions;
+const { setSearchTeam, setTeamId, setPagination, resetTeamsInformation } = teamsSlice.actions;
 
 export const TeamsContainer:FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const animatedComponents = makeAnimated();
 
-    const { teams, pagination, searchTeam } = useAppSelector(state => state.teamsReducer);
+    const { pagination, searchTeam } = useAppSelector(state => state.teamsReducer);
     const { itemsPerPage, pageCount, currentPage } = pagination;
 
     const debounced = useDebounce(searchTeam);
@@ -66,7 +66,6 @@ export const TeamsContainer:FC = () => {
                 countPages = 1;
             }
 
-            dispatch(setTeams(teamsData.data));
             dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
         } else if (!teamsData && (teamsError)) {
             dispatch(setTokenError(teamsError));
@@ -80,10 +79,10 @@ export const TeamsContainer:FC = () => {
     }, [currentPage, itemsPerPage]);
 
     useEffect(() => {
-        if (!teams.length) {
+        if (!teamsData?.data.length) {
             handlePageClick({selected: 0});
         }
-    }, [teams]);
+    }, [teamsData]);
 
     useEffect(() => {
         dispatch(resetTeamsInformation());
@@ -108,11 +107,11 @@ export const TeamsContainer:FC = () => {
                 </CustomButton>
             </div>
 
-            {!teams.length && teamsIsLoading && !teamsError ? <div>...Loading</div> : ""}
-            {!teams.length && !teamsIsLoading && teamsError ? <div>error</div> : ""}
-            {!teams.length && !teamsError && !teamsIsLoading  ? <EmptyItems isTeamsPage={true} namePage="teams" /> : ""}
+            {!teamsData?.data.length && teamsIsLoading && !teamsError ? <div>...Loading</div> : ""}
+            {!teamsData?.data.length && !teamsIsLoading && teamsError ? <div>error</div> : ""}
+            {!teamsData?.data.length && !teamsError && !teamsIsLoading  ? <EmptyItems isTeamsPage={true} namePage="teams" /> : ""}
 
-            {teams.length && !teamsError && !teamsIsLoading ? <TeamsItems setItemId={setItemId}/> : ""}
+            {teamsData?.data.length && !teamsError && !teamsIsLoading ? <TeamsItems setItemId={setItemId} teamsData={teamsData?.data}/> : ""}
 
             {!missingCount && (
                 <div className={s.footerWrapper}>

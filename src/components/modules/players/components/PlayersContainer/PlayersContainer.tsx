@@ -24,7 +24,7 @@ const { optionsItemsPerPage } = Types;
 
 const { setTokenError } = authorizationSlice.actions;
 const { setTeams } = teamsSlice.actions;
-const { setSearchPlayerName, setPlayerId, setPagination, setPlayers, setSelectedTeam, resetPlayersInformation } = playersSlice.actions;
+const { setSearchPlayerName, setPlayerId, setPagination, setSelectedTeam, resetPlayersInformation } = playersSlice.actions;
 
 export const PlayersContainer:FC = () => {
     const dispatch = useAppDispatch();
@@ -32,7 +32,7 @@ export const PlayersContainer:FC = () => {
     const animatedComponents = makeAnimated();
 
     const { teams } = useAppSelector(state => state.teamsReducer);
-    const { players, selectedTeams, searchPlayerName, pagination } = useAppSelector(state => state.playersReducer);
+    const { selectedTeams, searchPlayerName, pagination } = useAppSelector(state => state.playersReducer);
     const { itemsPerPage, pageCount, currentPage } = pagination;
 
     const options = getOptions(teams);
@@ -94,7 +94,6 @@ export const PlayersContainer:FC = () => {
                 countPages = 1;
             }
 
-            dispatch(setPlayers(playersData.data));
             dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
         } else if (!playersData && (playersError)) {
             dispatch(setTokenError(playersError));
@@ -109,10 +108,10 @@ export const PlayersContainer:FC = () => {
     }, [currentPage, itemsPerPage]);
 
     useEffect(() => {
-        if (!players.length) {
+        if (!playersData?.data.length) {
             handlePageClick({selected: 0});
         }
-    }, [players]);
+    }, [playersData]);
 
     return (
         <div className={s.PlayersContainer}>
@@ -149,12 +148,12 @@ export const PlayersContainer:FC = () => {
                 </div>
             </div>
 
-            {!players.length && playersIsLoading && !playersError ? <div>...Loading</div> : ""}
-            {!players.length && !playersIsLoading && playersError ? <div>Error</div> : ""}
-            {!players.length && !playersError && !playersIsLoading  ? <EmptyItems isPlayersPage={true} namePage="players" /> : ""}
-            {players.length && playersError && !playersIsLoading  ? <div> Что-то пошло не так...</div> : ""}
+            {!playersData?.data.length && playersIsLoading && !playersError ? <div>...Loading</div> : ""}
+            {!playersData?.data.length && !playersIsLoading && playersError ? <div>Error</div> : ""}
+            {!playersData?.data.length && !playersError && !playersIsLoading  ? <EmptyItems isPlayersPage={true} namePage="players" /> : ""}
+            {playersData?.data.length && playersError && !playersIsLoading  ? <div> Что-то пошло не так...</div> : ""}
 
-            {players.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId} /> : ""}
+            {playersData?.data.length && !playersError && !playersIsLoading ? <PlayersItems setItemId={setItemId} players={playersData?.data} /> : ""}
 
             {!missingCount && (
                 <div className={s.footerWrapper}>

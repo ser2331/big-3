@@ -1,3 +1,4 @@
+import {ITeams} from "../../teams/interfaces/teams-interfaces";
 
 export interface IForPlayers {
     height: number | null;
@@ -63,6 +64,8 @@ export interface IAddPlayerFormValidation extends ISubmitPlayer {
 }
 
 export interface IPlayersItems {
+    teams?: ITeams[];
+    players: IPlayers[];
     setItemId: (id: number | null) =>  void;
 }
 

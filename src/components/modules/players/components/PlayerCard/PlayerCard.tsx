@@ -31,7 +31,7 @@ export const PlayerCard = () => {
     const { data: playerData, error: playerError, isLoading: playerIsLoading, refetch } = playersApiService.useGetPlayerQuery({playerId});
     const [deletePlayer, {data: deletePlayerData, error: deleteError, isLoading: deleteIsLoading}] = playersApiService.useDeletePlayerMutation();
 
-    const teamName = useMemo(() => teams.find((item: ITeams) => item.id === team), [team]);
+    const teamName = useMemo(() => teams.find((item: ITeams) => item.id === team), [team, teams]);
 
     const editThisPlayer = useCallback(() => {
         navigate("/players/addPlayer");
