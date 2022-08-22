@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="delete axios">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/field/field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/field/field.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="token fix">
       <change beforePath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/App/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/App/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/AuthorizationSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/AuthorizationSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Registration.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,14 +118,7 @@
       <workItem from="1660550232435" duration="19431000" />
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
-      <workItem from="1660909450545" duration="50968000" />
-    </task>
-    <task id="LOCAL-00019" summary="&#10;add search and filter">
-      <created>1659709715522</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1659709715522</updated>
+      <workItem from="1660909450545" duration="51369000" />
     </task>
     <task id="LOCAL-00020" summary="add adaptive mobile to players and teams pages">
       <created>1659788034073</created>
@@ -474,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661004203798</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="token fix">
+      <created>1661159948059</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1661159948059</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +483,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add debounce to search players and teams, add missing count" />
     <MESSAGE value="fix delete item message, fix missing count" />
     <MESSAGE value="fix teams selector styles" />
     <MESSAGE value="inputs with type number enter numbers" />
@@ -519,7 +507,8 @@
     <MESSAGE value="fix styles select teams" />
     <MESSAGE value="fix add image method" />
     <MESSAGE value="delete axios" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete axios" />
+    <MESSAGE value="token fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="token fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

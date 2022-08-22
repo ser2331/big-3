@@ -1,7 +1,8 @@
 import React, {FC} from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { Controller, FieldError } from "react-hook-form";
+import { Control, Controller, DeepRequired, FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
+import { ISubmitPlayer } from "../../../modules/players/interfaces/players-interfaces";
 
 import "./select-field.scss";
 
@@ -10,11 +11,11 @@ interface option {
 }
 
 interface SearchFieldTypes {
-    error?: FieldError;
+    error?: Merge<FieldError, FieldErrorsImpl<DeepRequired<{ label: string; value: string; }>>>;
     label?: string;
-    name: string;
+    name: "number" | "name" | "avatarUrl" | "position" | "team" | "height" | "weight" | "birthday" | "position.label" | "position.value" | "team.label" | "team.value";
     options: option[];
-    control: any;
+    control: Control<ISubmitPlayer>;
     isMulti?: boolean;
     defaultValue?: string | number | null;
     isClearable: boolean;
