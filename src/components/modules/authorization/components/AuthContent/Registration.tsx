@@ -17,7 +17,7 @@ import s from "./AuthWrapper.module.scss";
 
 const { localStorage } = Types;
 
-const { setErrorIndicator, setUserData } = authorizationSlice.actions;
+const { setSignOut, setUserData } = authorizationSlice.actions;
 
 const Registration = () => {
     const dispatch = useAppDispatch();
@@ -47,7 +47,8 @@ const Registration = () => {
             navigate("/teams");
         }
         else {
-            dispatch(setErrorIndicator(isError));
+            StorageService.set(localStorage.token, "");
+            dispatch(setSignOut());
         }
     }, [data, isError]);
 

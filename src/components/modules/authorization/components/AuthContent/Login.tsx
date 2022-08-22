@@ -16,7 +16,7 @@ import s from "./AuthWrapper.module.scss";
 
 const { localStorage } = Types;
 
-const { setErrorIndicator, setUserData } = authorizationSlice.actions;
+const { setUserData, setSignOut } = authorizationSlice.actions;
 
 const Login: FC = () => {
     const dispatch = useAppDispatch();
@@ -28,7 +28,6 @@ const Login: FC = () => {
 
     useEffect(() => {
         if (data && !isError) {
-            dispatch(setErrorIndicator(isError));
             dispatch(setUserData(data));
 
             StorageService.set(localStorage.token, data.token);
@@ -36,7 +35,8 @@ const Login: FC = () => {
             StorageService.set(localStorage.avatarUrl, data.avatarUrl);
             navigate("teams");
         } else {
-            dispatch(setErrorIndicator(isError));
+            StorageService.set(localStorage.token, "");
+            dispatch(setSignOut());
         }
     }, [data, isError]);
 

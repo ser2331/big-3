@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix styles select teams">
-      <change afterPath="$PROJECT_DIR$/src/components/api/images/imagesApiService.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="delete axios">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/core/redux/store.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/core/redux/store.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/image/ActionCreators.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/image/ImageSlice.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerContainer/AddPlayerContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/field/field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/field/field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/App/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/App/components/App/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/AuthorizationSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/AuthorizationSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Registration.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Registration.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,21 +129,7 @@
       <workItem from="1660550232435" duration="19431000" />
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
-      <workItem from="1660909450545" duration="47319000" />
-    </task>
-    <task id="LOCAL-00017" summary="add players api">
-      <created>1659653407829</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1659653407829</updated>
-    </task>
-    <task id="LOCAL-00018" summary="&#10;in the absence of data, go to the main page">
-      <created>1659701204913</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1659701204913</updated>
+      <workItem from="1660909450545" duration="50968000" />
     </task>
     <task id="LOCAL-00019" summary="&#10;add search and filter">
       <created>1659709715522</created>
@@ -473,7 +460,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661000802026</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="fix add image method">
+      <created>1661004186785</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1661004186785</updated>
+    </task>
+    <task id="LOCAL-00067" summary="delete axios">
+      <created>1661004203798</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1661004203798</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -493,8 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="upstream" />
-    <MESSAGE value="add get positions, some fix" />
     <MESSAGE value="add debounce to search players and teams, add missing count" />
     <MESSAGE value="fix delete item message, fix missing count" />
     <MESSAGE value="fix teams selector styles" />
@@ -518,7 +517,9 @@
     <MESSAGE value="removed the token from the components" />
     <MESSAGE value="some refactor" />
     <MESSAGE value="fix styles select teams" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix styles select teams" />
+    <MESSAGE value="fix add image method" />
+    <MESSAGE value="delete axios" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete axios" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

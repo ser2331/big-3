@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { Controller } from "react-hook-form";
+import { Controller, FieldError } from "react-hook-form";
 
 import "./select-field.scss";
 
@@ -10,7 +10,7 @@ interface option {
 }
 
 interface SearchFieldTypes {
-    error?: any;
+    error?: FieldError;
     label?: string;
     name: string;
     options: option[];

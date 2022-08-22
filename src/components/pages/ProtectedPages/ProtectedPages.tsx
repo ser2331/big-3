@@ -19,7 +19,7 @@ import s from "./ProtectedPages.module.scss";
 
 const { routingMap, localStorage } = Types;
 
-const { setUserData } = authorizationSlice.actions;
+const { setSignOut } = authorizationSlice.actions;
 const { setShowMobileMenu } = appSlice.actions;
 
 export const ProtectedPages = () => {
@@ -35,7 +35,7 @@ export const ProtectedPages = () => {
 
     const signOut = () => {
         StorageService.set(localStorage.token, "");
-        dispatch(setUserData({name: "", avatarUrl: "", token: ""}));
+        dispatch(setSignOut());
         dispatch(setShowMobileMenu(false));
     };
 

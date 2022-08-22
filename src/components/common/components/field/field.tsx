@@ -1,10 +1,11 @@
 import React, {FC} from "react";
 import classNames from "classnames";
+import { FieldError } from "react-hook-form";
 
 import s from "./field.module.scss";
 
 interface FieldProps {
-    error?: any;
+    error?: FieldError;
     label?: string;
     type?: "number" | "text" | "password" | "date";
     register: any;

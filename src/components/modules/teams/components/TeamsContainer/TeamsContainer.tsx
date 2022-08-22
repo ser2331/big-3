@@ -15,10 +15,11 @@ import { EmptyItems } from "../../../../common/components/empty-items/empty-item
 import { useDebounce } from "../../../../common/hooks/debounce";
 
 import s from "./TeamsContainer.module.scss";
+import StorageService from "../../../../common/helpers/storageService/storage-service";
 
-const { optionsItemsPerPage } = Types;
+const { optionsItemsPerPage, localStorage } = Types;
 
-const { setTokenError } = authorizationSlice.actions;
+const { setSignOut } = authorizationSlice.actions;
 const { setSearchTeam, setTeamId, setPagination, resetTeamsInformation } = teamsSlice.actions;
 
 export const TeamsContainer:FC = () => {
@@ -67,8 +68,6 @@ export const TeamsContainer:FC = () => {
             }
 
             dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
-        } else if (!teamsData && (teamsError)) {
-            dispatch(setTokenError(teamsError));
         }
     }, [dispatch, teamsData, teamsError]);
 
@@ -87,6 +86,15 @@ export const TeamsContainer:FC = () => {
     useEffect(() => {
         dispatch(resetTeamsInformation());
     }, []);
+
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (teamsError?.status === 401) {
+            StorageService.set(localStorage.token, "");
+            dispatch(setSignOut());
+        }
+    }, [teamsError]);
 
     return (
         <div className={s.TeamsContainer}>

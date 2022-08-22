@@ -19,10 +19,11 @@ import { getArrayTeamsId, getOptions } from "../../selectors";
 import { ITeamsSelectOptions } from "../../../teams/interfaces/teams-interfaces";
 
 import s from "./PlayersContainer.module.scss";
+import StorageService from "../../../../common/helpers/storageService/storage-service";
 
 const { optionsItemsPerPage } = Types;
 
-const { setTokenError } = authorizationSlice.actions;
+const { setSignOut } = authorizationSlice.actions;
 const { setTeams } = teamsSlice.actions;
 const { setSearchPlayerName, setPlayerId, setPagination, setSelectedTeam, resetPlayersInformation } = playersSlice.actions;
 
@@ -95,8 +96,6 @@ export const PlayersContainer:FC = () => {
             }
 
             dispatch(setPagination({ itemsPerPage, pageCount: countPages, currentPage}));
-        } else if (!playersData && (playersError)) {
-            dispatch(setTokenError(playersError));
         }
     }, [dispatch, playersData, playersError]);
 
@@ -112,6 +111,15 @@ export const PlayersContainer:FC = () => {
             handlePageClick({selected: 0});
         }
     }, [playersData]);
+
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        if (playersError?.status === 401) {
+            StorageService.set(localStorage.token, "");
+            dispatch(setSignOut());
+        }
+    }, [playersError]);
 
     const ClearIndicator = (props: ClearIndicatorProps<ITeamsSelectOptions, true>) => {
         if (selectedTeams.length > 2) {
