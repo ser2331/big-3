@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add reset filters then signOut">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/AuthWrapper.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/AuthWrapper.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/UnprotectedPages/UnprotectedPages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +119,14 @@
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
       <workItem from="1660909450545" duration="52375000" />
-      <workItem from="1661328216383" duration="11808000" />
+      <workItem from="1661328216383" duration="9272000" />
+    </task>
+    <task id="LOCAL-00029" summary="add hash router">
+      <created>1659977224529</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1659977224529</updated>
     </task>
     <task id="LOCAL-00030" summary="heroku">
       <created>1659977929126</created>
@@ -460,14 +464,7 @@
       <option name="project" value="LOCAL" />
       <updated>1661337194787</updated>
     </task>
-    <task id="LOCAL-00078" summary="add reset filters then signOut">
-      <created>1661337654293</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1661337654293</updated>
-    </task>
-    <option name="localTasksCounter" value="79" />
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,6 +484,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="cleared reducer from storageService" />
     <MESSAGE value="rename" />
     <MESSAGE value="add then token failed logout" />
     <MESSAGE value="refactor add pages" />
@@ -511,8 +509,7 @@
     <MESSAGE value="some fix" />
     <MESSAGE value="fix cancel in add form" />
     <MESSAGE value="add error message then isUnauthorized" />
-    <MESSAGE value="add reset filters then signOut" />
-    <option name="LAST_COMMIT_MESSAGE" value="add reset filters then signOut" />
+    <option name="LAST_COMMIT_MESSAGE" value="add error message then isUnauthorized" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
