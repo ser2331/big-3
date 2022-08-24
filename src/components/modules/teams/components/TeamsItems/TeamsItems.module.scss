@@ -17,6 +17,11 @@
       margin-right: 6px;
     }
   }
+  @include media(784px) {
+    &__itemWrapper {
+      height: 300px;
+    }
+  }
   @include media($desktop) {
     &__itemWrapper {
       height: 380px;
@@ -41,6 +46,9 @@
   @include media($mobile) {
     height: 200px;
   }
+  @include media(784px) {
+    height: 300px;
+  }
   @include media($desktop) {
     height: 380px;
   }
@@ -55,6 +63,10 @@
       @include media($mobile) {
         width: 60px;
         height: 50px;
+      }
+      @include media(784px) {
+        width: 100px;
+        height: 100px;
       }
       @include media($desktop) {
         width: 150px;

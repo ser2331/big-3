@@ -110,7 +110,7 @@ export const AddPlayerContainer = () => {
                         <div className={s.homeLink} onClick={goHome}>Players </div> / Add new player
                     </span>
 
-                    {addPlayerError || editPlayerData ? <ErrorMessage message="Чьл-ьл пошло не так..." /> : ""}
+                    {addPlayerError || editPlayerData ? <ErrorMessage message="Что-то пошло не так..." /> : ""}
                 </div>
 
                 <div className={s.AddPlayerContainer__contentWrapper__content}>
