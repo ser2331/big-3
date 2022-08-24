@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some fix">
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix cancel in add form">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,14 +121,7 @@
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
       <workItem from="1660909450545" duration="52375000" />
-      <workItem from="1661328216383" duration="6264000" />
-    </task>
-    <task id="LOCAL-00027" summary="added add file">
-      <created>1659976307880</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1659976307880</updated>
+      <workItem from="1661328216383" duration="8592000" />
     </task>
     <task id="LOCAL-00028" summary="add hash router">
       <created>1659976941193</created>
@@ -465,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661333960894</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="fix cancel in add form">
+      <created>1661334739141</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1661334739141</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix empty items" />
     <MESSAGE value="fix pagination" />
     <MESSAGE value="cleared reducer from storageService" />
     <MESSAGE value="rename" />
@@ -510,7 +510,8 @@
     <MESSAGE value="fixed pagination on bottom" />
     <MESSAGE value="fix add player and add team form validation,&#10;fix adaptive min width 320px" />
     <MESSAGE value="some fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="some fix" />
+    <MESSAGE value="fix cancel in add form" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix cancel in add form" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
