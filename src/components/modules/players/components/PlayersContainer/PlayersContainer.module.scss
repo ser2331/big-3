@@ -68,17 +68,17 @@
   .footerWrapper {
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    background: var(--ui-lightest-grey1);
 
     @include media($mobile) {
-      position: fixed;
-      bottom: 0;
       width: 100%;
       padding: 4px 12px;
-      background: var(--ui-lightest-grey1);
     }
     @include media($desktop) {
-      position: static;
-      bottom: 0;
+      width: 90%;
+      padding: 4px 12px;
     }
   }
 

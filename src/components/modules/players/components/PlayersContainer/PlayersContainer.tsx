@@ -218,6 +218,6 @@ export const PlayersContainer:FC = () => {
                     />
                 </div>
             )}
-        </div>   
+        </div>
     );
 };

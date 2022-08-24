@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix delete player&#10;fix add image" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix add player avatar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,14 +121,7 @@
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
       <workItem from="1660909450545" duration="52375000" />
-      <workItem from="1661328216383" duration="1165000" />
-    </task>
-    <task id="LOCAL-00022" summary="add adaptive mobile to add player and add team pages">
-      <created>1659793719609</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1659793719609</updated>
+      <workItem from="1661328216383" duration="1889000" />
     </task>
     <task id="LOCAL-00023" summary="some fix">
       <created>1659877749149</created>
@@ -462,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661329196374</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="fix add player avatar">
+      <created>1661329526691</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1661329526691</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix teams selector styles" />
     <MESSAGE value="inputs with type number enter numbers" />
     <MESSAGE value="fix name apiService, fix logged user do not enter to login page" />
     <MESSAGE value="fix empty items" />
@@ -507,7 +510,8 @@
     <MESSAGE value="token fix" />
     <MESSAGE value="some fix" />
     <MESSAGE value="fix delete player&#10;fix add image" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix delete player&#10;fix add image" />
+    <MESSAGE value="fix add player avatar" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix add player avatar" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
