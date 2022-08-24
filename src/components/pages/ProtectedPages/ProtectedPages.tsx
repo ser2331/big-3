@@ -3,6 +3,8 @@ import { Outlet, Route, Routes, useLocation, useNavigate } from "react-router-do
 import { useAppDispatch, useAppSelector } from "../../core/redux/redux";
 import StorageService from "../../common/helpers/storageService/storage-service";
 import { authorizationSlice } from "../../modules/authorization/AuthorizationSlice";
+import { teamsSlice } from "../../modules/teams/TeamsSlice";
+import { playersSlice } from "../../modules/players/PlayersSlice";
 import { appSlice } from "../../modules/App/AppSlice";
 import { Navigation } from "../../common/components/navigation/Navigation";
 import { AddTeamContainer } from "../../modules/teams/components/AddTeamContainer/AddTeamContainer";
@@ -17,9 +19,12 @@ import Types from "../../types";
 
 import s from "./ProtectedPages.module.scss";
 
+
 const { routingMap, localStorage } = Types;
 
 const { setSignOut } = authorizationSlice.actions;
+const { resetTeamsFilters } = teamsSlice.actions;
+const { resetPlayersFilters } = playersSlice.actions;
 const { setShowMobileMenu } = appSlice.actions;
 
 export const ProtectedPages = () => {
@@ -36,6 +41,8 @@ export const ProtectedPages = () => {
     const signOut = () => {
         StorageService.set(localStorage.token, "");
         dispatch(setSignOut());
+        dispatch(resetTeamsFilters());
+        dispatch(resetPlayersFilters());
         dispatch(setShowMobileMenu(false));
     };
 

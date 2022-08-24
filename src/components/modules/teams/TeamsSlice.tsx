@@ -57,6 +57,12 @@ export const teamsSlice = createSlice({
                 id: 0,
             };
             state.teamId = null;
+        },
+        resetTeamsFilters(state) {
+            state.pagination.itemsPerPage = 6;
+            state.pagination.pageCount = 1;
+            state.pagination.currentPage = 1;
+            state.searchTeam = "";
         }
     }
 

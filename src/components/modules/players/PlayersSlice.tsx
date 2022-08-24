@@ -70,6 +70,13 @@ export const playersSlice = createSlice({
                 team: null,
             };
             state.playerId = null;
+        },
+        resetPlayersFilters(state) {
+            state.selectedTeams = [];
+            state.pagination.itemsPerPage = 6;
+            state.pagination.pageCount = 1;
+            state.pagination.currentPage = 1;
+            state.searchPlayerName = "";
         }
     }
 

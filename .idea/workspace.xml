@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix cancel in add form">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/error-message/error-message.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/authorization/components/AuthContent/Login.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="add error message then isUnauthorized">
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/PlayersSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/TeamsSlice.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/ProtectedPages/ProtectedPages.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,14 +121,7 @@
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
       <workItem from="1660909450545" duration="52375000" />
-      <workItem from="1661328216383" duration="8592000" />
-    </task>
-    <task id="LOCAL-00028" summary="add hash router">
-      <created>1659976941193</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1659976941193</updated>
+      <workItem from="1661328216383" duration="9272000" />
     </task>
     <task id="LOCAL-00029" summary="add hash router">
       <created>1659977224529</created>
@@ -466,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661334739141</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="add error message then isUnauthorized">
+      <created>1661337194787</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1661337194787</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix pagination" />
     <MESSAGE value="cleared reducer from storageService" />
     <MESSAGE value="rename" />
     <MESSAGE value="add then token failed logout" />
@@ -511,7 +510,8 @@
     <MESSAGE value="fix add player and add team form validation,&#10;fix adaptive min width 320px" />
     <MESSAGE value="some fix" />
     <MESSAGE value="fix cancel in add form" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix cancel in add form" />
+    <MESSAGE value="add error message then isUnauthorized" />
+    <option name="LAST_COMMIT_MESSAGE" value="add error message then isUnauthorized" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
