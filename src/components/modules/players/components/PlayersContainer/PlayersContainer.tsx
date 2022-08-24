@@ -43,7 +43,6 @@ export const PlayersContainer:FC = () => {
     const {
         data: teamsData,
         error: teamsError,
-        refetch: teamsReFetch
     } = teamsApiService.useGetTeamsQuery({});
 
     useEffect(() => {
@@ -102,7 +101,6 @@ export const PlayersContainer:FC = () => {
     useEffect(() => {
         if ( currentPage || itemsPerPage) {
             playersReFetch();
-            teamsReFetch();
         }
     }, [currentPage, itemsPerPage]);
 

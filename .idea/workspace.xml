@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fixed pagination on bottom">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assests/styles/mixins/mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assests/styles/mixins/mixins.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/empty-items/empty-items.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/empty-items/empty-items.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/AddPlayerForm/AddPlayerForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="fix add player and add team form validation,&#10;fix adaptive min width 320px">
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,14 +121,7 @@
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
       <workItem from="1660909450545" duration="52375000" />
-      <workItem from="1661328216383" duration="3482000" />
-    </task>
-    <task id="LOCAL-00024" summary="some fix">
-      <created>1659880295889</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1659880295889</updated>
+      <workItem from="1661328216383" duration="3867000" />
     </task>
     <task id="LOCAL-00025" summary="some fix">
       <created>1659958289609</created>
@@ -468,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661330166248</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="fix add player and add team form validation,&#10;fix adaptive min width 320px">
+      <created>1661331919279</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1661331919279</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -488,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix name apiService, fix logged user do not enter to login page" />
     <MESSAGE value="fix empty items" />
     <MESSAGE value="fix pagination" />
     <MESSAGE value="cleared reducer from storageService" />
@@ -513,7 +510,8 @@
     <MESSAGE value="fix delete player&#10;fix add image" />
     <MESSAGE value="fix add player avatar" />
     <MESSAGE value="fixed pagination on bottom" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed pagination on bottom" />
+    <MESSAGE value="fix add player and add team form validation,&#10;fix adaptive min width 320px" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix add player and add team form validation,&#10;fix adaptive min width 320px" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
