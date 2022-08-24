@@ -57,7 +57,7 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         registerName="height"
                         type="number"
                         error={errors.height}
-                        property={{required: "Enter height"}}
+                        property={{required: "Enter height", maxLength: {value: 5, message: "max length 5"}}}
                         style={s.Field}
                     />
                     <Field
@@ -66,7 +66,7 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         registerName="weight"
                         type="number"
                         error={errors.weight}
-                        property={{required: "Enter weight"}}
+                        property={{required: "Enter weight", maxLength: {value: 5, message: "max length 5"}}}
                         style={s.Field}
                     />
                 </div>
@@ -87,7 +87,7 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                         registerName="number"
                         type="number"
                         error={errors.number}
-                        property={{required: "Enter player number"}}
+                        property={{required: "Enter player number", maxLength: {value: 10, message: "max length 10"}}}
                         style={s.Field}
                     />
                 </div>

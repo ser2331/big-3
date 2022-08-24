@@ -44,7 +44,7 @@ export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, su
                     registerName="foundationYear"
                     type="number"
                     error={errors.foundationYear}
-                    property={{required: "enter foundation year"}}
+                    property={{required: "enter foundation year", maxLength: {value: 10, message: "max length 10"}}}
                 />
 
                 <div className={s.formControl}>
