@@ -6,19 +6,22 @@
   height: 100vh;
 
   &__imageWrapper {
-    position: relative;
-
+    background: #F5FBFF;
+    width: 100%;
     @include media($mobile) {
       display: none;
     }
     @include media($desktop) {
-      width: 58%;
       display: flex;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
       background: #F5FBFF;
-      padding: 0 24px;
+    }
+
+    .image {
+      display: flex;
+      background: #F5FBFF;
+      width: 100%;
+      background: url("../../assests/images/auth.png") center no-repeat;
+      background-size: contain;
     }
   }
 }
