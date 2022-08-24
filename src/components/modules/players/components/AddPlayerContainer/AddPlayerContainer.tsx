@@ -75,7 +75,7 @@ export const AddPlayerContainer = () => {
         if (id) {
             await editPlayer({...introducedData, avatarUrl: avatar || avatarUrl, id});
         } else {
-            await addPlayer({...introducedData, avatarUrl: avatarUrl || avatarUrl});
+            await addPlayer({...introducedData, avatarUrl: avatar || avatarUrl});
         }
     };
 
