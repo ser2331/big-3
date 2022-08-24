@@ -4,6 +4,7 @@
   display:flex;
   flex-wrap:wrap;
   justify-content: flex-start;
+  margin-bottom: 40px;
 
   @include media($mobile) {
     &__itemWrapper {
@@ -85,10 +86,20 @@
       justify-content: center;
 
       .playerName {
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 5px;
+        text-overflow: ellipsis;
         color: var(--ui-white);
         @include cardTitle;
         text-align: center;
         margin-right: 4px;
+        @include media($mobile) {
+          max-width: 140px;
+        }
+        @include media($desktop) {
+          max-width: 240px;
+        }
       }
       .playerNumber {
         color: var(--ui-light-red);

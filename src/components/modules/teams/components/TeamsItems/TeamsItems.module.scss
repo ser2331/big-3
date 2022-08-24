@@ -4,6 +4,7 @@
   display:flex;
   flex-wrap:wrap;
   justify-content: flex-start;
+  margin-bottom: 40px;
 
   @include media($mobile) {
     &__itemWrapper {
@@ -79,9 +80,20 @@
     }
 
     .teamName {
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 5px;
+      text-overflow: ellipsis;
       color: var(--ui-white);
       @include cardTitle;
       text-align: center;
+
+      @include media($mobile) {
+        max-width: 140px;
+      }
+      @include media($desktop) {
+        max-width: 240px;
+      }
     }
 
     .teamYear {
