@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="token fix">
-      <change beforePath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/components/select-field/select-field.tsx" afterDir="false" />
+    <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/image/components/AddImage/AddImage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,14 +120,8 @@
       <workItem from="1660550232435" duration="19431000" />
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
-      <workItem from="1660909450545" duration="51369000" />
-    </task>
-    <task id="LOCAL-00020" summary="add adaptive mobile to players and teams pages">
-      <created>1659788034073</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1659788034073</updated>
+      <workItem from="1660909450545" duration="52375000" />
+      <workItem from="1661328216383" duration="820000" />
     </task>
     <task id="LOCAL-00021" summary="add adaptive mobile to player-card and team-card pages">
       <created>1659791031691</created>
@@ -463,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661159948059</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="some fix">
+      <created>1661160269282</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1661160269282</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +499,6 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="fix add image" />
     <MESSAGE value="fix interfaces" />
-    <MESSAGE value="some fix" />
     <MESSAGE value="fix query players by teams" />
     <MESSAGE value="add builderParamsIds and fix request players" />
     <MESSAGE value="add reset reducer, add style to reset button" />
@@ -508,7 +510,8 @@
     <MESSAGE value="fix add image method" />
     <MESSAGE value="delete axios" />
     <MESSAGE value="token fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="token fix" />
+    <MESSAGE value="some fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="some fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

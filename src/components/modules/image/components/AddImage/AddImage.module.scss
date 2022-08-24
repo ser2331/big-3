@@ -9,6 +9,7 @@
     opacity: 0.5;
     border-radius: 10px;
     background: var(--ui-light-grey);
+    cursor: pointer;
 
     @include media($mobile) {
       width: 185px;
@@ -25,7 +26,6 @@
 
     .customFileUpload {
       background: url("../../../../assests/images/addItemImg.svg") center no-repeat;
-      cursor: pointer;
       z-index: 1000;
       @include media($mobile) {
         width: 40px;

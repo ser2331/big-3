@@ -44,7 +44,7 @@ export const PlayerCard = () => {
 
     const deleteThisPlayer = async () => {
         if (id) {
-            await deletePlayer({id});
+            await deletePlayer(id);
         }
     };
 

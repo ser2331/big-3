@@ -43,12 +43,12 @@ export const AddImage:FC<IAddTeamImage> = ({ imageUrl, avatar, setAvatar }) => {
     return (
         <div className={s.AddImage}>
             {addImageError && <ErrorMessage message="Не удалось загрузить фото..." />}
-            <div className={s.AddImage__imageWrapper} >
-                <label className={s.customFileUpload} htmlFor="file-upload" />
+            <label className={s.AddImage__imageWrapper} htmlFor="file-upload" >
+                <div className={s.customFileUpload} />
                 <input type="file" onChange={sendFile} accept={acceptOptions.join()} id="file-upload" className={s.upload} />
                 {addImageLoading && <div className={s.loading} >Loading...</div>}
                 {avatar || imageUrl ? <img className={s.newImage} alt="addItem" src={avatar || imageUrl} /> : ""}
-            </div>
+            </label>
         </div>
     );
 };

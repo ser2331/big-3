@@ -55,10 +55,6 @@ export interface IGetPlayer {
     playerId: number | null;
 }
 
-export interface IDeletePlayer {
-    id: number;
-}
-
 export interface IAddPlayerFormValidation extends ISubmitPlayer {
     id?: number;
 }

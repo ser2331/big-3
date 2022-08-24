@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { baseUrl } from "../authService/authService";
 import {builderParamsIds} from "../../common/helpers/builderParamsIds";
 import {
-    IAddPlayer, IAddPlayerFormValidation, IDeletePlayer,
+    IAddPlayer, IAddPlayerFormValidation,
     IGetPlayer,
     IGetPlayers,
     IPlayers,
@@ -86,7 +86,7 @@ export const playersApiService = createApi({
             }),
             invalidatesTags: ["Players"]
         }),
-        deletePlayer: build.mutation<IAddPlayer, IDeletePlayer>({
+        deletePlayer: build.mutation<IAddPlayer, number>({
             query: (id) => ({
                 url: "/api/Player/Delete",
                 method: "DELETE",
