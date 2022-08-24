@@ -124,6 +124,7 @@ export const AddPlayerContainer = () => {
                         control={control}
                         positionOptions={positionOptions}
                         teamOptions={teamOptions}
+                        cancel={goHome}
                     />
                 </div>
             </div>

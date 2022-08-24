@@ -16,13 +16,14 @@ interface IAddPlayerForm {
     teamOptions: ITeamOptions[];
     positionOptions: ITeamOptions[];
     control: Control<ISubmitPlayer>;
+    cancel: () => void;
 }
 
 export const AddPlayerForm:FC<IAddPlayerForm> = ({
     register, handleSubmit,
     errors, submit,
     positionOptions,
-    teamOptions, control
+    teamOptions, control, cancel
 }) =>
     (
         <div className={s.AddPlayerForm}>
@@ -93,7 +94,7 @@ export const AddPlayerForm:FC<IAddPlayerForm> = ({
                 </div>
 
                 <div className={s.formControl}>
-                    <CustomButton type="reset" className={s.resetBtn}>
+                    <CustomButton type="reset" onClick={cancel} className={s.resetBtn}>
                         Cancel
                     </CustomButton>
 

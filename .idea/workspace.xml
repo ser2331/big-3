@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3098b803-2b55-4bf8-986e-8fc7e57ba219" name="Default Changelist" comment="some fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersContainer/PlayersContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/players/components/PlayersItems/PlayersItems.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsContainer/TeamsContainer.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/TeamsItems/TeamsItems.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamContainer/AddTeamContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/teams/components/AddTeamForm/AddTeamForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,14 +120,7 @@
       <workItem from="1660734703985" duration="870000" />
       <workItem from="1660897058182" duration="11192000" />
       <workItem from="1660909450545" duration="52375000" />
-      <workItem from="1661328216383" duration="5640000" />
-    </task>
-    <task id="LOCAL-00026" summary="added add file">
-      <created>1659972879146</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1659972879146</updated>
+      <workItem from="1661328216383" duration="6264000" />
     </task>
     <task id="LOCAL-00027" summary="added add file">
       <created>1659976307880</created>
@@ -469,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661332186668</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="some fix">
+      <created>1661333960894</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1661333960894</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

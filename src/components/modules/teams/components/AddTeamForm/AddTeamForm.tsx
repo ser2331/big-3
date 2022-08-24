@@ -11,10 +11,11 @@ interface IAddTeamForm {
     register: UseFormRegister<ISubmitTeams>;
     submit: SubmitHandler<ISubmitTeams>
     handleSubmit: UseFormHandleSubmit<ISubmitTeams>;
-    errors: FieldErrorsImpl<DeepRequired<ISubmitTeams>>
+    errors: FieldErrorsImpl<DeepRequired<ISubmitTeams>>;
+    cancel: () => void;
 }
 
-export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, submit}) =>
+export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, submit, cancel}) =>
     (
         <div className={s.AddTeamForm}>
             <form className={s.form} onSubmit={handleSubmit(submit)}>
@@ -48,7 +49,7 @@ export const AddTeamForm:FC<IAddTeamForm> = ({register, handleSubmit, errors, su
                 />
 
                 <div className={s.formControl}>
-                    <CustomButton type="reset" className={s.resetBtn}>
+                    <CustomButton type="reset" onClick={cancel} className={s.resetBtn}>
                         Cancel
                     </CustomButton>
 

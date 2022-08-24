@@ -70,7 +70,7 @@ export const AddTeamContainer = () => {
                 <div className={s.AddTeamContainer__contentWrapper__content}>
                     <AddImage imageUrl={imageUrl} avatar={avatar} setAvatar={setAvatar} />
 
-                    <AddTeamForm register={register} handleSubmit={handleSubmit} errors={errors} submit={submit} />
+                    <AddTeamForm register={register} handleSubmit={handleSubmit} errors={errors} submit={submit} cancel={goHome} />
                 </div>
             </div>
         </div>
